@@ -3,7 +3,7 @@ import re
 import json
 
 from build_pages import NAMES_POOL, LOCATIONS_CONFIG
-from page_template import build_location_page, render_profile_card, count_words
+from page_template import build_location_page, render_profile_card, count_words, EMBEDDED_CSS
 
 OUTPUT_DIR = os.path.dirname(os.path.abspath(__file__))
 LOCATIONS_DIR = os.path.join(OUTPUT_DIR, 'locations')
@@ -41,7 +41,7 @@ for loc in LOCATIONS_CONFIG:
 # Build Homepage (index.html)
 home_pills = []
 for l in LOCATIONS_CONFIG:
-    home_pills.append(f'<a href="/locations/{l["slug"]}" class="loc-pill">📍 {l["name"]}</a>')
+    home_pills.append(f'<a href="locations/{l["slug"]}.html" class="loc-pill">📍 {l["name"]}</a>')
 home_pills_html = "\n".join(home_pills)
 
 home_cards = []
@@ -51,7 +51,7 @@ for i in range(16):
     age = 21 + (i % 6)
     img_alias = f"profile_{( (name_index_tracker + i) % 48 ) + 1:02d}.webp"
     city_sample = LOCATIONS_CONFIG[i % len(LOCATIONS_CONFIG)]['name']
-    home_cards.append(render_profile_card(name, city_sample, age, i, img_alias))
+    home_cards.append(render_profile_card(name, city_sample, age, i, img_alias, rel_prefix=''))
 home_cards_str = "\n".join(home_cards)
 
 home_faqs = [
@@ -179,12 +179,12 @@ for loc in LOCATIONS_CONFIG:
     dest_cards.append(f'''
       <div class="category-box" style="display: flex; flex-direction: column; justify-content: space-between;">
         <div>
-          <h4>📍 <a href="/locations/{loc['slug']}" style="color: inherit;">{loc['name']} Escorts</a></h4>
+          <h4>📍 <a href="locations/{loc['slug']}.html" style="color: inherit;">{loc['name']} Escorts</a></h4>
           <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 6px;">{loc['tagline']}</p>
           <p style="font-size: 13px;">{loc['meta_desc']}</p>
         </div>
         <div style="margin-top: 10px;">
-          <a href="/locations/{loc['slug']}" class="btn-card-details" style="display: inline-block; width: 100%; text-align: center;">View 16 Profiles in {loc['name']} &rarr;</a>
+          <a href="locations/{loc['slug']}.html" class="btn-card-details" style="display: inline-block; width: 100%; text-align: center;">View 16 Profiles in {loc['name']} &rarr;</a>
         </div>
       </div>''')
 dest_cards_str = "\n".join(dest_cards)
@@ -197,8 +197,11 @@ index_html = f'''<!DOCTYPE html>
   <title>CityHaldwani.com - Premier Uttarakhand Escort Directory &amp; Verified Classifieds</title>
   <meta name="description" content="CityHaldwani.com is Uttarakhand's premier light-theme classified directory. Explore 100% verified independent escorts in Haldwani, Nainital, Bhimtal, Ramnagar, Corbett, and 15 destinations. Cash on meeting, zero advance.">
   <link rel="canonical" href="https://cityhaldwani.com/">
-  <link rel="icon" href="/favicon.webp" type="image/webp">
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="favicon.webp" type="image/webp">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+{EMBEDDED_CSS}
+  </style>
   <script type="application/ld+json">
 {home_biz_schema}
   </script>
@@ -209,8 +212,8 @@ index_html = f'''<!DOCTYPE html>
 <body>
   <header class="site-topbar">
     <div class="container topbar-wrapper">
-      <a href="/" class="brand-group">
-        <img src="/logo.png" alt="CityHaldwani.com Logo" class="brand-logo-img">
+      <a href="index.html" class="brand-group">
+        <img src="logo.png" alt="CityHaldwani.com Logo" class="brand-logo-img" onerror="if(!this.dataset.retried){{this.dataset.retried=1;this.src='city-logo.png';}}">
         <div class="brand-text">
           <div class="brand-title">CityHaldwani<span>.com</span></div>
           <p>Verified Uttarakhand Classifieds</p>
@@ -330,25 +333,25 @@ index_html = f'''<!DOCTYPE html>
       <div class="footer-col">
         <h4>Popular Destination Hubs</h4>
         <ul class="footer-links">
-          <li><a href="/locations/haldwani">Haldwani Escorts</a></li>
-          <li><a href="/locations/nainital">Nainital Escorts</a></li>
-          <li><a href="/locations/bhimtal">Bhimtal Escorts</a></li>
-          <li><a href="/locations/ramnagar">Ramnagar Escorts</a></li>
-          <li><a href="/locations/jim-corbett">Jim Corbett Escorts</a></li>
-          <li><a href="/locations/rudrapur">Rudrapur Escorts</a></li>
-          <li><a href="/locations/almora">Almora Escorts</a></li>
-          <li><a href="/locations/bhowali">Bhowali Escorts</a></li>
+          <li><a href="locations/haldwani.html">Haldwani Escorts</a></li>
+          <li><a href="locations/nainital.html">Nainital Escorts</a></li>
+          <li><a href="locations/bhimtal.html">Bhimtal Escorts</a></li>
+          <li><a href="locations/ramnagar.html">Ramnagar Escorts</a></li>
+          <li><a href="locations/jim-corbett.html">Jim Corbett Escorts</a></li>
+          <li><a href="locations/rudrapur.html">Rudrapur Escorts</a></li>
+          <li><a href="locations/almora.html">Almora Escorts</a></li>
+          <li><a href="locations/bhowali.html">Bhowali Escorts</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Corporate, Legal &amp; Safety</h4>
         <ul class="footer-links">
-          <li><a href="/about-us">About Us</a></li>
-          <li><a href="/safety-guide">Safety Guidelines</a></li>
-          <li><a href="/report-abuse">Report Abuse</a></li>
-          <li><a href="/terms">Terms of Service</a></li>
-          <li><a href="/privacy">Privacy Policy</a></li>
-          <li><a href="/contact-us">Contact Support Desk</a></li>
+          <li><a href="about-us.html">About Us</a></li>
+          <li><a href="safety-guide.html">Safety Guidelines</a></li>
+          <li><a href="report-abuse.html">Report Abuse</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="contact-us.html">Contact Support Desk</a></li>
         </ul>
       </div>
     </div>
@@ -357,10 +360,10 @@ index_html = f'''<!DOCTYPE html>
     </div>
   </footer>
 
-  <script src="/js/contacts-config.js"></script>
-  <script src="/js/contact-manager.js"></script>
-  <script src="/js/security-shield.js"></script>
-  <script src="/js/age-gate.js"></script>
+  <script src="js/contacts-config.js"></script>
+  <script src="js/contact-manager.js"></script>
+  <script src="js/security-shield.js"></script>
+  <script src="js/age-gate.js"></script>
   <script>
     document.querySelectorAll('.faq-question').forEach(function(el) {{
       el.addEventListener('click', function() {{

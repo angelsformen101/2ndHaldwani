@@ -1,18 +1,23 @@
 /**
  * CityHaldwani.com - Contact Manager & Analytics Tracker
  * Handles dynamic contact numbers, floating action buttons, and click tracking with page duration.
+ * Robust against subfolders (e.g. /cityhaldwani_com/), file://, and production roots.
  */
 (function() {
   const pageStartTime = Date.now();
 
   function getPageKey() {
     let path = window.location.pathname.replace(/^\/+/, '');
+    // Strip common subfolder prefixes if hosted in a nested folder (e.g. VS Code Live Server)
+    path = path.replace(/^cityhaldwani_com\//i, '');
+
     if (!path || path === '' || path === 'index.html') return 'index.html';
+    
+    // Normalize clean URLs to .html key
     if (!path.endsWith('.html') && !path.includes('.')) {
-      // Clean URL: check if it's a location
-      if (path.startsWith('locations/')) path = path + '.html';
-      else if (!path.includes('/')) {
-        // e.g. 'nainital' -> 'locations/nainital.html' or 'about-us' -> 'about-us.html'
+      if (path.startsWith('locations/')) {
+        path = path + '.html';
+      } else if (!path.includes('/')) {
         const locs = ['nainital','bhimtal','almora','ramnagar','haldwani','kaladhungi','rudrapur','kathgodam','kashipur','bajpur','khatima','sitarganj','kichha','jim-corbett','bhowali'];
         if (locs.includes(path)) path = 'locations/' + path + '.html';
         else path = path + '.html';
@@ -46,7 +51,7 @@
     const durationSeconds = Math.round((Date.now() - pageStartTime) / 1000);
     const resolved = getResolvedContacts();
     const payload = {
-      type: type, // 'call' or 'whatsapp'
+      type: type,
       label: label || 'button',
       page: resolved.pageKey,
       url: window.location.href,
@@ -54,7 +59,7 @@
       timestamp: new Date().toISOString()
     };
 
-    // Send to backend API
+    // Send to backend API if available
     try {
       if (navigator.sendBeacon) {
         navigator.sendBeacon('/api/track', JSON.stringify(payload));
@@ -68,7 +73,7 @@
       }
     } catch(e) {}
 
-    // Also persist in local backup
+    // Persist in local storage backup
     try {
       const logs = JSON.parse(localStorage.getItem('cityhaldwani_click_logs') || '[]');
       logs.unshift(payload);
@@ -190,6 +195,24 @@
     });
   }
 
+  // Auto fallback for broken image paths (handles subdirectories, Live Server ports, etc.)
+  function setupImageFallbacks() {
+    document.querySelectorAll('img').forEach(function(img) {
+      img.addEventListener('error', function() {
+        if (!this.dataset.retried) {
+          this.dataset.retried = '1';
+          var originalSrc = this.getAttribute('src') || '';
+          var filename = originalSrc.split('/').pop();
+          if (originalSrc.includes('logo')) {
+            this.src = '../logo.png';
+          } else if (filename) {
+            this.src = '../public/' + filename;
+          }
+        }
+      });
+    });
+  }
+
   // Load latest configuration from server if available
   function fetchRemoteConfig() {
     fetch('/api/config')
@@ -205,11 +228,13 @@
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function() {
+      setupImageFallbacks();
       applyContacts();
       injectFloatingButtons();
       fetchRemoteConfig();
     });
   } else {
+    setupImageFallbacks();
     applyContacts();
     injectFloatingButtons();
     fetchRemoteConfig();

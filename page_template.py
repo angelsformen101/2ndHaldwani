@@ -4,17 +4,22 @@ import json
 
 from build_pages import NAMES_POOL, LOCATIONS_CONFIG
 
+# Load CSS content to embed directly in all generated pages
+CSS_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'css', 'style.css')
+with open(CSS_FILE, 'r', encoding='utf-8') as f:
+    EMBEDDED_CSS = f.read()
+
 # Helper to calculate clean visible body word count (excluding head, script, style)
 def count_words(html_str):
-    html = re.sub(r'<head[\s\S]*?</head>', ' ', html_str, flags=re.I)
-    html = re.sub(r'<script[\s\S]*?</script>', ' ', html, flags=re.I)
-    html = re.sub(r'<style[\s\S]*?</style>', ' ', html, flags=re.I)
-    text = re.sub(r'<[^>]+>', ' ', html)
-    words = text.split()
+    body_match = re.search(r'<body[\s\S]*?</body>', html_str, re.I)
+    body_text = body_match.group(0) if body_match else html_str
+    clean = re.sub(r'<script[\s\S]*?</script>', ' ', body_text, flags=re.I)
+    clean = re.sub(r'<style[\s\S]*?</style>', ' ', clean, flags=re.I)
+    words = re.sub(r'<[^>]+>', ' ', clean).split()
     return len(words)
 
-# Build a single profile card calibrated to ~48 words
-def render_profile_card(name, city_name, age, index, img_alias):
+# Build a single profile card calibrated to ~42 words
+def render_profile_card(name, city_name, age, index, img_alias, rel_prefix='../'):
     rates_options = [
         ("₹1,500", "₹2,500", "₹7,000"),
         ("₹2,000", "₹3,000", "₹8,000"),
@@ -25,31 +30,30 @@ def render_profile_card(name, city_name, age, index, img_alias):
     
     titles = [
         f"{name} 👑 VIP 5-Star Resort Companion",
-        f"{name} 💖 Sweet Independent College Girl",
-        f"{name} 🌟 Sensual Model For Romantic Dates",
+        f"{name} 💖 Sweet Independent College Model",
+        f"{name} 🌟 Sensual Escort For Romantic Dates",
         f"{name} 💃 Charming Mountain Tourism Escort",
-        f"{name} 🔥 Elite Corporate Executive Companion",
-        f"{name} ✨ Warm Mature Companion For Cozy Chats",
-        f"{name} 🌺 Premium Freelance Model Real Photos",
+        f"{name} 🔥 Elite Corporate Suite Companion",
+        f"{name} ✨ Warm Mature Homemaker Escort",
+        f"{name} 🌺 Premium Freelance Model Verified",
         f"{name} 💎 Five-Star Luxury Suite Companion"
     ]
     title = titles[index % len(titles)]
     
     desc_snippets = [
         f"Verified companion in {city_name}. Clean, polite, and discreet hotel outcall with zero advance payment.",
-        f"Educated companion offering verified hotel outcall in {city_name}. Punctual, with cash on meeting.",
-        f"VIP companion in {city_name}. Polite disposition, good conversation, and relaxing hotel suite encounters.",
-        f"Verified independent model in {city_name}. Discretion, comfort, and hospitality with genuine photos."
+        f"Educated companion offering verified hotel outcall in {city_name}. Punctual with direct cash on arrival.",
+        f"VIP companion in {city_name}. Polite disposition, good conversation, and relaxing private hotel suite encounters.",
+        f"Verified independent model in {city_name}. Discretion, comfort, and hospitality with genuine verified photos."
     ]
     desc = desc_snippets[index % len(desc_snippets)]
-    
     photo_count = 3 + (index % 3)
     
     card_html = f'''
         <article class="profile-card" id="profile-{name.lower()}">
           <div class="card-media">
             <span class="vip-ribbon">VIP</span>
-            <img src="/public/{img_alias}" alt="{name} - Verified Escort in {city_name}" loading="lazy">
+            <img src="{rel_prefix}public/{img_alias}" alt="{name} - Verified Escort in {city_name}" loading="lazy" onerror="if(!this.dataset.retried){{this.dataset.retried=1;this.src='{rel_prefix}public/{img_alias}';}}">
             <span class="photo-count-pill">📷 {photo_count} Photos</span>
           </div>
           <div class="card-content">
@@ -180,7 +184,7 @@ def build_location_page(loc, start_name_idx):
     hotels = loc['hotels']
     vibe = loc['vibe']
     
-    # 16 profiles
+    # 16 profiles with ../ relative prefix
     cards_html = []
     names_used = []
     for i in range(16):
@@ -188,7 +192,7 @@ def build_location_page(loc, start_name_idx):
         names_used.append(name)
         age = 20 + ((start_name_idx + i * 3) % 7)
         img_alias = f"profile_{( (start_name_idx + i) % 48 ) + 1:02d}.webp"
-        cards_html.append(render_profile_card(name, city_name, age, i, img_alias))
+        cards_html.append(render_profile_card(name, city_name, age, i, img_alias, rel_prefix='../'))
     
     all_cards_str = "\n".join(cards_html)
     
@@ -240,10 +244,11 @@ def build_location_page(loc, start_name_idx):
         }
     }, indent=2)
     
+    # In location pages, pills link to sister locations cleanly
     pills = []
     for l in LOCATIONS_CONFIG:
         active_cls = " active" if l['slug'] == slug else ""
-        pills.append(f'<a href="/locations/{l["slug"]}" class="loc-pill{active_cls}">📍 {l["name"]}</a>')
+        pills.append(f'<a href="{l["slug"]}.html" class="loc-pill{active_cls}">📍 {l["name"]}</a>')
     pills_html = "\n".join(pills)
 
     html_content = f'''<!DOCTYPE html>
@@ -254,8 +259,11 @@ def build_location_page(loc, start_name_idx):
   <title>{title}</title>
   <meta name="description" content="{meta_desc}">
   <link rel="canonical" href="https://cityhaldwani.com/locations/{slug}">
-  <link rel="icon" href="/favicon.webp" type="image/webp">
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="../favicon.webp" type="image/webp">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+{EMBEDDED_CSS}
+  </style>
   <script type="application/ld+json">
 {local_biz_schema}
   </script>
@@ -266,8 +274,8 @@ def build_location_page(loc, start_name_idx):
 <body>
   <header class="site-topbar">
     <div class="container topbar-wrapper">
-      <a href="/" class="brand-group">
-        <img src="/logo.png" alt="CityHaldwani.com Logo" class="brand-logo-img">
+      <a href="../index.html" class="brand-group">
+        <img src="../logo.png" alt="CityHaldwani.com Logo" class="brand-logo-img" onerror="if(!this.dataset.retried){{this.dataset.retried=1;this.src='../city-logo.png';}}">
         <div class="brand-text">
           <div class="brand-title">CityHaldwani<span>.com</span></div>
           <p>Verified Uttarakhand Classifieds</p>
@@ -283,7 +291,7 @@ def build_location_page(loc, start_name_idx):
 
   <main class="container">
     <nav class="breadcrumb-nav" aria-label="Breadcrumb">
-      <a href="/">Home</a> &gt; <a href="/#locations">Uttarakhand</a> &gt; <span>{city_name} Escorts</span>
+      <a href="../index.html">Home</a> &gt; <a href="../index.html#locations">Uttarakhand</a> &gt; <span>{city_name} Escorts</span>
     </nav>
 
     <div class="location-pills-bar">
@@ -384,23 +392,23 @@ def build_location_page(loc, start_name_idx):
       <div class="footer-col">
         <h4>Top Uttarakhand Hubs</h4>
         <ul class="footer-links">
-          <li><a href="/locations/haldwani">Haldwani Escorts</a></li>
-          <li><a href="/locations/nainital">Nainital Escorts</a></li>
-          <li><a href="/locations/bhimtal">Bhimtal Escorts</a></li>
-          <li><a href="/locations/ramnagar">Ramnagar Escorts</a></li>
-          <li><a href="/locations/jim-corbett">Jim Corbett Escorts</a></li>
-          <li><a href="/locations/rudrapur">Rudrapur Escorts</a></li>
+          <li><a href="haldwani.html">Haldwani Escorts</a></li>
+          <li><a href="nainital.html">Nainital Escorts</a></li>
+          <li><a href="bhimtal.html">Bhimtal Escorts</a></li>
+          <li><a href="ramnagar.html">Ramnagar Escorts</a></li>
+          <li><a href="jim-corbett.html">Jim Corbett Escorts</a></li>
+          <li><a href="rudrapur.html">Rudrapur Escorts</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Corporate &amp; Safety</h4>
         <ul class="footer-links">
-          <li><a href="/about-us">About Us</a></li>
-          <li><a href="/safety-guide">Safety Guidelines</a></li>
-          <li><a href="/report-abuse">Report Abuse</a></li>
-          <li><a href="/terms">Terms of Service</a></li>
-          <li><a href="/privacy">Privacy Policy</a></li>
-          <li><a href="/contact-us">Contact Support Desk</a></li>
+          <li><a href="../about-us.html">About Us</a></li>
+          <li><a href="../safety-guide.html">Safety Guidelines</a></li>
+          <li><a href="../report-abuse.html">Report Abuse</a></li>
+          <li><a href="../terms.html">Terms of Service</a></li>
+          <li><a href="../privacy.html">Privacy Policy</a></li>
+          <li><a href="../contact-us.html">Contact Support Desk</a></li>
         </ul>
       </div>
     </div>
@@ -409,10 +417,10 @@ def build_location_page(loc, start_name_idx):
     </div>
   </footer>
 
-  <script src="/js/contacts-config.js"></script>
-  <script src="/js/contact-manager.js"></script>
-  <script src="/js/security-shield.js"></script>
-  <script src="/js/age-gate.js"></script>
+  <script src="../js/contacts-config.js"></script>
+  <script src="../js/contact-manager.js"></script>
+  <script src="../js/security-shield.js"></script>
+  <script src="../js/age-gate.js"></script>
   <script>
     document.querySelectorAll('.faq-question').forEach(function(el) {{
       el.addEventListener('click', function() {{

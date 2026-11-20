@@ -6,8 +6,742 @@
   <title>CityHaldwani.com - Premier Uttarakhand Escort Directory &amp; Verified Classifieds</title>
   <meta name="description" content="CityHaldwani.com is Uttarakhand's premier light-theme classified directory. Explore 100% verified independent escorts in Haldwani, Nainital, Bhimtal, Ramnagar, Corbett, and 15 destinations. Cash on meeting, zero advance.">
   <link rel="canonical" href="https://cityhaldwani.com/">
-  <link rel="icon" href="/favicon.webp" type="image/webp">
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="favicon.webp" type="image/webp">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+/* ==========================================================================
+   CityHaldwani.com - Premier Light Theme Classifieds & Escort Directory
+   Modern, Clean, High-Contrast Light Layout Inspired by Classified Portals
+   ========================================================================== */
+
+:root {
+  --bg-main: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-alt: #f1f5f9;
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --border-light: #e2e8f0;
+  --border-subtle: #cbd5e1;
+  --primary-accent: #2563eb;
+  --primary-hover: #1d4ed8;
+  --rose-accent: #e11d48;
+  --rose-hover: #be123c;
+  --emerald-call: #10b981;
+  --emerald-dark: #059669;
+  --wa-green: #25D366;
+  --wa-dark: #128C7E;
+  --gold-star: #eab308;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
+  --shadow-lg: 0 10px 25px -5px rgba(0,0,0,0.08);
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* ================= Top Bar & Navigation ================= */
+.site-topbar {
+  background: #ffffff;
+  border-bottom: 1px solid var(--border-light);
+  padding: 12px 0;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: var(--shadow-sm);
+}
+
+.topbar-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.brand-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-logo-img {
+  height: 44px;
+  width: auto;
+  border-radius: 8px;
+}
+
+.brand-text h1, .brand-text .brand-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+.brand-text h1 span, .brand-text .brand-title span {
+  color: var(--rose-accent);
+}
+
+.brand-text p {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.badge-verified-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #ecfdf5;
+  color: #059669;
+  border: 1px solid #a7f3d0;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.btn-header-call {
+  background: var(--emerald-call);
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.2s;
+}
+
+.btn-header-call:hover {
+  background: var(--emerald-dark);
+}
+
+.btn-header-wa {
+  background: var(--wa-green);
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.2s;
+}
+
+.btn-header-wa:hover {
+  background: var(--wa-dark);
+}
+
+/* ================= Breadcrumb & Location Navigation Strip ================= */
+.breadcrumb-nav {
+  padding: 12px 0 6px 0;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.breadcrumb-nav a {
+  color: var(--primary-accent);
+}
+
+.breadcrumb-nav a:hover {
+  text-decoration: underline;
+}
+
+.location-pills-bar {
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin: 12px 0 24px 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.location-pills-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.location-pills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.loc-pill {
+  background: #f8fafc;
+  border: 1px solid var(--border-light);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.loc-pill:hover, .loc-pill.active {
+  background: var(--rose-accent);
+  color: #ffffff;
+  border-color: var(--rose-accent);
+}
+
+/* ================= Page Header / Hero ================= */
+.hero-editorial {
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 24px 28px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.hero-editorial h1 {
+  font-size: 26px;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.3;
+  margin-bottom: 14px;
+}
+
+.hero-meta-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.hero-badge {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.hero-editorial p {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+/* ================= Classified Profile Listing Card ================= */
+.listings-heading-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.listings-heading-bar h2 {
+  font-size: 20px;
+  font-weight: 800;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.listings-count-badge {
+  background: #fee2e2;
+  color: var(--rose-accent);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.listings-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 36px;
+}
+
+/* Horizontal Classified Card (matching Image 1) */
+.profile-card {
+  display: flex;
+  gap: 20px;
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  position: relative;
+}
+
+.profile-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: #cbd5e1;
+}
+
+.card-media {
+  width: 175px;
+  height: 220px;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  background: #e2e8f0;
+}
+
+.card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-count-pill {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  background: rgba(15, 23, 42, 0.75);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  backdrop-filter: blur(4px);
+}
+
+.vip-ribbon {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: var(--rose-accent);
+  color: #ffffff;
+  font-size: 10.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+}
+
+.card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-header-line {
+  margin-bottom: 8px;
+}
+
+.badge-vip-pill {
+  display: inline-block;
+  background: #fee2e2;
+  color: var(--rose-accent);
+  border: 1px solid #fecaca;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-right: 8px;
+  text-transform: uppercase;
+}
+
+.profile-name-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.35;
+  display: inline;
+}
+
+.card-rates-pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.rate-chip {
+  background: #f1f5f9;
+  border: 1px solid var(--border-light);
+  color: #334155;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.rate-chip.highlight {
+  background: #ecfdf5;
+  color: #065f46;
+  border-color: #a7f3d0;
+}
+
+.profile-description {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.card-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 12.5px;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+  align-items: center;
+}
+
+.meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.card-action-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.btn-card-call {
+  background: var(--emerald-call);
+  color: #ffffff;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.15s;
+}
+
+.btn-card-call:hover {
+  background: var(--emerald-dark);
+}
+
+.btn-card-wa {
+  background: var(--wa-green);
+  color: #ffffff;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.15s;
+}
+
+.btn-card-wa:hover {
+  background: var(--wa-dark);
+}
+
+.btn-card-details {
+  background: #f8fafc;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-light);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: background 0.15s;
+}
+
+.btn-card-details:hover {
+  background: #e2e8f0;
+}
+
+/* ================= Rich SEO Editorial Sections ================= */
+.editorial-card {
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 28px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.editorial-card h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 16px;
+  line-height: 1.35;
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 10px;
+}
+
+.editorial-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 18px 0 8px 0;
+}
+
+.editorial-card p {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: 14px;
+}
+
+.editorial-card ul, .editorial-card ol {
+  margin: 12px 0 16px 20px;
+  color: var(--text-secondary);
+  font-size: 14.5px;
+  line-height: 1.7;
+}
+
+.editorial-card li {
+  margin-bottom: 8px;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.category-box {
+  background: #f8fafc;
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.category-box h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--rose-accent);
+  margin-bottom: 8px;
+}
+
+.category-box p {
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+/* ================= FAQ Accordion Style (20 Searchable FAQs) ================= */
+.faq-section {
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 30px;
+  margin-bottom: 28px;
+  box-shadow: var(--shadow-sm);
+}
+
+.faq-section h2 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+
+.faq-intro {
+  font-size: 14.5px;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.faq-item {
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f8fafc;
+}
+
+.faq-question {
+  padding: 16px 20px;
+  font-size: 15.5px;
+  font-weight: 700;
+  color: #0f172a;
+  background: #ffffff;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+}
+
+.faq-question:hover {
+  background: #f8fafc;
+}
+
+.faq-question::after {
+  content: "+";
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-left: 10px;
+}
+
+.faq-item.open .faq-question::after {
+  content: "−";
+}
+
+.faq-answer {
+  padding: 16px 20px;
+  font-size: 14.5px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  border-top: 1px solid var(--border-light);
+  background: #f8fafc;
+}
+
+/* ================= Footer ================= */
+.site-footer {
+  background: #ffffff;
+  border-top: 1px solid var(--border-light);
+  padding: 40px 0 24px 0;
+  margin-top: 40px;
+  color: var(--text-secondary);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 30px;
+}
+
+.footer-col h4 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 14px;
+}
+
+.footer-col p {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.footer-links {
+  list-style: none;
+  font-size: 13.5px;
+}
+
+.footer-links li {
+  margin-bottom: 8px;
+}
+
+.footer-links a {
+  color: var(--text-secondary);
+  transition: color 0.15s;
+}
+
+.footer-links a:hover {
+  color: var(--rose-accent);
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--border-light);
+  padding-top: 20px;
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+/* ================= Mobile Responsiveness ================= */
+@media (max-width: 768px) {
+  .profile-card {
+    flex-direction: column;
+    gap: 14px;
+    padding: 14px;
+  }
+  .card-media {
+    width: 100%;
+    height: 240px;
+  }
+  .card-rates-pill-row {
+    gap: 6px;
+  }
+  .card-action-bar {
+    flex-wrap: wrap;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .hero-editorial h1 {
+    font-size: 21px;
+  }
+  .topbar-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .topbar-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+  </style>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -194,8 +928,8 @@
 <body>
   <header class="site-topbar">
     <div class="container topbar-wrapper">
-      <a href="/" class="brand-group">
-        <img src="/logo.png" alt="CityHaldwani.com Logo" class="brand-logo-img">
+      <a href="index.html" class="brand-group">
+        <img src="logo.png" alt="CityHaldwani.com Logo" class="brand-logo-img" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='city-logo.png';}">
         <div class="brand-text">
           <div class="brand-title">CityHaldwani<span>.com</span></div>
           <p>Verified Uttarakhand Classifieds</p>
@@ -217,21 +951,21 @@
     <div class="location-pills-bar">
       <div class="location-pills-title">Select Your Preferred Destination Hub:</div>
       <div class="location-pills-grid">
-<a href="/locations/nainital" class="loc-pill">📍 Nainital</a>
-<a href="/locations/bhimtal" class="loc-pill">📍 Bhimtal</a>
-<a href="/locations/almora" class="loc-pill">📍 Almora</a>
-<a href="/locations/ramnagar" class="loc-pill">📍 Ramnagar</a>
-<a href="/locations/haldwani" class="loc-pill">📍 Haldwani</a>
-<a href="/locations/kaladhungi" class="loc-pill">📍 Kaladhungi</a>
-<a href="/locations/rudrapur" class="loc-pill">📍 Rudrapur</a>
-<a href="/locations/kathgodam" class="loc-pill">📍 Kathgodam</a>
-<a href="/locations/kashipur" class="loc-pill">📍 Kashipur</a>
-<a href="/locations/bajpur" class="loc-pill">📍 Bajpur</a>
-<a href="/locations/khatima" class="loc-pill">📍 Khatima</a>
-<a href="/locations/sitarganj" class="loc-pill">📍 Sitarganj</a>
-<a href="/locations/kichha" class="loc-pill">📍 Kichha</a>
-<a href="/locations/jim-corbett" class="loc-pill">📍 Jim Corbett</a>
-<a href="/locations/bhowali" class="loc-pill">📍 Bhowali</a>
+<a href="locations/nainital.html" class="loc-pill">📍 Nainital</a>
+<a href="locations/bhimtal.html" class="loc-pill">📍 Bhimtal</a>
+<a href="locations/almora.html" class="loc-pill">📍 Almora</a>
+<a href="locations/ramnagar.html" class="loc-pill">📍 Ramnagar</a>
+<a href="locations/haldwani.html" class="loc-pill">📍 Haldwani</a>
+<a href="locations/kaladhungi.html" class="loc-pill">📍 Kaladhungi</a>
+<a href="locations/rudrapur.html" class="loc-pill">📍 Rudrapur</a>
+<a href="locations/kathgodam.html" class="loc-pill">📍 Kathgodam</a>
+<a href="locations/kashipur.html" class="loc-pill">📍 Kashipur</a>
+<a href="locations/bajpur.html" class="loc-pill">📍 Bajpur</a>
+<a href="locations/khatima.html" class="loc-pill">📍 Khatima</a>
+<a href="locations/sitarganj.html" class="loc-pill">📍 Sitarganj</a>
+<a href="locations/kichha.html" class="loc-pill">📍 Kichha</a>
+<a href="locations/jim-corbett.html" class="loc-pill">📍 Jim Corbett</a>
+<a href="locations/bhowali.html" class="loc-pill">📍 Bhowali</a>
       </div>
     </div>
 
@@ -258,166 +992,166 @@
 
       <div class="category-box" style="display: flex; flex-direction: column; justify-content: space-between;">
         <div>
-          <h4>📍 <a href="/locations/nainital" style="color: inherit;">Nainital Escorts</a></h4>
+          <h4>📍 <a href="locations/nainital.html" style="color: inherit;">Nainital Escorts</a></h4>
           <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 6px;">Queen of Lakes & High-Altitude Leisure Retreats</p>
           <p style="font-size: 13px;">Discover verified independent Nainital escorts and Mall Road hotel companions. 100% genuine photos, zero advance payment, and 24/7 private booking.</p>
         </div>
         <div style="margin-top: 10px;">
-          <a href="/locations/nainital" class="btn-card-details" style="display: inline-block; width: 100%; text-align: center;">View 16 Profiles in Nainital &rarr;</a>
+          <a href="locations/nainital.html" class="btn-card-details" style="display: inline-block; width: 100%; text-align: center;">View 16 Profiles in Nainital &rarr;</a>
         </div>
       </div>
 
       <div class="category-box" style="display: flex; flex-direction: column; justify-content: space-between;">
         <div>
-          <h4>📍 <a href="/locations/bhimtal" style="color: inherit;">Bhimtal Escorts</a></h4>
+          <h4>📍 <a href="locations/bhimtal.html" style="color: inherit;">Bhimtal Escorts</a></h4>
           <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 6px;">Tranquil Island Lake & Secluded Nature Escapes</p>
           <p style="font-size: 13px;">Book elite independent Bhimtal escorts and private lake resort call girls. 100% authentic models, discreet in-room companionship, and transparent cash payment.</p>
         </div>
         <div style="margin-top: 10px;">
-          <a href="/locations/bhimtal" class="btn-card-details" style="display: inline-block; width: 100%; text-align: center;">View 16 Profiles in Bhimtal &rarr;</a>
+          <a href="locations/bhimtal.html" class="btn-card-details" style="display: inline-block; width: 100%; text-align: center;">View 16 Profiles in Bhimtal &rarr;</a>
         </div>
       </div>
 
       <div class="category-box" style="display: flex; flex-direction: column; justify-content: space-between;">
         <div>
-          <h4>📍 <a href="/locations/almora" style="color: inherit;">Almora Escorts</a></h4>
+          <h4>📍 <a href="locations/almora.html" style="color: inherit;">Almora Escorts</a></h4>
           <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 6px;">Cultural Heartland of Kumaon with Majestic Himalayan Vistas</p>
           <p style="font-size: 13px;">Explore verified Almora escorts and independent hill station call girls. Genuine high-class college companions, heritage resort visits, and zero advance fee.</p>
         </div>
         <div style="margin-top: 10px;">
-          <a href="/locations/almora" class="btn-card-details" style="display: inline-block; width: 100%; text-align: center;">View 16 Profiles in Almora &rarr;</a>
+          <a href="locations/almora.html" class="btn-card-details" style="display: inline-block; width: 100%; text-align: center;">View 16 Profiles in Almora &rarr;</a>
         </div>
       </div>
 
       <div class="category-box" style="display: flex; flex-direction: column; justify-content: space-between;">
         <div>
-          <h4>📍 <a href="/locations/ramnagar" style="color: inherit;">Ramnagar Escorts</a></h4>
+          <h4>📍 <a href="locations/ramnagar.html" style="color: inherit;">Ramnagar Escorts</a></h4>
           <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 6px;">Corbett Gateway & Wilderness Luxury Destination</p>
           <p style="font-size: 13px;">Verified Ramnagar escorts and luxury jungle lodge call girls near Corbett Gateway. 100% discreet models, outcall service to luxury safari resorts, and cash on arrival.</p>
         </div>
         <div style="margin-top: 10px;">
-          <a href="/locations/ramnagar" class="btn-card-details" style="display: inline-block; width: 100%; text-align: center;">View 16 Profiles in Ramnagar &rarr;</a>
+          <a href="locations/ramnagar.html" class="btn-card-details" style="display: inline-block; width: 100%; text-align: center;">View 16 Profiles in Ramnagar &rarr;</a>
         </div>
       </div>
 
       <div class="category-box" style="display: flex; flex-direction: column; justify-content: space-between;">
         <div>
-          <h4>📍 <a href="/locations/haldwani" style="color: inherit;">Haldwani Escorts</a></h4>
+          <h4>📍 <a href="locations/haldwani.html" style="color: inherit;">Haldwani Escorts</a></h4>
           <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 6px;">Commercial Metropolis & Foothill Transit Capital of Kumaon</p>
           <p style="font-size: 13px;">Top-rated Haldwani escorts and verified college call girls available 24/7. 100% real photos, zero advance money, and safe five-star hotel outcall service.</p>
         </div>
         <div style="margin-top: 10px;">
-          <a href="/locations/haldwani" class="btn-card-details" style="display: inline-block; width: 100%; text-align: center;">View 16 Profiles in Haldwani &rarr;</a>
+          <a href="locations/haldwani.html" class="btn-card-details" style="display: inline-block; width: 100%; text-align: center;">View 16 Profiles in Haldwani &rarr;</a>
         </div>
       </div>
 
       <div class="category-box" style="display: flex; flex-direction: column; justify-content: space-between;">
         <div>
-          <h4>📍 <a href="/locations/kaladhungi" style="color: inherit;">Kaladhungi Escorts</a></h4>
+          <h4>📍 <a href="locations/kaladhungi.html" style="color: inherit;">Kaladhungi Escorts</a></h4>
           <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 6px;">Jim Corbett Heritage Country & Lush Forest Foothills</p>
           <p style="font-size: 13px;">Connect with genuine Kaladhungi escorts and private forest resort call girls. Discretion assured, zero upfront charges, and authentic verified profiles.</p>
         </div>
         <div style="margin-top: 10px;">
-          <a href="/locations/kaladhungi" class="btn-card-details" style="display: inline-block; width: 100%; text-align: center;">View 16 Profiles in Kaladhungi &rarr;</a>
+          <a href="locations/kaladhungi.html" class="btn-card-details" style="display: inline-block; width: 100%; text-align: center;">View 16 Profiles in Kaladhungi &rarr;</a>
         </div>
       </div>
 
       <div class="category-box" style="display: flex; flex-direction: column; justify-content: space-between;">
         <div>
-          <h4>📍 <a href="/locations/rudrapur" style="color: inherit;">Rudrapur Escorts</a></h4>
+          <h4>📍 <a href="locations/rudrapur.html" style="color: inherit;">Rudrapur Escorts</a></h4>
           <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 6px;">Industrial Engine of Terai & High-Speed Corporate Hub</p>
           <p style="font-size: 13px;">High-profile Rudrapur escorts and executive hotel call girls for business travelers. Verified SIDCUL companions, discreet 4-star hotel visits, cash on meeting.</p>
         </div>
         <div style="margin-top: 10px;">
-          <a href="/locations/rudrapur" class="btn-card-details" style="display: inline-block; width: 100%; text-align: center;">View 16 Profiles in Rudrapur &rarr;</a>
+          <a href="locations/rudrapur.html" class="btn-card-details" style="display: inline-block; width: 100%; text-align: center;">View 16 Profiles in Rudrapur &rarr;</a>
         </div>
       </div>
 
       <div class="category-box" style="display: flex; flex-direction: column; justify-content: space-between;">
         <div>
-          <h4>📍 <a href="/locations/kathgodam" style="color: inherit;">Kathgodam Escorts</a></h4>
+          <h4>📍 <a href="locations/kathgodam.html" style="color: inherit;">Kathgodam Escorts</a></h4>
           <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 6px;">Historic Railhead & Gateway into the Misty Hills</p>
           <p style="font-size: 13px;">Reliable Kathgodam escorts and transit hotel call girls near railway terminus. 100% verified independent girls, instant outcall service, zero advance fee.</p>
         </div>
         <div style="margin-top: 10px;">
-          <a href="/locations/kathgodam" class="btn-card-details" style="display: inline-block; width: 100%; text-align: center;">View 16 Profiles in Kathgodam &rarr;</a>
+          <a href="locations/kathgodam.html" class="btn-card-details" style="display: inline-block; width: 100%; text-align: center;">View 16 Profiles in Kathgodam &rarr;</a>
         </div>
       </div>
 
       <div class="category-box" style="display: flex; flex-direction: column; justify-content: space-between;">
         <div>
-          <h4>📍 <a href="/locations/kashipur" style="color: inherit;">Kashipur Escorts</a></h4>
+          <h4>📍 <a href="locations/kashipur.html" style="color: inherit;">Kashipur Escorts</a></h4>
           <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 6px;">Ancient Heritage & Thriving Industrial Commercial Centre</p>
           <p style="font-size: 13px;">Book authentic Kashipur escorts and independent VIP call girls. Serving industrial parks and luxury hotels with full confidentiality and zero advance payments.</p>
         </div>
         <div style="margin-top: 10px;">
-          <a href="/locations/kashipur" class="btn-card-details" style="display: inline-block; width: 100%; text-align: center;">View 16 Profiles in Kashipur &rarr;</a>
+          <a href="locations/kashipur.html" class="btn-card-details" style="display: inline-block; width: 100%; text-align: center;">View 16 Profiles in Kashipur &rarr;</a>
         </div>
       </div>
 
       <div class="category-box" style="display: flex; flex-direction: column; justify-content: space-between;">
         <div>
-          <h4>📍 <a href="/locations/bajpur" style="color: inherit;">Bajpur Escorts</a></h4>
+          <h4>📍 <a href="locations/bajpur.html" style="color: inherit;">Bajpur Escorts</a></h4>
           <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 6px;">Lush Agricultural Plains & Scenic Terai Countryside</p>
           <p style="font-size: 13px;">Verified Bajpur escorts and discreet farmhouse call girls. 100% authentic local models, outcall service across luxury private farms, and zero advance deposit.</p>
         </div>
         <div style="margin-top: 10px;">
-          <a href="/locations/bajpur" class="btn-card-details" style="display: inline-block; width: 100%; text-align: center;">View 16 Profiles in Bajpur &rarr;</a>
+          <a href="locations/bajpur.html" class="btn-card-details" style="display: inline-block; width: 100%; text-align: center;">View 16 Profiles in Bajpur &rarr;</a>
         </div>
       </div>
 
       <div class="category-box" style="display: flex; flex-direction: column; justify-content: space-between;">
         <div>
-          <h4>📍 <a href="/locations/khatima" style="color: inherit;">Khatima Escorts</a></h4>
+          <h4>📍 <a href="locations/khatima.html" style="color: inherit;">Khatima Escorts</a></h4>
           <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 6px;">Indo-Nepal Border Corridor & Verdant Terai Woodlands</p>
           <p style="font-size: 13px;">Premium Khatima escorts and genuine college call girls available for hotel and outstation companionship. 100% real photos, transparent pricing, cash on arrival.</p>
         </div>
         <div style="margin-top: 10px;">
-          <a href="/locations/khatima" class="btn-card-details" style="display: inline-block; width: 100%; text-align: center;">View 16 Profiles in Khatima &rarr;</a>
+          <a href="locations/khatima.html" class="btn-card-details" style="display: inline-block; width: 100%; text-align: center;">View 16 Profiles in Khatima &rarr;</a>
         </div>
       </div>
 
       <div class="category-box" style="display: flex; flex-direction: column; justify-content: space-between;">
         <div>
-          <h4>📍 <a href="/locations/sitarganj" style="color: inherit;">Sitarganj Escorts</a></h4>
+          <h4>📍 <a href="locations/sitarganj.html" style="color: inherit;">Sitarganj Escorts</a></h4>
           <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 6px;">Manufacturing Growth Corridor & Waterside Reservoir Environs</p>
           <p style="font-size: 13px;">Verified Sitarganj escorts and corporate call girls serving ELDECO SIDCUL industrial complex. Safe hotel outcall, 100% discreet models, zero upfront payment.</p>
         </div>
         <div style="margin-top: 10px;">
-          <a href="/locations/sitarganj" class="btn-card-details" style="display: inline-block; width: 100%; text-align: center;">View 16 Profiles in Sitarganj &rarr;</a>
+          <a href="locations/sitarganj.html" class="btn-card-details" style="display: inline-block; width: 100%; text-align: center;">View 16 Profiles in Sitarganj &rarr;</a>
         </div>
       </div>
 
       <div class="category-box" style="display: flex; flex-direction: column; justify-content: space-between;">
         <div>
-          <h4>📍 <a href="/locations/kichha" style="color: inherit;">Kichha Escorts</a></h4>
+          <h4>📍 <a href="locations/kichha.html" style="color: inherit;">Kichha Escorts</a></h4>
           <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 6px;">Crossroads of Terai Trade & Rice Granary of the Foothills</p>
           <p style="font-size: 13px;">Authentic Kichha escorts and independent female call girls. Reliable outcall service to certified hotels and private suites with zero advance financial deposit.</p>
         </div>
         <div style="margin-top: 10px;">
-          <a href="/locations/kichha" class="btn-card-details" style="display: inline-block; width: 100%; text-align: center;">View 16 Profiles in Kichha &rarr;</a>
+          <a href="locations/kichha.html" class="btn-card-details" style="display: inline-block; width: 100%; text-align: center;">View 16 Profiles in Kichha &rarr;</a>
         </div>
       </div>
 
       <div class="category-box" style="display: flex; flex-direction: column; justify-content: space-between;">
         <div>
-          <h4>📍 <a href="/locations/jim-corbett" style="color: inherit;">Jim Corbett Escorts</a></h4>
+          <h4>📍 <a href="locations/jim-corbett.html" style="color: inherit;">Jim Corbett Escorts</a></h4>
           <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 6px;">India’s Legendary Tiger Reserve & World-Class Eco-Luxury Lodges</p>
           <p style="font-size: 13px;">Experience ultra-luxury Jim Corbett escorts and forest retreat call girls. Five-star safari lodge companions, private pool villa visits, zero advance deposit.</p>
         </div>
         <div style="margin-top: 10px;">
-          <a href="/locations/jim-corbett" class="btn-card-details" style="display: inline-block; width: 100%; text-align: center;">View 16 Profiles in Jim Corbett &rarr;</a>
+          <a href="locations/jim-corbett.html" class="btn-card-details" style="display: inline-block; width: 100%; text-align: center;">View 16 Profiles in Jim Corbett &rarr;</a>
         </div>
       </div>
 
       <div class="category-box" style="display: flex; flex-direction: column; justify-content: space-between;">
         <div>
-          <h4>📍 <a href="/locations/bhowali" style="color: inherit;">Bhowali Escorts</a></h4>
+          <h4>📍 <a href="locations/bhowali.html" style="color: inherit;">Bhowali Escorts</a></h4>
           <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 6px;">The Fruit Bowl of Kumaon & Refreshing Pine Valley Ridge</p>
           <p style="font-size: 13px;">Book charming Bhowali escorts and independent pine cottage call girls. 100% verified photos, Kainchi Dham junction access, and zero advance payment.</p>
         </div>
         <div style="margin-top: 10px;">
-          <a href="/locations/bhowali" class="btn-card-details" style="display: inline-block; width: 100%; text-align: center;">View 16 Profiles in Bhowali &rarr;</a>
+          <a href="locations/bhowali.html" class="btn-card-details" style="display: inline-block; width: 100%; text-align: center;">View 16 Profiles in Bhowali &rarr;</a>
         </div>
       </div>
       </div>
@@ -433,7 +1167,7 @@
         <article class="profile-card" id="profile-padma">
           <div class="card-media">
             <span class="vip-ribbon">VIP</span>
-            <img src="/public/profile_01.webp" alt="Padma - Verified Escort in Nainital" loading="lazy">
+            <img src="public/profile_01.webp" alt="Padma - Verified Escort in Nainital" loading="lazy" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='public/profile_01.webp';}">
             <span class="photo-count-pill">📷 3 Photos</span>
           </div>
           <div class="card-content">
@@ -469,13 +1203,13 @@
         <article class="profile-card" id="profile-rajni">
           <div class="card-media">
             <span class="vip-ribbon">VIP</span>
-            <img src="/public/profile_02.webp" alt="Rajni - Verified Escort in Bhimtal" loading="lazy">
+            <img src="public/profile_02.webp" alt="Rajni - Verified Escort in Bhimtal" loading="lazy" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='public/profile_02.webp';}">
             <span class="photo-count-pill">📷 4 Photos</span>
           </div>
           <div class="card-content">
             <div class="card-header-line">
               <span class="badge-vip-pill">VERIFIED</span>
-              <h3 class="profile-name-title">Rajni 💖 Sweet Independent College Girl</h3>
+              <h3 class="profile-name-title">Rajni 💖 Sweet Independent College Model</h3>
             </div>
             <div class="card-rates-pill-row">
               <span class="rate-chip highlight">1 Hr: ₹2,000</span>
@@ -483,7 +1217,7 @@
               <span class="rate-chip">Night: ₹8,000</span>
               <span class="rate-chip">⭐ Cash on Arrival</span>
             </div>
-            <p class="profile-description">Educated companion offering verified hotel outcall in Bhimtal. Punctual, with cash on meeting.</p>
+            <p class="profile-description">Educated companion offering verified hotel outcall in Bhimtal. Punctual with direct cash on arrival.</p>
             <div class="card-meta-row">
               <span class="meta-item">🎂 22 Yrs</span>
               <span class="meta-item">📍 Bhimtal</span>
@@ -505,13 +1239,13 @@
         <article class="profile-card" id="profile-sujata">
           <div class="card-media">
             <span class="vip-ribbon">VIP</span>
-            <img src="/public/profile_03.webp" alt="Sujata - Verified Escort in Almora" loading="lazy">
+            <img src="public/profile_03.webp" alt="Sujata - Verified Escort in Almora" loading="lazy" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='public/profile_03.webp';}">
             <span class="photo-count-pill">📷 5 Photos</span>
           </div>
           <div class="card-content">
             <div class="card-header-line">
               <span class="badge-vip-pill">VERIFIED</span>
-              <h3 class="profile-name-title">Sujata 🌟 Sensual Model For Romantic Dates</h3>
+              <h3 class="profile-name-title">Sujata 🌟 Sensual Escort For Romantic Dates</h3>
             </div>
             <div class="card-rates-pill-row">
               <span class="rate-chip highlight">1 Hr: ₹1,800</span>
@@ -519,7 +1253,7 @@
               <span class="rate-chip">Night: ₹7,500</span>
               <span class="rate-chip">⭐ Cash on Arrival</span>
             </div>
-            <p class="profile-description">VIP companion in Almora. Polite disposition, good conversation, and relaxing hotel suite encounters.</p>
+            <p class="profile-description">VIP companion in Almora. Polite disposition, good conversation, and relaxing private hotel suite encounters.</p>
             <div class="card-meta-row">
               <span class="meta-item">🎂 23 Yrs</span>
               <span class="meta-item">📍 Almora</span>
@@ -541,7 +1275,7 @@
         <article class="profile-card" id="profile-tanu">
           <div class="card-media">
             <span class="vip-ribbon">VIP</span>
-            <img src="/public/profile_04.webp" alt="Tanu - Verified Escort in Ramnagar" loading="lazy">
+            <img src="public/profile_04.webp" alt="Tanu - Verified Escort in Ramnagar" loading="lazy" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='public/profile_04.webp';}">
             <span class="photo-count-pill">📷 3 Photos</span>
           </div>
           <div class="card-content">
@@ -555,7 +1289,7 @@
               <span class="rate-chip">Night: ₹10,000</span>
               <span class="rate-chip">⭐ Cash on Arrival</span>
             </div>
-            <p class="profile-description">Verified independent model in Ramnagar. Discretion, comfort, and hospitality with genuine photos.</p>
+            <p class="profile-description">Verified independent model in Ramnagar. Discretion, comfort, and hospitality with genuine verified photos.</p>
             <div class="card-meta-row">
               <span class="meta-item">🎂 24 Yrs</span>
               <span class="meta-item">📍 Ramnagar</span>
@@ -577,13 +1311,13 @@
         <article class="profile-card" id="profile-ujjwala">
           <div class="card-media">
             <span class="vip-ribbon">VIP</span>
-            <img src="/public/profile_05.webp" alt="Ujjwala - Verified Escort in Haldwani" loading="lazy">
+            <img src="public/profile_05.webp" alt="Ujjwala - Verified Escort in Haldwani" loading="lazy" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='public/profile_05.webp';}">
             <span class="photo-count-pill">📷 4 Photos</span>
           </div>
           <div class="card-content">
             <div class="card-header-line">
               <span class="badge-vip-pill">VERIFIED</span>
-              <h3 class="profile-name-title">Ujjwala 🔥 Elite Corporate Executive Companion</h3>
+              <h3 class="profile-name-title">Ujjwala 🔥 Elite Corporate Suite Companion</h3>
             </div>
             <div class="card-rates-pill-row">
               <span class="rate-chip highlight">1 Hr: ₹1,500</span>
@@ -613,13 +1347,13 @@
         <article class="profile-card" id="profile-veda">
           <div class="card-media">
             <span class="vip-ribbon">VIP</span>
-            <img src="/public/profile_06.webp" alt="Veda - Verified Escort in Kaladhungi" loading="lazy">
+            <img src="public/profile_06.webp" alt="Veda - Verified Escort in Kaladhungi" loading="lazy" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='public/profile_06.webp';}">
             <span class="photo-count-pill">📷 5 Photos</span>
           </div>
           <div class="card-content">
             <div class="card-header-line">
               <span class="badge-vip-pill">VERIFIED</span>
-              <h3 class="profile-name-title">Veda ✨ Warm Mature Companion For Cozy Chats</h3>
+              <h3 class="profile-name-title">Veda ✨ Warm Mature Homemaker Escort</h3>
             </div>
             <div class="card-rates-pill-row">
               <span class="rate-chip highlight">1 Hr: ₹2,000</span>
@@ -627,7 +1361,7 @@
               <span class="rate-chip">Night: ₹8,000</span>
               <span class="rate-chip">⭐ Cash on Arrival</span>
             </div>
-            <p class="profile-description">Educated companion offering verified hotel outcall in Kaladhungi. Punctual, with cash on meeting.</p>
+            <p class="profile-description">Educated companion offering verified hotel outcall in Kaladhungi. Punctual with direct cash on arrival.</p>
             <div class="card-meta-row">
               <span class="meta-item">🎂 26 Yrs</span>
               <span class="meta-item">📍 Kaladhungi</span>
@@ -649,13 +1383,13 @@
         <article class="profile-card" id="profile-yamuna">
           <div class="card-media">
             <span class="vip-ribbon">VIP</span>
-            <img src="/public/profile_07.webp" alt="Yamuna - Verified Escort in Rudrapur" loading="lazy">
+            <img src="public/profile_07.webp" alt="Yamuna - Verified Escort in Rudrapur" loading="lazy" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='public/profile_07.webp';}">
             <span class="photo-count-pill">📷 3 Photos</span>
           </div>
           <div class="card-content">
             <div class="card-header-line">
               <span class="badge-vip-pill">VERIFIED</span>
-              <h3 class="profile-name-title">Yamuna 🌺 Premium Freelance Model Real Photos</h3>
+              <h3 class="profile-name-title">Yamuna 🌺 Premium Freelance Model Verified</h3>
             </div>
             <div class="card-rates-pill-row">
               <span class="rate-chip highlight">1 Hr: ₹1,800</span>
@@ -663,7 +1397,7 @@
               <span class="rate-chip">Night: ₹7,500</span>
               <span class="rate-chip">⭐ Cash on Arrival</span>
             </div>
-            <p class="profile-description">VIP companion in Rudrapur. Polite disposition, good conversation, and relaxing hotel suite encounters.</p>
+            <p class="profile-description">VIP companion in Rudrapur. Polite disposition, good conversation, and relaxing private hotel suite encounters.</p>
             <div class="card-meta-row">
               <span class="meta-item">🎂 21 Yrs</span>
               <span class="meta-item">📍 Rudrapur</span>
@@ -685,7 +1419,7 @@
         <article class="profile-card" id="profile-arundhati">
           <div class="card-media">
             <span class="vip-ribbon">VIP</span>
-            <img src="/public/profile_08.webp" alt="Arundhati - Verified Escort in Kathgodam" loading="lazy">
+            <img src="public/profile_08.webp" alt="Arundhati - Verified Escort in Kathgodam" loading="lazy" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='public/profile_08.webp';}">
             <span class="photo-count-pill">📷 4 Photos</span>
           </div>
           <div class="card-content">
@@ -699,7 +1433,7 @@
               <span class="rate-chip">Night: ₹10,000</span>
               <span class="rate-chip">⭐ Cash on Arrival</span>
             </div>
-            <p class="profile-description">Verified independent model in Kathgodam. Discretion, comfort, and hospitality with genuine photos.</p>
+            <p class="profile-description">Verified independent model in Kathgodam. Discretion, comfort, and hospitality with genuine verified photos.</p>
             <div class="card-meta-row">
               <span class="meta-item">🎂 22 Yrs</span>
               <span class="meta-item">📍 Kathgodam</span>
@@ -721,7 +1455,7 @@
         <article class="profile-card" id="profile-bhavika">
           <div class="card-media">
             <span class="vip-ribbon">VIP</span>
-            <img src="/public/profile_09.webp" alt="Bhavika - Verified Escort in Kashipur" loading="lazy">
+            <img src="public/profile_09.webp" alt="Bhavika - Verified Escort in Kashipur" loading="lazy" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='public/profile_09.webp';}">
             <span class="photo-count-pill">📷 5 Photos</span>
           </div>
           <div class="card-content">
@@ -757,13 +1491,13 @@
         <article class="profile-card" id="profile-charvi">
           <div class="card-media">
             <span class="vip-ribbon">VIP</span>
-            <img src="/public/profile_10.webp" alt="Charvi - Verified Escort in Bajpur" loading="lazy">
+            <img src="public/profile_10.webp" alt="Charvi - Verified Escort in Bajpur" loading="lazy" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='public/profile_10.webp';}">
             <span class="photo-count-pill">📷 3 Photos</span>
           </div>
           <div class="card-content">
             <div class="card-header-line">
               <span class="badge-vip-pill">VERIFIED</span>
-              <h3 class="profile-name-title">Charvi 💖 Sweet Independent College Girl</h3>
+              <h3 class="profile-name-title">Charvi 💖 Sweet Independent College Model</h3>
             </div>
             <div class="card-rates-pill-row">
               <span class="rate-chip highlight">1 Hr: ₹2,000</span>
@@ -771,7 +1505,7 @@
               <span class="rate-chip">Night: ₹8,000</span>
               <span class="rate-chip">⭐ Cash on Arrival</span>
             </div>
-            <p class="profile-description">Educated companion offering verified hotel outcall in Bajpur. Punctual, with cash on meeting.</p>
+            <p class="profile-description">Educated companion offering verified hotel outcall in Bajpur. Punctual with direct cash on arrival.</p>
             <div class="card-meta-row">
               <span class="meta-item">🎂 24 Yrs</span>
               <span class="meta-item">📍 Bajpur</span>
@@ -793,13 +1527,13 @@
         <article class="profile-card" id="profile-dayita">
           <div class="card-media">
             <span class="vip-ribbon">VIP</span>
-            <img src="/public/profile_11.webp" alt="Dayita - Verified Escort in Khatima" loading="lazy">
+            <img src="public/profile_11.webp" alt="Dayita - Verified Escort in Khatima" loading="lazy" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='public/profile_11.webp';}">
             <span class="photo-count-pill">📷 4 Photos</span>
           </div>
           <div class="card-content">
             <div class="card-header-line">
               <span class="badge-vip-pill">VERIFIED</span>
-              <h3 class="profile-name-title">Dayita 🌟 Sensual Model For Romantic Dates</h3>
+              <h3 class="profile-name-title">Dayita 🌟 Sensual Escort For Romantic Dates</h3>
             </div>
             <div class="card-rates-pill-row">
               <span class="rate-chip highlight">1 Hr: ₹1,800</span>
@@ -807,7 +1541,7 @@
               <span class="rate-chip">Night: ₹7,500</span>
               <span class="rate-chip">⭐ Cash on Arrival</span>
             </div>
-            <p class="profile-description">VIP companion in Khatima. Polite disposition, good conversation, and relaxing hotel suite encounters.</p>
+            <p class="profile-description">VIP companion in Khatima. Polite disposition, good conversation, and relaxing private hotel suite encounters.</p>
             <div class="card-meta-row">
               <span class="meta-item">🎂 25 Yrs</span>
               <span class="meta-item">📍 Khatima</span>
@@ -829,7 +1563,7 @@
         <article class="profile-card" id="profile-eeshita">
           <div class="card-media">
             <span class="vip-ribbon">VIP</span>
-            <img src="/public/profile_12.webp" alt="Eeshita - Verified Escort in Sitarganj" loading="lazy">
+            <img src="public/profile_12.webp" alt="Eeshita - Verified Escort in Sitarganj" loading="lazy" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='public/profile_12.webp';}">
             <span class="photo-count-pill">📷 5 Photos</span>
           </div>
           <div class="card-content">
@@ -843,7 +1577,7 @@
               <span class="rate-chip">Night: ₹10,000</span>
               <span class="rate-chip">⭐ Cash on Arrival</span>
             </div>
-            <p class="profile-description">Verified independent model in Sitarganj. Discretion, comfort, and hospitality with genuine photos.</p>
+            <p class="profile-description">Verified independent model in Sitarganj. Discretion, comfort, and hospitality with genuine verified photos.</p>
             <div class="card-meta-row">
               <span class="meta-item">🎂 26 Yrs</span>
               <span class="meta-item">📍 Sitarganj</span>
@@ -865,13 +1599,13 @@
         <article class="profile-card" id="profile-fulki">
           <div class="card-media">
             <span class="vip-ribbon">VIP</span>
-            <img src="/public/profile_13.webp" alt="Fulki - Verified Escort in Kichha" loading="lazy">
+            <img src="public/profile_13.webp" alt="Fulki - Verified Escort in Kichha" loading="lazy" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='public/profile_13.webp';}">
             <span class="photo-count-pill">📷 3 Photos</span>
           </div>
           <div class="card-content">
             <div class="card-header-line">
               <span class="badge-vip-pill">VERIFIED</span>
-              <h3 class="profile-name-title">Fulki 🔥 Elite Corporate Executive Companion</h3>
+              <h3 class="profile-name-title">Fulki 🔥 Elite Corporate Suite Companion</h3>
             </div>
             <div class="card-rates-pill-row">
               <span class="rate-chip highlight">1 Hr: ₹1,500</span>
@@ -901,13 +1635,13 @@
         <article class="profile-card" id="profile-girija">
           <div class="card-media">
             <span class="vip-ribbon">VIP</span>
-            <img src="/public/profile_14.webp" alt="Girija - Verified Escort in Jim Corbett" loading="lazy">
+            <img src="public/profile_14.webp" alt="Girija - Verified Escort in Jim Corbett" loading="lazy" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='public/profile_14.webp';}">
             <span class="photo-count-pill">📷 4 Photos</span>
           </div>
           <div class="card-content">
             <div class="card-header-line">
               <span class="badge-vip-pill">VERIFIED</span>
-              <h3 class="profile-name-title">Girija ✨ Warm Mature Companion For Cozy Chats</h3>
+              <h3 class="profile-name-title">Girija ✨ Warm Mature Homemaker Escort</h3>
             </div>
             <div class="card-rates-pill-row">
               <span class="rate-chip highlight">1 Hr: ₹2,000</span>
@@ -915,7 +1649,7 @@
               <span class="rate-chip">Night: ₹8,000</span>
               <span class="rate-chip">⭐ Cash on Arrival</span>
             </div>
-            <p class="profile-description">Educated companion offering verified hotel outcall in Jim Corbett. Punctual, with cash on meeting.</p>
+            <p class="profile-description">Educated companion offering verified hotel outcall in Jim Corbett. Punctual with direct cash on arrival.</p>
             <div class="card-meta-row">
               <span class="meta-item">🎂 22 Yrs</span>
               <span class="meta-item">📍 Jim Corbett</span>
@@ -937,13 +1671,13 @@
         <article class="profile-card" id="profile-hridya">
           <div class="card-media">
             <span class="vip-ribbon">VIP</span>
-            <img src="/public/profile_15.webp" alt="Hridya - Verified Escort in Bhowali" loading="lazy">
+            <img src="public/profile_15.webp" alt="Hridya - Verified Escort in Bhowali" loading="lazy" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='public/profile_15.webp';}">
             <span class="photo-count-pill">📷 5 Photos</span>
           </div>
           <div class="card-content">
             <div class="card-header-line">
               <span class="badge-vip-pill">VERIFIED</span>
-              <h3 class="profile-name-title">Hridya 🌺 Premium Freelance Model Real Photos</h3>
+              <h3 class="profile-name-title">Hridya 🌺 Premium Freelance Model Verified</h3>
             </div>
             <div class="card-rates-pill-row">
               <span class="rate-chip highlight">1 Hr: ₹1,800</span>
@@ -951,7 +1685,7 @@
               <span class="rate-chip">Night: ₹7,500</span>
               <span class="rate-chip">⭐ Cash on Arrival</span>
             </div>
-            <p class="profile-description">VIP companion in Bhowali. Polite disposition, good conversation, and relaxing hotel suite encounters.</p>
+            <p class="profile-description">VIP companion in Bhowali. Polite disposition, good conversation, and relaxing private hotel suite encounters.</p>
             <div class="card-meta-row">
               <span class="meta-item">🎂 23 Yrs</span>
               <span class="meta-item">📍 Bhowali</span>
@@ -973,7 +1707,7 @@
         <article class="profile-card" id="profile-ishana">
           <div class="card-media">
             <span class="vip-ribbon">VIP</span>
-            <img src="/public/profile_16.webp" alt="Ishana - Verified Escort in Nainital" loading="lazy">
+            <img src="public/profile_16.webp" alt="Ishana - Verified Escort in Nainital" loading="lazy" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='public/profile_16.webp';}">
             <span class="photo-count-pill">📷 3 Photos</span>
           </div>
           <div class="card-content">
@@ -987,7 +1721,7 @@
               <span class="rate-chip">Night: ₹10,000</span>
               <span class="rate-chip">⭐ Cash on Arrival</span>
             </div>
-            <p class="profile-description">Verified independent model in Nainital. Discretion, comfort, and hospitality with genuine photos.</p>
+            <p class="profile-description">Verified independent model in Nainital. Discretion, comfort, and hospitality with genuine verified photos.</p>
             <div class="card-meta-row">
               <span class="meta-item">🎂 24 Yrs</span>
               <span class="meta-item">📍 Nainital</span>
@@ -1167,25 +1901,25 @@
       <div class="footer-col">
         <h4>Popular Destination Hubs</h4>
         <ul class="footer-links">
-          <li><a href="/locations/haldwani">Haldwani Escorts</a></li>
-          <li><a href="/locations/nainital">Nainital Escorts</a></li>
-          <li><a href="/locations/bhimtal">Bhimtal Escorts</a></li>
-          <li><a href="/locations/ramnagar">Ramnagar Escorts</a></li>
-          <li><a href="/locations/jim-corbett">Jim Corbett Escorts</a></li>
-          <li><a href="/locations/rudrapur">Rudrapur Escorts</a></li>
-          <li><a href="/locations/almora">Almora Escorts</a></li>
-          <li><a href="/locations/bhowali">Bhowali Escorts</a></li>
+          <li><a href="locations/haldwani.html">Haldwani Escorts</a></li>
+          <li><a href="locations/nainital.html">Nainital Escorts</a></li>
+          <li><a href="locations/bhimtal.html">Bhimtal Escorts</a></li>
+          <li><a href="locations/ramnagar.html">Ramnagar Escorts</a></li>
+          <li><a href="locations/jim-corbett.html">Jim Corbett Escorts</a></li>
+          <li><a href="locations/rudrapur.html">Rudrapur Escorts</a></li>
+          <li><a href="locations/almora.html">Almora Escorts</a></li>
+          <li><a href="locations/bhowali.html">Bhowali Escorts</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Corporate, Legal &amp; Safety</h4>
         <ul class="footer-links">
-          <li><a href="/about-us">About Us</a></li>
-          <li><a href="/safety-guide">Safety Guidelines</a></li>
-          <li><a href="/report-abuse">Report Abuse</a></li>
-          <li><a href="/terms">Terms of Service</a></li>
-          <li><a href="/privacy">Privacy Policy</a></li>
-          <li><a href="/contact-us">Contact Support Desk</a></li>
+          <li><a href="about-us.html">About Us</a></li>
+          <li><a href="safety-guide.html">Safety Guidelines</a></li>
+          <li><a href="report-abuse.html">Report Abuse</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="contact-us.html">Contact Support Desk</a></li>
         </ul>
       </div>
     </div>
@@ -1194,10 +1928,10 @@
     </div>
   </footer>
 
-  <script src="/js/contacts-config.js"></script>
-  <script src="/js/contact-manager.js"></script>
-  <script src="/js/security-shield.js"></script>
-  <script src="/js/age-gate.js"></script>
+  <script src="js/contacts-config.js"></script>
+  <script src="js/contact-manager.js"></script>
+  <script src="js/security-shield.js"></script>
+  <script src="js/age-gate.js"></script>
   <script>
     document.querySelectorAll('.faq-question').forEach(function(el) {
       el.addEventListener('click', function() {
