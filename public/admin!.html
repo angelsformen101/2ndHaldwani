@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CityHaldwani.com - Secure Admin Command Portal</title>
+  <link rel="icon" href="favicon.webp" type="image/webp">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --rose: #e11d48;
+      --rose-hover: #be123c;
+      --emerald: #10b981;
+      --wa: #25D366;
+      --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font); background: var(--bg); color: var(--text-main); min-height: 100vh; }
+
+    /* ================= Login Screen ================= */
+    #login-screen {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+      background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+    }
+
+    .login-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 36px 32px;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+
+    .login-logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      background: #eff6ff;
+      color: var(--primary);
+      margin-bottom: 16px;
+      font-size: 24px;
+    }
+
+    .login-title { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 6px; }
+    .login-subtitle { font-size: 13.5px; color: var(--text-muted); margin-bottom: 24px; }
+    .form-group { text-align: left; margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 13px; font-weight: 600; color: #334155; margin-bottom: 6px; }
+    .form-input {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 14.5px;
+      background: #f8fafc;
+      color: #0f172a;
+      outline: none;
+      transition: border 0.15s;
+    }
+    .form-input:focus { border-color: var(--primary); background: #ffffff; }
+
+    .btn-submit {
+      width: 100%;
+      padding: 12px;
+      background: var(--primary);
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.15s;
+    }
+    .btn-submit:hover { background: var(--primary-hover); }
+    .login-msg { margin-top: 14px; font-size: 13.5px; font-weight: 600; min-height: 20px; }
+    .login-msg.error { color: var(--rose); }
+    .login-msg.warn { color: #d97706; }
+
+    /* ================= Dashboard Layout ================= */
+    #dashboard-screen { display: none; }
+    .admin-navbar {
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 99;
+    }
+    .nav-brand { font-size: 18px; font-weight: 800; color: #0f172a; }
+    .nav-brand span { color: var(--rose); }
+    .nav-user { display: flex; align-items: center; gap: 16px; font-size: 13px; color: var(--text-muted); }
+    .session-badge { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; padding: 4px 10px; border-radius: 20px; font-weight: 600; font-family: monospace; }
+    .timeout-pill { background: #fef3c7; color: #92400e; padding: 4px 10px; border-radius: 20px; font-weight: 600; }
+    .btn-logout {
+      background: #fee2e2;
+      color: var(--rose);
+      border: 1px solid #fecaca;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .btn-logout:hover { background: var(--rose); color: #fff; }
+
+    .admin-container { max-width: 1200px; margin: 24px auto; padding: 0 20px; }
+
+    /* Metrics Summary Cards */
+    .metrics-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .metric-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .metric-title { font-size: 13px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; margin-bottom: 6px; }
+    .metric-val { font-size: 28px; font-weight: 800; color: #0f172a; }
+
+    /* Admin Tabs */
+    .admin-tabs {
+      display: flex;
+      gap: 10px;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 24px;
+    }
+    .tab-btn {
+      padding: 10px 20px;
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--text-muted);
+      border: none;
+      background: none;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+    }
+    .tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); }
+
+    /* Cards */
+    .admin-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .admin-card h2 { font-size: 19px; font-weight: 800; color: #0f172a; margin-bottom: 8px; }
+    .admin-card p.subtitle { font-size: 13.5px; color: var(--text-muted); margin-bottom: 18px; }
+
+    /* Master Numbers Form */
+    .master-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr auto;
+      gap: 16px;
+      align-items: flex-end;
+      margin-bottom: 20px;
+    }
+
+    /* Page Numbers Table */
+    .table-responsive { overflow-x: auto; margin-top: 16px; }
+    table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+    th { background: #f8fafc; color: #475569; font-weight: 700; text-align: left; padding: 12px; border-bottom: 1px solid var(--border); }
+    td { padding: 12px; border-bottom: 1px solid var(--border); color: #1e293b; vertical-align: middle; }
+    tr:hover td { background: #f8fafc; }
+
+    .tbl-input {
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 13px;
+      width: 100%;
+      background: #ffffff;
+    }
+
+    .btn-action {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .btn-danger {
+      background: #fee2e2;
+      color: var(--rose);
+      border: 1px solid #fecaca;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .btn-danger:hover { background: var(--rose); color: #fff; }
+
+    /* Analytics Toolbar */
+    .analytics-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-bottom: 18px;
+    }
+    .purge-group { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .select-sm { padding: 7px 12px; border-radius: 6px; border: 1px solid var(--border); font-size: 13px; background: #fff; }
+
+    .badge-pill { display: inline-block; padding: 3px 8px; border-radius: 12px; font-size: 11.5px; font-weight: 700; }
+    .badge-call { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
+    .badge-wa { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+
+    @media (max-width: 768px) {
+      .admin-navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 12px 16px;
+      }
+      .nav-user {
+        width: 100%;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 8px;
+        font-size: 11px;
+      }
+      .admin-container {
+        padding: 0 12px;
+        margin: 16px auto;
+      }
+      .metrics-row {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+      .metric-card {
+        padding: 14px;
+      }
+      .metric-val {
+        font-size: 22px;
+      }
+      .master-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .admin-tabs {
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+      .tab-btn {
+        padding: 8px 14px;
+        font-size: 13px;
+      }
+      .admin-card {
+        padding: 16px 14px;
+      }
+      .analytics-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .purge-group {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .select-sm, .btn-action, .btn-danger {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. LOGIN SCREEN (NO DEFAULT CREDENTIALS SHOWN) -->
+  <div id="login-screen">
+    <div class="login-box">
+      <div class="login-logo">&#128274;</div>
+      <h1 class="login-title">CityHaldwani Admin</h1>
+      <p class="login-subtitle">Secure Master Control &amp; Real-Time Analytics Portal</p>
+      
+      <form id="admin-login-form">
+        <div class="form-group">
+          <label for="admin-user">Username</label>
+          <input type="text" id="admin-user" class="form-input" placeholder="Enter username" autocomplete="off" required>
+        </div>
+        <div class="form-group">
+          <label for="admin-pass">Password</label>
+          <input type="password" id="admin-pass" class="form-input" placeholder="Enter password" autocomplete="off" required>
+        </div>
+        <button type="submit" class="btn-submit">Sign In to Dashboard</button>
+      </form>
+      <div id="login-msg" class="login-msg"></div>
+    </div>
+  </div>
+
+  <!-- 2. DASHBOARD SCREEN -->
+  <div id="dashboard-screen">
+    <nav class="admin-navbar">
+      <div class="nav-brand">CityHaldwani<span>.com</span> Admin</div>
+      <div class="nav-user">
+        <span>Session: <strong class="session-badge" id="display-session-id">----</strong></span>
+        <span class="timeout-pill" id="display-timeout">Inactivity: 5:00</span>
+        <button class="btn-logout" id="btn-logout">Logout</button>
+      </div>
+    </nav>
+
+    <div class="admin-container">
+      <!-- KPI Metrics -->
+      <div class="metrics-row">
+        <div class="metric-card">
+          <div class="metric-title">Total Visitor Clicks</div>
+          <div class="metric-val" id="metric-total-clicks">0</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-title">Call Inquiries</div>
+          <div class="metric-val" id="metric-total-calls" style="color: var(--emerald);">0</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-title">WhatsApp Inquiries</div>
+          <div class="metric-val" id="metric-total-wa" style="color: var(--wa);">0</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-title">Active Tracked Pages</div>
+          <div class="metric-val" id="metric-active-pages">16</div>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <div class="admin-tabs">
+        <button class="tab-btn active" data-tab="tab-contacts">Contact Numbers Management</button>
+        <button class="tab-btn" data-tab="tab-analytics">Visitor Clicks &amp; Duration Tracking</button>
+      </div>
+
+      <!-- TAB 1: CONTACT MANAGEMENT -->
+      <div id="tab-contacts" class="tab-content">
+        <!-- Master Default Numbers -->
+        <div class="admin-card">
+          <h2>Master Default Numbers</h2>
+          <p class="subtitle">These numbers apply automatically to every page across the website unless a page-specific number is defined below.</p>
+          <div class="master-grid">
+            <div class="form-group" style="margin:0;">
+              <label for="master-call">Default Call Number</label>
+              <input type="text" id="master-call" class="form-input" placeholder="+919876543210">
+            </div>
+            <div class="form-group" style="margin:0;">
+              <label for="master-wa">Default WhatsApp Number</label>
+              <input type="text" id="master-wa" class="form-input" placeholder="919876543210">
+            </div>
+            <button class="btn-action" id="btn-save-master" style="height: 44px; padding: 0 24px;">Update Master Numbers</button>
+          </div>
+          <div id="master-save-msg" style="font-size: 13px; font-weight: 600; color: #059669; min-height: 18px;"></div>
+        </div>
+
+        <!-- Per-Page Overrides Table -->
+        <div class="admin-card">
+          <h2>Page-Specific Contact Numbers</h2>
+          <p class="subtitle">Assign dedicated call or WhatsApp numbers to individual location or policy pages. Leave blank to inherit master default.</p>
+          <div style="display: flex; justify-content: flex-end; margin-bottom: 12px;">
+            <button class="btn-action" id="btn-save-all-pages">Save All Page Numbers</button>
+          </div>
+          <div class="table-responsive">
+            <table id="pages-table">
+              <thead>
+                <tr>
+                  <th style="width: 28%;">Page Name / Path</th>
+                  <th style="width: 32%;">Dedicated Call Number</th>
+                  <th style="width: 32%;">Dedicated WhatsApp Number</th>
+                  <th style="width: 8%; text-align: center;">Status</th>
+                </tr>
+              </thead>
+              <tbody id="pages-tbody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 2: VISITOR CLICKS & ANALYTICS -->
+      <div id="tab-analytics" class="tab-content" style="display: none;">
+        <!-- Purge / Filter Toolbar -->
+        <div class="analytics-toolbar">
+          <div style="font-weight: 700; font-size: 14.5px; color: #0f172a;">Real-Time Visitor Engagement History</div>
+          <div class="purge-group">
+            <select id="purge-single-page" class="select-sm">
+              <option value="">-- Clear Single Page History --</option>
+            </select>
+            <button class="btn-danger" id="btn-purge-single">Clear Selected Page</button>
+            <button class="btn-danger" id="btn-purge-checked">Clear Checked Pages</button>
+            <button class="btn-danger" id="btn-purge-all" style="background: var(--rose); color: #fff;">Clear ALL History</button>
+          </div>
+        </div>
+
+        <!-- Page Breakdown Table -->
+        <div class="admin-card">
+          <h2>Page-wise Click &amp; Duration Breakdown</h2>
+          <p class="subtitle">Aggregated user clicks, call-to-action ratios, and average visitor browsing duration before clicking.</p>
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 5%;"><input type="checkbox" id="check-all-pages"></th>
+                  <th style="width: 35%;">Page URL / Section</th>
+                  <th style="width: 15%;">Total Clicks</th>
+                  <th style="width: 15%;">Call Clicks</th>
+                  <th style="width: 15%;">WhatsApp Clicks</th>
+                  <th style="width: 15%;">Avg Pre-Click Duration</th>
+                </tr>
+              </thead>
+              <tbody id="analytics-summary-tbody">
+                <tr><td colspan="6" style="text-align: center; color: var(--text-muted);">Loading analytics data...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Recent Events Log Table -->
+        <div class="admin-card">
+          <h2>Recent Real-Time Click Events</h2>
+          <p class="subtitle">Individual user clicks with exact timestamps and browsing duration on page.</p>
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 20%;">Timestamp</th>
+                  <th style="width: 15%;">Action Type</th>
+                  <th style="width: 25%;">Target Label</th>
+                  <th style="width: 25%;">Page</th>
+                  <th style="width: 15%;">Page Duration</th>
+                </tr>
+              </thead>
+              <tbody id="recent-logs-tbody">
+                <tr><td colspan="5" style="text-align: center; color: var(--text-muted);">No clicks logged yet.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/contacts-config.js"></script>
+  <script>
+    (function() {
+      // Admin Credentials check
+      const ADMIN_USER = 'admin';
+      const ADMIN_PASS = 'haldwani@2026';
+      const TIMEOUT_SECONDS = 300; // 5 minutes inactivity auto-logout
+
+      let currentSessionId = null;
+      let lastActivityTime = Date.now();
+      let inactivityTimer = null;
+      let analyticsData = { summary: {}, pageBreakdown: [], logs: [] };
+
+      const ALL_PAGES = [
+        'index.html',
+        'locations/nainital.html',
+        'locations/bhimtal.html',
+        'locations/almora.html',
+        'locations/ramnagar.html',
+        'locations/haldwani.html',
+        'locations/kaladhungi.html',
+        'locations/rudrapur.html',
+        'locations/kathgodam.html',
+        'locations/kashipur.html',
+        'locations/bajpur.html',
+        'locations/khatima.html',
+        'locations/sitarganj.html',
+        'locations/kichha.html',
+        'locations/jim-corbett.html',
+        'locations/bhowali.html',
+        'about-us.html',
+        'contact-us.html',
+        'safety-guide.html',
+        'terms.html',
+        'privacy.html',
+        'report-abuse.html'
+      ];
+
+      // Session & Inactivity Management
+      function resetActivity() {
+        lastActivityTime = Date.now();
+      }
+
+      window.addEventListener('mousemove', resetActivity);
+      window.addEventListener('keydown', resetActivity);
+      window.addEventListener('click', resetActivity);
+      window.addEventListener('scroll', resetActivity);
+
+      function startSessionTimer() {
+        if (inactivityTimer) clearInterval(inactivityTimer);
+        inactivityTimer = setInterval(function() {
+          const elapsed = Math.floor((Date.now() - lastActivityTime) / 1000);
+          const remaining = TIMEOUT_SECONDS - elapsed;
+          
+          if (remaining <= 0) {
+            handleLogout('Session expired due to 5 minutes of inactivity.');
+          } else {
+            const mins = Math.floor(remaining / 60);
+            const secs = remaining % 60;
+            const timerEl = document.getElementById('display-timeout');
+            if (timerEl) {
+              timerEl.textContent = 'Inactivity: ' + mins + ':' + (secs < 10 ? '0' : '') + secs;
+            }
+          }
+        }, 1000);
+      }
+
+      function handleLogin(e) {
+        e.preventDefault();
+        const u = document.getElementById('admin-user').value.trim();
+        const p = document.getElementById('admin-pass').value.trim();
+        const msg = document.getElementById('login-msg');
+
+        if (u === ADMIN_USER && p === ADMIN_PASS) {
+          currentSessionId = 'CH-' + Math.random().toString(36).substring(2, 9).toUpperCase();
+          sessionStorage.setItem('ch_admin_session', currentSessionId);
+          msg.textContent = '';
+          showDashboard();
+        } else {
+          msg.className = 'login-msg error';
+          msg.textContent = 'Invalid credentials. Access denied.';
+        }
+      }
+
+      function handleLogout(reason) {
+        if (inactivityTimer) clearInterval(inactivityTimer);
+        currentSessionId = null;
+        sessionStorage.removeItem('ch_admin_session');
+        document.getElementById('dashboard-screen').style.display = 'none';
+        document.getElementById('login-screen').style.display = 'flex';
+        document.getElementById('admin-user').value = '';
+        document.getElementById('admin-pass').value = '';
+        const msg = document.getElementById('login-msg');
+        msg.className = 'login-msg warn';
+        msg.textContent = reason || 'Logged out successfully.';
+      }
+
+      function showDashboard() {
+        document.getElementById('login-screen').style.display = 'none';
+        document.getElementById('dashboard-screen').style.display = 'block';
+        document.getElementById('display-session-id').textContent = currentSessionId;
+        lastActivityTime = Date.now();
+        startSessionTimer();
+        loadConfiguration();
+        loadAnalytics();
+      }
+
+      // Tabs switching
+      document.querySelectorAll('.tab-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+          document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
+          btn.classList.add('active');
+          const tabId = btn.getAttribute('data-tab');
+          document.getElementById(tabId).style.display = 'block';
+          if (tabId === 'tab-analytics') loadAnalytics();
+        });
+      });
+
+      function getCurrentConfig() {
+        let config = null;
+        try {
+          const stored = localStorage.getItem('cityhaldwani_contacts_config');
+          if (stored) config = JSON.parse(stored);
+        } catch(e) {}
+        if (!config && window.SITE_CONTACTS_CONFIG) {
+          config = window.SITE_CONTACTS_CONFIG;
+        }
+        if (!config) {
+          config = { master: { call: '+919876543210', whatsapp: '919876543210' }, pages: {} };
+        }
+        return config;
+      }
+
+      // Load Contacts Config
+      function loadConfiguration() {
+        const config = getCurrentConfig();
+        renderConfig(config);
+
+        const isStaticDev = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.port === '5500';
+        if (!isStaticDev && window.location.protocol.startsWith('http')) {
+          fetch('/api/config')
+            .then(res => res.json())
+            .then(remoteConfig => {
+              if (remoteConfig && remoteConfig.master) {
+                renderConfig(remoteConfig);
+                try {
+                  localStorage.setItem('cityhaldwani_contacts_config', JSON.stringify(remoteConfig));
+                } catch(e) {}
+              }
+            })
+            .catch(() => {});
+        }
+      }
+
+      function renderConfig(config) {
+        const master = config.master || { call: '+919876543210', whatsapp: '919876543210' };
+        document.getElementById('master-call').value = master.call;
+        document.getElementById('master-wa').value = master.whatsapp;
+
+        const tbody = document.getElementById('pages-tbody');
+        tbody.innerHTML = '';
+        const purgeSelect = document.getElementById('purge-single-page');
+        purgeSelect.innerHTML = '<option value="">-- Clear Single Page History --</option>';
+
+        ALL_PAGES.forEach(page => {
+          const pageData = (config.pages && config.pages[page]) || { call: '', whatsapp: '' };
+          const tr = document.createElement('tr');
+          const hasCustom = (pageData.call && pageData.call.trim()) || (pageData.whatsapp && pageData.whatsapp.trim());
+          
+          tr.innerHTML = `
+            <td><strong>${page}</strong></td>
+            <td><input type="text" class="tbl-input page-call-input" data-page="${page}" value="${pageData.call || ''}" placeholder="Inherit (${master.call})"></td>
+            <td><input type="text" class="tbl-input page-wa-input" data-page="${page}" value="${pageData.whatsapp || ''}" placeholder="Inherit (${master.whatsapp})"></td>
+            <td style="text-align: center;">
+              <span class="badge-pill ${hasCustom ? 'badge-wa' : 'badge-call'}">${hasCustom ? 'Custom' : 'Master'}</span>
+            </td>
+          `;
+          tbody.appendChild(tr);
+
+          const opt = document.createElement('option');
+          opt.value = page;
+          opt.textContent = page;
+          purgeSelect.appendChild(opt);
+        });
+      }
+
+      // Save Master Numbers
+      document.getElementById('btn-save-master').addEventListener('click', function() {
+        const call = document.getElementById('master-call').value.trim();
+        const wa = document.getElementById('master-wa').value.trim();
+        const msg = document.getElementById('master-save-msg');
+
+        const config = getCurrentConfig();
+        config.master = { call: call, whatsapp: wa };
+        try {
+          localStorage.setItem('cityhaldwani_contacts_config', JSON.stringify(config));
+        } catch(e) {}
+
+        msg.textContent = 'Master numbers updated successfully!';
+        setTimeout(() => { msg.textContent = ''; }, 3000);
+        loadConfiguration();
+
+        const isStaticDev = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.port === '5500';
+        if (!isStaticDev && window.location.protocol.startsWith('http')) {
+          fetch('/api/config', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ master: { call: call, whatsapp: wa } })
+          }).catch(() => {});
+        }
+      });
+
+      // Save All Pages Numbers
+      document.getElementById('btn-save-all-pages').addEventListener('click', function() {
+        const pagesPayload = {};
+        document.querySelectorAll('.page-call-input').forEach(input => {
+          const page = input.getAttribute('data-page');
+          const waInput = document.querySelector(`.page-wa-input[data-page="${page}"]`);
+          pagesPayload[page] = {
+            call: input.value.trim(),
+            whatsapp: waInput ? waInput.value.trim() : ''
+          };
+        });
+
+        const config = getCurrentConfig();
+        config.pages = pagesPayload;
+        try {
+          localStorage.setItem('cityhaldwani_contacts_config', JSON.stringify(config));
+        } catch(e) {}
+
+        alert('All page numbers saved successfully!');
+        loadConfiguration();
+
+        const isStaticDev = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.port === '5500';
+        if (!isStaticDev && window.location.protocol.startsWith('http')) {
+          fetch('/api/config', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ pages: pagesPayload })
+          }).catch(() => {});
+        }
+      });
+
+      // Load Analytics & Click Logs
+      function loadAnalytics() {
+        const localLogs = JSON.parse(localStorage.getItem('cityhaldwani_click_logs') || '[]');
+        const byPage = {};
+        let calls = 0, wa = 0;
+        localLogs.forEach(l => {
+          const p = l.page || 'index.html';
+          if (!byPage[p]) byPage[p] = { page: p, total: 0, call: 0, whatsapp: 0, totalDuration: 0, avgDuration: 0 };
+          byPage[p].total++;
+          if (l.type === 'call') { byPage[p].call++; calls++; }
+          if (l.type === 'whatsapp') { byPage[p].whatsapp++; wa++; }
+          byPage[p].totalDuration += (l.duration || 0);
+        });
+        Object.keys(byPage).forEach(k => {
+          byPage[k].avgDuration = byPage[k].total > 0 ? Math.round(byPage[k].totalDuration / byPage[k].total) : 0;
+        });
+        const localData = {
+          summary: { totalClicks: localLogs.length, totalCalls: calls, totalWhatsApp: wa, activePagesCount: Object.keys(byPage).length },
+          pageBreakdown: Object.values(byPage),
+          logs: localLogs
+        };
+        renderAnalytics(localData);
+
+        const isStaticDev = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.port === '5500';
+        if (!isStaticDev && window.location.protocol.startsWith('http')) {
+          fetch('/api/clicks')
+            .then(res => res.json())
+            .then(data => {
+              if (data && data.summary) {
+                renderAnalytics(data);
+              }
+            })
+            .catch(() => {});
+        }
+      }
+
+      function renderAnalytics(data) {
+        document.getElementById('metric-total-clicks').textContent = data.summary.totalClicks || 0;
+        document.getElementById('metric-total-calls').textContent = data.summary.totalCalls || 0;
+        document.getElementById('metric-total-wa').textContent = data.summary.totalWhatsApp || 0;
+        document.getElementById('metric-active-pages').textContent = data.summary.activePagesCount || 0;
+
+        // Breakdown table
+        const sumTbody = document.getElementById('analytics-summary-tbody');
+        sumTbody.innerHTML = '';
+        if (!data.pageBreakdown || data.pageBreakdown.length === 0) {
+          sumTbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: var(--text-muted); padding: 20px;">No click history recorded yet.</td></tr>';
+        } else {
+          data.pageBreakdown.forEach(row => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+              <td><input type="checkbox" class="chk-page-row" value="${row.page}"></td>
+              <td><strong>${row.page}</strong></td>
+              <td><span style="font-weight: 700;">${row.total}</span></td>
+              <td><span class="badge-pill badge-call">${row.call} Calls</span></td>
+              <td><span class="badge-pill badge-wa">${row.whatsapp} WA</span></td>
+              <td>${row.avgDuration} sec</td>
+            `;
+            sumTbody.appendChild(tr);
+          });
+        }
+
+        // Recent Logs Table
+        const logTbody = document.getElementById('recent-logs-tbody');
+        logTbody.innerHTML = '';
+        const logs = (data.logs || []).slice(0, 50);
+        if (logs.length === 0) {
+          logTbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: var(--text-muted); padding: 20px;">No recent events recorded.</td></tr>';
+        } else {
+          logs.forEach(item => {
+            const tr = document.createElement('tr');
+            const dateStr = item.timestamp ? new Date(item.timestamp).toLocaleString() : 'N/A';
+            tr.innerHTML = `
+              <td>${dateStr}</td>
+              <td><span class="badge-pill ${item.type === 'call' ? 'badge-call' : 'badge-wa'}">${item.type.toUpperCase()}</span></td>
+              <td>${item.label || 'Direct Click'}</td>
+              <td><strong>${item.page || 'index.html'}</strong></td>
+              <td>${item.duration || 0}s</td>
+            `;
+            logTbody.appendChild(tr);
+          });
+        }
+      }
+
+      // Purge Operations (Single, Selected, All)
+      function executePurge(payload, confirmMsg) {
+        if (!confirm(confirmMsg)) return;
+
+        fetch('/api/clicks', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        })
+        .then(res => res.json())
+        .then(res => {
+          alert(res.message || 'Purge operation completed.');
+          // Also sync localStorage
+          if (payload.all) {
+            localStorage.removeItem('cityhaldwani_click_logs');
+          } else if (payload.page) {
+            let logs = JSON.parse(localStorage.getItem('cityhaldwani_click_logs') || '[]');
+            logs = logs.filter(l => l.page !== payload.page);
+            localStorage.setItem('cityhaldwani_click_logs', JSON.stringify(logs));
+          } else if (payload.pages) {
+            const set = new Set(payload.pages);
+            let logs = JSON.parse(localStorage.getItem('cityhaldwani_click_logs') || '[]');
+            logs = logs.filter(l => !set.has(l.page));
+            localStorage.setItem('cityhaldwani_click_logs', JSON.stringify(logs));
+          }
+          loadAnalytics();
+        })
+        .catch(err => {
+          alert('Purge failed: ' + err.message);
+        });
+      }
+
+      // Clear Single Page
+      document.getElementById('btn-purge-single').addEventListener('click', function() {
+        const page = document.getElementById('purge-single-page').value;
+        if (!page) {
+          alert('Please select a page from the dropdown to clear.');
+          return;
+        }
+        executePurge({ page: page }, `Are you sure you want to clear click history for "${page}"?`);
+      });
+
+      // Clear Checked Pages
+      document.getElementById('btn-purge-checked').addEventListener('click', function() {
+        const checked = [];
+        document.querySelectorAll('.chk-page-row:checked').forEach(cb => checked.push(cb.value));
+        if (checked.length === 0) {
+          alert('Please select at least one page checkbox in the table.');
+          return;
+        }
+        executePurge({ pages: checked }, `Are you sure you want to clear click history for ${checked.length} selected pages?`);
+      });
+
+      // Clear ALL History
+      document.getElementById('btn-purge-all').addEventListener('click', function() {
+        executePurge({ all: true }, 'WARNING: Are you sure you want to completely erase ALL visitor click history across the entire website?');
+      });
+
+      // Select all checkboxes
+      document.getElementById('check-all-pages').addEventListener('change', function(e) {
+        document.querySelectorAll('.chk-page-row').forEach(cb => cb.checked = e.target.checked);
+      });
+
+      // Event listeners
+      document.getElementById('admin-login-form').addEventListener('submit', handleLogin);
+      document.getElementById('btn-logout').addEventListener('click', function() { handleLogout(); });
+
+      // Check if session already exists
+      const savedSession = sessionStorage.getItem('ch_admin_session');
+      if (savedSession) {
+        currentSessionId = savedSession;
+        showDashboard();
+      }
+    })();
+  </script>
+</body>
+</html>

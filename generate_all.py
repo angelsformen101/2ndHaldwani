@@ -213,6 +213,8 @@ index_html = f'''<!DOCTYPE html>
   <meta name="twitter:title" content="CityHaldwani.com - Premier Uttarakhand Escort Directory &amp; Verified Classifieds">
   <meta name="twitter:description" content="Explore 100% verified independent escorts in Haldwani, Nainital, Bhimtal, Ramnagar, Corbett, and 15 Uttarakhand destinations. Cash on meeting, zero advance.">
   <meta name="twitter:image" content="https://cityhaldwani.com/city-logo.png">
+  <link rel="icon" href="/favicon.webp" type="image/webp">
+  <link rel="preload" href="/city-logo.png" as="image">
 
   <!-- Directory Trailing Slash Normalization Script (Fixes Image 2 & Image 3 404s when navigating subfolder without trailing slash) -->
   <script>
@@ -224,7 +226,6 @@ index_html = f'''<!DOCTYPE html>
     }})();
   </script>
 
-  <link rel="stylesheet" href="css/style.css">
   <style>
 {EMBEDDED_CSS}
   </style>
@@ -238,8 +239,8 @@ index_html = f'''<!DOCTYPE html>
 <body>
   <header class="site-topbar">
     <div class="container topbar-wrapper">
-      <a href="index.html" class="brand-group">
-        <img src="city-logo.png" alt="CityHaldwani.com Logo" class="brand-logo-img" onerror="if(!this.dataset.retried){{this.dataset.retried=1;this.src='logo.png';}}">
+      <a href="/index.html" class="brand-group">
+        <img src="/city-logo.png" alt="CityHaldwani.com Logo" class="brand-logo-img" width="140" height="42" onerror="if(!this.dataset.retried){{this.dataset.retried=1;this.src='/logo.png';}}else if(this.dataset.retried==1){{this.dataset.retried=2;this.src='city-logo.png';}}">
         <div class="brand-text">
           <div class="brand-title">CityHaldwani<span>.com</span></div>
           <p>Verified Uttarakhand Classifieds</p>
@@ -381,12 +382,12 @@ index_html = f'''<!DOCTYPE html>
       <div class="footer-col">
         <h4>Corporate, Legal &amp; Safety</h4>
         <ul class="footer-links">
-          <li><a href="about-us.html">About Us</a></li>
-          <li><a href="safety-guide.html">Safety Guidelines</a></li>
-          <li><a href="report-abuse.html">Report Abuse</a></li>
-          <li><a href="terms.html">Terms of Service</a></li>
-          <li><a href="privacy.html">Privacy Policy</a></li>
-          <li><a href="contact-us.html">Contact Support Desk</a></li>
+          <li><a href="/about-us.html">About Us</a></li>
+          <li><a href="/safety-guide.html">Safety Guidelines</a></li>
+          <li><a href="/report-abuse.html">Report Abuse</a></li>
+          <li><a href="/terms.html">Terms of Service</a></li>
+          <li><a href="/privacy.html">Privacy Policy</a></li>
+          <li><a href="/contact-us.html">Contact Support Desk</a></li>
         </ul>
       </div>
     </div>
@@ -395,10 +396,10 @@ index_html = f'''<!DOCTYPE html>
     </div>
   </footer>
 
-  <script src="js/contacts-config.js"></script>
-  <script src="js/contact-manager.js"></script>
-  <script src="js/security-shield.js"></script>
-  <script src="js/age-gate.js"></script>
+  <script src="/js/contacts-config.js" defer></script>
+  <script src="/js/contact-manager.js" defer></script>
+  <script src="/js/security-shield.js" defer></script>
+  <script src="/js/age-gate.js" defer></script>
   <script>
     document.querySelectorAll('.faq-question').forEach(function(el) {{
       el.addEventListener('click', function() {{
@@ -599,6 +600,8 @@ for p in POLICY_PAGES:
   <meta name="twitter:title" content="{p['title']}">
   <meta name="twitter:description" content="{p['desc']}">
   <meta name="twitter:image" content="https://cityhaldwani.com/city-logo.png">
+  <link rel="icon" href="/favicon.webp" type="image/webp">
+  <link rel="preload" href="/city-logo.png" as="image">
 
   <!-- Directory Trailing Slash Script -->
   <script>
@@ -610,7 +613,6 @@ for p in POLICY_PAGES:
     }})();
   </script>
 
-  <link rel="stylesheet" href="css/style.css">
   <style>
 {EMBEDDED_CSS}
   </style>
@@ -618,8 +620,8 @@ for p in POLICY_PAGES:
 <body>
   <header class="site-topbar">
     <div class="container topbar-wrapper">
-      <a href="index.html" class="brand-group">
-        <img src="city-logo.png" alt="CityHaldwani.com Logo" class="brand-logo-img" onerror="if(!this.dataset.retried){{this.dataset.retried=1;this.src='logo.png';}}">
+      <a href="/index.html" class="brand-group">
+        <img src="/city-logo.png" alt="CityHaldwani.com Logo" class="brand-logo-img" width="140" height="42" onerror="if(!this.dataset.retried){{this.dataset.retried=1;this.src='/logo.png';}}else if(this.dataset.retried==1){{this.dataset.retried=2;this.src='city-logo.png';}}">
         <div class="brand-text">
           <div class="brand-title">CityHaldwani<span>.com</span></div>
           <p>Verified Uttarakhand Classifieds</p>
@@ -635,7 +637,7 @@ for p in POLICY_PAGES:
 
   <main class="container">
     <nav class="breadcrumb-nav">
-      <a href="index.html">Home</a> &gt; <span>{p['h1']}</span>
+      <a href="/index.html">Home</a> &gt; <span>{p['h1']}</span>
     </nav>
 
     <div class="editorial-card" style="margin-top: 16px;">
@@ -654,25 +656,25 @@ for p in POLICY_PAGES:
       <div class="footer-col">
         <h4>Top Destinations</h4>
         <ul class="footer-links">
-          <li><a href="locations/haldwani.html">Haldwani Escorts</a></li>
-          <li><a href="locations/nainital.html">Nainital Escorts</a></li>
-          <li><a href="locations/bhimtal.html">Bhimtal Escorts</a></li>
-          <li><a href="locations/ramnagar.html">Ramnagar Escorts</a></li>
-          <li><a href="locations/jim-corbett.html">Jim Corbett Escorts</a></li>
-          <li><a href="locations/rudrapur.html">Rudrapur Escorts</a></li>
-          <li><a href="locations/almora.html">Almora Escorts</a></li>
-          <li><a href="locations/bhowali.html">Bhowali Escorts</a></li>
+          <li><a href="/locations/haldwani.html">Haldwani Escorts</a></li>
+          <li><a href="/locations/nainital.html">Nainital Escorts</a></li>
+          <li><a href="/locations/bhimtal.html">Bhimtal Escorts</a></li>
+          <li><a href="/locations/ramnagar.html">Ramnagar Escorts</a></li>
+          <li><a href="/locations/jim-corbett.html">Jim Corbett Escorts</a></li>
+          <li><a href="/locations/rudrapur.html">Rudrapur Escorts</a></li>
+          <li><a href="/locations/almora.html">Almora Escorts</a></li>
+          <li><a href="/locations/bhowali.html">Bhowali Escorts</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Corporate &amp; Legal</h4>
         <ul class="footer-links">
-          <li><a href="about-us.html">About Us</a></li>
-          <li><a href="safety-guide.html">Safety Guidelines</a></li>
-          <li><a href="report-abuse.html">Report Violations</a></li>
-          <li><a href="terms.html">Terms of Service</a></li>
-          <li><a href="privacy.html">Privacy Policy</a></li>
-          <li><a href="contact-us.html">Contact Support Desk</a></li>
+          <li><a href="/about-us.html">About Us</a></li>
+          <li><a href="/safety-guide.html">Safety Guidelines</a></li>
+          <li><a href="/report-abuse.html">Report Violations</a></li>
+          <li><a href="/terms.html">Terms of Service</a></li>
+          <li><a href="/privacy.html">Privacy Policy</a></li>
+          <li><a href="/contact-us.html">Contact Support Desk</a></li>
         </ul>
       </div>
     </div>
@@ -681,10 +683,10 @@ for p in POLICY_PAGES:
     </div>
   </footer>
 
-  <script src="js/contacts-config.js"></script>
-  <script src="js/contact-manager.js"></script>
-  <script src="js/security-shield.js"></script>
-  <script src="js/age-gate.js"></script>
+  <script src="/js/contacts-config.js" defer></script>
+  <script src="/js/contact-manager.js" defer></script>
+  <script src="/js/security-shield.js" defer></script>
+  <script src="/js/age-gate.js" defer></script>
 </body>
 </html>'''
     with open(os.path.join(OUTPUT_DIR, p['file']), 'w', encoding='utf-8') as f:
@@ -765,3 +767,44 @@ with open(os.path.join(OUTPUT_DIR, 'llms-full.txt'), 'w', encoding='utf-8') as f
 print("Generated llms.txt and llms-full.txt")
 
 print(f"\nTotal unique profile names used: {len(all_used_names)}")
+
+# Synchronize all assets into public/ to guarantee 100% 200 OK on Vercel static serving
+import shutil
+PUBLIC_DIR = os.path.join(OUTPUT_DIR, 'public')
+os.makedirs(PUBLIC_DIR, exist_ok=True)
+
+# 1. Sync CSS and JS into public/
+for folder in ['css', 'js', 'locations']:
+    src_folder = os.path.join(OUTPUT_DIR, folder)
+    dst_folder = os.path.join(PUBLIC_DIR, folder)
+    if os.path.exists(src_folder):
+        os.makedirs(dst_folder, exist_ok=True)
+        for item in os.listdir(src_folder):
+            s = os.path.join(src_folder, item)
+            d = os.path.join(dst_folder, item)
+            if os.path.isfile(s):
+                shutil.copy2(s, d)
+
+# 2. Sync root assets and policy pages into public/
+for root_file in [
+    'city-logo.png', 'logo.png', 'favicon.webp', 'robots.txt', 'sitemap.xml',
+    'llms.txt', 'llms-full.txt', 'about-us.html', 'contact-us.html',
+    'privacy.html', 'terms.html', 'report-abuse.html', 'safety-guide.html',
+    '404.html', 'admin!.html'
+]:
+    s = os.path.join(OUTPUT_DIR, root_file)
+    d = os.path.join(PUBLIC_DIR, root_file)
+    if os.path.exists(s):
+        shutil.copy2(s, d)
+
+# 3. Create public/public/ mirror for backward-compatibility with any /public/ references
+PUBLIC_PUBLIC_DIR = os.path.join(PUBLIC_DIR, 'public')
+os.makedirs(PUBLIC_PUBLIC_DIR, exist_ok=True)
+for item in os.listdir(PUBLIC_DIR):
+    if item != 'public':
+        s = os.path.join(PUBLIC_DIR, item)
+        d = os.path.join(PUBLIC_PUBLIC_DIR, item)
+        if os.path.isfile(s):
+            shutil.copy2(s, d)
+
+print("Synchronized all static assets and mirrors into public/ successfully.")

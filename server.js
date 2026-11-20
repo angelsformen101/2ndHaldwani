@@ -90,19 +90,27 @@ const server = http.createServer((req, res) => {
   }
 
   // Resolve static files
-  let safePath = path.normalize(pathname).replace(/^(\.\.[\/\\])+/, '');
-  if (safePath === '/' || safePath === '\\') safePath = 'index.html';
+  let safePath = pathname.replace(/^(\.\.[\/\\])+/, '').replace(/^[\/\\]+/, '');
+  if (!safePath) safePath = 'index.html';
 
   let filePath = path.join(BASE_DIR, safePath);
+  let publicPath = path.join(BASE_DIR, 'public', safePath);
 
-  // Check direct file
+  // Check direct file in root
   if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
     const ext = path.extname(filePath).toLowerCase();
     res.writeHead(200, { 'Content-Type': MIME_TYPES[ext] || 'application/octet-stream' });
     return fs.createReadStream(filePath).pipe(res);
   }
 
-  // Check clean URLs with .html
+  // Check direct file in public
+  if (fs.existsSync(publicPath) && fs.statSync(publicPath).isFile()) {
+    const ext = path.extname(publicPath).toLowerCase();
+    res.writeHead(200, { 'Content-Type': MIME_TYPES[ext] || 'application/octet-stream' });
+    return fs.createReadStream(publicPath).pipe(res);
+  }
+
+  // Check clean URLs with .html in root
   if (fs.existsSync(filePath + '.html') && fs.statSync(filePath + '.html').isFile()) {
     res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
     return fs.createReadStream(filePath + '.html').pipe(res);

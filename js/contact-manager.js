@@ -230,11 +230,20 @@
         if (!this.dataset.retried) {
           this.dataset.retried = '1';
           var originalSrc = this.getAttribute('src') || '';
-          var filename = originalSrc.split('/').pop();
-          if (originalSrc.includes('logo')) {
-            this.src = '../city-logo.png';
+          var filename = originalSrc.split('/').pop().split('?')[0];
+          if (filename.includes('logo')) {
+            this.src = '/city-logo.png';
           } else if (filename) {
-            this.src = '../public/' + filename;
+            this.src = '/' + filename;
+          }
+        } else if (this.dataset.retried === '1') {
+          this.dataset.retried = '2';
+          var originalSrc = this.getAttribute('src') || '';
+          var filename = originalSrc.split('/').pop().split('?')[0];
+          if (filename.includes('logo')) {
+            this.src = 'city-logo.png';
+          } else if (filename) {
+            this.src = 'public/' + filename;
           }
         }
       });

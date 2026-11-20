@@ -147,7 +147,7 @@ def render_profile_card(name, city_name, age, index, img_alias, rel_prefix='../'
         <article class="profile-card" id="profile-{name.lower()}">
           <div class="card-media">
             <span class="vip-ribbon">VIP</span>
-            <img src="{rel_prefix}public/{img_alias}" alt="{name} - Verified Escort in {city_name}" loading="lazy" onerror="if(!this.dataset.retried){{this.dataset.retried=1;this.src='{rel_prefix}public/{img_alias}';}}">
+            <img src="/{img_alias}" alt="{name} - Verified Escort in {city_name}" loading="lazy" decoding="async" width="175" height="220" onerror="if(!this.dataset.retried){{this.dataset.retried=1;this.src='/public/{img_alias}';}}else if(this.dataset.retried==1){{this.dataset.retried=2;this.src='{rel_prefix}public/{img_alias}';}}">
             <span class="photo-count-pill">📷 {photo_count} Photos</span>
           </div>
           <div class="card-content">
@@ -360,7 +360,8 @@ def build_location_page(loc, start_name_idx):
   <title>{title} | CityHaldwani.com</title>
   <meta name="description" content="{meta_desc}">
   <link rel="canonical" href="https://cityhaldwani.com/locations/{slug}.html">
-  <link rel="icon" href="../favicon.webp" type="image/webp">
+  <link rel="icon" href="/favicon.webp" type="image/webp">
+  <link rel="preload" href="/city-logo.png" as="image">
 
   <!-- Open Graph Meta Tags (Image 1 Fix) -->
   <meta property="og:title" content="{title}">
@@ -377,7 +378,6 @@ def build_location_page(loc, start_name_idx):
   <meta name="twitter:description" content="{meta_desc}">
   <meta name="twitter:image" content="https://cityhaldwani.com/city-logo.png">
 
-  <link rel="stylesheet" href="../css/style.css">
   <style>
 {EMBEDDED_CSS}
   </style>
@@ -391,8 +391,8 @@ def build_location_page(loc, start_name_idx):
 <body>
   <header class="site-topbar">
     <div class="container topbar-wrapper">
-      <a href="../index.html" class="brand-group">
-        <img src="../city-logo.png" alt="CityHaldwani.com Logo" class="brand-logo-img" onerror="if(!this.dataset.retried){{this.dataset.retried=1;this.src='../logo.png';}}">
+      <a href="/index.html" class="brand-group">
+        <img src="/city-logo.png" alt="CityHaldwani.com Logo" class="brand-logo-img" width="140" height="42" onerror="if(!this.dataset.retried){{this.dataset.retried=1;this.src='/logo.png';}}else if(this.dataset.retried==1){{this.dataset.retried=2;this.src='../city-logo.png';}}">
         <div class="brand-text">
           <div class="brand-title">CityHaldwani<span>.com</span></div>
           <p>Verified Uttarakhand Classifieds</p>
@@ -555,12 +555,12 @@ def build_location_page(loc, start_name_idx):
       <div class="footer-col">
         <h4>Corporate &amp; Safety</h4>
         <ul class="footer-links">
-          <li><a href="../about-us.html">About Us</a></li>
-          <li><a href="../safety-guide.html">Safety Guidelines</a></li>
-          <li><a href="../report-abuse.html">Report Violations</a></li>
-          <li><a href="../terms.html">Terms of Service</a></li>
-          <li><a href="../privacy.html">Privacy Policy</a></li>
-          <li><a href="../contact-us.html">Contact Support Desk</a></li>
+          <li><a href="/about-us.html">About Us</a></li>
+          <li><a href="/safety-guide.html">Safety Guidelines</a></li>
+          <li><a href="/report-abuse.html">Report Violations</a></li>
+          <li><a href="/terms.html">Terms of Service</a></li>
+          <li><a href="/privacy.html">Privacy Policy</a></li>
+          <li><a href="/contact-us.html">Contact Support Desk</a></li>
         </ul>
       </div>
     </div>
@@ -569,10 +569,10 @@ def build_location_page(loc, start_name_idx):
     </div>
   </footer>
 
-  <script src="../js/contacts-config.js"></script>
-  <script src="../js/contact-manager.js"></script>
-  <script src="../js/security-shield.js"></script>
-  <script src="../js/age-gate.js"></script>
+  <script src="/js/contacts-config.js" defer></script>
+  <script src="/js/contact-manager.js" defer></script>
+  <script src="/js/security-shield.js" defer></script>
+  <script src="/js/age-gate.js" defer></script>
   <script>
     document.querySelectorAll('.faq-question').forEach(function(el) {{
       el.addEventListener('click', function() {{

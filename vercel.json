@@ -4,11 +4,61 @@
   "trailingSlash": false,
   "rewrites": [
     { "source": "/admin!", "destination": "/admin!.html" },
-    { "source": "/admin!/", "destination": "/admin!.html" }
+    { "source": "/admin!/", "destination": "/admin!.html" },
+    { "source": "/nainital", "destination": "/locations/nainital.html" },
+    { "source": "/bhimtal", "destination": "/locations/bhimtal.html" },
+    { "source": "/almora", "destination": "/locations/almora.html" },
+    { "source": "/ramnagar", "destination": "/locations/ramnagar.html" },
+    { "source": "/haldwani", "destination": "/locations/haldwani.html" },
+    { "source": "/kaladhungi", "destination": "/locations/kaladhungi.html" },
+    { "source": "/rudrapur", "destination": "/locations/rudrapur.html" },
+    { "source": "/kathgodam", "destination": "/locations/kathgodam.html" },
+    { "source": "/kashipur", "destination": "/locations/kashipur.html" },
+    { "source": "/bajpur", "destination": "/locations/bajpur.html" },
+    { "source": "/khatima", "destination": "/locations/khatima.html" },
+    { "source": "/sitarganj", "destination": "/locations/sitarganj.html" },
+    { "source": "/kichha", "destination": "/locations/kichha.html" },
+    { "source": "/jim-corbett", "destination": "/locations/jim-corbett.html" },
+    { "source": "/bhowali", "destination": "/locations/bhowali.html" },
+    { "source": "/about-us", "destination": "/about-us.html" },
+    { "source": "/contact-us", "destination": "/contact-us.html" },
+    { "source": "/privacy", "destination": "/privacy.html" },
+    { "source": "/terms", "destination": "/terms.html" },
+    { "source": "/report-abuse", "destination": "/report-abuse.html" },
+    { "source": "/safety-guide", "destination": "/safety-guide.html" },
+    { "source": "/public/(.*)", "destination": "/$1" }
   ],
   "redirects": [
     { "source": "/admin", "destination": "/404", "statusCode": 404 },
     { "source": "/admin/", "destination": "/404", "statusCode": 404 },
     { "source": "/admin/(.*)", "destination": "/404", "statusCode": 404 }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)\\.(webp|png|jpg|jpeg|gif|svg|ico|css|js)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    }
   ]
 }
