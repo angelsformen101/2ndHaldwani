@@ -590,17 +590,40 @@
         });
       });
 
+      function getCurrentConfig() {
+        let config = null;
+        try {
+          const stored = localStorage.getItem('cityhaldwani_contacts_config');
+          if (stored) config = JSON.parse(stored);
+        } catch(e) {}
+        if (!config && window.SITE_CONTACTS_CONFIG) {
+          config = window.SITE_CONTACTS_CONFIG;
+        }
+        if (!config) {
+          config = { master: { call: '+919876543210', whatsapp: '919876543210' }, pages: {} };
+        }
+        return config;
+      }
+
       // Load Contacts Config
       function loadConfiguration() {
-        fetch('/api/config')
-          .then(res => res.json())
-          .then(config => {
-            renderConfig(config);
-          })
-          .catch(() => {
-            const fallback = window.SITE_CONTACTS_CONFIG || { master: { call: '+919876543210', whatsapp: '919876543210' }, pages: {} };
-            renderConfig(fallback);
-          });
+        const config = getCurrentConfig();
+        renderConfig(config);
+
+        const isStaticDev = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.port === '5500';
+        if (!isStaticDev && window.location.protocol.startsWith('http')) {
+          fetch('/api/config')
+            .then(res => res.json())
+            .then(remoteConfig => {
+              if (remoteConfig && remoteConfig.master) {
+                renderConfig(remoteConfig);
+                try {
+                  localStorage.setItem('cityhaldwani_contacts_config', JSON.stringify(remoteConfig));
+                } catch(e) {}
+              }
+            })
+            .catch(() => {});
+        }
       }
 
       function renderConfig(config) {
@@ -641,20 +664,24 @@
         const wa = document.getElementById('master-wa').value.trim();
         const msg = document.getElementById('master-save-msg');
 
-        fetch('/api/config', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ master: { call: call, whatsapp: wa } })
-        })
-        .then(res => res.json())
-        .then(res => {
-          msg.textContent = 'Master numbers updated successfully!';
-          setTimeout(() => { msg.textContent = ''; }, 3000);
-          loadConfiguration();
-        })
-        .catch(err => {
-          msg.textContent = 'Error updating master numbers';
-        });
+        const config = getCurrentConfig();
+        config.master = { call: call, whatsapp: wa };
+        try {
+          localStorage.setItem('cityhaldwani_contacts_config', JSON.stringify(config));
+        } catch(e) {}
+
+        msg.textContent = 'Master numbers updated successfully!';
+        setTimeout(() => { msg.textContent = ''; }, 3000);
+        loadConfiguration();
+
+        const isStaticDev = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.port === '5500';
+        if (!isStaticDev && window.location.protocol.startsWith('http')) {
+          fetch('/api/config', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ master: { call: call, whatsapp: wa } })
+          }).catch(() => {});
+        }
       });
 
       // Save All Pages Numbers
@@ -669,51 +696,59 @@
           };
         });
 
-        fetch('/api/config', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ pages: pagesPayload })
-        })
-        .then(res => res.json())
-        .then(() => {
-          alert('All page numbers saved successfully!');
-          loadConfiguration();
-        })
-        .catch(err => {
-          alert('Failed to save page numbers: ' + err.message);
-        });
+        const config = getCurrentConfig();
+        config.pages = pagesPayload;
+        try {
+          localStorage.setItem('cityhaldwani_contacts_config', JSON.stringify(config));
+        } catch(e) {}
+
+        alert('All page numbers saved successfully!');
+        loadConfiguration();
+
+        const isStaticDev = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.port === '5500';
+        if (!isStaticDev && window.location.protocol.startsWith('http')) {
+          fetch('/api/config', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ pages: pagesPayload })
+          }).catch(() => {});
+        }
       });
 
       // Load Analytics & Click Logs
       function loadAnalytics() {
-        fetch('/api/clicks')
-          .then(res => res.json())
-          .then(data => {
-            analyticsData = data;
-            renderAnalytics(data);
-          })
-          .catch(() => {
-            // Read localStorage fallback
-            const localLogs = JSON.parse(localStorage.getItem('cityhaldwani_click_logs') || '[]');
-            const byPage = {};
-            let calls = 0, wa = 0;
-            localLogs.forEach(l => {
-              const p = l.page || 'index.html';
-              if (!byPage[p]) byPage[p] = { page: p, total: 0, call: 0, whatsapp: 0, totalDuration: 0, avgDuration: 0 };
-              byPage[p].total++;
-              if (l.type === 'call') { byPage[p].call++; calls++; }
-              if (l.type === 'whatsapp') { byPage[p].whatsapp++; wa++; }
-              byPage[p].totalDuration += (l.duration || 0);
-            });
-            Object.keys(byPage).forEach(k => {
-              byPage[k].avgDuration = byPage[k].total > 0 ? Math.round(byPage[k].totalDuration / byPage[k].total) : 0;
-            });
-            renderAnalytics({
-              summary: { totalClicks: localLogs.length, totalCalls: calls, totalWhatsApp: wa, activePagesCount: Object.keys(byPage).length },
-              pageBreakdown: Object.values(byPage),
-              logs: localLogs
-            });
-          });
+        const localLogs = JSON.parse(localStorage.getItem('cityhaldwani_click_logs') || '[]');
+        const byPage = {};
+        let calls = 0, wa = 0;
+        localLogs.forEach(l => {
+          const p = l.page || 'index.html';
+          if (!byPage[p]) byPage[p] = { page: p, total: 0, call: 0, whatsapp: 0, totalDuration: 0, avgDuration: 0 };
+          byPage[p].total++;
+          if (l.type === 'call') { byPage[p].call++; calls++; }
+          if (l.type === 'whatsapp') { byPage[p].whatsapp++; wa++; }
+          byPage[p].totalDuration += (l.duration || 0);
+        });
+        Object.keys(byPage).forEach(k => {
+          byPage[k].avgDuration = byPage[k].total > 0 ? Math.round(byPage[k].totalDuration / byPage[k].total) : 0;
+        });
+        const localData = {
+          summary: { totalClicks: localLogs.length, totalCalls: calls, totalWhatsApp: wa, activePagesCount: Object.keys(byPage).length },
+          pageBreakdown: Object.values(byPage),
+          logs: localLogs
+        };
+        renderAnalytics(localData);
+
+        const isStaticDev = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.port === '5500';
+        if (!isStaticDev && window.location.protocol.startsWith('http')) {
+          fetch('/api/clicks')
+            .then(res => res.json())
+            .then(data => {
+              if (data && data.summary) {
+                renderAnalytics(data);
+              }
+            })
+            .catch(() => {});
+        }
       }
 
       function renderAnalytics(data) {

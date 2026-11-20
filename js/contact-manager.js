@@ -3,7 +3,7 @@
  * Handles dynamic contact numbers, floating action buttons, and click tracking with page duration.
  * Robust against subfolders (e.g. /cityhaldwani_com/), file://, and production roots.
  */
-(function() {
+(function () {
   const pageStartTime = Date.now();
 
   function getPageKey() {
@@ -12,13 +12,13 @@
     path = path.replace(/^cityhaldwani_com\//i, '');
 
     if (!path || path === '' || path === 'index.html') return 'index.html';
-    
+
     // Normalize clean URLs to .html key
     if (!path.endsWith('.html') && !path.includes('.')) {
       if (path.startsWith('locations/')) {
         path = path + '.html';
       } else if (!path.includes('/')) {
-        const locs = ['nainital','bhimtal','almora','ramnagar','haldwani','kaladhungi','rudrapur','kathgodam','kashipur','bajpur','khatima','sitarganj','kichha','jim-corbett','bhowali'];
+        const locs = ['nainital', 'bhimtal', 'almora', 'ramnagar', 'haldwani', 'kaladhungi', 'rudrapur', 'kathgodam', 'kashipur', 'bajpur', 'khatima', 'sitarganj', 'kichha', 'jim-corbett', 'bhowali'];
         if (locs.includes(path)) path = 'locations/' + path + '.html';
         else path = path + '.html';
       }
@@ -26,8 +26,27 @@
     return path;
   }
 
+  function getActiveConfig() {
+    // 1. Check LocalStorage first (updated by Admin panel)
+    let config = null;
+    try {
+      const stored = localStorage.getItem('cityhaldwani_contacts_config');
+      if (stored) config = JSON.parse(stored);
+    } catch (e) { }
+
+    // 2. Fallback to window.SITE_CONTACTS_CONFIG (from contacts-config.js)
+    if (!config && window.SITE_CONTACTS_CONFIG) {
+      config = window.SITE_CONTACTS_CONFIG;
+    }
+
+    if (!config) {
+      config = { master: { call: '+919876543210', whatsapp: '919876543210' }, pages: {} };
+    }
+    return config;
+  }
+
   function getResolvedContacts() {
-    const config = window.SITE_CONTACTS_CONFIG || { master: { call: '+919876543210', whatsapp: '919876543210' }, pages: {} };
+    const config = getActiveConfig();
     const master = config.master || { call: '+919876543210', whatsapp: '919876543210' };
     const pageKey = getPageKey();
     const pageOverride = (config.pages && config.pages[pageKey]) || {};
@@ -59,27 +78,30 @@
       timestamp: new Date().toISOString()
     };
 
-    // Send to backend API if available
-    try {
-      if (navigator.sendBeacon) {
-        navigator.sendBeacon('/api/track', JSON.stringify(payload));
-      } else {
-        fetch('/api/track', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
-          keepalive: true
-        }).catch(function() {});
-      }
-    } catch(e) {}
-
-    // Persist in local storage backup
+    // Persist in local storage (guarantees tracking works on any static preview, Live Server, localhost, or production)
     try {
       const logs = JSON.parse(localStorage.getItem('cityhaldwani_click_logs') || '[]');
       logs.unshift(payload);
       if (logs.length > 500) logs.pop();
       localStorage.setItem('cityhaldwani_click_logs', JSON.stringify(logs));
-    } catch(e) {}
+    } catch (e) { }
+
+    // Send to backend API only in production environment (avoid 404 in static Live Server preview)
+    const isStaticDev = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.port === '5500';
+    if (!isStaticDev && window.location.protocol.startsWith('http')) {
+      try {
+        if (navigator.sendBeacon) {
+          navigator.sendBeacon('/api/track', JSON.stringify(payload));
+        } else {
+          fetch('/api/track', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+            keepalive: true
+          }).catch(function () { });
+        }
+      } catch (e) { }
+    }
   }
 
   function applyContacts() {
@@ -88,9 +110,9 @@
     const cleanWa = formatWaNumber(resolved.whatsapp);
 
     // Update all Call buttons
-    document.querySelectorAll('a[href^="tel:"], .btn-call, .action-call, [data-contact="call"]').forEach(function(el) {
+    document.querySelectorAll('a[href^="tel:"], .btn-call, .action-call, [data-contact="call"]').forEach(function (el) {
       el.setAttribute('href', 'tel:' + cleanTel);
-      el.addEventListener('click', function() {
+      el.addEventListener('click', function () {
         trackClick('call', el.getAttribute('data-profile-name') || 'Direct Call Button');
       }, { once: false });
     });
@@ -99,11 +121,11 @@
     const waMsg = encodeURIComponent("Hello CityHaldwani, I am interested in verified companions and booking details. Please share available profiles.");
     const waUrl = 'https://api.whatsapp.com/send?phone=' + cleanWa + '&text=' + waMsg;
 
-    document.querySelectorAll('a[href*="whatsapp.com"], a[href*="wa.me"], .btn-whatsapp, .action-wa, [data-contact="whatsapp"]').forEach(function(el) {
+    document.querySelectorAll('a[href*="whatsapp.com"], a[href*="wa.me"], .btn-whatsapp, .action-wa, [data-contact="whatsapp"]').forEach(function (el) {
       el.setAttribute('href', waUrl);
       el.setAttribute('target', '_blank');
       el.setAttribute('rel', 'noopener noreferrer');
-      el.addEventListener('click', function() {
+      el.addEventListener('click', function () {
         trackClick('whatsapp', el.getAttribute('data-profile-name') || 'Direct WhatsApp Button');
       }, { once: false });
     });
@@ -129,8 +151,8 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 58px;
-          height: 58px;
+          width: 56px;
+          height: 56px;
           border-radius: 50%;
           box-shadow: 0 4px 18px rgba(0,0,0,0.22);
           transition: transform 0.25s ease, box-shadow 0.25s ease;
@@ -151,8 +173,8 @@
           border: 2px solid #ffffff;
         }
         .ch-float-btn svg {
-          width: 28px;
-          height: 28px;
+          width: 26px;
+          height: 26px;
           fill: #ffffff;
         }
         .ch-float-pulse {
@@ -193,24 +215,24 @@
     `;
     document.body.appendChild(container);
 
-    document.getElementById('ch-float-call-btn').addEventListener('click', function() {
+    document.getElementById('ch-float-call-btn').addEventListener('click', function () {
       trackClick('call', 'Floating Call Icon');
     });
-    document.getElementById('ch-float-wa-btn').addEventListener('click', function() {
+    document.getElementById('ch-float-wa-btn').addEventListener('click', function () {
       trackClick('whatsapp', 'Floating WhatsApp Icon');
     });
   }
 
   // Auto fallback for broken image paths (handles subdirectories, Live Server ports, etc.)
   function setupImageFallbacks() {
-    document.querySelectorAll('img').forEach(function(img) {
-      img.addEventListener('error', function() {
+    document.querySelectorAll('img').forEach(function (img) {
+      img.addEventListener('error', function () {
         if (!this.dataset.retried) {
           this.dataset.retried = '1';
           var originalSrc = this.getAttribute('src') || '';
           var filename = originalSrc.split('/').pop();
           if (originalSrc.includes('logo')) {
-            this.src = '../logo.png';
+            this.src = '../city-logo.png';
           } else if (filename) {
             this.src = '../public/' + filename;
           }
@@ -219,31 +241,16 @@
     });
   }
 
-  // Load latest configuration from server if available
-  function fetchRemoteConfig() {
-    fetch('/api/config')
-      .then(function(res) { return res.json(); })
-      .then(function(data) {
-        if (data && data.master) {
-          window.SITE_CONTACTS_CONFIG = data;
-          applyContacts();
-        }
-      })
-      .catch(function() {});
-  }
-
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       setupImageFallbacks();
       applyContacts();
       injectFloatingButtons();
-      fetchRemoteConfig();
     });
   } else {
     setupImageFallbacks();
     applyContacts();
     injectFloatingButtons();
-    fetchRemoteConfig();
   }
 
   window.CityHaldwaniTracker = {
