@@ -3,10 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Report Violations &amp; Content Abuse | CityHaldwani.com</title>
-  <meta name="description" content="Report misleading profiles, copyright infringements, or conduct violations to the CityHaldwani.com compliance team for immediate investigation.">
-  <link rel="canonical" href="https://cityhaldwani.com/report-abuse">
+  <title>Report Abuse & Policy Violations | CityHaldwani.com</title>
+  <meta name="description" content="Report fake profiles, advance payment fraud, harassment, or unauthorized imagery to CityHaldwani.com compliance team.">
+  <link rel="canonical" href="https://cityhaldwani.com/report-abuse.html">
   <link rel="icon" href="favicon.webp" type="image/webp">
+
+  <!-- Open Graph Meta Tags (Image 1 Fix) -->
+  <meta property="og:title" content="Report Abuse & Policy Violations | CityHaldwani.com">
+  <meta property="og:description" content="Report fake profiles, advance payment fraud, harassment, or unauthorized imagery to CityHaldwani.com compliance team.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cityhaldwani.com/report-abuse.html">
+  <meta property="og:image" content="https://cityhaldwani.com/city-logo.png">
+  <meta property="og:site_name" content="CityHaldwani.com">
+
+  <!-- X / Twitter Card Meta Tags (Image 1 Fix) -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@CityHaldwani">
+  <meta name="twitter:title" content="Report Abuse & Policy Violations | CityHaldwani.com">
+  <meta name="twitter:description" content="Report fake profiles, advance payment fraud, harassment, or unauthorized imagery to CityHaldwani.com compliance team.">
+  <meta name="twitter:image" content="https://cityhaldwani.com/city-logo.png">
+
+  <!-- Directory Trailing Slash Script -->
+  <script>
+    (function() {
+      var p = window.location.pathname;
+      if (p.endsWith('/cityhaldwani_com')) {
+        window.location.replace(p + '/' + window.location.search + window.location.hash);
+      }
+    })();
+  </script>
+
   <link rel="stylesheet" href="css/style.css">
   <style>
 /* ==========================================================================
@@ -66,12 +92,12 @@ a {
 /* ================= Top Bar & Navigation ================= */
 .site-topbar {
   background: #ffffff;
-  border-bottom: 1px solid var(--border-light);
+  border-bottom: 2px solid #e2e8f0;
   padding: 12px 0;
   position: sticky;
   top: 0;
   z-index: 999;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .topbar-wrapper {
@@ -91,6 +117,7 @@ a {
   height: 44px;
   width: auto;
   border-radius: 8px;
+  object-fit: contain;
 }
 
 .brand-text h1, .brand-text .brand-title {
@@ -108,9 +135,9 @@ a {
 .brand-text p {
   font-size: 11px;
   color: var(--text-muted);
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.6px;
 }
 
 .topbar-actions {
@@ -142,11 +169,13 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  transition: background 0.2s;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.25);
 }
 
 .btn-header-call:hover {
   background: var(--emerald-dark);
+  transform: translateY(-1px);
 }
 
 .btn-header-wa {
@@ -159,44 +188,50 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  transition: background 0.2s;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(37, 211, 102, 0.25);
 }
 
 .btn-header-wa:hover {
   background: var(--wa-dark);
+  transform: translateY(-1px);
 }
 
 /* ================= Breadcrumb & Location Navigation Strip ================= */
 .breadcrumb-nav {
-  padding: 12px 0 6px 0;
+  padding: 14px 0 8px 0;
   font-size: 13px;
   color: var(--text-muted);
+  font-weight: 500;
 }
 
 .breadcrumb-nav a {
   color: var(--primary-accent);
+  transition: color 0.15s;
 }
 
 .breadcrumb-nav a:hover {
+  color: var(--primary-hover);
   text-decoration: underline;
 }
 
 .location-pills-bar {
   background: #ffffff;
   border: 1px solid var(--border-light);
+  border-top: 3px solid var(--primary-accent);
   border-radius: 12px;
-  padding: 14px 18px;
-  margin: 12px 0 24px 0;
+  padding: 16px 20px;
+  margin: 8px 0 24px 0;
   box-shadow: var(--shadow-sm);
 }
 
 .location-pills-title {
   font-size: 13px;
-  font-weight: 700;
-  color: var(--text-secondary);
+  font-weight: 800;
+  color: #1e293b;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 10px;
+  letter-spacing: 0.6px;
+  margin-bottom: 12px;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -210,7 +245,7 @@ a {
 
 .loc-pill {
   background: #f8fafc;
-  border: 1px solid var(--border-light);
+  border: 1px solid #cbd5e1;
   padding: 6px 14px;
   border-radius: 20px;
   font-size: 13px;
@@ -219,31 +254,41 @@ a {
   transition: all 0.2s ease;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
 }
 
-.loc-pill:hover, .loc-pill.active {
-  background: var(--rose-accent);
+.loc-pill:hover {
+  background: #eff6ff;
+  border-color: #93c5fd;
+  color: var(--primary-accent);
+  transform: translateY(-1px);
+}
+
+.loc-pill.active {
+  background: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
   color: #ffffff;
-  border-color: var(--rose-accent);
+  border-color: #be123c;
+  box-shadow: 0 2px 8px rgba(225, 29, 72, 0.3);
 }
 
 /* ================= Page Header / Hero ================= */
 .hero-editorial {
-  background: #ffffff;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
   border: 1px solid var(--border-light);
+  border-left: 4px solid var(--primary-accent);
   border-radius: 12px;
-  padding: 24px 28px;
+  padding: 26px 30px;
   margin-bottom: 24px;
   box-shadow: var(--shadow-sm);
 }
 
 .hero-editorial h1 {
-  font-size: 26px;
+  font-size: 25px;
   font-weight: 800;
   color: #0f172a;
-  line-height: 1.3;
+  line-height: 1.35;
   margin-bottom: 14px;
+  letter-spacing: -0.3px;
 }
 
 .hero-meta-badges {
@@ -255,17 +300,21 @@ a {
 
 .hero-badge {
   font-size: 12px;
-  font-weight: 600;
-  padding: 4px 10px;
+  font-weight: 700;
+  padding: 5px 12px;
   border-radius: 6px;
-  background: #f1f5f9;
-  color: #475569;
+  background: #eff6ff;
+  color: #1e40af;
+  border: 1px solid #bfdbfe;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .hero-editorial p {
   font-size: 15px;
   color: var(--text-secondary);
-  line-height: 1.7;
+  line-height: 1.75;
   margin-bottom: 12px;
 }
 
@@ -274,11 +323,13 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e2e8f0;
 }
 
 .listings-heading-bar h2 {
-  font-size: 20px;
+  font-size: 21px;
   font-weight: 800;
   color: #0f172a;
   display: flex;
@@ -287,9 +338,10 @@ a {
 }
 
 .listings-count-badge {
-  background: #fee2e2;
+  background: #fef2f2;
   color: var(--rose-accent);
-  padding: 4px 10px;
+  border: 1px solid #fecaca;
+  padding: 4px 12px;
   border-radius: 20px;
   font-size: 13px;
   font-weight: 700;
@@ -307,7 +359,7 @@ a {
   display: flex;
   gap: 20px;
   background: #ffffff;
-  border: 1px solid var(--border-light);
+  border: 1px solid #e2e8f0;
   border-radius: 12px;
   padding: 18px;
   box-shadow: var(--shadow-sm);
@@ -317,7 +369,7 @@ a {
 
 .profile-card:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
   border-color: #cbd5e1;
 }
 
@@ -328,7 +380,7 @@ a {
   overflow: hidden;
   position: relative;
   flex-shrink: 0;
-  background: #e2e8f0;
+  background: #f1f5f9;
 }
 
 .card-media img {
@@ -336,13 +388,18 @@ a {
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 0.3s ease;
+}
+
+.profile-card:hover .card-media img {
+  transform: scale(1.03);
 }
 
 .photo-count-pill {
   position: absolute;
   bottom: 8px;
   left: 8px;
-  background: rgba(15, 23, 42, 0.75);
+  background: rgba(15, 23, 42, 0.8);
   color: #ffffff;
   font-size: 11px;
   font-weight: 600;
@@ -360,9 +417,10 @@ a {
   font-size: 10.5px;
   font-weight: 800;
   text-transform: uppercase;
-  padding: 2px 7px;
+  padding: 3px 8px;
   border-radius: 4px;
   letter-spacing: 0.5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
 .card-content {
@@ -378,19 +436,19 @@ a {
 
 .badge-vip-pill {
   display: inline-block;
-  background: #fee2e2;
+  background: #fef2f2;
   color: var(--rose-accent);
   border: 1px solid #fecaca;
   font-size: 11px;
   font-weight: 800;
-  padding: 2px 6px;
+  padding: 3px 8px;
   border-radius: 4px;
   margin-right: 8px;
   text-transform: uppercase;
 }
 
 .profile-name-title {
-  font-size: 17px;
+  font-size: 17.5px;
   font-weight: 700;
   color: #0f172a;
   line-height: 1.35;
@@ -405,10 +463,10 @@ a {
 }
 
 .rate-chip {
-  background: #f1f5f9;
+  background: #f8fafc;
   border: 1px solid var(--border-light);
   color: #334155;
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 600;
   padding: 4px 10px;
   border-radius: 6px;
@@ -421,6 +479,7 @@ a {
   background: #ecfdf5;
   color: #065f46;
   border-color: #a7f3d0;
+  font-weight: 700;
 }
 
 .profile-description {
@@ -463,11 +522,13 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  transition: background 0.15s;
+  transition: all 0.15s ease;
+  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.2);
 }
 
 .btn-card-call:hover {
   background: var(--emerald-dark);
+  transform: translateY(-1px);
 }
 
 .btn-card-wa {
@@ -480,11 +541,13 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  transition: background 0.15s;
+  transition: all 0.15s ease;
+  box-shadow: 0 2px 6px rgba(37, 211, 102, 0.2);
 }
 
 .btn-card-wa:hover {
   background: var(--wa-dark);
+  transform: translateY(-1px);
 }
 
 .btn-card-details {
@@ -507,7 +570,7 @@ a {
   background: #ffffff;
   border: 1px solid var(--border-light);
   border-radius: 12px;
-  padding: 28px;
+  padding: 28px 32px;
   margin-bottom: 24px;
   box-shadow: var(--shadow-sm);
 }
@@ -520,13 +583,24 @@ a {
   line-height: 1.35;
   border-bottom: 2px solid #f1f5f9;
   padding-bottom: 10px;
+  position: relative;
+}
+
+.editorial-card h2::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background: var(--rose-accent);
 }
 
 .editorial-card h3 {
   font-size: 18px;
   font-weight: 700;
   color: #1e293b;
-  margin: 18px 0 8px 0;
+  margin: 20px 0 10px 0;
 }
 
 .editorial-card p {
@@ -555,10 +629,18 @@ a {
 }
 
 .category-box {
-  background: #f8fafc;
-  border: 1px solid var(--border-light);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
   border-radius: 10px;
-  padding: 16px;
+  padding: 18px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.category-box:hover {
+  border-color: #93c5fd;
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.08);
+  transform: translateY(-2px);
 }
 
 .category-box h4 {
@@ -579,6 +661,7 @@ a {
 .faq-section {
   background: #ffffff;
   border: 1px solid var(--border-light);
+  border-top: 3px solid var(--primary-accent);
   border-radius: 12px;
   padding: 30px;
   margin-bottom: 28px;
@@ -601,14 +684,19 @@ a {
 .faq-list {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
 }
 
 .faq-item {
   border: 1px solid var(--border-light);
   border-radius: 8px;
   overflow: hidden;
-  background: #f8fafc;
+  background: #ffffff;
+  transition: border-color 0.2s ease;
+}
+
+.faq-item:hover {
+  border-color: #cbd5e1;
 }
 
 .faq-question {
@@ -622,10 +710,12 @@ a {
   justify-content: space-between;
   align-items: center;
   user-select: none;
+  transition: background 0.15s;
 }
 
 .faq-question:hover {
   background: #f8fafc;
+  color: var(--primary-accent);
 }
 
 .faq-question::after {
@@ -634,10 +724,12 @@ a {
   font-weight: 700;
   color: var(--text-muted);
   margin-left: 10px;
+  transition: transform 0.2s ease;
 }
 
 .faq-item.open .faq-question::after {
   content: "−";
+  color: var(--rose-accent);
 }
 
 .faq-answer {
@@ -647,38 +739,70 @@ a {
   line-height: 1.7;
   border-top: 1px solid var(--border-light);
   background: #f8fafc;
+  display: none;
+}
+
+.faq-item.open .faq-answer {
+  display: block;
 }
 
 /* ================= Footer ================= */
 .site-footer {
-  background: #ffffff;
-  border-top: 1px solid var(--border-light);
-  padding: 40px 0 24px 0;
-  margin-top: 40px;
+  background: linear-gradient(180deg, #f8fafc 0%, #eef2f6 100%);
+  border-top: 3px solid #2563eb;
+  padding: 44px 0 0 0;
+  margin-top: 48px;
   color: var(--text-secondary);
 }
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 32px;
-  margin-bottom: 30px;
+  grid-template-columns: 2fr 1.2fr 1.2fr;
+  gap: 36px;
+  margin-bottom: 32px;
 }
 
 .footer-col h4 {
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 800;
   color: #0f172a;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 14px;
+  letter-spacing: 0.8px;
+  margin-bottom: 18px;
+  position: relative;
+  padding-bottom: 8px;
+}
+
+.footer-col h4::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 36px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--rose-accent), var(--primary-accent));
+  border-radius: 2px;
 }
 
 .footer-col p {
   font-size: 13.5px;
-  color: var(--text-muted);
-  line-height: 1.6;
-  margin-bottom: 12px;
+  color: #475569;
+  line-height: 1.65;
+  margin-bottom: 14px;
+}
+
+.footer-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #eff6ff;
+  color: #1e40af;
+  border: 1px solid #bfdbfe;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-top: 6px;
 }
 
 .footer-links {
@@ -687,24 +811,44 @@ a {
 }
 
 .footer-links li {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .footer-links a {
-  color: var(--text-secondary);
-  transition: color 0.15s;
+  color: #334155;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.footer-links a::before {
+  content: "›";
+  font-size: 15px;
+  color: #94a3b8;
+  font-weight: 700;
+  transition: all 0.2s ease;
 }
 
 .footer-links a:hover {
   color: var(--rose-accent);
+  transform: translateX(4px);
+  font-weight: 600;
+}
+
+.footer-links a:hover::before {
+  color: var(--rose-accent);
 }
 
 .footer-bottom {
-  border-top: 1px solid var(--border-light);
-  padding-top: 20px;
+  background: #e2e8f0;
+  border-top: 1px solid #cbd5e1;
+  padding: 16px 0;
   text-align: center;
   font-size: 12.5px;
-  color: var(--text-muted);
+  color: #475569;
+  font-weight: 500;
 }
 
 /* ================= Mobile Responsiveness ================= */
@@ -726,7 +870,7 @@ a {
   }
   .footer-grid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 24px;
   }
   .hero-editorial h1 {
     font-size: 21px;
@@ -747,7 +891,7 @@ a {
   <header class="site-topbar">
     <div class="container topbar-wrapper">
       <a href="index.html" class="brand-group">
-        <img src="logo.png" alt="CityHaldwani.com Logo" class="brand-logo-img">
+        <img src="city-logo.png" alt="CityHaldwani.com Logo" class="brand-logo-img" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='logo.png';}">
         <div class="brand-text">
           <div class="brand-title">CityHaldwani<span>.com</span></div>
           <p>Verified Uttarakhand Classifieds</p>
@@ -763,31 +907,24 @@ a {
 
   <main class="container">
     <nav class="breadcrumb-nav">
-      <a href="index.html">Home</a> &gt; <span>Report Violations</span>
+      <a href="index.html">Home</a> &gt; <span>Report Abuse &amp; Violations</span>
     </nav>
 
     <div class="editorial-card" style="margin-top: 16px;">
-      <h1>Report Violations &amp; Policy Abuse</h1>
-      <p>CityHaldwani.com enforces stringent advertising ethics. If you encounter any listing that violates our directory standards, contains stolen or uncredited photography, requests fraudulent upfront deposits, or promotes non-consensual behavior, please report it immediately.</p>
+      <h1>Report Abuse &amp; Violations</h1>
 
-      <h2>Grounds for Immediate Listing Removal</h2>
+      <p>CityHaldwani.com maintains an uncompromising zero-tolerance policy against advance fraud, fake profiles, underage access, and non-consensual exploitation. If you encounter any violation of our standards, report it immediately.</p>
+
+      <h2>What to Report:</h2>
       <ul>
-        <li><strong>Identity Misrepresentation:</strong> Use of celebrity, non-consenting individual, or counterfeit photos.</li>
-        <li><strong>Advance Fee Fraud:</strong> Any advertiser demanding UPI or bank wire transfers before meeting in person.</li>
-        <li><strong>Underage Content:</strong> Any indication or suspicion of individuals under 18 years of age.</li>
-        <li><strong>Harassment or Blackmail:</strong> Any threatening behavior towards clients or directory staff.</li>
+        <li><strong>Advance Money Demands:</strong> Any advertiser asking for online bank transfers, Google Pay, PhonePe, or Paytm advance deposits.</li>
+        <li><strong>Misleading Photography:</strong> Advertisers failing to match their published photographs.</li>
+        <li><strong>Underage Concerns:</strong> Any suspicion of persons below the legal age of 18.</li>
+        <li><strong>Harassment or Blackmail:</strong> Any unethical behavior or breach of privacy.</li>
       </ul>
 
-      <h2>How to File an Urgent Complaint</h2>
-      <p>To file a violation ticket, message our administrative team on WhatsApp or call our central compliance desk with:</p>
-      <ol>
-        <li>The specific profile name and URL path where the listing is hosted.</li>
-        <li>Screen captures or documentation supporting the complaint.</li>
-        <li>A brief explanation of the infraction.</li>
-      </ol>
-      <div style="margin-top: 20px;">
-        <a href="https://api.whatsapp.com/send?phone=919876543210" class="btn-header-wa" data-contact="whatsapp">Report on WhatsApp</a>
-      </div>
+      <h2>How to Submit an Incident Report</h2>
+      <p>Send a detailed message directly to our Compliance Desk via WhatsApp or Telephone support: <strong>+91 98765 43210</strong>. Include the advertiser's advertised profile name, contact phone number, and a brief description of the incident. Reports are investigated within 2 to 4 hours, and offending listings are removed permanently.</p>
     </div>
   </main>
 
@@ -796,6 +933,7 @@ a {
       <div class="footer-col">
         <h4>CityHaldwani.com</h4>
         <p>Premier light-theme verified classified portal for Uttarakhand companions and tourists. Strict 18+ compliance and privacy assurance.</p>
+        <span class="footer-badge-pill">🛡️ 100% Verified Classifieds • 18+ Adult Directory</span>
       </div>
       <div class="footer-col">
         <h4>Top Destinations</h4>
@@ -805,6 +943,9 @@ a {
           <li><a href="locations/bhimtal.html">Bhimtal Escorts</a></li>
           <li><a href="locations/ramnagar.html">Ramnagar Escorts</a></li>
           <li><a href="locations/jim-corbett.html">Jim Corbett Escorts</a></li>
+          <li><a href="locations/rudrapur.html">Rudrapur Escorts</a></li>
+          <li><a href="locations/almora.html">Almora Escorts</a></li>
+          <li><a href="locations/bhowali.html">Bhowali Escorts</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -815,11 +956,12 @@ a {
           <li><a href="report-abuse.html">Report Violations</a></li>
           <li><a href="terms.html">Terms of Service</a></li>
           <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="contact-us.html">Contact Support Desk</a></li>
         </ul>
       </div>
     </div>
     <div class="container footer-bottom">
-      &copy; 2026 CityHaldwani.com. All rights reserved. 18+ Classified Directory.
+      &copy; 2026 CityHaldwani.com. All rights reserved. 100% Verified 18+ Classified Directory.
     </div>
   </footer>
 

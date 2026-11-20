@@ -181,10 +181,10 @@ for loc in LOCATIONS_CONFIG:
         <div>
           <h4>📍 <a href="locations/{loc['slug']}.html" style="color: inherit;">{loc['name']} Escorts</a></h4>
           <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 6px;">{loc['tagline']}</p>
-          <p style="font-size: 13px;">{loc['meta_desc']}</p>
+          <p style="font-size: 13.5px; color: var(--text-secondary);">{loc['meta_desc']}</p>
         </div>
-        <div style="margin-top: 10px;">
-          <a href="locations/{loc['slug']}.html" class="btn-card-details" style="display: inline-block; width: 100%; text-align: center;">View 16 Profiles in {loc['name']} &rarr;</a>
+        <div style="margin-top: 14px;">
+          <a href="locations/{loc['slug']}.html" class="btn-card-details" style="display: inline-block; width: 100%; text-align: center; font-weight: 700; color: var(--primary-accent);">View 16 Profiles in {loc['name']} &rarr;</a>
         </div>
       </div>''')
 dest_cards_str = "\n".join(dest_cards)
@@ -198,6 +198,32 @@ index_html = f'''<!DOCTYPE html>
   <meta name="description" content="CityHaldwani.com is Uttarakhand's premier light-theme classified directory. Explore 100% verified independent escorts in Haldwani, Nainital, Bhimtal, Ramnagar, Corbett, and 15 destinations. Cash on meeting, zero advance.">
   <link rel="canonical" href="https://cityhaldwani.com/">
   <link rel="icon" href="favicon.webp" type="image/webp">
+
+  <!-- Open Graph Meta Tags (Image 1 Fix) -->
+  <meta property="og:title" content="CityHaldwani.com - Premier Uttarakhand Escort Directory &amp; Verified Classifieds">
+  <meta property="og:description" content="Explore 100% verified independent escorts in Haldwani, Nainital, Bhimtal, Ramnagar, Corbett, and 15 Uttarakhand destinations. Strict 18+ verification, zero advance.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cityhaldwani.com/">
+  <meta property="og:image" content="https://cityhaldwani.com/city-logo.png">
+  <meta property="og:site_name" content="CityHaldwani.com">
+
+  <!-- X / Twitter Card Meta Tags (Image 1 Fix) -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@CityHaldwani">
+  <meta name="twitter:title" content="CityHaldwani.com - Premier Uttarakhand Escort Directory &amp; Verified Classifieds">
+  <meta name="twitter:description" content="Explore 100% verified independent escorts in Haldwani, Nainital, Bhimtal, Ramnagar, Corbett, and 15 Uttarakhand destinations. Cash on meeting, zero advance.">
+  <meta name="twitter:image" content="https://cityhaldwani.com/city-logo.png">
+
+  <!-- Directory Trailing Slash Normalization Script (Fixes Image 2 & Image 3 404s when navigating subfolder without trailing slash) -->
+  <script>
+    (function() {{
+      var p = window.location.pathname;
+      if (p.endsWith('/cityhaldwani_com')) {{
+        window.location.replace(p + '/' + window.location.search + window.location.hash);
+      }}
+    }})();
+  </script>
+
   <link rel="stylesheet" href="css/style.css">
   <style>
 {EMBEDDED_CSS}
@@ -213,7 +239,7 @@ index_html = f'''<!DOCTYPE html>
   <header class="site-topbar">
     <div class="container topbar-wrapper">
       <a href="index.html" class="brand-group">
-        <img src="logo.png" alt="CityHaldwani.com Logo" class="brand-logo-img" onerror="if(!this.dataset.retried){{this.dataset.retried=1;this.src='city-logo.png';}}">
+        <img src="city-logo.png" alt="CityHaldwani.com Logo" class="brand-logo-img" onerror="if(!this.dataset.retried){{this.dataset.retried=1;this.src='logo.png';}}">
         <div class="brand-text">
           <div class="brand-title">CityHaldwani<span>.com</span></div>
           <p>Verified Uttarakhand Classifieds</p>
@@ -239,6 +265,7 @@ index_html = f'''<!DOCTYPE html>
       </div>
     </div>
 
+    <!-- HERO EDITORIAL SECTION -->
     <section class="hero-editorial">
       <h1>Premier Uttarakhand Classified Directory - 100% Verified Independent Escorts &amp; 5-Star Hotel Companions</h1>
       <div class="hero-meta-badges">
@@ -255,14 +282,7 @@ index_html = f'''<!DOCTYPE html>
       </p>
     </section>
 
-    <section class="editorial-card" id="locations">
-      <h2>Explore Verified Companions Across 15 Uttarakhand Locations</h2>
-      <p>Select your city below to browse dedicated 16-profile directories with localized pricing, hotel guides, and safety recommendations:</p>
-      <div class="categories-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
-{dest_cards_str}
-      </div>
-    </section>
-
+    <!-- SECTION 1: PROFILES SECTION FIRST (Shifted as requested by user) -->
     <section class="listings-section" id="featured-listings">
       <div class="listings-heading-bar">
         <h2>🔥 16 Featured VIP Classified Profiles Across Uttarakhand</h2>
@@ -273,6 +293,16 @@ index_html = f'''<!DOCTYPE html>
       </div>
     </section>
 
+    <!-- SECTION 2: EXPLORE LOCATIONS SECTION DIRECTLY UNDER PROFILES SECTION -->
+    <section class="editorial-card" id="locations">
+      <h2>Explore Verified Companions Across 15 Uttarakhand Locations</h2>
+      <p>Select your city below to browse dedicated 16-profile directories with localized pricing, hotel guides, and safety recommendations:</p>
+      <div class="categories-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+{dest_cards_str}
+      </div>
+    </section>
+
+    <!-- EDITORIAL & GUIDE SECTIONS -->
     <section class="editorial-card">
       <h2>The Gold Standard in Independent Uttarakhand Companionship</h2>
       <p>
@@ -322,6 +352,7 @@ index_html = f'''<!DOCTYPE html>
     </section>
   </main>
 
+  <!-- COLORED & ENHANCED FOOTER (Image 3 Fix: Exact relative working links to eliminate 404s) -->
   <footer class="site-footer">
     <div class="container footer-grid">
       <div class="footer-col">
@@ -329,6 +360,10 @@ index_html = f'''<!DOCTYPE html>
         <p>
           Uttarakhand's premier light-theme classified directory connecting verified independent advertisers with respectful adult clients across 15 destination hubs. Strict 18+ compliance, cash on meeting, and complete discretion.
         </p>
+        <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px;">
+          Covering Haldwani, Nainital, Bhimtal, Ramnagar, Jim Corbett, Rudrapur, Kathgodam, Kashipur, Bajpur, Khatima, Sitarganj, Kichha, Almora, Bhowali, and Kaladhungi.
+        </p>
+        <span class="footer-badge-pill">🛡️ 100% Verified Classifieds • 18+ Adult Directory</span>
       </div>
       <div class="footer-col">
         <h4>Popular Destination Hubs</h4>
@@ -356,7 +391,7 @@ index_html = f'''<!DOCTYPE html>
       </div>
     </div>
     <div class="container footer-bottom">
-      &copy; 2026 CityHaldwani.com. All rights reserved. 18+ Classified Directory.
+      &copy; 2026 CityHaldwani.com. All rights reserved. 100% Verified 18+ Classified Directory.
     </div>
   </footer>
 
@@ -382,19 +417,293 @@ home_profiles = len(re.findall(r'class="profile-card"', index_html))
 home_faqs_count = len(re.findall(r'class="faq-item"', index_html))
 print(f"Generated index.html -> Words: {home_words}, Profiles: {home_profiles}, FAQs: {home_faqs_count}")
 
+# Generate/Update All Corporate Policy Pages with matching styling, Open Graph/Twitter tags, and exact footer links
+POLICY_PAGES = [
+    {
+        'file': 'about-us.html',
+        'title': 'About Us - Premier Uttarakhand Classified Directory | CityHaldwani.com',
+        'desc': 'Learn about CityHaldwani.com, Uttarakhand\'s premier light-theme classified directory connecting verified independent advertisers with respectful adult clients.',
+        'canonical': 'https://cityhaldwani.com/about-us.html',
+        'h1': 'About CityHaldwani.com',
+        'content': '''
+      <p>Welcome to <strong>CityHaldwani.com</strong>, the dedicated regional classifieds and companionship directory serving Haldwani, Nainital, Bhimtal, Ramnagar, Jim Corbett, Rudrapur, Kashipur, and all 15 major destination hubs of Uttarakhand. Our platform was architected with a singular commitment: delivering an uncompromisingly transparent, secure, and modern advertising venue where independent companions and professional clients connect directly without predatory intermediaries or fraudulent booking practices.</p>
+
+      <h2>Our Core Operational Mission</h2>
+      <p>In an industry frequently clouded by unverified listings and misleading imagery, CityHaldwani.com sets the gold standard for authentication, privacy protection, and user experience. We operate as a neutral digital classified hosting service adhering strictly to fair information practices, verified digital identities, and adult legal standards.</p>
+
+      <h3>1. Rigorous Advertiser Vetting</h3>
+      <p>Every advertiser hosted across our location hubs undergoes an identity and age verification audit before publication. We require photo matching and confirmation of adult legal age (18+), ensuring that users interact exclusively with consenting adults presenting authentic representations of their services.</p>
+
+      <h3>2. Privacy-Centric Architecture</h3>
+      <p>Client confidentiality is paramount. CityHaldwani.com does not record invasive digital footprints, track non-essential cookies, or resell visitor communications. All inquiries happen directly over encrypted WhatsApp channels or direct voice calls between clients and advertisers.</p>
+
+      <h3>3. Promoting Consensual, Ethical Etiquette</h3>
+      <p>We uphold a zero-tolerance stance against exploitation, human trafficking, fraud, and misconduct. We mandate mutual respect, safe meeting standards in recognized five-star hotels and private residences, and transparent financial terms between independent parties.</p>
+
+      <h2>Serving the Himalayan Tourism Corridor</h2>
+      <p>From vacationers seeking VIP companionship during tranquil weekend retreats along the banks of Bhimtal and Nainital Lake, to corporate executives attending industrial conferences across Rudrapur and Kashipur, CityHaldwani.com bridges the gap between discerning visitors and elite local companionship.</p>
+
+      <h2>Direct Contact &amp; Support</h2>
+      <p>Have inquiries regarding directory policies, partnership verifications, or listing corrections? Our technical team remains responsive 24 hours a day to preserve directory integrity and user safety.</p>'''
+    },
+    {
+        'file': 'safety-guide.html',
+        'title': 'Safety Guidelines & Client Protection Protocol | CityHaldwani.com',
+        'desc': 'Essential safety guidelines, the ironclad zero-advance payment rule, and verification protocols for meeting independent companions in Uttarakhand.',
+        'canonical': 'https://cityhaldwani.com/safety-guide.html',
+        'h1': 'Safety Guidelines &amp; Client Protection Protocol',
+        'content': '''
+      <p>At <strong>CityHaldwani.com</strong>, the personal safety and financial security of both visitors and independent advertisers are our paramount commitments. Please review our safety protocols carefully before initiating contact with any advertiser.</p>
+
+      <h2>1. The Ironclad Zero Advance Rule</h2>
+      <p><strong>Never send money online before meeting in person.</strong> No legitimate advertiser on CityHaldwani.com will ever demand online payment, UPI deposits, hotel advance fees, booking charges, or security tokens before arrival. Always pay directly in cash after meeting your companion in person inside your hotel room or private venue.</p>
+
+      <h2>2. Choose Verified Luxury Accommodations</h2>
+      <p>Always arrange appointments at recognized, guest-friendly 4-star and 5-star hotels or certified resort properties. These establishments provide dedicated front-desk security, soundproof rooms, private elevator access, and a safe environment for all parties.</p>
+
+      <h2>3. Photo &amp; Identity Verification on Doorstep</h2>
+      <p>When your companion arrives at your door, verify that her appearance matches her published photographs. Under our zero-advance policy, you retain the complete right to politely decline the appointment at the threshold if there is any misrepresentation.</p>
+
+      <h2>4. Exemplary Personal Hygiene &amp; Mutual Boundaries</h2>
+      <p>Mutual respect is the cornerstone of every fulfilling appointment. Maintain high personal hygiene standards, practice safe and responsible encounters, and strictly respect agreed boundaries and scheduled durations.</p>'''
+    },
+    {
+        'file': 'report-abuse.html',
+        'title': 'Report Abuse & Policy Violations | CityHaldwani.com',
+        'desc': 'Report fake profiles, advance payment fraud, harassment, or unauthorized imagery to CityHaldwani.com compliance team.',
+        'canonical': 'https://cityhaldwani.com/report-abuse.html',
+        'h1': 'Report Abuse &amp; Violations',
+        'content': '''
+      <p>CityHaldwani.com maintains an uncompromising zero-tolerance policy against advance fraud, fake profiles, underage access, and non-consensual exploitation. If you encounter any violation of our standards, report it immediately.</p>
+
+      <h2>What to Report:</h2>
+      <ul>
+        <li><strong>Advance Money Demands:</strong> Any advertiser asking for online bank transfers, Google Pay, PhonePe, or Paytm advance deposits.</li>
+        <li><strong>Misleading Photography:</strong> Advertisers failing to match their published photographs.</li>
+        <li><strong>Underage Concerns:</strong> Any suspicion of persons below the legal age of 18.</li>
+        <li><strong>Harassment or Blackmail:</strong> Any unethical behavior or breach of privacy.</li>
+      </ul>
+
+      <h2>How to Submit an Incident Report</h2>
+      <p>Send a detailed message directly to our Compliance Desk via WhatsApp or Telephone support: <strong>+91 98765 43210</strong>. Include the advertiser\'s advertised profile name, contact phone number, and a brief description of the incident. Reports are investigated within 2 to 4 hours, and offending listings are removed permanently.</p>'''
+    },
+    {
+        'file': 'terms.html',
+        'title': 'Terms of Service & User Agreement | CityHaldwani.com',
+        'desc': 'Review the terms of service, user agreement, and directory disclaimer governing the use of CityHaldwani.com classified portal.',
+        'canonical': 'https://cityhaldwani.com/terms.html',
+        'h1': 'Terms of Service',
+        'content': '''
+      <p>By accessing or utilizing <strong>CityHaldwani.com</strong>, you agree to comply with and be bound by the following terms and conditions. If you disagree with any portion of these terms, you must exit this website immediately.</p>
+
+      <h2>1. Age Requirement (18+ Only)</h2>
+      <p>CityHaldwani.com contains adult-oriented classified advertising intended solely for consenting adults who have reached the legal age of majority (at least 18 years of age). By browsing this directory, you certify under penalty of perjury that you are at least 18 years old.</p>
+
+      <h2>2. Neutral Classified Hosting Platform</h2>
+      <p>CityHaldwani.com functions solely as a neutral digital classified advertising conduit. We do not operate an escort agency, brokerage firm, or employment service. Advertisers are independent adults who manage their own schedules, rates, and services.</p>
+
+      <h2>3. Independent Financial Settlement</h2>
+      <p>All financial arrangements occur strictly between the consenting adult client and the independent advertiser. CityHaldwani.com does not process, handle, or collect any payments, commissions, or booking fees on behalf of advertisers.</p>
+
+      <h2>4. Prohibited Conduct</h2>
+      <p>Users are strictly prohibited from utilizing this platform for any illegal purpose, human exploitation, unsolicited commercial messaging, or attempting to capture or redistribute advertiser photographs without authorization.</p>'''
+    },
+    {
+        'file': 'privacy.html',
+        'title': 'Privacy Policy & Data Protection | CityHaldwani.com',
+        'desc': 'Discover how CityHaldwani.com preserves client anonymity, data privacy, and enforces zero tracking on our light-theme classified platform.',
+        'canonical': 'https://cityhaldwani.com/privacy.html',
+        'h1': 'Privacy Policy',
+        'content': '''
+      <p>Your privacy and confidentiality are of paramount importance to us. This Privacy Policy details our minimal data practices and our commitment to protecting your digital footprint while browsing <strong>CityHaldwani.com</strong>.</p>
+
+      <h2>1. Zero Personal Data Collection</h2>
+      <p>CityHaldwani.com does not require user registration, login credentials, credit card details, or personal names to access our classified directory. You can browse all destination hubs completely anonymously.</p>
+
+      <h2>2. No Tracking Cookies</h2>
+      <p>We do not use invasive tracking cookies or commercial tracking pixels to monitor your web activity across the internet. Session storage is used strictly for essential user experience functions, such as remembering 18+ age verification consent.</p>
+
+      <h2>3. Encrypted Direct Communications</h2>
+      <p>When you click to call or message an advertiser via WhatsApp, your communication routes through encrypted external protocols directly to the independent advertiser. CityHaldwani.com never intercepts, records, or stores your private conversations.</p>
+
+      <h2>4. Digital Security Shield</h2>
+      <p>We implement strict security measures to protect the digital assets of our advertisers, including restricting unauthorized right-click actions, automated scraping, and screen capture attempts.</p>'''
+    },
+    {
+        'file': 'contact-us.html',
+        'title': 'Contact Us & Support Desk | CityHaldwani.com',
+        'desc': 'Get in touch with the CityHaldwani.com support desk for advertising inquiries, profile verification, and technical assistance.',
+        'canonical': 'https://cityhaldwani.com/contact-us.html',
+        'h1': 'Contact Support Desk',
+        'content': '''
+      <p>Welcome to the <strong>CityHaldwani.com</strong> Client &amp; Advertiser Support Center. We are dedicated to providing swift, confidential assistance to visitors and verified advertisers across Uttarakhand.</p>
+
+      <h2>Direct Communication Channels</h2>
+      <p>For immediate assistance regarding advertising opportunities, listing updates, or directory feedback, please reach out to our dedicated support coordinators:</p>
+      <ul>
+        <li><strong>Telephone Support:</strong> <a href="tel:+919876543210" style="color: var(--primary-accent); font-weight: 700;">+91 98765 43210</a> (Available 24/7)</li>
+        <li><strong>WhatsApp Helpdesk:</strong> <a href="https://api.whatsapp.com/send?phone=919876543210" style="color: var(--wa-green); font-weight: 700;">+91 98765 43210</a> (Instant Messaging)</li>
+        <li><strong>Operating Hours:</strong> 24 Hours a Day, 7 Days a Week, 365 Days a Year</li>
+      </ul>
+
+      <h2>New Advertiser Verification Requirements</h2>
+      <p>If you are an independent female companion aged 18 or older wishing to list your services on CityHaldwani.com, please prepare the following verification items:</p>
+      <ol>
+        <li>Clear government-issued photo ID confirming age 18+ (personal identification details may be obscured; only photo and date of birth must be clearly visible).</li>
+        <li>A real-time verification selfie holding a handwritten note with today\'s date.</li>
+        <li>High-resolution, unedited portfolio photographs for your profile.</li>
+        <li>Your preferred operating destinations across our 15 Uttarakhand hubs.</li>
+      </ol>
+      <p>Send all verification materials via WhatsApp for review by our administrative compliance team.</p>'''
+    },
+    {
+        'file': '404.html',
+        'title': 'Page Not Found (404) | CityHaldwani.com',
+        'desc': 'The requested page was not found on CityHaldwani.com. Browse our 15 verified Uttarakhand escort destination hubs.',
+        'canonical': 'https://cityhaldwani.com/404.html',
+        'h1': 'Page Not Found (404)',
+        'content': '''
+      <p style="font-size: 17px; margin-bottom: 20px;">We apologize, but the page you requested cannot be located. It may have been moved, renamed, or temporarily retired.</p>
+      <div style="margin-bottom: 24px;">
+        <a href="index.html" class="btn-card-call" style="font-size: 15px; padding: 10px 24px;">&larr; Return to Homepage</a>
+      </div>
+      <h2>Browse Active Destination Hubs:</h2>
+      <div class="location-pills-grid" style="margin-top: 14px;">
+''' + home_pills_html + '''
+      </div>'''
+    }
+]
+
+for p in POLICY_PAGES:
+    pol_html = f'''<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{p['title']}</title>
+  <meta name="description" content="{p['desc']}">
+  <link rel="canonical" href="{p['canonical']}">
+  <link rel="icon" href="favicon.webp" type="image/webp">
+
+  <!-- Open Graph Meta Tags (Image 1 Fix) -->
+  <meta property="og:title" content="{p['title']}">
+  <meta property="og:description" content="{p['desc']}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{p['canonical']}">
+  <meta property="og:image" content="https://cityhaldwani.com/city-logo.png">
+  <meta property="og:site_name" content="CityHaldwani.com">
+
+  <!-- X / Twitter Card Meta Tags (Image 1 Fix) -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@CityHaldwani">
+  <meta name="twitter:title" content="{p['title']}">
+  <meta name="twitter:description" content="{p['desc']}">
+  <meta name="twitter:image" content="https://cityhaldwani.com/city-logo.png">
+
+  <!-- Directory Trailing Slash Script -->
+  <script>
+    (function() {{
+      var p = window.location.pathname;
+      if (p.endsWith('/cityhaldwani_com')) {{
+        window.location.replace(p + '/' + window.location.search + window.location.hash);
+      }}
+    }})();
+  </script>
+
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+{EMBEDDED_CSS}
+  </style>
+</head>
+<body>
+  <header class="site-topbar">
+    <div class="container topbar-wrapper">
+      <a href="index.html" class="brand-group">
+        <img src="city-logo.png" alt="CityHaldwani.com Logo" class="brand-logo-img" onerror="if(!this.dataset.retried){{this.dataset.retried=1;this.src='logo.png';}}">
+        <div class="brand-text">
+          <div class="brand-title">CityHaldwani<span>.com</span></div>
+          <p>Verified Uttarakhand Classifieds</p>
+        </div>
+      </a>
+      <div class="topbar-actions">
+        <span class="badge-verified-top">&#10004; Verified Directory</span>
+        <a href="tel:+919876543210" class="btn-header-call" data-contact="call">Call Support</a>
+        <a href="https://api.whatsapp.com/send?phone=919876543210" class="btn-header-wa" data-contact="whatsapp">WhatsApp</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <nav class="breadcrumb-nav">
+      <a href="index.html">Home</a> &gt; <span>{p['h1']}</span>
+    </nav>
+
+    <div class="editorial-card" style="margin-top: 16px;">
+      <h1>{p['h1']}</h1>
+{p['content']}
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h4>CityHaldwani.com</h4>
+        <p>Premier light-theme verified classified portal for Uttarakhand companions and tourists. Strict 18+ compliance and privacy assurance.</p>
+        <span class="footer-badge-pill">🛡️ 100% Verified Classifieds • 18+ Adult Directory</span>
+      </div>
+      <div class="footer-col">
+        <h4>Top Destinations</h4>
+        <ul class="footer-links">
+          <li><a href="locations/haldwani.html">Haldwani Escorts</a></li>
+          <li><a href="locations/nainital.html">Nainital Escorts</a></li>
+          <li><a href="locations/bhimtal.html">Bhimtal Escorts</a></li>
+          <li><a href="locations/ramnagar.html">Ramnagar Escorts</a></li>
+          <li><a href="locations/jim-corbett.html">Jim Corbett Escorts</a></li>
+          <li><a href="locations/rudrapur.html">Rudrapur Escorts</a></li>
+          <li><a href="locations/almora.html">Almora Escorts</a></li>
+          <li><a href="locations/bhowali.html">Bhowali Escorts</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Corporate &amp; Legal</h4>
+        <ul class="footer-links">
+          <li><a href="about-us.html">About Us</a></li>
+          <li><a href="safety-guide.html">Safety Guidelines</a></li>
+          <li><a href="report-abuse.html">Report Violations</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="contact-us.html">Contact Support Desk</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      &copy; 2026 CityHaldwani.com. All rights reserved. 100% Verified 18+ Classified Directory.
+    </div>
+  </footer>
+
+  <script src="js/contacts-config.js"></script>
+  <script src="js/contact-manager.js"></script>
+  <script src="js/security-shield.js"></script>
+  <script src="js/age-gate.js"></script>
+</body>
+</html>'''
+    with open(os.path.join(OUTPUT_DIR, p['file']), 'w', encoding='utf-8') as f:
+        f.write(pol_html)
+    print(f"Generated {p['file']}")
+
 # Generate sitemap.xml
 sitemap_urls = [
     ('https://cityhaldwani.com/', '1.0', 'daily'),
-    ('https://cityhaldwani.com/about-us', '0.6', 'monthly'),
-    ('https://cityhaldwani.com/contact-us', '0.6', 'monthly'),
-    ('https://cityhaldwani.com/safety-guide', '0.7', 'monthly'),
-    ('https://cityhaldwani.com/terms', '0.5', 'monthly'),
-    ('https://cityhaldwani.com/privacy', '0.5', 'monthly'),
-    ('https://cityhaldwani.com/report-abuse', '0.5', 'monthly')
+    ('https://cityhaldwani.com/about-us.html', '0.6', 'monthly'),
+    ('https://cityhaldwani.com/contact-us.html', '0.6', 'monthly'),
+    ('https://cityhaldwani.com/safety-guide.html', '0.7', 'monthly'),
+    ('https://cityhaldwani.com/terms.html', '0.5', 'monthly'),
+    ('https://cityhaldwani.com/privacy.html', '0.5', 'monthly'),
+    ('https://cityhaldwani.com/report-abuse.html', '0.5', 'monthly')
 ]
 
 for loc in LOCATIONS_CONFIG:
-    sitemap_urls.append((f"https://cityhaldwani.com/locations/{loc['slug']}", '0.9', 'daily'))
+    sitemap_urls.append((f"https://cityhaldwani.com/locations/{loc['slug']}.html", '0.9', 'daily'))
 
 sitemap_xml = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
 for u, prio, freq in sitemap_urls:
@@ -428,21 +737,21 @@ llms_txt = """# CityHaldwani.com - AI Agent & LLM Information Guide
 CityHaldwani.com operates strictly as a neutral technology venue providing verified adult classified listings across 15 destination hubs in Uttarakhand, India. The platform enforces an ironclad Zero Advance Payment policy, strict 18+ age verification, and 100% genuine photographic vetting.
 
 ## Operational Destinations (15 Hubs)
-- Nainital: https://cityhaldwani.com/locations/nainital
-- Bhimtal: https://cityhaldwani.com/locations/bhimtal
-- Almora: https://cityhaldwani.com/locations/almora
-- Ramnagar: https://cityhaldwani.com/locations/ramnagar
-- Haldwani: https://cityhaldwani.com/locations/haldwani
-- Kaladhungi: https://cityhaldwani.com/locations/kaladhungi
-- Rudrapur: https://cityhaldwani.com/locations/rudrapur
-- Kathgodam: https://cityhaldwani.com/locations/kathgodam
-- Kashipur: https://cityhaldwani.com/locations/kashipur
-- Bajpur: https://cityhaldwani.com/locations/bajpur
-- Khatima: https://cityhaldwani.com/locations/khatima
-- Sitarganj: https://cityhaldwani.com/locations/sitarganj
-- Kichha: https://cityhaldwani.com/locations/kichha
-- Jim Corbett: https://cityhaldwani.com/locations/jim-corbett
-- Bhowali: https://cityhaldwani.com/locations/bhowali
+- Nainital: https://cityhaldwani.com/locations/nainital.html
+- Bhimtal: https://cityhaldwani.com/locations/bhimtal.html
+- Almora: https://cityhaldwani.com/locations/almora.html
+- Ramnagar: https://cityhaldwani.com/locations/ramnagar.html
+- Haldwani: https://cityhaldwani.com/locations/haldwani.html
+- Kaladhungi: https://cityhaldwani.com/locations/kaladhungi.html
+- Rudrapur: https://cityhaldwani.com/locations/rudrapur.html
+- Kathgodam: https://cityhaldwani.com/locations/kathgodam.html
+- Kashipur: https://cityhaldwani.com/locations/kashipur.html
+- Bajpur: https://cityhaldwani.com/locations/bajpur.html
+- Khatima: https://cityhaldwani.com/locations/khatima.html
+- Sitarganj: https://cityhaldwani.com/locations/sitarganj.html
+- Kichha: https://cityhaldwani.com/locations/kichha.html
+- Jim Corbett: https://cityhaldwani.com/locations/jim-corbett.html
+- Bhowali: https://cityhaldwani.com/locations/bhowali.html
 
 ## Legal & Compliance
 - Strictly 18+ Consensual Adult Advertising.

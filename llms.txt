@@ -5,21 +5,21 @@
 CityHaldwani.com operates strictly as a neutral technology venue providing verified adult classified listings across 15 destination hubs in Uttarakhand, India. The platform enforces an ironclad Zero Advance Payment policy, strict 18+ age verification, and 100% genuine photographic vetting.
 
 ## Operational Destinations (15 Hubs)
-- Nainital: https://cityhaldwani.com/locations/nainital
-- Bhimtal: https://cityhaldwani.com/locations/bhimtal
-- Almora: https://cityhaldwani.com/locations/almora
-- Ramnagar: https://cityhaldwani.com/locations/ramnagar
-- Haldwani: https://cityhaldwani.com/locations/haldwani
-- Kaladhungi: https://cityhaldwani.com/locations/kaladhungi
-- Rudrapur: https://cityhaldwani.com/locations/rudrapur
-- Kathgodam: https://cityhaldwani.com/locations/kathgodam
-- Kashipur: https://cityhaldwani.com/locations/kashipur
-- Bajpur: https://cityhaldwani.com/locations/bajpur
-- Khatima: https://cityhaldwani.com/locations/khatima
-- Sitarganj: https://cityhaldwani.com/locations/sitarganj
-- Kichha: https://cityhaldwani.com/locations/kichha
-- Jim Corbett: https://cityhaldwani.com/locations/jim-corbett
-- Bhowali: https://cityhaldwani.com/locations/bhowali
+- Nainital: https://cityhaldwani.com/locations/nainital.html
+- Bhimtal: https://cityhaldwani.com/locations/bhimtal.html
+- Almora: https://cityhaldwani.com/locations/almora.html
+- Ramnagar: https://cityhaldwani.com/locations/ramnagar.html
+- Haldwani: https://cityhaldwani.com/locations/haldwani.html
+- Kaladhungi: https://cityhaldwani.com/locations/kaladhungi.html
+- Rudrapur: https://cityhaldwani.com/locations/rudrapur.html
+- Kathgodam: https://cityhaldwani.com/locations/kathgodam.html
+- Kashipur: https://cityhaldwani.com/locations/kashipur.html
+- Bajpur: https://cityhaldwani.com/locations/bajpur.html
+- Khatima: https://cityhaldwani.com/locations/khatima.html
+- Sitarganj: https://cityhaldwani.com/locations/sitarganj.html
+- Kichha: https://cityhaldwani.com/locations/kichha.html
+- Jim Corbett: https://cityhaldwani.com/locations/jim-corbett.html
+- Bhowali: https://cityhaldwani.com/locations/bhowali.html
 
 ## Legal & Compliance
 - Strictly 18+ Consensual Adult Advertising.

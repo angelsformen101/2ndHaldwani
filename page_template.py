@@ -18,6 +18,100 @@ def count_words(html_str):
     words = re.sub(r'<[^>]+>', ' ', clean).split()
     return len(words)
 
+# Localized SEO detailed knowledge for all 15 locations (~400+ words of genuine searchable local content)
+LOCAL_SEO_GUIDES = {
+    'nainital': {
+        'sectors': 'Mallital, Tallital, Ayarpatta Hill, Sukhatal Valley, Snow View Ridge, Pangot Forest Road, Kilbury Bird Sanctuary Route, and Governor House (Raj Bhavan) Road',
+        'sectors_detail': 'Whether your hotel is situated overlooking the tranquil waters of Naini Lake in Mallital, nestled among heritage deodars along the tranquil slopes of Ayarpatta, or perched near the scenic viewpoints of Snow View and Pangot, our independent escorts in Nainital offer prompt outcall coverage across all hill station zones. Most companions reach Mall Road and Tallital hotels within 30 to 40 minutes, while secluded villas in Pangot or Kilbury typically require approximately 50 minutes of advance coordination.',
+        'hospitality': 'Nainital hosts some of Kumaon’s most prestigious heritage and boutique 5-star properties, such as The Manu Maharani, Shervani Hilltop, Vikram Vintage Inn, The Naini Retreat, and Swiss Hotel. When reserving outcall companionship at these premier establishments, luxury suites and lake-facing private balconies provide an ideal atmosphere of comfort and discretion. Independent models arrive dressed in tasteful smart-casual attire, blending naturally with other upscale vacationers and hotel guests.',
+        'itineraries': 'During warm summer months, romantic late-afternoon yachting on Naini Lake followed by a cozy candlelit dinner at a boutique lakeside cafe creates an unforgettable experience. In the brisk winter season, when snow dusts the surrounding peaks, sharing warm fireside cocktails in the comfort of your private heated suite with an affectionate companion offers the ultimate mountain retreat.'
+    },
+    'bhimtal': {
+        'sectors': 'Bhimtal Island Lake Promenade, Victoria Dam Road, Hidimba Parvat Foothills, Nal Damyanti Tal Lane, Mehragaon Valley, Sattal Junction Corridor, and Bhowali-Bhimtal Highway',
+        'sectors_detail': 'Bhimtal is celebrated for its uncrowded, serene waters and private nature resorts. Our verified independent companions provide discreet outcall across all key sectors, from waterside luxury cottages bordering Victoria Dam to secluded hillside retreats near Mehragaon and the lush pine trails of Sattal road. Travel time to central Bhimtal resorts averages 25 to 35 minutes, ensuring prompt arrivals for dinner dates or overnight stays.',
+        'hospitality': 'Prominent luxury destinations such as The Fern Hillside Resort, Country Inn Bhimtal, Aamod Resorts, Fishermens Lodge, and V Resort cater to privacy-conscious holidaymakers. These properties feature expansive private lawns and lake-view verandas that ensure complete anonymity. Independent models uphold strict professional standards, arriving with zero pretense and honoring your private boundaries under our strict zero-advance cash payment guarantee.',
+        'itineraries': 'Bhimtal is an idyllic setting for unhurried conversations and scenic nature strolls. Spend quiet mornings admiring migratory birds over the island lake, take a leisurely drive through the pine woods of Sattal, and return to your resort for a private candlelit evening under star-filled Himalayan skies.'
+    },
+    'almora': {
+        'sectors': 'Kasar Devi Magnetic Ridge, Bright End Corner, Historic Lal Bazaar, Dharanaula Junction, Binsar Wildlife Sanctuary Approach Road, Ranikhet Highway Corridor, and Matena Valley',
+        'sectors_detail': 'Almora represents the cultural heartland of Kumaon, perched atop a scenic horse-saddle ridge. Independent companions provide dependable outcall across Kasar Devi’s bohemian ridge, Bright End Corner’s sunset viewpoints, and upscale forest lodges bordering the Binsar sanctuary. In-town visits to central Almora take between 30 and 40 minutes, while wilderness resorts along the Binsar forest corridor may require up to 55 minutes for safe mountain transit.',
+        'hospitality': 'Prestigious heritage properties including Kalmatia Sangam, Grand Oak Manor, Deodar Sanctuary, Imperial Heights Binsar, and Kasaar Jungle Resort provide an unmatched backdrop of pine-wood elegance. Guests enjoy stone-carved fireplaces, panoramic Himalayan vistas of Nanda Devi, and attentive concierge service that ensures confidential guest visits without awkward scrutiny.',
+        'itineraries': 'Almora is renowned for its inspiring sunsets and peaceful quietude. Pair your stay with an educated companion who appreciates culture, mountain tranquility, and engaging conversations. Sip fresh rhododendron tea during a brisk autumn afternoon, and spend unhurried evenings relaxing before a crackling deodar log fire.'
+    },
+    'ramnagar': {
+        'sectors': 'Kosi River Barrage Corridor, Dhangarhi Tourist Gate, Ringora Wilderness Belt, Garjiya Devi Highway, Ramnagar Main Town, and Corbett National Park Periphery',
+        'sectors_detail': 'As the primary entry gateway to the legendary Jim Corbett tiger reserve, Ramnagar buzzes with wildlife enthusiasts and luxury holidaymakers. Verified independent call girls in Ramnagar cater to private safari resorts along the Kosi River, secluded forest estates near Ringora, and comfortable business transit suites in Ramnagar town. Outcall transit to resorts along the Ramnagar-Ranikhet highway is exceptionally smooth, typically requiring 25 to 35 minutes.',
+        'hospitality': 'Leading jungle venues like Namah Resort, The Den Corbett, Tarangi Resort & Spa, Lemon Tree Premier Corbett, and Corbett River Creek offer 5-star wilderness hospitality. These sprawling resorts feature private riverside decks, individual cottage compounds, and secure gated entry. Independent models arrive discreetly in smart travel attire, respecting guest privacy at all times.',
+        'itineraries': 'After an exhilarating morning jeep safari tracking royal Bengal tigers, unwind with an in-room relaxation massage and a refreshing riverside cocktail. Savor fresh river fish delicacies at a private barbecue dinner accompanied by a charming, articulate companion who enhances every moment of your wilderness vacation.'
+    },
+    'haldwani': {
+        'sectors': 'Nainital Road, Tikonia Commercial Hub, Kaladhungi Road, Kusumkhera, Mukhani Crossing, Canal Road, Kathgodam Bypass, Bareilly Road, Rampur Road, Heera Nagar, and Subhash Nagar',
+        'sectors_detail': 'As the largest commercial metropolis and economic engine of Kumaon, Haldwani features a fast-paced urban lifestyle with modern amenities. Our verified escort classifieds cover every major sector in Haldwani, from high-end corporate suites near Tikonia and Nainital Road to peaceful residential avenues in Kusumkhera, Mukhani, and Heera Nagar. Companions typically arrive at your hotel suite within 20 to 30 minutes, offering the fastest outcall response times in the region.',
+        'hospitality': 'Haldwani offers top-tier corporate hospitality at venues like Hotel Saurabh Candy by Peppermint, Fortune Walkway Mall, Hotel Maple Wood, Hotel Crossroad, and The Central Hotel. These establishments provide modern executive suites, private elevators, and discrete guest entry protocols. Our independent companions are well-versed in executive etiquette, making them ideal partners for business dinners and corporate suite meetings.',
+        'itineraries': 'Begin your evening with gourmet dining and cocktails at upscale rooftop lounges along Nainital Road, followed by private suite entertainment. Whether visiting for commercial negotiations, industrial summits, or as a stopover before heading into the hills, Haldwani offers premier entertainment backed by transparent zero-advance cash payments.'
+    },
+    'kaladhungi': {
+        'sectors': 'Jim Corbett Heritage Museum Precinct, Corbett Falls Forest Route, Boar River Valley, Choti Haldwani Village Corridor, Forest Checkpost Road, and Bazpur-Kaladhungi Highway',
+        'sectors_detail': 'Kaladhungi is an enchanting nature enclave situated at the scenic junction where fertile Terai agricultural lands meet the towering Shivalik foothills. Independent companions provide dependable outcall service to eco-resorts nestled along the Boar River, private mango orchard farmhouses in Choti Haldwani, and forest hideaways near the Corbett Falls trail. Outcall arrivals to local lodges take between 30 and 45 minutes.',
+        'hospitality': 'Boutique properties such as Camp Corbett, Corbett Panorama, Forest Haven Eco Resort, Hidden Valley Camp, and The Banyan Retreat cater to nature lovers seeking authentic privacy. These venues offer open-air bonfires, private cottage verandas, and rustic luxury. Independent models understand the expectations of countryside privacy, ensuring an intimate, relaxed experience free from urban distractions.',
+        'itineraries': 'Explore the lush green trails of Choti Haldwani village and take a refreshing daytime dip at Corbett Falls. In the evening, relax beside a riverside bonfire under star-filled skies, enjoying deep conversation, laughter, and passionate companionship with a vetted independent partner.'
+    },
+    'rudrapur': {
+        'sectors': 'SIDCUL Industrial Sector, Metropolis City Mall Corridor, Kashipur Bypass, Awas Vikas Colony, Gaba Chowk, National Highway 87, Kichha Bypass Junction, and Civil Lines',
+        'sectors_detail': 'Rudrapur is the booming industrial heart of Uttarakhand, housing hundreds of multinational manufacturing enterprises in the SIDCUL industrial complex. We provide elite corporate companionship across all commercial zones, including business hotels along NH 87, executive apartments near Metropolis Mall, and private residences in Awas Vikas. Independent companions arrive punctually within 20 to 30 minutes for business travelers staying in central Rudrapur.',
+        'hospitality': 'Premier executive business hotels such as Radisson Blu Hotel Rudrapur, Hotel Ark, Rosewood Apartment Hotel, Uday Residency, and Ginger Rudrapur provide 4-star and 5-star amenities. These hotels offer state-of-the-art conference facilities, luxury suites, and discrete private elevators. Independent models in Rudrapur are educated, articulate, and bilingual, perfectly suited for high-level business dinners and unwinding after intensive corporate meetings.',
+        'itineraries': 'After a long day of factory inspections or corporate negotiations in SIDCUL, treat yourself to a lavish private suite dinner and a rejuvenating full-body relaxation massage. Our independent corporate hostesses provide sophisticated company, helping you recharge in complete comfort and privacy.'
+    },
+    'kathgodam': {
+        'sectors': 'Kathgodam Railway Station Terminus, Gaula River Barrage, Ranibagh Historic Bridge, Shivalik Foothill Entrance, Nainital Road Junction, Damuadhunga, and Circuit House Area',
+        'sectors_detail': 'Kathgodam serves as the historic railhead where the Indian Railway network reaches the base of the Kumaon Himalayas. Independent escorts provide swift outcall to transit hotels along the railway terminus, riverside resorts near Gaula Barrage, and heritage rest houses on Ranibagh Bridge. Because Kathgodam is closely linked to Haldwani, companions arrive within 20 to 30 minutes at any transit hotel or private guest house.',
+        'hospitality': 'Popular hospitality venues including Hotel Fiesta, Relax Inn Kathgodam, Pineview Hotel, Gaula River View Resort, and The Grand Kailash provide clean, guest-friendly accommodations. These hotels are accustomed to welcoming travelers arriving on express trains like the Shatabdi and Ranikhet Express, offering flexible check-in hours and discreet elevator access.',
+        'itineraries': 'Whether you have a 6-hour layover before your mountain taxi arrives or wish to spend a quiet evening enjoying the cool mountain air off the Gaula River, hiring a local companion makes your transit effortless and delightful. Enjoy private room service dining and soothing conversation before continuing your journey.'
+    },
+    'kashipur': {
+        'sectors': 'Bazpur Road Industrial Sector, Ramnagar Road Highway Corridor, IIM Kashipur Campus Vicinity, Drona Sagar Lake Precinct, Industrial Area Phase 1 & 2, Kundeshwari Road, and Aliganj Road',
+        'sectors_detail': 'Kashipur combines rich historical heritage with a thriving paper, textile, and chemical industrial hub. Independent companions cater to executives, engineers, and visiting professionals across the Bazpur Road commercial belt, Ramnagar Road hotel corridor, and private residential colonies near the premier IIM Kashipur campus. Average outcall arrival time to certified hotels is approximately 25 to 35 minutes.',
+        'hospitality': 'Quality local properties including The Manor Kashipur, Anand Castle, Hotel Kumaon Plaza, Gautam Residency, and Hotel Ashiyana offer comfortable executive accommodations. These hotels feature secure private parking, multi-cuisine restaurants, and discreet suite service. Independent models arrive unassumingly, ensuring zero embarrassment or intrusion.',
+        'itineraries': 'Spend your afternoon exploring the historic archaeological ruins of Drona Sagar, followed by an intimate evening of dining and relaxation at a premier local hotel. Our verified models bring youthful charm, intelligent conversation, and sensual warmth to your Kashipur stay.'
+    },
+    'bajpur': {
+        'sectors': 'Bajpur Sugar Mill Complex, Kashipur-Haldwani State Highway, Terai Orchard Farm Belts, Kosi River Canal Crossing, Sultanpur Patti Road, and Main Bazaar Chowk',
+        'sectors_detail': 'Bajpur is renowned throughout northern India for its sprawling agricultural estates, historic sugar mills, and tranquil countryside living. Verified escorts provide discreet outcall service to private farmhouses along the Kashipur-Haldwani highway, boutique rural homestays, and local hotel suites in Bajpur town. Companions typically reach local venues within 30 to 45 minutes.',
+        'hospitality': 'Establishments like Green Park Hotel, Terai Royal Residency, The Orchard Retreat, and Hotel Shivalik View Bajpur offer clean, comfortable stays tailored to business travelers and agricultural entrepreneurs. For clients staying at private family farmhouses, independent models are happy to visit directly with complete discretion and cash-on-arrival terms.',
+        'itineraries': 'Experience the peaceful beauty of the Terai countryside away from city noise. Enjoy expansive sunset views over sugarcane fields, organize a private outdoor barbecue, and share an unhurried, romantic overnight encounter with an affectionate companion.'
+    },
+    'khatima': {
+        'sectors': 'Tanakpur Highway Corridor, Sharda River Canal Banks, Khatima Main Market, Lohiahead Power House Road, Nanakmatta Link Road, and Melghat Border Checkpoint Area',
+        'sectors_detail': 'Khatima is an important commercial corridor and transit junction situated near the scenic Indo-Nepal international border and the holy pilgrimage shrine of Nanakmatta. Verified independent call girls offer prompt outcall to certified hotels on Tanakpur Road, private guest lodges near the Sharda Canal, and commercial suites in Khatima market. Companions arrive within 25 to 35 minutes across all local addresses.',
+        'hospitality': 'Leading local properties including Hotel Royal Park Khatima, City Heart Inn, Sharda Heritage Hotel, and The Green Valley Inn feature air-conditioned executive rooms and respectful hotel staff. Independent companions arrive dressed in elegant, casual clothing, ensuring completely private meetings with zero unwanted attention.',
+        'itineraries': 'Take a relaxing daytime drive along the crystal-clear Sharda River canal and visit the serene waters of Nanakmatta reservoir. Return to your hotel suite for a private evening of wine, delicious local Kumaoni cuisine, and passionate companionship with a genuine independent companion.'
+    },
+    'sitarganj': {
+        'sectors': 'ELDECO SIDCUL Industrial Park, Baigul Dam Reservoir Road, Nanakmatta Sahib Bypass, Khatima Highway, Amariya Road, and Industrial Phase 1 & 2',
+        'sectors_detail': 'Sitarganj is a major manufacturing growth center in the Terai, anchored by the sprawling ELDECO SIDCUL industrial complex and the picturesque waters of Baigul Dam. Independent models provide professional outcall to corporate hotels near the industrial zone, lakeside guest houses, and private residences along the Khatima highway. Companions arrive within 25 to 35 minutes for verified hotel bookings.',
+        'hospitality': 'Hotels such as Hotel Sitarganj Grand, The Industrial Inn, Green View Palace, and Lakeview Comfort Stay Sitarganj provide reliable amenities for corporate executives, plant heads, and technical consultants. These establishments respect client privacy, making them ideal for confidential evening appointments.',
+        'itineraries': 'After a strenuous day overseeing manufacturing operations or visiting industrial facilities, unwind with the attentive care of an independent companion. Savor a peaceful dinner overlooking the tranquil waters of Baigul Dam and enjoy a stress-relieving massage in your private hotel suite.'
+    },
+    'kichha': {
+        'sectors': 'Bareilly-Nainital Highway, Rudrapur Bypass Crossing, Kichha Railway Station Area, Grain Market Mandi Road, Terai Canal Banks, and Pulbhatta Border Corridor',
+        'sectors_detail': 'Kichha occupies a strategic geographic crossroads in southern Uttarakhand, serving as a key junction linking Bareilly, Rudrapur, and Haldwani. Verified independent escorts provide reliable outcall service to highway transit hotels, private suites near the railway station, and upscale residential farmhouses. Average arrival time is 20 to 30 minutes across all main highway corridors.',
+        'hospitality': 'Properties like Hotel Celebration Kichha, The Highway Heritage, City Pride Inn, and Amar Palace Kichha provide spacious rooms, secure parking, and guest-friendly hospitality. Independent models arrive with zero hassle, allowing you to settle payment directly in cash upon their arrival with complete peace of mind.',
+        'itineraries': 'Kichha is ideal for travelers seeking a comfortable transit stopover before traveling deeper into Kumaon. Rejuvenate with a warm shower, delicious hot room service dinner, and the affectionate company of a beautiful independent model who makes your transit restful and memorable.'
+    },
+    'jim-corbett': {
+        'sectors': 'Dhikala Safari Zone Approach, Bijrani Gate Corridor, Jhirna Gate Tourism Zone, Sitabani Forest Reserve, Kosi River Valley, Marchula Valley, and Mohan Forest Belt',
+        'sectors_detail': 'The Jim Corbett national park region is world-renowned for eco-luxury safari lodges and pristine wildlife wilderness. Verified VIP escorts in Jim Corbett provide exclusive outcall to 5-star forest resorts across Dhikala, Bijrani, and Jhirna zones, as well as secluded riverside cottages along the Kosi River in Marchula and Mohan. Because of the vast expanse of the forest reserve, companions typically coordinate travel within 35 to 50 minutes.',
+        'hospitality': 'Ultra-luxury resort properties including Taj Corbett Resort & Spa, The Solluna Resort, Paatlidun Safari Lodge, Namah Resort, and Aahana The Corbett Wilderness offer world-class hospitality. These resorts boast private plunge pools, private villas surrounded by dense sal trees, and secluded verandas. Our VIP models are accustomed to elite luxury settings, arriving with impeccable poise and sophistication.',
+        'itineraries': 'Pair an exhilarating daytime wildlife safari with a magical candlelit dinner beside the Kosi River. Savor vintage wine under the stars, listen to the nocturnal sounds of the jungle, and enjoy passionate, uninhibited companionship in the secluded luxury of your private pool villa.'
+    },
+    'bhowali': {
+        'sectors': 'Bhowali Sanatorium Ridge, Kainchi Dham Junction Highway, Ramgarh Fruit Orchard Road, Golu Devta Temple Corridor, Pine Crest Valley, and Shyamkhet Tea Gardens',
+        'sectors_detail': 'Perched at a refreshing altitude of 1,700 meters, Bhowali is famous for its crisp pine-scented air, lush fruit orchards, and proximity to the sacred Kainchi Dham ashram. Independent companions cater to heritage cottages near the Sanatorium ridge, boutique hillside resorts along Ramgarh road, and private mountain homestays near the Shyamkhet tea estate. Outcall transit averages 30 to 40 minutes from central Bhowali junctions.',
+        'hospitality': 'Charming mountain properties including The White Peaks Bhowali, Aqua De Vida Resort, Pine Crest Hotel, Soulitude in the Himalayas, and Cedar Cottage provide cozy fireplaces, panoramic valley views, and exceptional privacy. Independent companions arrive discreetly, ensuring your mountain holiday remains peaceful and confidential.',
+        'itineraries': 'Bhowali is the ultimate romantic hideaway. Spend peaceful mornings driving through misty pine forests and visiting local tea plantations. As evening temperatures drop, share a warm bottle of wine beside a crackling stone fireplace, wrapped in warm blankets with a sweet, affectionate companion.'
+    }
+}
+
 # Build a single profile card calibrated to ~42 words
 def render_profile_card(name, city_name, age, index, img_alias, rel_prefix='../'):
     rates_options = [
@@ -173,7 +267,7 @@ def generate_20_faqs(city_name, hotels, landmarks):
     ]
     return faqs
 
-# Build location HTML page with target word count: 1,750 - 1,980 words
+# Build location HTML page with target word count: ~2,400 - 2,550 words
 def build_location_page(loc, start_name_idx):
     slug = loc['slug']
     city_name = loc['name']
@@ -183,6 +277,13 @@ def build_location_page(loc, start_name_idx):
     landmarks = loc['landmarks']
     hotels = loc['hotels']
     vibe = loc['vibe']
+    
+    local_guide = LOCAL_SEO_GUIDES.get(slug, {
+        'sectors': landmarks,
+        'sectors_detail': f"Companions in {city_name} cover all major transit points and hotel clusters promptly.",
+        'hospitality': f"Certified hotels in {city_name} including {hotels} provide safe outcall settings.",
+        'itineraries': f"Enjoy scenic mountain drives and private dining in {city_name} with verified models."
+    })
     
     # 16 profiles with ../ relative prefix
     cards_html = []
@@ -226,8 +327,8 @@ def build_location_page(loc, start_name_idx):
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         "name": f"CityHaldwani.com - {city_name} Escort Service",
-        "image": "https://cityhaldwani.com/logo.png",
-        "url": f"https://cityhaldwani.com/locations/{slug}",
+        "image": "https://cityhaldwani.com/city-logo.png",
+        "url": f"https://cityhaldwani.com/locations/{slug}.html",
         "telephone": "+919876543210",
         "priceRange": "₹1500 - ₹10000",
         "address": {
@@ -256,10 +357,26 @@ def build_location_page(loc, start_name_idx):
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{title}</title>
+  <title>{title} | CityHaldwani.com</title>
   <meta name="description" content="{meta_desc}">
-  <link rel="canonical" href="https://cityhaldwani.com/locations/{slug}">
+  <link rel="canonical" href="https://cityhaldwani.com/locations/{slug}.html">
   <link rel="icon" href="../favicon.webp" type="image/webp">
+
+  <!-- Open Graph Meta Tags (Image 1 Fix) -->
+  <meta property="og:title" content="{title}">
+  <meta property="og:description" content="{meta_desc}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cityhaldwani.com/locations/{slug}.html">
+  <meta property="og:image" content="https://cityhaldwani.com/city-logo.png">
+  <meta property="og:site_name" content="CityHaldwani.com">
+
+  <!-- X / Twitter Card Meta Tags (Image 1 Fix) -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@CityHaldwani">
+  <meta name="twitter:title" content="{title}">
+  <meta name="twitter:description" content="{meta_desc}">
+  <meta name="twitter:image" content="https://cityhaldwani.com/city-logo.png">
+
   <link rel="stylesheet" href="../css/style.css">
   <style>
 {EMBEDDED_CSS}
@@ -275,7 +392,7 @@ def build_location_page(loc, start_name_idx):
   <header class="site-topbar">
     <div class="container topbar-wrapper">
       <a href="../index.html" class="brand-group">
-        <img src="../logo.png" alt="CityHaldwani.com Logo" class="brand-logo-img" onerror="if(!this.dataset.retried){{this.dataset.retried=1;this.src='../city-logo.png';}}">
+        <img src="../city-logo.png" alt="CityHaldwani.com Logo" class="brand-logo-img" onerror="if(!this.dataset.retried){{this.dataset.retried=1;this.src='../logo.png';}}">
         <div class="brand-text">
           <div class="brand-title">CityHaldwani<span>.com</span></div>
           <p>Verified Uttarakhand Classifieds</p>
@@ -310,7 +427,7 @@ def build_location_page(loc, start_name_idx):
         <span class="hero-badge">🛎️ In-Room &amp; Resort Outcall</span>
       </div>
       <p>
-        Welcome to the authoritative classified directory of verified escorts in {city_name}, Uttarakhand. Renowned for its {vibe}, {city_name} attracts holidaymakers and executives seeking unhurried, discreet luxury. Whether staying at a luxury resort along {landmarks} or relaxing in a private hillside villa, our vetted companions deliver unparalleled warmth, elegance, and charm.
+        Welcome to the authoritative classified directory of verified escorts in {city_name}, Uttarakhand. Renowned for its {vibe}, {city_name} attracts holidaymakers, executives, and regional visitors seeking unhurried, discreet luxury. Whether staying at a luxury resort along {landmarks} or relaxing in a private hillside villa, our vetted companions deliver unparalleled warmth, elegance, and charm.
       </p>
       <p>
         At CityHaldwani.com, we prioritize transparency and safety above all else. Every companion listed below has completed strict photo authentication and age verification checks (18+). You connect directly with the independent advertiser over phone or WhatsApp, eliminating brokerage fees and predatory third-party intermediaries. Review authentic profile details, compare flexible packages, and enjoy confidential companionship backed by our ironclad zero upfront payment policy.
@@ -328,7 +445,7 @@ def build_location_page(loc, start_name_idx):
     </section>
 
     <section class="editorial-card">
-      <h2>Guide to Hiring Independent Companions in {city_name}</h2>
+      <h2>Comprehensive Guide to Hiring Independent Companions in {city_name}</h2>
       <p>
         Planning a mountain holiday, business retreat, or weekend escape to {city_name} is made memorable with verified companionship. Independent models offer personalized companionship tailored to your schedule, from scenic daytime drives to private fireside hotel dinners with warmth and discretion.
       </p>
@@ -337,15 +454,15 @@ def build_location_page(loc, start_name_idx):
       <div class="categories-grid">
         <div class="category-box">
           <h4>🎓 Independent College Girls</h4>
-          <p>Fresh, educated students (18+) in {city_name}. Energetic, talkative, and perfect for casual outings and cafe dates.</p>
+          <p>Fresh, educated students (18+) in {city_name}. Energetic, talkative, and perfect for casual outings, sightseeing, and lively cafe dates.</p>
         </div>
         <div class="category-box">
           <h4>👑 VIP Fashion Models</h4>
-          <p>Glamorous, tall models suitable for high-profile business dinners, luxury suite stays, and prestigious social events.</p>
+          <p>Glamorous, tall models suitable for high-profile business dinners, luxury suite stays, and prestigious social events across Uttarakhand.</p>
         </div>
         <div class="category-box">
           <h4>💖 Sensual Mature Companions</h4>
-          <p>Attentive homemakers and independent women excelling at passionate, relaxing companionship with zero drama.</p>
+          <p>Attentive homemakers and independent women excelling at passionate, relaxing companionship with zero drama and complete understanding.</p>
         </div>
         <div class="category-box">
           <h4>🌿 Luxury Resort Escorts</h4>
@@ -354,19 +471,51 @@ def build_location_page(loc, start_name_idx):
       </div>
     </section>
 
+    <!-- NEW SECTION: Detailed Local Neighborhood & Sector Coverage Guide (~150 words of rich local SEO content) -->
     <section class="editorial-card">
-      <h2>Recommended Hotels &amp; Safe Meeting Spots in {city_name}</h2>
+      <h2>📍 Local Neighborhood &amp; Sector Coverage in {city_name}</h2>
       <p>
-        For a discreet encounter in {city_name}, reserve rooms at guest-friendly 4-star and 5-star properties, including {hotels}, offering secure parking, professional service, and private elevator access.
+        Our verified independent escort network spans every prominent commercial zone, residential colony, and transit artery in and around {city_name}. Specifically, active outcall coverage is provided across <strong>{local_guide['sectors']}</strong>.
+      </p>
+      <p>
+        {local_guide['sectors_detail']}
+      </p>
+      <p>
+        Whether you require a prompt appointment at your central hotel within 25 to 35 minutes or wish to schedule an evening date at a private farmhouse or mountain homestay, our independent advertisers guarantee timely arrival. We recommend contacting your chosen companion at least 45 minutes prior to your preferred meeting time so she can travel comfortably and arrive fresh, relaxed, and ready to provide an exceptional hospitality experience.
+      </p>
+    </section>
+
+    <!-- NEW SECTION: 5-Star Hotel Hospitality & Concierge Etiquette (~150 words of local hotel guide) -->
+    <section class="editorial-card">
+      <h2>🛎️ Elite Hospitality, Hotel Concierge Etiquette &amp; 5-Star Outcall in {city_name}</h2>
+      <p>
+        For a completely stress-free and confidential appointment in {city_name}, we strongly recommend booking a certified 4-star or 5-star hotel or a verified luxury boutique resort. Recommended establishments include <strong>{hotels}</strong>, known throughout Kumaon for their spacious suites, soundproof rooms, private parking, and professional front-desk hospitality.
+      </p>
+      <p>
+        {local_guide['hospitality']}
+      </p>
+      <p>
+        When welcoming an independent companion to your hotel room, simple courtesy ensures a delightful time for both parties. Call the front desk to notify them of an incoming visitor or meet your companion in the hotel lobby lounge for a brief introductory greeting. Independent companions take pride in their hygiene, grooming, and discrete etiquette, arriving in fashionable attire suitable for any 5-star property.
       </p>
 
       <h2>Client Safety Protocol &amp; Zero Advance Rule</h2>
       <ul>
-        <li><strong>Never Pay Advance Money:</strong> Independent companions in {city_name} never ask for UPI transfers or booking deposits in advance. Pay in direct cash after meeting in person.</li>
-        <li><strong>Verify Identity on Arrival:</strong> Confirm your companion matches her photographs before commencing your private appointment.</li>
-        <li><strong>Maintain Mutual Respect:</strong> Treat companions with courtesy, maintain good personal hygiene, and honor agreed personal boundaries.</li>
-        <li><strong>Preserve Discretion:</strong> Refrain from taking unauthorized photos or recording private moments.</li>
+        <li><strong>Never Pay Advance Money:</strong> Independent companions in {city_name} never ask for UPI transfers or booking deposits in advance. Pay in direct cash after meeting in person at your hotel room.</li>
+        <li><strong>Verify Identity on Arrival:</strong> Confirm your companion matches her photographs before commencing your private appointment. If photos differ, you are free to cancel at the door.</li>
+        <li><strong>Maintain Mutual Respect:</strong> Treat companions with courtesy, maintain good personal hygiene, and honor agreed personal boundaries and scheduled hours.</li>
+        <li><strong>Preserve Discretion:</strong> Refrain from taking unauthorized photos or recording private moments. Total mutual privacy is guaranteed on CityHaldwani.com.</li>
       </ul>
+    </section>
+
+    <!-- NEW SECTION: Seasonal Travel, Sightseeing Drives & Romantic Rendezvous (~120 words of local travel tips) -->
+    <section class="editorial-card">
+      <h2>🌄 Best Seasons, Scenic Mountain Drives &amp; Romantic Rendezvous in {city_name}</h2>
+      <p>
+        {city_name} offers distinct seasonal charms throughout the year, from refreshing summer escapes to crisp winter evenings beside crackling deodar fireplaces. {local_guide['itineraries']}
+      </p>
+      <p>
+        Pairing your regional exploration with a charming local companion transforms an ordinary trip into an extraordinary holiday. Independent escorts know the finest viewpoint cafes, scenic valley routes along {landmarks}, and quiet dining spots where you can enjoy each other’s company without intrusion. Discuss your preferred itinerary directly when calling your companion to create a bespoke holiday experience.
+      </p>
     </section>
 
     <section class="faq-section" id="faq-section">
@@ -385,9 +534,10 @@ def build_location_page(loc, start_name_idx):
         <p>
           Premier light-theme verified classified portal for Uttarakhand companions and tourists. Strict 18+ compliance, zero advance fee guarantee, and total client privacy.
         </p>
-        <p style="font-size: 12px; color: var(--text-muted);">
-          Operational across {city_name}, Haldwani, Nainital, Corbett, and all major Kumaon hill stations.
+        <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px;">
+          Serving {city_name}, Haldwani, Nainital, Bhimtal, Ramnagar, Jim Corbett, Rudrapur, and all 15 major Uttarakhand hubs.
         </p>
+        <span class="footer-badge-pill">🛡️ 100% Verified Classifieds • 18+ Adult Directory</span>
       </div>
       <div class="footer-col">
         <h4>Top Uttarakhand Hubs</h4>
@@ -398,6 +548,8 @@ def build_location_page(loc, start_name_idx):
           <li><a href="ramnagar.html">Ramnagar Escorts</a></li>
           <li><a href="jim-corbett.html">Jim Corbett Escorts</a></li>
           <li><a href="rudrapur.html">Rudrapur Escorts</a></li>
+          <li><a href="almora.html">Almora Escorts</a></li>
+          <li><a href="bhowali.html">Bhowali Escorts</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -405,7 +557,7 @@ def build_location_page(loc, start_name_idx):
         <ul class="footer-links">
           <li><a href="../about-us.html">About Us</a></li>
           <li><a href="../safety-guide.html">Safety Guidelines</a></li>
-          <li><a href="../report-abuse.html">Report Abuse</a></li>
+          <li><a href="../report-abuse.html">Report Violations</a></li>
           <li><a href="../terms.html">Terms of Service</a></li>
           <li><a href="../privacy.html">Privacy Policy</a></li>
           <li><a href="../contact-us.html">Contact Support Desk</a></li>
@@ -413,7 +565,7 @@ def build_location_page(loc, start_name_idx):
       </div>
     </div>
     <div class="container footer-bottom">
-      &copy; 2026 CityHaldwani.com. All rights reserved. 18+ Adult Classified Directory.
+      &copy; 2026 CityHaldwani.com. All rights reserved. 100% Verified 18+ Adult Classified Directory.
     </div>
   </footer>
 
