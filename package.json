@@ -1,0 +1,12 @@
+{
+  "name": "cityhaldwani-com",
+  "version": "1.0.0",
+  "description": "CityHaldwani.com - Premier Light-Theme Uttarakhand Classifieds & Directory",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": ["cityhaldwani", "classifieds", "uttarakhand", "haldwani", "nainital"],
+  "author": "CityHaldwani Team",
+  "license": "ISC"
+}
