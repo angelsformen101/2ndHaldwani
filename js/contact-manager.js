@@ -170,10 +170,10 @@
           100% { transform: scale(1.55); opacity: 0; }
         }
         @media (max-width: 480px) {
-          .ch-float-btn { width: 50px; height: 50px; bottom: 16px; }
-          .ch-float-call { left: 14px; }
-          .ch-float-wa { right: 14px; }
-          .ch-float-btn svg { width: 24px; height: 24px; }
+          .ch-float-btn { width: 46px; height: 46px; bottom: 14px; box-shadow: 0 4px 14px rgba(0,0,0,0.25); }
+          .ch-float-call { left: 12px; }
+          .ch-float-wa { right: 12px; }
+          .ch-float-btn svg { width: 22px; height: 22px; }
         }
       </style>
       <a href="tel:${cleanTel}" class="ch-float-btn ch-float-call" id="ch-float-call-btn" title="Call Now" aria-label="Call Now">
