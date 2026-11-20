@@ -169,11 +169,17 @@
           0% { transform: scale(1); opacity: 0.7; }
           100% { transform: scale(1.55); opacity: 0; }
         }
-        @media (max-width: 480px) {
-          .ch-float-btn { width: 46px; height: 46px; bottom: 14px; box-shadow: 0 4px 14px rgba(0,0,0,0.25); }
+        @media (max-width: 768px) {
+          .ch-float-btn { width: 48px; height: 48px; bottom: 14px; box-shadow: 0 4px 14px rgba(0,0,0,0.22); }
           .ch-float-call { left: 12px; }
           .ch-float-wa { right: 12px; }
-          .ch-float-btn svg { width: 22px; height: 22px; }
+          .ch-float-btn svg { width: 23px; height: 23px; }
+        }
+        @media (max-width: 480px) {
+          .ch-float-btn { width: 44px; height: 44px; bottom: 12px; }
+          .ch-float-call { left: 10px; }
+          .ch-float-wa { right: 10px; }
+          .ch-float-btn svg { width: 20px; height: 20px; }
         }
       </style>
       <a href="tel:${cleanTel}" class="ch-float-btn ch-float-call" id="ch-float-call-btn" title="Call Now" aria-label="Call Now">
