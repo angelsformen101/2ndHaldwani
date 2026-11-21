@@ -10,6 +10,32 @@ CSS_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'css', 'styl
 with open(CSS_FILE, 'r', encoding='utf-8') as f:
     EMBEDDED_CSS = f.read()
 
+ADULT_WARNING_BAR_HTML = '''  <!-- 18+ Adult Content Moving Warning Bar -->
+  <aside class="adult-warning-bar" role="alert" aria-label="18+ Adult Content Warning">
+    <div class="warning-marquee-track">
+      <div class="warning-marquee-content">
+        <span class="warning-badge-18">🔞 18+ STRICT ADULT WARNING</span>
+        <span>This website contains age-restricted 18+ adult classifieds and sensitive content intended solely for consenting adults aged 18 years and older.</span>
+        <span class="warning-badge-alert">⚠️ AGE VERIFICATION REQUIRED</span>
+        <span>By accessing this portal, you confirm under penalty of law that you are at least 18 years of age and agree to our Terms of Service &amp; Privacy Policy.</span>
+        <span class="warning-divider">&#9670;</span>
+        <span>Strict Zero Advance Payment Policy &bull; 100% Genuine Verified Profiles &bull; Cash On Direct Meeting Only &bull; Discreet In-Room &amp; Resort Outcall</span>
+        <span class="warning-divider">&#9670;</span>
+        <span>If you are under 18 years of age or find adult material objectionable, please exit this website immediately.</span>
+      </div>
+      <div class="warning-marquee-content" aria-hidden="true">
+        <span class="warning-badge-18">🔞 18+ STRICT ADULT WARNING</span>
+        <span>This website contains age-restricted 18+ adult classifieds and sensitive content intended solely for consenting adults aged 18 years and older.</span>
+        <span class="warning-badge-alert">⚠️ AGE VERIFICATION REQUIRED</span>
+        <span>By accessing this portal, you confirm under penalty of law that you are at least 18 years of age and agree to our Terms of Service &amp; Privacy Policy.</span>
+        <span class="warning-divider">&#9670;</span>
+        <span>Strict Zero Advance Payment Policy &bull; 100% Genuine Verified Profiles &bull; Cash On Direct Meeting Only &bull; Discreet In-Room &amp; Resort Outcall</span>
+        <span class="warning-divider">&#9670;</span>
+        <span>If you are under 18 years of age or find adult material objectionable, please exit this website immediately.</span>
+      </div>
+    </div>
+  </aside>'''
+
 # Helper to calculate clean visible body word count (excluding head, script, style)
 def count_words(html_str):
     body_match = re.search(r'<body[\s\S]*?</body>', html_str, re.I)
@@ -393,6 +419,8 @@ def build_location_page(loc, start_name_idx):
   </script>
 </head>
 <body>
+{ADULT_WARNING_BAR_HTML}
+
   <header class="site-topbar">
     <div class="container topbar-wrapper">
       <a href="/index.html" class="brand-group">

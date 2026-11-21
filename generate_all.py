@@ -4,7 +4,7 @@ import json
 import urllib.parse
 
 from build_pages import NAMES_POOL, LOCATIONS_CONFIG
-from page_template import build_location_page, render_profile_card, count_words, EMBEDDED_CSS
+from page_template import build_location_page, render_profile_card, count_words, EMBEDDED_CSS, ADULT_WARNING_BAR_HTML
 
 OUTPUT_DIR = os.path.dirname(os.path.abspath(__file__))
 LOCATIONS_DIR = os.path.join(OUTPUT_DIR, 'locations')
@@ -241,6 +241,8 @@ index_html = f'''<!DOCTYPE html>
   </script>
 </head>
 <body>
+{ADULT_WARNING_BAR_HTML}
+
   <header class="site-topbar">
     <div class="container topbar-wrapper">
       <a href="/index.html" class="brand-group">
@@ -636,6 +638,8 @@ for p in POLICY_PAGES:
   </style>
 </head>
 <body>
+{ADULT_WARNING_BAR_HTML}
+
   <header class="site-topbar">
     <div class="container topbar-wrapper">
       <a href="/index.html" class="brand-group">
