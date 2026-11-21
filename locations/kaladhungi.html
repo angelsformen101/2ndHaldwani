@@ -60,7 +60,8 @@
   padding: 0;
 }
 
-html, body {
+html,
+body {
   overflow-x: hidden;
   width: 100%;
 }
@@ -852,7 +853,8 @@ a {
 /* ================= Comprehensive Mobile Responsiveness ================= */
 @media (max-width: 768px) {
   body {
-    padding-bottom: 74px; /* Ensure content is never obscured by floating action buttons */
+    padding-bottom: 74px;
+    /* Ensure content is never obscured by floating action buttons */
   }
 
   .container {
@@ -880,7 +882,8 @@ a {
     height: 38px;
   }
 
-  .brand-text h1, .brand-text .brand-title {
+  .brand-text h1,
+  .brand-text .brand-title {
     font-size: 18px;
   }
 
@@ -906,7 +909,8 @@ a {
     width: 100%;
   }
 
-  .btn-header-call, .btn-header-wa {
+  .btn-header-call,
+  .btn-header-wa {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -1079,7 +1083,8 @@ a {
   }
 
 
-  .btn-card-call, .btn-card-wa {
+  .btn-card-call,
+  .btn-card-wa {
     width: 100%;
     justify-content: center;
     padding: 9px 6px;
@@ -1124,7 +1129,8 @@ a {
     margin-bottom: 10px;
   }
 
-  .editorial-card ul, .editorial-card ol {
+  .editorial-card ul,
+  .editorial-card ol {
     margin: 8px 0 10px 16px;
     font-size: 13px;
   }
@@ -1220,22 +1226,26 @@ a {
     font-size: 11.5px;
   }
 }
+
 /* Extra Small Devices (360px and below) */
 @media (max-width: 360px) {
   .brand-logo-img {
     height: 34px;
   }
 
-  .brand-text h1, .brand-text .brand-title {
+  .brand-text h1,
+  .brand-text .brand-title {
     font-size: 16px;
   }
 
-  .btn-header-call, .btn-header-wa {
+  .btn-header-call,
+  .btn-header-wa {
     font-size: 12px;
     padding: 8px 4px;
   }
 
-  .btn-card-call, .btn-card-wa {
+  .btn-card-call,
+  .btn-card-wa {
     font-size: 11.5px;
     padding: 8px 4px;
   }
@@ -1243,6 +1253,97 @@ a {
   .hero-editorial h1 {
     font-size: 17px;
   }
+}
+
+/* ==========================================================================
+   Floating Action Buttons (Icon-Only Call & WhatsApp Logos)
+   ========================================================================== */
+.ch-floating-buttons {
+  position: static;
+}
+
+.ch-float-btn {
+  position: fixed;
+  bottom: 24px;
+  z-index: 99998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  text-decoration: none;
+  outline: none;
+  border: 2.5px solid #ffffff;
+}
+
+.ch-float-btn:hover {
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.32);
+}
+
+.ch-float-call {
+  left: 22px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.ch-float-wa {
+  right: 22px;
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+}
+
+.ch-float-btn svg {
+  width: 27px;
+  height: 27px;
+  fill: #ffffff;
+}
+
+.ch-float-call svg {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 2.2;
+}
+
+.ch-float-pulse {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: inherit;
+  opacity: 0.6;
+  animation: ch-pulse-ring 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@keyframes ch-pulse-ring {
+  0% { transform: scale(1); opacity: 0.7; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+@media (max-width: 768px) {
+  .ch-float-btn {
+    width: 50px;
+    height: 50px;
+    bottom: 18px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+  }
+  .ch-float-call { left: 14px; }
+  .ch-float-wa { right: 14px; }
+  .ch-float-btn svg { width: 24px; height: 24px; }
+}
+
+@media (max-width: 480px) {
+  .ch-float-btn {
+    width: 46px;
+    height: 46px;
+    bottom: 14px;
+  }
+  .ch-float-call { left: 10px; }
+  .ch-float-wa { right: 10px; }
+  .ch-float-btn svg { width: 22px; height: 22px; }
 }
 
   </style>
@@ -2314,6 +2415,18 @@ a {
       &copy; 2026 CityHaldwani.com. All rights reserved. 100% Verified 18+ Adult Classified Directory.
     </div>
   </footer>
+
+  <!-- Floating Action Buttons (Icon-Only Call & WhatsApp Logos) -->
+  <div class="ch-floating-buttons" id="cityhaldwani-floating-buttons">
+    <a href="tel:+919876543210" class="ch-float-btn ch-float-call" id="ch-float-call-btn" title="Call Support" aria-label="Call Support" data-contact="call">
+      <span class="ch-float-pulse"></span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+    </a>
+    <a href="https://api.whatsapp.com/send?phone=919876543210&amp;text=Hello%20CityHaldwani%2C%20I%20want%20to%20book%20a%20verified%20companion%20in%20Kaladhungi.%20Please%20share%20available%20profiles." target="_blank" rel="noopener noreferrer" class="ch-float-btn ch-float-wa" id="ch-float-wa-btn" title="Chat on WhatsApp" aria-label="Chat on WhatsApp" data-contact="whatsapp">
+      <span class="ch-float-pulse"></span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.04 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.13 7.39C8.95 7.39 8.65 7.46 8.4 7.73C8.15 8 7.45 8.65 7.45 9.97C7.45 11.29 8.41 12.57 8.54 12.75C8.68 12.93 10.42 15.63 13.09 16.78C15.31 17.74 15.76 17.55 16.25 17.51C16.75 17.46 17.86 16.85 18.09 16.21C18.32 15.57 18.32 15.02 18.25 14.91C18.18 14.79 18 14.73 17.72 14.59C17.45 14.45 16.08 13.78 15.83 13.69C15.58 13.59 15.4 13.55 15.22 13.82C15.04 14.1 14.51 14.73 14.35 14.91C14.19 15.1 14.03 15.12 13.75 14.98C13.48 14.84 12.59 14.55 11.54 13.61C10.72 12.88 10.16 11.98 10 11.71C9.84 11.43 9.98 11.29 10.12 11.15C10.25 11.03 10.4 10.83 10.54 10.67C10.68 10.5 10.73 10.39 10.82 10.2C10.91 10.02 10.87 9.86 10.8 9.72C10.73 9.58 10.18 8.24 9.95 7.7C9.73 7.18 9.51 7.25 9.34 7.24C9.18 7.24 9.01 7.39 9.13 7.39Z"/></svg>
+    </a>
+  </div>
 
   <script src="/js/contacts-config.js" defer></script>
   <script src="/js/contact-manager.js" defer></script>

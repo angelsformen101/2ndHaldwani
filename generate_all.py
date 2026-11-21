@@ -1,6 +1,7 @@
 import os
 import re
 import json
+import urllib.parse
 
 from build_pages import NAMES_POOL, LOCATIONS_CONFIG
 from page_template import build_location_page, render_profile_card, count_words, EMBEDDED_CSS
@@ -188,6 +189,9 @@ for loc in LOCATIONS_CONFIG:
         </div>
       </div>''')
 dest_cards_str = "\n".join(dest_cards)
+
+home_wa_msg = "Hello CityHaldwani, I want to book a verified companion in Uttarakhand. Please share available profiles."
+home_wa_encoded = urllib.parse.quote(home_wa_msg)
 
 index_html = f'''<!DOCTYPE html>
 <html lang="en">
@@ -396,6 +400,18 @@ index_html = f'''<!DOCTYPE html>
     </div>
   </footer>
 
+  <!-- Floating Action Buttons (Icon-Only Call & WhatsApp Logos) -->
+  <div class="ch-floating-buttons" id="cityhaldwani-floating-buttons">
+    <a href="tel:+919876543210" class="ch-float-btn ch-float-call" id="ch-float-call-btn" title="Call Support" aria-label="Call Support" data-contact="call">
+      <span class="ch-float-pulse"></span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+    </a>
+    <a href="https://api.whatsapp.com/send?phone=919876543210&amp;text={home_wa_encoded}" target="_blank" rel="noopener noreferrer" class="ch-float-btn ch-float-wa" id="ch-float-wa-btn" title="Chat on WhatsApp" aria-label="Chat on WhatsApp" data-contact="whatsapp">
+      <span class="ch-float-pulse"></span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.04 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.13 7.39C8.95 7.39 8.65 7.46 8.4 7.73C8.15 8 7.45 8.65 7.45 9.97C7.45 11.29 8.41 12.57 8.54 12.75C8.68 12.93 10.42 15.63 13.09 16.78C15.31 17.74 15.76 17.55 16.25 17.51C16.75 17.46 17.86 16.85 18.09 16.21C18.32 15.57 18.32 15.02 18.25 14.91C18.18 14.79 18 14.73 17.72 14.59C17.45 14.45 16.08 13.78 15.83 13.69C15.58 13.59 15.4 13.55 15.22 13.82C15.04 14.1 14.51 14.73 14.35 14.91C14.19 15.1 14.03 15.12 13.75 14.98C13.48 14.84 12.59 14.55 11.54 13.61C10.72 12.88 10.16 11.98 10 11.71C9.84 11.43 9.98 11.29 10.12 11.15C10.25 11.03 10.4 10.83 10.54 10.67C10.68 10.5 10.73 10.39 10.82 10.2C10.91 10.02 10.87 9.86 10.8 9.72C10.73 9.58 10.18 8.24 9.95 7.7C9.73 7.18 9.51 7.25 9.34 7.24C9.18 7.24 9.01 7.39 9.13 7.39Z"/></svg>
+    </a>
+  </div>
+
   <script src="/js/contacts-config.js" defer></script>
   <script src="/js/contact-manager.js" defer></script>
   <script src="/js/security-shield.js" defer></script>
@@ -576,6 +592,8 @@ POLICY_PAGES = [
 ]
 
 for p in POLICY_PAGES:
+    pol_wa_msg = p.get('wa_msg', f"Hello CityHaldwani, I have an inquiry regarding CityHaldwani.com.")
+    pol_wa_encoded = urllib.parse.quote(pol_wa_msg)
     pol_html = f'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -682,6 +700,18 @@ for p in POLICY_PAGES:
       &copy; 2026 CityHaldwani.com. All rights reserved. 100% Verified 18+ Classified Directory.
     </div>
   </footer>
+
+  <!-- Floating Action Buttons (Icon-Only Call & WhatsApp Logos) -->
+  <div class="ch-floating-buttons" id="cityhaldwani-floating-buttons">
+    <a href="tel:+919876543210" class="ch-float-btn ch-float-call" id="ch-float-call-btn" title="Call Support" aria-label="Call Support" data-contact="call">
+      <span class="ch-float-pulse"></span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+    </a>
+    <a href="https://api.whatsapp.com/send?phone=919876543210&amp;text={pol_wa_encoded}" target="_blank" rel="noopener noreferrer" class="ch-float-btn ch-float-wa" id="ch-float-wa-btn" title="Chat on WhatsApp" aria-label="Chat on WhatsApp" data-contact="whatsapp">
+      <span class="ch-float-pulse"></span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.04 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.13 7.39C8.95 7.39 8.65 7.46 8.4 7.73C8.15 8 7.45 8.65 7.45 9.97C7.45 11.29 8.41 12.57 8.54 12.75C8.68 12.93 10.42 15.63 13.09 16.78C15.31 17.74 15.76 17.55 16.25 17.51C16.75 17.46 17.86 16.85 18.09 16.21C18.32 15.57 18.32 15.02 18.25 14.91C18.18 14.79 18 14.73 17.72 14.59C17.45 14.45 16.08 13.78 15.83 13.69C15.58 13.59 15.4 13.55 15.22 13.82C15.04 14.1 14.51 14.73 14.35 14.91C14.19 15.1 14.03 15.12 13.75 14.98C13.48 14.84 12.59 14.55 11.54 13.61C10.72 12.88 10.16 11.98 10 11.71C9.84 11.43 9.98 11.29 10.12 11.15C10.25 11.03 10.4 10.83 10.54 10.67C10.68 10.5 10.73 10.39 10.82 10.2C10.91 10.02 10.87 9.86 10.8 9.72C10.73 9.58 10.18 8.24 9.95 7.7C9.73 7.18 9.51 7.25 9.34 7.24C9.18 7.24 9.01 7.39 9.13 7.39Z"/></svg>
+    </a>
+  </div>
 
   <script src="/js/contacts-config.js" defer></script>
   <script src="/js/contact-manager.js" defer></script>

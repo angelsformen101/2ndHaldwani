@@ -104,123 +104,137 @@
     }
   }
 
+  const PAGE_WA_MESSAGES = {
+    'nainital': "Hello CityHaldwani, I want to book a verified companion in Nainital. Please share available profiles.",
+    'bhimtal': "Hello CityHaldwani, I want to book a verified companion in Bhimtal. Please share available profiles.",
+    'almora': "Hello CityHaldwani, I want to book a verified companion in Almora. Please share available profiles.",
+    'ramnagar': "Hello CityHaldwani, I want to book a verified companion in Ramnagar. Please share available profiles.",
+    'haldwani': "Hello CityHaldwani, I want to book a verified companion in Haldwani. Please share available profiles.",
+    'kaladhungi': "Hello CityHaldwani, I want to book a verified companion in Kaladhungi. Please share available profiles.",
+    'rudrapur': "Hello CityHaldwani, I want to book a verified companion in Rudrapur. Please share available profiles.",
+    'kathgodam': "Hello CityHaldwani, I want to book a verified companion in Kathgodam. Please share available profiles.",
+    'kashipur': "Hello CityHaldwani, I want to book a verified companion in Kashipur. Please share available profiles.",
+    'bajpur': "Hello CityHaldwani, I want to book a verified companion in Bajpur. Please share available profiles.",
+    'khatima': "Hello CityHaldwani, I want to book a verified companion in Khatima. Please share available profiles.",
+    'sitarganj': "Hello CityHaldwani, I want to book a verified companion in Sitarganj. Please share available profiles.",
+    'kichha': "Hello CityHaldwani, I want to book a verified companion in Kichha. Please share available profiles.",
+    'jim-corbett': "Hello CityHaldwani, I want to book a verified companion in Jim Corbett. Please share available profiles.",
+    'bhowali': "Hello CityHaldwani, I want to book a verified companion in Bhowali. Please share available profiles.",
+    'index': "Hello CityHaldwani, I want to book a verified companion in Uttarakhand. Please share available profiles.",
+    'about-us': "Hello CityHaldwani, I have an inquiry regarding CityHaldwani.com verified directory.",
+    'contact-us': "Hello CityHaldwani, I want to contact customer support regarding CityHaldwani.com.",
+    'safety-guide': "Hello CityHaldwani, I have a question regarding safety guidelines and zero advance policy.",
+    'report-abuse': "Hello CityHaldwani, I want to report a directory issue or violation on CityHaldwani.com.",
+    'terms': "Hello CityHaldwani, I have an inquiry regarding terms of service on CityHaldwani.com.",
+    'privacy': "Hello CityHaldwani, I have an inquiry regarding privacy policy on CityHaldwani.com."
+  };
+
+  function getAutoWhatsAppMessage(pageKey) {
+    if (!pageKey) return "Hello CityHaldwani, I want to book a verified companion. Please share available profiles.";
+    const cleanKey = pageKey.replace(/^locations\//i, '').replace(/\.html$/i, '').toLowerCase();
+    if (PAGE_WA_MESSAGES[cleanKey]) {
+      return PAGE_WA_MESSAGES[cleanKey];
+    }
+    for (const [key, msg] of Object.entries(PAGE_WA_MESSAGES)) {
+      if (cleanKey.includes(key)) return msg;
+    }
+    return "Hello CityHaldwani, I want to book a verified companion. Please share available profiles.";
+  }
+
   function applyContacts() {
     const resolved = getResolvedContacts();
     const cleanTel = formatTelNumber(resolved.call);
     const cleanWa = formatWaNumber(resolved.whatsapp);
+    const defaultPageMsg = getAutoWhatsAppMessage(resolved.pageKey);
 
     // Update all Call buttons
     document.querySelectorAll('a[href^="tel:"], .btn-call, .action-call, [data-contact="call"]').forEach(function (el) {
       el.setAttribute('href', 'tel:' + cleanTel);
-      el.addEventListener('click', function () {
-        trackClick('call', el.getAttribute('data-profile-name') || 'Direct Call Button');
-      }, { once: false });
+      if (!el.dataset.boundTrack) {
+        el.dataset.boundTrack = '1';
+        el.addEventListener('click', function () {
+          trackClick('call', el.getAttribute('data-profile-name') || 'Direct Call Button');
+        });
+      }
     });
 
     // Update all WhatsApp buttons
-    const waMsg = encodeURIComponent("Hello CityHaldwani, I am interested in verified companions and booking details. Please share available profiles.");
-    const waUrl = 'https://api.whatsapp.com/send?phone=' + cleanWa + '&text=' + waMsg;
-
     document.querySelectorAll('a[href*="whatsapp.com"], a[href*="wa.me"], .btn-whatsapp, .action-wa, [data-contact="whatsapp"]').forEach(function (el) {
+      const profileName = el.getAttribute('data-profile-name');
+      const msg = profileName
+        ? `Hello CityHaldwani, I want to book ${profileName}. Please share booking details.`
+        : defaultPageMsg;
+      const waUrl = 'https://api.whatsapp.com/send?phone=' + cleanWa + '&text=' + encodeURIComponent(msg);
+
       el.setAttribute('href', waUrl);
       el.setAttribute('target', '_blank');
       el.setAttribute('rel', 'noopener noreferrer');
-      el.addEventListener('click', function () {
-        trackClick('whatsapp', el.getAttribute('data-profile-name') || 'Direct WhatsApp Button');
-      }, { once: false });
+      if (!el.dataset.boundTrack) {
+        el.dataset.boundTrack = '1';
+        el.addEventListener('click', function () {
+          trackClick('whatsapp', profileName || 'Direct WhatsApp Button');
+        });
+      }
     });
+
+    // Ensure floating buttons are updated as well
+    updateFloatingButtons(cleanTel, cleanWa, defaultPageMsg);
+  }
+
+  function updateFloatingButtons(cleanTel, cleanWa, pageMsg) {
+    const callBtn = document.getElementById('ch-float-call-btn');
+    if (callBtn) {
+      callBtn.setAttribute('href', 'tel:' + cleanTel);
+    }
+    const waBtn = document.getElementById('ch-float-wa-btn');
+    if (waBtn) {
+      const waUrl = 'https://api.whatsapp.com/send?phone=' + cleanWa + '&text=' + encodeURIComponent(pageMsg);
+      waBtn.setAttribute('href', waUrl);
+    }
   }
 
   function injectFloatingButtons() {
-    if (document.getElementById('cityhaldwani-floating-buttons')) return;
-
     const resolved = getResolvedContacts();
     const cleanTel = formatTelNumber(resolved.call);
     const cleanWa = formatWaNumber(resolved.whatsapp);
-    const waMsg = encodeURIComponent("Hello CityHaldwani, I want to book verified companions. Please provide active models.");
-    const waUrl = 'https://api.whatsapp.com/send?phone=' + cleanWa + '&text=' + waMsg;
+    const autoMsg = getAutoWhatsAppMessage(resolved.pageKey);
+    const waUrl = 'https://api.whatsapp.com/send?phone=' + cleanWa + '&text=' + encodeURIComponent(autoMsg);
 
-    const container = document.createElement('div');
-    container.id = 'cityhaldwani-floating-buttons';
-    container.innerHTML = `
-      <style>
-        .ch-float-btn {
-          position: fixed;
-          bottom: 22px;
-          z-index: 99998;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 56px;
-          height: 56px;
-          border-radius: 50%;
-          box-shadow: 0 4px 18px rgba(0,0,0,0.22);
-          transition: transform 0.25s ease, box-shadow 0.25s ease;
-          text-decoration: none;
-        }
-        .ch-float-btn:hover {
-          transform: translateY(-4px) scale(1.05);
-          box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-        }
-        .ch-float-call {
-          left: 20px;
-          background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-          border: 2px solid #ffffff;
-        }
-        .ch-float-wa {
-          right: 20px;
-          background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-          border: 2px solid #ffffff;
-        }
-        .ch-float-btn svg {
-          width: 26px;
-          height: 26px;
-          fill: #ffffff;
-        }
-        .ch-float-pulse {
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          border-radius: 50%;
-          background: inherit;
-          opacity: 0.6;
-          animation: ch-pulse 2s cubic-bezier(0, 0, 0.2, 1) infinite;
-          z-index: -1;
-        }
-        @keyframes ch-pulse {
-          0% { transform: scale(1); opacity: 0.7; }
-          100% { transform: scale(1.55); opacity: 0; }
-        }
-        @media (max-width: 768px) {
-          .ch-float-btn { width: 48px; height: 48px; bottom: 14px; box-shadow: 0 4px 14px rgba(0,0,0,0.22); }
-          .ch-float-call { left: 12px; }
-          .ch-float-wa { right: 12px; }
-          .ch-float-btn svg { width: 23px; height: 23px; }
-        }
-        @media (max-width: 480px) {
-          .ch-float-btn { width: 44px; height: 44px; bottom: 12px; }
-          .ch-float-call { left: 10px; }
-          .ch-float-wa { right: 10px; }
-          .ch-float-btn svg { width: 20px; height: 20px; }
-        }
-      </style>
-      <a href="tel:${cleanTel}" class="ch-float-btn ch-float-call" id="ch-float-call-btn" title="Call Now" aria-label="Call Now">
-        <div class="ch-float-pulse"></div>
-        <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-      </a>
-      <a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="ch-float-btn ch-float-wa" id="ch-float-wa-btn" title="Chat on WhatsApp" aria-label="Chat on WhatsApp">
-        <div class="ch-float-pulse"></div>
-        <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0012.04 2zm5.79 14.07c-.24.67-1.39 1.28-1.93 1.34-.51.05-1.18.08-3.41-.85-2.85-1.18-4.69-4.08-4.83-4.27-.14-.19-1.16-1.54-1.16-2.94 0-1.4.73-2.09 1-2.37.24-.26.54-.33.72-.33.18 0 .36 0 .52.01.17.01.39-.06.61.47.23.54.78 1.9.85 2.04.07.15.11.32.02.51-.09.18-.14.29-.28.46-.14.16-.29.37-.42.49-.14.14-.29.29-.12.58.17.29.75 1.24 1.62 2 1.11.98 2.05 1.28 2.34 1.43.29.14.46.12.63-.07.18-.19.74-.86.94-1.16.2-.29.4-.24.67-.14.27.1 1.73.81 2.03.96.29.15.49.23.56.36.07.12.07.72-.17 1.39z"/></svg>
-      </a>
-    `;
-    document.body.appendChild(container);
+    let container = document.getElementById('cityhaldwani-floating-buttons');
+    if (!container) {
+      container = document.createElement('div');
+      container.id = 'cityhaldwani-floating-buttons';
+      container.className = 'ch-floating-buttons';
+      container.innerHTML = `
+        <a href="tel:${cleanTel}" class="ch-float-btn ch-float-call" id="ch-float-call-btn" title="Call Support" aria-label="Call Support">
+          <span class="ch-float-pulse"></span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        </a>
+        <a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="ch-float-btn ch-float-wa" id="ch-float-wa-btn" title="Chat on WhatsApp" aria-label="Chat on WhatsApp">
+          <span class="ch-float-pulse"></span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.04 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.13 7.39C8.95 7.39 8.65 7.46 8.4 7.73C8.15 8 7.45 8.65 7.45 9.97C7.45 11.29 8.41 12.57 8.54 12.75C8.68 12.93 10.42 15.63 13.09 16.78C15.31 17.74 15.76 17.55 16.25 17.51C16.75 17.46 17.86 16.85 18.09 16.21C18.32 15.57 18.32 15.02 18.25 14.91C18.18 14.79 18 14.73 17.72 14.59C17.45 14.45 16.08 13.78 15.83 13.69C15.58 13.59 15.4 13.55 15.22 13.82C15.04 14.1 14.51 14.73 14.35 14.91C14.19 15.1 14.03 15.12 13.75 14.98C13.48 14.84 12.59 14.55 11.54 13.61C10.72 12.88 10.16 11.98 10 11.71C9.84 11.43 9.98 11.29 10.12 11.15C10.25 11.03 10.4 10.83 10.54 10.67C10.68 10.5 10.73 10.39 10.82 10.2C10.91 10.02 10.87 9.86 10.8 9.72C10.73 9.58 10.18 8.24 9.95 7.7C9.73 7.18 9.51 7.25 9.34 7.24C9.18 7.24 9.01 7.39 9.13 7.39Z"/></svg>
+        </a>
+      `;
+      document.body.appendChild(container);
+    } else {
+      updateFloatingButtons(cleanTel, cleanWa, autoMsg);
+    }
 
-    document.getElementById('ch-float-call-btn').addEventListener('click', function () {
-      trackClick('call', 'Floating Call Icon');
-    });
-    document.getElementById('ch-float-wa-btn').addEventListener('click', function () {
-      trackClick('whatsapp', 'Floating WhatsApp Icon');
-    });
+    const callEl = document.getElementById('ch-float-call-btn');
+    if (callEl && !callEl.dataset.boundTrack) {
+      callEl.dataset.boundTrack = '1';
+      callEl.addEventListener('click', function () {
+        trackClick('call', 'Floating Call Icon');
+      });
+    }
+
+    const waEl = document.getElementById('ch-float-wa-btn');
+    if (waEl && !waEl.dataset.boundTrack) {
+      waEl.dataset.boundTrack = '1';
+      waEl.addEventListener('click', function () {
+        trackClick('whatsapp', 'Floating WhatsApp Icon');
+      });
+    }
   }
 
   // Auto fallback for broken image paths (handles subdirectories, Live Server ports, etc.)
