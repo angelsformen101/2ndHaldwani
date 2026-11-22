@@ -860,7 +860,8 @@ a {
 .footer-bottom-flex {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  text-align: center;
   flex-wrap: wrap;
   gap: 14px;
 }
@@ -869,6 +870,7 @@ a {
   display: inline-flex;
   align-items: center;
   line-height: 1;
+  margin-bottom: 16px;
 }
 
 .dmca-badge-wrap a {
@@ -878,15 +880,15 @@ a {
 
 .dmca-badge-wrap img {
   display: block;
-  height: 24px;
+  height: 38px;
   width: auto;
-  border-radius: 4px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .dmca-badge-wrap a:hover img {
-  opacity: 0.9;
+  opacity: 0.92;
   transform: translateY(-1px);
 }
 
@@ -1277,6 +1279,14 @@ a {
     text-align: center;
     justify-content: center;
     gap: 12px;
+  }
+
+  .dmca-badge-wrap {
+    margin-bottom: 14px;
+  }
+
+  .dmca-badge-wrap img {
+    height: 32px;
   }
 }
 

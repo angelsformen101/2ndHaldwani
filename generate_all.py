@@ -363,6 +363,7 @@ index_html = f'''<!DOCTYPE html>
   <footer class="site-footer">
     <div class="container footer-grid">
       <div class="footer-col">
+        {DMCA_BADGE_HTML}
         <h4>CityHaldwani.com</h4>
         <p>
           Uttarakhand's premier light-theme classified directory connecting verified independent advertisers with respectful adult clients across 15 destination hubs. Strict 18+ compliance, cash on meeting, and complete discretion.
@@ -400,7 +401,6 @@ index_html = f'''<!DOCTYPE html>
     <div class="container footer-bottom">
       <div class="footer-bottom-flex">
         <div>&copy; 2026 CityHaldwani.com. All rights reserved. 100% Verified 18+ Adult Classified Directory.</div>
-        {DMCA_BADGE_HTML}
       </div>
     </div>
   </footer>
@@ -674,6 +674,7 @@ for p in POLICY_PAGES:
   <footer class="site-footer">
     <div class="container footer-grid">
       <div class="footer-col">
+        {DMCA_BADGE_HTML}
         <h4>CityHaldwani.com</h4>
         <p>Premier light-theme verified classified portal for Uttarakhand companions and tourists. Strict 18+ compliance and privacy assurance.</p>
         <span class="footer-badge-pill">🛡️ 100% Verified Classifieds • 18+ Adult Directory</span>
@@ -706,7 +707,6 @@ for p in POLICY_PAGES:
     <div class="container footer-bottom">
       <div class="footer-bottom-flex">
         <div>&copy; 2026 CityHaldwani.com. All rights reserved. 100% Verified 18+ Adult Classified Directory.</div>
-        {DMCA_BADGE_HTML}
       </div>
     </div>
   </footer>

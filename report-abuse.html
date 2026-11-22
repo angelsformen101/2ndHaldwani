@@ -898,7 +898,8 @@ a {
 .footer-bottom-flex {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  text-align: center;
   flex-wrap: wrap;
   gap: 14px;
 }
@@ -907,6 +908,7 @@ a {
   display: inline-flex;
   align-items: center;
   line-height: 1;
+  margin-bottom: 16px;
 }
 
 .dmca-badge-wrap a {
@@ -916,15 +918,15 @@ a {
 
 .dmca-badge-wrap img {
   display: block;
-  height: 24px;
+  height: 38px;
   width: auto;
-  border-radius: 4px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .dmca-badge-wrap a:hover img {
-  opacity: 0.9;
+  opacity: 0.92;
   transform: translateY(-1px);
 }
 
@@ -1316,6 +1318,14 @@ a {
     justify-content: center;
     gap: 12px;
   }
+
+  .dmca-badge-wrap {
+    margin-bottom: 14px;
+  }
+
+  .dmca-badge-wrap img {
+    height: 32px;
+  }
 }
 
 /* Extra Small Devices (360px and below) */
@@ -1627,6 +1637,10 @@ a {
   <footer class="site-footer">
     <div class="container footer-grid">
       <div class="footer-col">
+        <div class="dmca-badge-wrap">
+          <a href="//www.dmca.com/Protection/Status.aspx?ID=ba77071e-739a-4ae4-a1e0-e8e954c427e2" title="DMCA.com Protection Status" class="dmca-badge"><img src="https://images.dmca.com/Badges/dmca_protected_sml_120m.png?ID=ba77071e-739a-4ae4-a1e0-e8e954c427e2" alt="DMCA.com Protection Status" /></a>
+          <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"></script>
+        </div>
         <h4>CityHaldwani.com</h4>
         <p>Premier light-theme verified classified portal for Uttarakhand companions and tourists. Strict 18+ compliance and privacy assurance.</p>
         <span class="footer-badge-pill">🛡️ 100% Verified Classifieds • 18+ Adult Directory</span>
@@ -1659,10 +1673,6 @@ a {
     <div class="container footer-bottom">
       <div class="footer-bottom-flex">
         <div>&copy; 2026 CityHaldwani.com. All rights reserved. 100% Verified 18+ Adult Classified Directory.</div>
-        <div class="dmca-badge-wrap">
-          <a href="//www.dmca.com/Protection/Status.aspx?ID=ba77071e-739a-4ae4-a1e0-e8e954c427e2" title="DMCA.com Protection Status" class="dmca-badge"><img src="https://images.dmca.com/Badges/dmca_protected_sml_120m.png?ID=ba77071e-739a-4ae4-a1e0-e8e954c427e2" alt="DMCA.com Protection Status" /></a>
-          <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"></script>
-        </div>
       </div>
     </div>
   </footer>

@@ -567,6 +567,7 @@ def build_location_page(loc, start_name_idx):
   <footer class="site-footer">
     <div class="container footer-grid">
       <div class="footer-col">
+        {DMCA_BADGE_HTML}
         <h4>CityHaldwani.com</h4>
         <p>
           Premier light-theme verified classified portal for Uttarakhand companions and tourists. Strict 18+ compliance, zero advance fee guarantee, and total client privacy.
@@ -604,7 +605,6 @@ def build_location_page(loc, start_name_idx):
     <div class="container footer-bottom">
       <div class="footer-bottom-flex">
         <div>&copy; 2026 CityHaldwani.com. All rights reserved. 100% Verified 18+ Adult Classified Directory.</div>
-        {DMCA_BADGE_HTML}
       </div>
     </div>
   </footer>
