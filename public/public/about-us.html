@@ -889,10 +889,42 @@ a {
   background: #0d060c;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   padding: 18px 0;
-  text-align: center;
   font-size: 12.5px;
   color: #a4919f;
   font-weight: 500;
+}
+
+.footer-bottom-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.dmca-badge-wrap {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.dmca-badge-wrap a {
+  display: inline-flex;
+  align-items: center;
+}
+
+.dmca-badge-wrap img {
+  display: block;
+  height: 24px;
+  width: auto;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.dmca-badge-wrap a:hover img {
+  opacity: 0.9;
+  transform: translateY(-1px);
 }
 
 /* ================= Comprehensive Mobile Responsiveness ================= */
@@ -1271,6 +1303,13 @@ a {
     padding: 14px 12px 30px 12px;
     font-size: 11.5px;
   }
+
+  .footer-bottom-flex {
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    gap: 12px;
+  }
 }
 
 /* Extra Small Devices (360px and below) */
@@ -1619,7 +1658,13 @@ a {
       </div>
     </div>
     <div class="container footer-bottom">
-      &copy; 2026 CityHaldwani.com. All rights reserved. 100% Verified 18+ Classified Directory.
+      <div class="footer-bottom-flex">
+        <div>&copy; 2026 CityHaldwani.com. All rights reserved. 100% Verified 18+ Adult Classified Directory.</div>
+        <div class="dmca-badge-wrap">
+          <a href="//www.dmca.com/Protection/Status.aspx?ID=ba77071e-739a-4ae4-a1e0-e8e954c427e2" title="DMCA.com Protection Status" class="dmca-badge"><img src="https://images.dmca.com/Badges/dmca_protected_sml_120m.png?ID=ba77071e-739a-4ae4-a1e0-e8e954c427e2" alt="DMCA.com Protection Status" /></a>
+          <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"></script>
+        </div>
+      </div>
     </div>
   </footer>
 

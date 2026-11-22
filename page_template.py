@@ -36,6 +36,11 @@ ADULT_WARNING_BAR_HTML = '''  <!-- 18+ Adult Content Moving Warning Bar -->
     </div>
   </aside>'''
 
+DMCA_BADGE_HTML = '''<div class="dmca-badge-wrap">
+          <a href="//www.dmca.com/Protection/Status.aspx?ID=ba77071e-739a-4ae4-a1e0-e8e954c427e2" title="DMCA.com Protection Status" class="dmca-badge"><img src="https://images.dmca.com/Badges/dmca_protected_sml_120m.png?ID=ba77071e-739a-4ae4-a1e0-e8e954c427e2" alt="DMCA.com Protection Status" /></a>
+          <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"></script>
+        </div>'''
+
 # Helper to calculate clean visible body word count (excluding head, script, style)
 def count_words(html_str):
     body_match = re.search(r'<body[\s\S]*?</body>', html_str, re.I)
@@ -597,7 +602,10 @@ def build_location_page(loc, start_name_idx):
       </div>
     </div>
     <div class="container footer-bottom">
-      &copy; 2026 CityHaldwani.com. All rights reserved. 100% Verified 18+ Adult Classified Directory.
+      <div class="footer-bottom-flex">
+        <div>&copy; 2026 CityHaldwani.com. All rights reserved. 100% Verified 18+ Adult Classified Directory.</div>
+        {DMCA_BADGE_HTML}
+      </div>
     </div>
   </footer>
 

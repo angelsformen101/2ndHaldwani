@@ -4,7 +4,7 @@ import json
 import urllib.parse
 
 from build_pages import NAMES_POOL, LOCATIONS_CONFIG
-from page_template import build_location_page, render_profile_card, count_words, EMBEDDED_CSS, ADULT_WARNING_BAR_HTML
+from page_template import build_location_page, render_profile_card, count_words, EMBEDDED_CSS, ADULT_WARNING_BAR_HTML, DMCA_BADGE_HTML
 
 OUTPUT_DIR = os.path.dirname(os.path.abspath(__file__))
 LOCATIONS_DIR = os.path.join(OUTPUT_DIR, 'locations')
@@ -398,7 +398,10 @@ index_html = f'''<!DOCTYPE html>
       </div>
     </div>
     <div class="container footer-bottom">
-      &copy; 2026 CityHaldwani.com. All rights reserved. 100% Verified 18+ Classified Directory.
+      <div class="footer-bottom-flex">
+        <div>&copy; 2026 CityHaldwani.com. All rights reserved. 100% Verified 18+ Adult Classified Directory.</div>
+        {DMCA_BADGE_HTML}
+      </div>
     </div>
   </footer>
 
@@ -701,7 +704,10 @@ for p in POLICY_PAGES:
       </div>
     </div>
     <div class="container footer-bottom">
-      &copy; 2026 CityHaldwani.com. All rights reserved. 100% Verified 18+ Classified Directory.
+      <div class="footer-bottom-flex">
+        <div>&copy; 2026 CityHaldwani.com. All rights reserved. 100% Verified 18+ Adult Classified Directory.</div>
+        {DMCA_BADGE_HTML}
+      </div>
     </div>
   </footer>
 
