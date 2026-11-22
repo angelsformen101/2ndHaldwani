@@ -185,7 +185,7 @@ for loc in LOCATIONS_CONFIG:
           <p style="font-size: 13.5px; color: var(--text-secondary);">{loc['meta_desc']}</p>
         </div>
         <div style="margin-top: 14px;">
-          <a href="locations/{loc['slug']}.html" class="btn-card-details" style="display: inline-block; width: 100%; text-align: center; font-weight: 700; color: var(--primary-accent);">View 16 Profiles in {loc['name']} &rarr;</a>
+          <a href="locations/{loc['slug']}.html" class="btn-card-details" style="display: inline-block; width: 100%; text-align: center; font-weight: 700; color: #be123c; background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%); border: 1px solid #fecdd3; padding: 10px 14px; border-radius: 8px;">View 16 Profiles in {loc['name']} &rarr;</a>
         </div>
       </div>''')
 dest_cards_str = "\n".join(dest_cards)
