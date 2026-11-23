@@ -11,31 +11,16 @@ CSS_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'css', 'styl
 with open(CSS_FILE, 'r', encoding='utf-8') as f:
     EMBEDDED_CSS = f.read()
 
-ADULT_WARNING_BAR_HTML = '''  <!-- 18+ Adult Content Moving Warning Bar -->
-  <aside class="adult-warning-bar" role="alert" aria-label="18+ Adult Content Warning">
-    <div class="warning-marquee-track">
-      <div class="warning-marquee-content">
-        <span class="warning-badge-18">🔞 18+ STRICT ADULT WARNING</span>
-        <span>This website contains age-restricted 18+ adult classifieds and sensitive content intended solely for consenting adults aged 18 years and older.</span>
-        <span class="warning-badge-alert">⚠️ AGE VERIFICATION REQUIRED</span>
-        <span>By accessing this portal, you confirm under penalty of law that you are at least 18 years of age and agree to our Terms of Service &amp; Privacy Policy.</span>
-        <span class="warning-divider">&#9670;</span>
-        <span>Strict Zero Advance Payment Policy &bull; 100% Genuine Verified Profiles &bull; Cash On Direct Meeting Only &bull; Discreet In-Room &amp; Resort Outcall</span>
-        <span class="warning-divider">&#9670;</span>
-        <span>If you are under 18 years of age or find adult material objectionable, please exit this website immediately.</span>
-      </div>
-      <div class="warning-marquee-content" aria-hidden="true">
-        <span class="warning-badge-18">🔞 18+ STRICT ADULT WARNING</span>
-        <span>This website contains age-restricted 18+ adult classifieds and sensitive content intended solely for consenting adults aged 18 years and older.</span>
-        <span class="warning-badge-alert">⚠️ AGE VERIFICATION REQUIRED</span>
-        <span>By accessing this portal, you confirm under penalty of law that you are at least 18 years of age and agree to our Terms of Service &amp; Privacy Policy.</span>
-        <span class="warning-divider">&#9670;</span>
-        <span>Strict Zero Advance Payment Policy &bull; 100% Genuine Verified Profiles &bull; Cash On Direct Meeting Only &bull; Discreet In-Room &amp; Resort Outcall</span>
-        <span class="warning-divider">&#9670;</span>
-        <span>If you are under 18 years of age or find adult material objectionable, please exit this website immediately.</span>
-      </div>
-    </div>
-  </aside>'''
+STATIC_ADULT_WARNING_HTML = '''      <div class="static-adult-warning" role="alert" aria-label="18+ Adult Content Warning">
+        <div class="warning-line">
+          <span class="warning-badge-18">🔞 18+ STRICT ADULT WARNING:</span>
+          <span>This portal contains age-restricted 18+ adult classifieds intended solely for consenting adults (18+).</span>
+        </div>
+        <div class="warning-line">
+          <span class="warning-badge-alert">⚠️ AGE VERIFICATION REQUIRED:</span>
+          <span>Under penalty of law you confirm you are 18+ &bull; Strict Zero Advance Policy &bull; Cash On Direct Meeting Only.</span>
+        </div>
+      </div>'''
 
 DMCA_BADGE_HTML = '''<div class="dmca-badge-wrap">
           <a href="//www.dmca.com/Protection/Status.aspx?ID=ba77071e-739a-4ae4-a1e0-e8e954c427e2" title="DMCA.com Protection Status" class="dmca-badge"><img src="https://images.dmca.com/Badges/dmca_protected_sml_120m.png?ID=ba77071e-739a-4ae4-a1e0-e8e954c427e2" alt="DMCA.com Protection Status" /></a>
@@ -448,7 +433,6 @@ def build_location_page(loc, start_name_idx):
   </script>
 </head>
 <body>
-{ADULT_WARNING_BAR_HTML}
 
   <header class="site-topbar">
     <div class="container topbar-wrapper">
@@ -469,9 +453,12 @@ def build_location_page(loc, start_name_idx):
   </header>
 
   <main class="container">
-    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
-      <a href="../index.html">Home</a> &gt; <a href="../index.html#locations">Uttarakhand</a> &gt; <span>{city_name} Escorts</span>
-    </nav>
+    <div class="top-nav-warning-bar">
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <a href="../index.html">Home</a> &gt; <a href="../index.html#locations">Uttarakhand</a> &gt; <span>{city_name} Escorts</span>
+      </nav>
+{STATIC_ADULT_WARNING_HTML}
+    </div>
 
     <div class="location-pills-bar">
       <div class="location-pills-title">Browse Uttarakhand Destination Hubs:</div>

@@ -1435,119 +1435,75 @@ a {
 }
 
 /* ==========================================================================
-   18+ Adult Content Moving Warning Bar (Top Floating Right-to-Left Ticker)
+   18+ Adult Content Static Warning (2-Line Banner in Top Marked Area)
    ========================================================================== */
-.adult-warning-bar {
-  position: sticky;
-  top: 0;
-  z-index: 10001;
-  width: 100%;
-  background: linear-gradient(90deg, #4c0519 0%, #881337 25%, #be123c 50%, #881337 75%, #4c0519 100%);
-  color: #ffffff;
-  overflow: hidden;
-  box-shadow: 0 3px 12px rgba(136, 19, 55, 0.4);
-  border-bottom: 1px solid rgba(254, 205, 211, 0.35);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  user-select: none;
-}
-
-.warning-marquee-track {
+.top-nav-warning-bar {
   display: flex;
-  width: max-content;
-  will-change: transform;
-  animation: warning-scroll-rtl 65s linear infinite;
-}
-
-.adult-warning-bar:hover .warning-marquee-track,
-.adult-warning-bar:active .warning-marquee-track {
-  animation-play-state: paused;
-}
-
-.warning-marquee-content {
-  display: inline-flex;
+  justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   gap: 16px;
-  padding: 6px 16px;
-  white-space: nowrap;
+  padding: 10px 0 8px 0;
+}
+
+.top-nav-warning-bar .breadcrumb-nav {
+  padding: 0;
+  margin: 0;
   flex-shrink: 0;
-  font-size: 12.5px;
-  letter-spacing: 0.25px;
-  font-weight: 500;
 }
 
-.warning-badge-18 {
-  display: inline-flex;
+.static-adult-warning {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  background: linear-gradient(135deg, #fff1f2 0%, #fff7ed 100%);
+  border: 1px solid #fecdd3;
+  border-left: 3.5px solid #dc2626;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 11.5px;
+  color: #7f1d1d;
+  line-height: 1.4;
+  box-shadow: 0 1px 4px rgba(220, 38, 38, 0.06);
+}
+
+.static-adult-warning .warning-line {
+  display: flex;
   align-items: center;
-  gap: 4px;
-  background: #ffffff;
-  color: #991b1b;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.static-adult-warning .warning-badge-18 {
+  background: #dc2626;
+  color: #ffffff;
   font-weight: 800;
-  font-size: 11px;
-  padding: 2px 8px;
-  border-radius: 4px;
-  letter-spacing: 0.6px;
-  text-transform: uppercase;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-}
-
-.warning-badge-alert {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  background: #fef08a;
-  color: #854d0e;
-  font-weight: 700;
-  font-size: 11px;
-  padding: 2px 7px;
-  border-radius: 4px;
-  letter-spacing: 0.4px;
-  text-transform: uppercase;
-}
-
-.warning-divider {
-  display: inline-block;
-  opacity: 0.6;
   font-size: 10px;
+  padding: 1.5px 6px;
+  border-radius: 3px;
+  letter-spacing: 0.4px;
 }
 
-@keyframes warning-scroll-rtl {
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-  100% {
-    transform: translate3d(-50%, 0, 0);
-  }
+.static-adult-warning .warning-badge-alert {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fca5a5;
+  font-weight: 700;
+  font-size: 10px;
+  padding: 1px 5px;
+  border-radius: 3px;
 }
 
-@media (max-width: 768px) {
-  .warning-marquee-track {
-    animation-duration: 52s;
+@media (max-width: 900px) {
+  .top-nav-warning-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
   }
-  .warning-marquee-content {
-    font-size: 11.5px;
-    padding: 5px 12px;
-    gap: 13px;
-  }
-  .warning-badge-18,
-  .warning-badge-alert {
-    font-size: 10px;
-    padding: 1.5px 6px;
-  }
-}
-
-@media (max-width: 480px) {
-  .warning-marquee-track {
-    animation-duration: 45s;
-  }
-  .warning-marquee-content {
+  .static-adult-warning {
+    width: 100%;
     font-size: 11px;
-    padding: 4.5px 10px;
-    gap: 11px;
-  }
-  .warning-badge-18,
-  .warning-badge-alert {
-    font-size: 9.5px;
-    padding: 1px 5px;
+    padding: 6px 10px;
   }
 }
 

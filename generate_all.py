@@ -4,7 +4,7 @@ import json
 import urllib.parse
 
 from build_pages import NAMES_POOL, LOCATIONS_CONFIG
-from page_template import build_location_page, render_profile_card, count_words, EMBEDDED_CSS, ADULT_WARNING_BAR_HTML, DMCA_BADGE_HTML
+from page_template import build_location_page, render_profile_card, count_words, EMBEDDED_CSS, STATIC_ADULT_WARNING_HTML, DMCA_BADGE_HTML
 from location_local_data import HOME_SEO, HOME_POPULAR_TAGS
 
 OUTPUT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -259,7 +259,6 @@ index_html = f'''<!DOCTYPE html>
   </script>
 </head>
 <body>
-{ADULT_WARNING_BAR_HTML}
 
   <header class="site-topbar">
     <div class="container topbar-wrapper">
@@ -280,9 +279,12 @@ index_html = f'''<!DOCTYPE html>
   </header>
 
   <main class="container">
-    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
-      <span>Home</span> &gt; <span>Uttarakhand Classifieds</span>
-    </nav>
+    <div class="top-nav-warning-bar">
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <span>Home</span> &gt; <span>Uttarakhand Classifieds</span>
+      </nav>
+{STATIC_ADULT_WARNING_HTML}
+    </div>
 
     <div class="location-pills-bar">
       <div class="location-pills-title">Select Your Preferred Destination Hub:</div>
@@ -656,6 +658,34 @@ for p in POLICY_PAGES:
   <link rel="icon" href="/favicon.webp" type="image/webp">
   <link rel="preload" href="/city-logo.png" as="image">
 
+  <!-- JSON-LD Breadcrumb & WebPage Schema -->
+  <script type="application/ld+json">
+  {{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "{p['title']}",
+    "description": "{p['desc']}",
+    "url": "{p['canonical']}",
+    "breadcrumb": {{
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {{
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://cityhaldwani.com/"
+        }},
+        {{
+          "@type": "ListItem",
+          "position": 2,
+          "name": "{p['h1']}",
+          "item": "{p['canonical']}"
+        }}
+      ]
+    }}
+  }}
+  </script>
+
   <!-- Directory Trailing Slash Script -->
   <script>
     (function() {{
@@ -671,7 +701,6 @@ for p in POLICY_PAGES:
   </style>
 </head>
 <body>
-{ADULT_WARNING_BAR_HTML}
 
   <header class="site-topbar">
     <div class="container topbar-wrapper">
@@ -684,6 +713,7 @@ for p in POLICY_PAGES:
       </a>
       <div class="topbar-actions">
         <span class="badge-verified-top">&#10004; Verified Directory</span>
+        <a href="/post-ad.html" class="btn-header-ad">📢 Post Ad</a>
         <a href="tel:+919876543210" class="btn-header-call" data-contact="call">Call Support</a>
         <a href="https://api.whatsapp.com/send?phone=919876543210" class="btn-header-wa" data-contact="whatsapp">WhatsApp</a>
       </div>
@@ -691,9 +721,12 @@ for p in POLICY_PAGES:
   </header>
 
   <main class="container">
-    <nav class="breadcrumb-nav">
-      <a href="/index.html">Home</a> &gt; <span>{p['h1']}</span>
-    </nav>
+    <div class="top-nav-warning-bar">
+      <nav class="breadcrumb-nav">
+        <a href="/index.html">Home</a> &gt; <span>{p['h1']}</span>
+      </nav>
+{STATIC_ADULT_WARNING_HTML}
+    </div>
 
     <div class="editorial-card" style="margin-top: 16px;">
       <h1>{p['h1']}</h1>
@@ -766,6 +799,7 @@ for p in POLICY_PAGES:
 # Generate sitemap.xml
 sitemap_urls = [
     ('https://cityhaldwani.com/', '1.0', 'daily'),
+    ('https://cityhaldwani.com/post-ad.html', '0.8', 'weekly'),
     ('https://cityhaldwani.com/about-us.html', '0.6', 'monthly'),
     ('https://cityhaldwani.com/contact-us.html', '0.6', 'monthly'),
     ('https://cityhaldwani.com/safety-guide.html', '0.7', 'monthly'),
