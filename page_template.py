@@ -437,6 +437,7 @@ def build_location_page(loc, start_name_idx):
       </a>
       <div class="topbar-actions">
         <span class="badge-verified-top">&#10004; 100% Genuine Profiles</span>
+        <a href="/post-ad.html" class="btn-header-ad">📢 Post Ad</a>
         <a href="tel:+919876543210" class="btn-header-call" data-contact="call">Call Support</a>
         <a href="https://api.whatsapp.com/send?phone=919876543210" class="btn-header-wa" data-contact="whatsapp">WhatsApp</a>
       </div>
