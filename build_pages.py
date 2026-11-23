@@ -194,4 +194,18 @@ LOCATIONS_CONFIG = [
     }
 ]
 
+# Integrate calibrated Google-compliant SEO Titles, Meta Descriptions, and H1 tags
+try:
+    from location_local_data import LOCATION_SEO
+    for loc in LOCATIONS_CONFIG:
+        slug = loc['slug']
+        if slug in LOCATION_SEO:
+            loc['title'] = LOCATION_SEO[slug]['title']
+            loc['meta_desc'] = LOCATION_SEO[slug]['meta_desc']
+            loc['h1'] = LOCATION_SEO[slug]['h1']
+            loc['seo_landmark'] = LOCATION_SEO[slug].get('landmark', '')
+            loc['seo_hotel'] = LOCATION_SEO[slug].get('hotel', '')
+except ImportError:
+    pass
+
 print(f"Loaded {len(NAMES_POOL)} unique names and {len(LOCATIONS_CONFIG)} location configurations.")

@@ -5,6 +5,7 @@ import urllib.parse
 
 from build_pages import NAMES_POOL, LOCATIONS_CONFIG
 from page_template import build_location_page, render_profile_card, count_words, EMBEDDED_CSS, ADULT_WARNING_BAR_HTML, DMCA_BADGE_HTML
+from location_local_data import HOME_SEO, HOME_POPULAR_TAGS
 
 OUTPUT_DIR = os.path.dirname(os.path.abspath(__file__))
 LOCATIONS_DIR = os.path.join(OUTPUT_DIR, 'locations')
@@ -45,6 +46,13 @@ for l in LOCATIONS_CONFIG:
     home_pills.append(f'<a href="locations/{l["slug"]}.html" class="loc-pill">📍 {l["name"]}</a>')
 home_pills_html = "\n".join(home_pills)
 
+HOME_PROFILE_KEYWORDS = [
+    'Haldwani Call Girls', 'Nainital Escort Service', 'Mall Road Call Girls', 'Bhimtal Escort Service',
+    'Ramnagar Call Girls', 'Jim Corbett Escorts', 'Rudrapur Escort Service', 'Kathgodam Call Girls',
+    'Kashipur Escort Service', 'Tikonia Call Girls', 'Tallital Escorts', 'Kasar Devi Call Girls',
+    'SIDCUL Escort Service', 'Kaladhungi Call Girls', 'Bhowali Escort Service', 'Khatima Call Girls'
+]
+
 home_cards = []
 for i in range(16):
     name = NAMES_POOL[(name_index_tracker + i) % len(NAMES_POOL)]
@@ -52,7 +60,8 @@ for i in range(16):
     age = 21 + (i % 6)
     img_alias = f"profile_{( (name_index_tracker + i) % 48 ) + 1:02d}.webp"
     city_sample = LOCATIONS_CONFIG[i % len(LOCATIONS_CONFIG)]['name']
-    home_cards.append(render_profile_card(name, city_sample, age, i, img_alias, rel_prefix=''))
+    kw_sample = HOME_PROFILE_KEYWORDS[i % len(HOME_PROFILE_KEYWORDS)]
+    home_cards.append(render_profile_card(name, city_sample, age, i, img_alias, rel_prefix='', profile_title=kw_sample))
 home_cards_str = "\n".join(home_cards)
 
 home_faqs = [
@@ -180,7 +189,7 @@ for loc in LOCATIONS_CONFIG:
     dest_cards.append(f'''
       <div class="category-box" style="display: flex; flex-direction: column; justify-content: space-between;">
         <div>
-          <h4>📍 <a href="locations/{loc['slug']}.html" style="color: inherit;">{loc['name']} Escorts</a></h4>
+          <h3>📍 <a href="locations/{loc['slug']}.html" style="color: inherit;">{loc['name']} Escorts</a></h3>
           <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 6px;">{loc['tagline']}</p>
           <p style="font-size: 13.5px; color: var(--text-secondary);">{loc['meta_desc']}</p>
         </div>
@@ -190,6 +199,15 @@ for loc in LOCATIONS_CONFIG:
       </div>''')
 dest_cards_str = "\n".join(dest_cards)
 
+# Build Homepage Popular Searches Tag Cloud
+tag_accents = ['accent-blue', 'accent-pink', 'accent-green', 'accent-purple', '']
+home_tags_list = []
+for idx, tag in enumerate(HOME_POPULAR_TAGS):
+    acc = tag_accents[idx % len(tag_accents)]
+    cls = f"popular-tag {acc}".strip()
+    home_tags_list.append(f'<a href="#featured-listings" class="{cls}">{tag}</a>')
+home_popular_tags_html = "\n".join(home_tags_list)
+
 home_wa_msg = "Hello CityHaldwani, I want to book a verified companion in Uttarakhand. Please share available profiles."
 home_wa_encoded = urllib.parse.quote(home_wa_msg)
 
@@ -198,14 +216,14 @@ index_html = f'''<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CityHaldwani.com - Premier Uttarakhand Escort Directory &amp; Verified Classifieds</title>
-  <meta name="description" content="CityHaldwani.com is Uttarakhand's premier light-theme classified directory. Explore 100% verified independent escorts in Haldwani, Nainital, Bhimtal, Ramnagar, Corbett, and 15 destinations. Cash on meeting, zero advance.">
+  <title>{HOME_SEO['title']}</title>
+  <meta name="description" content="{HOME_SEO['meta_desc']}">
   <link rel="canonical" href="https://cityhaldwani.com/">
   <link rel="icon" href="favicon.webp" type="image/webp">
 
   <!-- Open Graph Meta Tags (Image 1 Fix) -->
-  <meta property="og:title" content="CityHaldwani.com - Premier Uttarakhand Escort Directory &amp; Verified Classifieds">
-  <meta property="og:description" content="Explore 100% verified independent escorts in Haldwani, Nainital, Bhimtal, Ramnagar, Corbett, and 15 Uttarakhand destinations. Strict 18+ verification, zero advance.">
+  <meta property="og:title" content="{HOME_SEO['title']}">
+  <meta property="og:description" content="{HOME_SEO['meta_desc']}">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://cityhaldwani.com/">
   <meta property="og:image" content="https://cityhaldwani.com/city-logo.png">
@@ -214,8 +232,8 @@ index_html = f'''<!DOCTYPE html>
   <!-- X / Twitter Card Meta Tags (Image 1 Fix) -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@CityHaldwani">
-  <meta name="twitter:title" content="CityHaldwani.com - Premier Uttarakhand Escort Directory &amp; Verified Classifieds">
-  <meta name="twitter:description" content="Explore 100% verified independent escorts in Haldwani, Nainital, Bhimtal, Ramnagar, Corbett, and 15 Uttarakhand destinations. Cash on meeting, zero advance.">
+  <meta name="twitter:title" content="{HOME_SEO['title']}">
+  <meta name="twitter:description" content="{HOME_SEO['meta_desc']}">
   <meta name="twitter:image" content="https://cityhaldwani.com/city-logo.png">
   <link rel="icon" href="/favicon.webp" type="image/webp">
   <link rel="preload" href="/city-logo.png" as="image">
@@ -254,6 +272,7 @@ index_html = f'''<!DOCTYPE html>
       </a>
       <div class="topbar-actions">
         <span class="badge-verified-top">&#10004; 100% Verified Classifieds</span>
+        <a href="/post-ad.html" class="btn-header-ad">📢 Post Ad</a>
         <a href="tel:+919876543210" class="btn-header-call" data-contact="call">Call Support</a>
         <a href="https://api.whatsapp.com/send?phone=919876543210" class="btn-header-wa" data-contact="whatsapp">WhatsApp</a>
       </div>
@@ -274,15 +293,15 @@ index_html = f'''<!DOCTYPE html>
 
     <!-- HERO EDITORIAL SECTION -->
     <section class="hero-editorial">
-      <h1>Premier Uttarakhand Classified Directory - 100% Verified Independent Escorts &amp; 5-Star Hotel Companions</h1>
+      <h1>{HOME_SEO['h1']}</h1>
       <div class="hero-meta-badges">
         <span class="hero-badge">🏔️ Covering 15 Uttarakhand Destinations</span>
         <span class="hero-badge">⭐ 100% Real Photographs</span>
         <span class="hero-badge">🛡️ Strict Zero Advance Rule</span>
         <span class="hero-badge">🛎️ Luxury Hotel &amp; Resort Outcall</span>
       </div>
-      <p>
-        Welcome to <strong>CityHaldwani.com</strong>, the most trusted and elegant light-themed classified directory dedicated to luxury companionship across the state of Uttarakhand. Whether you are traveling for a rejuvenating weekend retreat in the tranquil lakes of Nainital and Bhimtal, embarking on a thrilling wildlife safari in Jim Corbett, or attending executive industrial summits across Haldwani, Rudrapur, and Kashipur, our platform connects you directly with verified independent companions.
+      <p class="hero-lead-text">
+        Welcome to <strong>CityHaldwani.com</strong>, Uttarakhand's premier verified classified directory for <strong>Haldwani call girls</strong> and elite <strong>Haldwani escort service in Uttarakhand</strong>. Whether you are traveling for a rejuvenating weekend retreat in the tranquil lakes of Nainital and Bhimtal, embarking on a thrilling wildlife safari in Jim Corbett, or attending executive industrial summits across Haldwani, Rudrapur, and Kashipur, our platform connects you directly with verified independent companions.
       </p>
       <p>
         We reject the murky practices of traditional agencies. On CityHaldwani.com, there are no deceptive middle-tier agents, inflated hidden commissions, or recycled stock photographs. Every independent model listed below has successfully verified her adult legal age (18+) and submitted authentic photo verifications. You speak directly to your companion over telephone or WhatsApp, agree on customized hours and expectations, and pay strictly in cash upon arrival at your verified luxury hotel room or private villa.
@@ -292,7 +311,7 @@ index_html = f'''<!DOCTYPE html>
     <!-- SECTION 1: PROFILES SECTION FIRST (Shifted as requested by user) -->
     <section class="listings-section" id="featured-listings">
       <div class="listings-heading-bar">
-        <h2>🔥 16 Featured VIP Classified Profiles Across Uttarakhand</h2>
+        <h2>🔥 16 Featured VIP Call Girls &amp; Escorts Across Uttarakhand</h2>
         <span class="listings-count-badge">Top Verified Models</span>
       </div>
       <div class="listings-grid">
@@ -302,7 +321,7 @@ index_html = f'''<!DOCTYPE html>
 
     <!-- SECTION 2: EXPLORE LOCATIONS SECTION DIRECTLY UNDER PROFILES SECTION -->
     <section class="editorial-card" id="locations">
-      <h2>Explore Verified Companions Across 15 Uttarakhand Locations</h2>
+      <h2>Explore Verified Call Girls Across 15 Uttarakhand Destinations</h2>
       <p>Select your city below to browse dedicated 16-profile directories with localized pricing, hotel guides, and safety recommendations:</p>
       <div class="categories-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
 {dest_cards_str}
@@ -311,7 +330,7 @@ index_html = f'''<!DOCTYPE html>
 
     <!-- EDITORIAL & GUIDE SECTIONS -->
     <section class="editorial-card">
-      <h2>The Gold Standard in Independent Uttarakhand Companionship</h2>
+      <h2>The Gold Standard in Independent Uttarakhand Escort Service</h2>
       <p>
         Uttarakhand, nestled amidst the pristine beauty of the Himalayas, attracts millions of travelers each year. From scenic hill station vistas to high-paced industrial commerce in the Terai plains, the requirement for charming, trustworthy, and sophisticated companionship has never been greater. CityHaldwani.com was designed from the ground up to provide a clean, modern, and transparent space where consenting adult clients and independent companions connect with dignity.
       </p>
@@ -322,19 +341,19 @@ index_html = f'''<!DOCTYPE html>
       <h2>Our Four Pillars of Service Excellence</h2>
       <div class="categories-grid">
         <div class="category-box">
-          <h4>1. 100% Genuine Photography</h4>
+          <h3>1. 100% Genuine Photography</h3>
           <p>Every profile undergoes strict photo audit protocols. We demand real-time verification selfies holding current dates to ensure zero discrepancy between online advertisements and real-life encounters.</p>
         </div>
         <div class="category-box">
-          <h4>2. The Ironclad Zero Advance Rule</h4>
+          <h3>2. The Ironclad Zero Advance Rule</h3>
           <p>Your financial security is our utmost priority. We mandate that no client ever send advance token money online. All transactions are settled in cash directly with the companion upon arrival.</p>
         </div>
         <div class="category-box">
-          <h4>3. Total Privacy Shield</h4>
+          <h3>3. Total Privacy Shield</h3>
           <p>We do not collect personal identifying information from visitors. No registration is required, and all inquiries occur through encrypted third-party communications.</p>
         </div>
         <div class="category-box">
-          <h4>4. Broad Regional Coverage</h4>
+          <h3>4. Broad Regional Coverage</h3>
           <p>With active listings spanning 15 major Uttarakhand hubs, you can count on reliable companionship whether residing in luxury city suites or remote wildlife retreats.</p>
         </div>
       </div>
@@ -350,8 +369,19 @@ index_html = f'''<!DOCTYPE html>
       </p>
     </section>
 
+    <!-- POPULAR SEARCHES TAG CLOUD SECTION (Requested for all pages) -->
+    <section class="popular-searches-section" id="popular-searches">
+      <div class="popular-searches-container">
+        <h2 class="popular-searches-title">🔍 Popular Searches for Uttarakhand Call Girls &amp; Escort Services</h2>
+        <p class="popular-searches-subtitle">Most frequent search terms, hotel outcall inquiries, and verified classifieds across Uttarakhand destination hubs:</p>
+        <div class="popular-tags-grid">
+{home_popular_tags_html}
+        </div>
+      </div>
+    </section>
+
     <section class="faq-section" id="faq-section">
-      <h2>Frequently Asked Questions About Uttarakhand Escort Services</h2>
+      <h2>Frequently Asked Questions About Uttarakhand Escort Services &amp; Call Girls</h2>
       <p class="faq-intro">Clear, detailed, and authoritative answers to the top 20 most searchable questions regarding escort bookings, rates, safety guidelines, and destination logistics in Uttarakhand.</p>
       <div class="faq-list">
 {home_faqs_str}
@@ -830,7 +860,7 @@ for root_file in [
     'city-logo.png', 'logo.png', 'favicon.webp', 'robots.txt', 'sitemap.xml',
     'llms.txt', 'llms-full.txt', 'about-us.html', 'contact-us.html',
     'privacy.html', 'terms.html', 'report-abuse.html', 'safety-guide.html',
-    '404.html', 'admin!.html'
+    '404.html', 'admin!.html', 'index.html', 'post-ad.html'
 ]:
     s = os.path.join(OUTPUT_DIR, root_file)
     d = os.path.join(PUBLIC_DIR, root_file)

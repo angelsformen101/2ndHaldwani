@@ -4,6 +4,7 @@ import json
 import urllib.parse
 
 from build_pages import NAMES_POOL, LOCATIONS_CONFIG
+from location_local_data import LOCATION_LOCAL_DATA
 
 # Load CSS content to embed directly in all generated pages
 CSS_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'css', 'style.css')
@@ -144,8 +145,8 @@ LOCAL_SEO_GUIDES = {
     }
 }
 
-# Build a single profile card calibrated to ~42 words
-def render_profile_card(name, city_name, age, index, img_alias, rel_prefix='../'):
+# Build a single profile card calibrated with single local keyword title + expanded ~60-word description
+def render_profile_card(name, city_name, age, index, img_alias, rel_prefix='../', profile_title=None):
     rates_options = [
         ("₹1,500", "₹2,500", "₹7,000"),
         ("₹2,000", "₹3,000", "₹8,000"),
@@ -154,38 +155,40 @@ def render_profile_card(name, city_name, age, index, img_alias, rel_prefix='../'
     ]
     rates = rates_options[index % len(rates_options)]
     
-    titles = [
-        f"{name} 👑 VIP 5-Star Resort Companion",
-        f"{name} 💖 Sweet Independent College Model",
-        f"{name} 🌟 Sensual Escort For Romantic Dates",
-        f"{name} 💃 Charming Mountain Tourism Escort",
-        f"{name} 🔥 Elite Corporate Suite Companion",
-        f"{name} ✨ Warm Mature Homemaker Escort",
-        f"{name} 🌺 Premium Freelance Model Verified",
-        f"{name} 💎 Five-Star Luxury Suite Companion"
+    categories = [
+        "Independent College Model",
+        "VIP 5-Star Resort Companion",
+        "Sensual Corporate Hostess",
+        "Charming Freelance Companion"
     ]
-    title = titles[index % len(titles)]
+    category = categories[index % len(categories)]
     
-    desc_snippets = [
-        f"Verified companion in {city_name}. Clean, polite, and discreet hotel outcall with zero advance payment.",
-        f"Educated companion offering verified hotel outcall in {city_name}. Punctual with direct cash on arrival.",
-        f"VIP companion in {city_name}. Polite disposition, good conversation, and relaxing private hotel suite encounters.",
-        f"Verified independent model in {city_name}. Discretion, comfort, and hospitality with genuine verified photos."
+    if not profile_title:
+        profile_title = f"{city_name} Call Girls"
+    
+    descriptions = [
+        f"Verified independent model {name} (age {age}) offers elite companionship in {city_name} and nearby luxury hotels. Fluent in English and Hindi, she specializes in sophisticated dinner dates, relaxed private suite meetings, and overnight companionship. Known for punctuality, pleasant communication, and strict confidentiality, {name} operates under our zero-advance guarantee with direct cash payment upon arrival at your room.",
+        f"Meet {name}, a sweet and educated companion (age {age}) serving clients across {city_name}. Whether you are staying at a hillside resort or central hotel, she provides warm, attentive in-room companionship tailored to your schedule. Enjoys deep conversations, pleasant dining, and stress-relieving relaxation. Direct cash on meeting with 100% genuine verified photographs.",
+        f"High-profile independent companion {name} (age {age}) provides VIP outcall service to certified 4-star and 5-star properties in {city_name}. Articulate, stylish, and discreet, she is an ideal partner for corporate dinners, social gatherings, or intimate suite encounters. Zero advance payment required; settle directly in cash upon her arrival at your room.",
+        f"Charming and affectionate, {name} (age {age}) is an independent verified model available for prompt hotel visits in {city_name}. She offers relaxed private meetings, polite conversation, and memorable holiday companionship across local destinations. Committed to strict client confidentiality, mutual respect, and transparent cash-on-meeting booking."
     ]
-    desc = desc_snippets[index % len(desc_snippets)]
+    desc = descriptions[index % len(descriptions)]
     photo_count = 3 + (index % 3)
     
     card_html = f'''
         <article class="profile-card" id="profile-{name.lower()}">
           <div class="card-media">
             <span class="vip-ribbon">VIP</span>
-            <img src="/{img_alias}" alt="{name} - Verified Escort in {city_name}" loading="lazy" decoding="async" width="175" height="220" onerror="if(!this.dataset.retried){{this.dataset.retried=1;this.src='/public/{img_alias}';}}else if(this.dataset.retried==1){{this.dataset.retried=2;this.src='{rel_prefix}public/{img_alias}';}}">
+            <img src="/{img_alias}" alt="{name} - {profile_title} in {city_name}" loading="lazy" decoding="async" width="175" height="220" onerror="if(!this.dataset.retried){{this.dataset.retried=1;this.src='/public/{img_alias}';}}else if(this.dataset.retried==1){{this.dataset.retried=2;this.src='{rel_prefix}public/{img_alias}';}}">
             <span class="photo-count-pill">📷 {photo_count} Photos</span>
           </div>
           <div class="card-content">
             <div class="card-header-line">
-              <span class="badge-vip-pill">VERIFIED</span>
-              <h3 class="profile-name-title">{title}</h3>
+              <span class="badge-vip-pill">VERIFIED VIP</span>
+              <h3 class="profile-name-title">{profile_title}</h3>
+            </div>
+            <div class="card-model-subtitle">
+              <span class="model-name">👑 {name}</span> &bull; <span class="model-age">{age} Yrs</span> &bull; <span class="model-category">{category}</span> &bull; <span class="model-badge">&#10004; Photo Verified</span>
             </div>
             <div class="card-rates-pill-row">
               <span class="rate-chip highlight">1 Hr: {rates[0]}</span>
@@ -299,7 +302,7 @@ def generate_20_faqs(city_name, hotels, landmarks):
     ]
     return faqs
 
-# Build location HTML page with target word count: ~2,400 - 2,550 words
+# Build location HTML page with target word count: ~2,800 - 3,200 words
 def build_location_page(loc, start_name_idx):
     slug = loc['slug']
     city_name = loc['name']
@@ -309,6 +312,9 @@ def build_location_page(loc, start_name_idx):
     landmarks = loc['landmarks']
     hotels = loc['hotels']
     vibe = loc['vibe']
+    h1_title = loc.get('h1', f"{city_name} Call Girls - Verified {city_name} Escort Service in {loc.get('seo_landmark', landmarks.split(',')[0])}")
+    seo_landmark = loc.get('seo_landmark', landmarks.split(',')[0].strip())
+    seo_hotel = loc.get('seo_hotel', hotels.split(',')[0].strip())
     
     local_guide = LOCAL_SEO_GUIDES.get(slug, {
         'sectors': landmarks,
@@ -317,7 +323,10 @@ def build_location_page(loc, start_name_idx):
         'itineraries': f"Enjoy scenic mountain drives and private dining in {city_name} with verified models."
     })
     
-    # 16 profiles with ../ relative prefix
+    # 16 profiles with ../ relative prefix and unique local search keywords
+    loc_local = LOCATION_LOCAL_DATA.get(slug, {})
+    prof_keywords = loc_local.get('profile_keywords', [])
+    
     cards_html = []
     names_used = []
     for i in range(16):
@@ -325,7 +334,8 @@ def build_location_page(loc, start_name_idx):
         names_used.append(name)
         age = 20 + ((start_name_idx + i * 3) % 7)
         img_alias = f"profile_{( (start_name_idx + i) % 48 ) + 1:02d}.webp"
-        cards_html.append(render_profile_card(name, city_name, age, i, img_alias, rel_prefix='../'))
+        prof_kw = prof_keywords[i % len(prof_keywords)] if prof_keywords else f"{city_name} Call Girls"
+        cards_html.append(render_profile_card(name, city_name, age, i, img_alias, rel_prefix='../', profile_title=prof_kw))
     
     all_cards_str = "\n".join(cards_html)
     
@@ -384,6 +394,20 @@ def build_location_page(loc, start_name_idx):
         pills.append(f'<a href="{l["slug"]}.html" class="loc-pill{active_cls}">📍 {l["name"]}</a>')
     pills_html = "\n".join(pills)
 
+    # Popular Searches Section for location
+    pop_tags = loc_local.get('popular_tags', [
+        f"{city_name} call girls", f"{city_name} escort service", f"Call girls in {city_name}", f"Escorts in {city_name}",
+        f"hotel service call girls {city_name}", f"independent escorts {city_name}", f"cash on arrival {city_name}",
+        f"24 hour call girl service {city_name}", f"VIP escorts {city_name}", f"call girls near me {city_name}"
+    ])
+    tag_accents = ['accent-blue', 'accent-pink', 'accent-green', 'accent-purple', '']
+    pop_tags_html_list = []
+    for idx, tag in enumerate(pop_tags):
+        acc = tag_accents[idx % len(tag_accents)]
+        cls = f"popular-tag {acc}".strip()
+        pop_tags_html_list.append(f'<a href="#verified-listings" class="{cls}">{tag}</a>')
+    popular_tags_html = "\n".join(pop_tags_html_list)
+
     loc_wa_msg = f"Hello CityHaldwani, I want to book a verified companion in {city_name}. Please share available profiles."
     loc_wa_encoded = urllib.parse.quote(loc_wa_msg)
 
@@ -392,7 +416,7 @@ def build_location_page(loc, start_name_idx):
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{title} | CityHaldwani.com</title>
+  <title>{title}</title>
   <meta name="description" content="{meta_desc}">
   <link rel="canonical" href="https://cityhaldwani.com/locations/{slug}.html">
   <link rel="icon" href="/favicon.webp" type="image/webp">
@@ -457,7 +481,7 @@ def build_location_page(loc, start_name_idx):
     </div>
 
     <section class="hero-editorial">
-      <h1>Verified Independent Escorts in {city_name} - 5-Star Hotel Companions &amp; Genuine Call Girls</h1>
+      <h1>{h1_title}</h1>
       <div class="hero-meta-badges">
         <span class="hero-badge">🏔️ {tagline}</span>
         <span class="hero-badge">⭐ 100% Real Photographs</span>
@@ -465,7 +489,7 @@ def build_location_page(loc, start_name_idx):
         <span class="hero-badge">🛎️ In-Room &amp; Resort Outcall</span>
       </div>
       <p>
-        Welcome to the authoritative classified directory of verified escorts in {city_name}, Uttarakhand. Renowned for its {vibe}, {city_name} attracts holidaymakers, executives, and regional visitors seeking unhurried, discreet luxury. Whether staying at a luxury resort along {landmarks} or relaxing in a private hillside villa, our vetted companions deliver unparalleled warmth, elegance, and charm.
+        Welcome to <strong>CityHaldwani.com</strong>, your verified destination for <strong>{city_name} call girls</strong> and premier <strong>{city_name} escort service in {seo_landmark}</strong>. Renowned for its {vibe}, {city_name} attracts holidaymakers, executives, and regional visitors seeking unhurried, discreet luxury. Whether staying at a luxury resort along {landmarks} or relaxing in an executive suite near {seo_hotel}, our vetted independent companions deliver genuine warmth, high-class elegance, and confidential charm.
       </p>
       <p>
         At CityHaldwani.com, we prioritize transparency and safety above all else. Every companion listed below has completed strict photo authentication and age verification checks (18+). You connect directly with the independent advertiser over phone or WhatsApp, eliminating brokerage fees and predatory third-party intermediaries. Review authentic profile details, compare flexible packages, and enjoy confidential companionship backed by our ironclad zero upfront payment policy.
@@ -474,7 +498,7 @@ def build_location_page(loc, start_name_idx):
 
     <section class="listings-section" id="verified-listings">
       <div class="listings-heading-bar">
-        <h2>🔥 16 Active Verified Companions Available in {city_name}</h2>
+        <h2>🔥 16 Active Verified Call Girls &amp; Escort Service in {city_name}</h2>
         <span class="listings-count-badge">16 Profiles Active Now</span>
       </div>
       <div class="listings-grid">
@@ -491,19 +515,19 @@ def build_location_page(loc, start_name_idx):
       <h2>Elite Companion Categories in {city_name}</h2>
       <div class="categories-grid">
         <div class="category-box">
-          <h4>🎓 Independent College Girls</h4>
+          <h3>🎓 Independent College Girls</h3>
           <p>Fresh, educated students (18+) in {city_name}. Energetic, talkative, and perfect for casual outings, sightseeing, and lively cafe dates.</p>
         </div>
         <div class="category-box">
-          <h4>👑 VIP Fashion Models</h4>
+          <h3>👑 VIP Fashion Models</h3>
           <p>Glamorous, tall models suitable for high-profile business dinners, luxury suite stays, and prestigious social events across Uttarakhand.</p>
         </div>
         <div class="category-box">
-          <h4>💖 Sensual Mature Companions</h4>
+          <h3>💖 Sensual Mature Companions</h3>
           <p>Attentive homemakers and independent women excelling at passionate, relaxing companionship with zero drama and complete understanding.</p>
         </div>
         <div class="category-box">
-          <h4>🌿 Luxury Resort Escorts</h4>
+          <h3>🌿 Luxury Resort Escorts</h3>
           <p>Versatile companions accustomed to high-end hospitality, wilderness safaris, and overnight tours across {landmarks}.</p>
         </div>
       </div>
@@ -511,7 +535,7 @@ def build_location_page(loc, start_name_idx):
 
     <!-- NEW SECTION: Detailed Local Neighborhood & Sector Coverage Guide (~150 words of rich local SEO content) -->
     <section class="editorial-card">
-      <h2>📍 Local Neighborhood &amp; Sector Coverage in {city_name}</h2>
+      <h2>📍 Local Neighborhood &amp; Call Girls Coverage in {city_name}</h2>
       <p>
         Our verified independent escort network spans every prominent commercial zone, residential colony, and transit artery in and around {city_name}. Specifically, active outcall coverage is provided across <strong>{local_guide['sectors']}</strong>.
       </p>
@@ -556,8 +580,19 @@ def build_location_page(loc, start_name_idx):
       </p>
     </section>
 
+    <!-- POPULAR SEARCHES TAG CLOUD SECTION (Requested for all location pages) -->
+    <section class="popular-searches-section" id="popular-searches">
+      <div class="popular-searches-container">
+        <h2 class="popular-searches-title">🔍 Popular Searches for {city_name} Call Girls &amp; Escort Service</h2>
+        <p class="popular-searches-subtitle">Most searched local keywords, verified escort directories, and 5-star hotel call girls in {city_name}:</p>
+        <div class="popular-tags-grid">
+{popular_tags_html}
+        </div>
+      </div>
+    </section>
+
     <section class="faq-section" id="faq-section">
-      <h2>Frequently Asked Questions About Escorts in {city_name}</h2>
+      <h2>Frequently Asked Questions About {city_name} Call Girls &amp; Escort Service</h2>
       <p class="faq-intro">Find clear, authoritative answers to the top 20 most searchable questions regarding escort bookings, rates, hotel visits, and safety in {city_name}.</p>
       <div class="faq-list">
 {all_faqs_str}

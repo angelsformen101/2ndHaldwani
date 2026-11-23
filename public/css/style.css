@@ -1551,3 +1551,160 @@ a {
   }
 }
 
+/* ==========================================================================
+   Model Subtitle & Card Enhancements
+   ========================================================================== */
+.card-model-subtitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+  margin: 4px 0 8px 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.card-model-subtitle .model-name {
+  color: #be123c;
+  font-weight: 700;
+}
+
+.card-model-subtitle .model-category {
+  color: #0f766e;
+  font-weight: 600;
+}
+
+.card-model-subtitle .model-badge {
+  background: #f0fdf4;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+  font-size: 11px;
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+/* ==========================================================================
+   Popular Searches Tag Cloud Styles (Light Rose Luxury Theme)
+   ========================================================================== */
+.popular-searches-section {
+  padding: 38px 22px 34px;
+  background: linear-gradient(180deg, #fff1f2 0%, #fff7ed 50%, #ffffff 100%);
+  border-top: 1.5px solid #fecdd3;
+  border-bottom: 1.5px solid #fecdd3;
+  margin: 36px 0 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(225, 29, 72, 0.05);
+}
+
+.popular-searches-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.popular-searches-title {
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: #9f1239;
+  margin-bottom: 8px;
+  letter-spacing: -0.2px;
+}
+
+.popular-searches-subtitle {
+  font-size: 0.92rem;
+  color: #64748b;
+  margin-bottom: 22px;
+}
+
+.popular-tags-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  row-gap: 12px;
+}
+
+.popular-tag {
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: #334155;
+  background: #ffffff;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: all 0.22s ease;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  white-space: nowrap;
+}
+
+.popular-tag:hover {
+  color: #e11d48;
+  background: #fff1f2;
+  border-color: #f43f5e;
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(225, 29, 72, 0.15);
+}
+
+.popular-tag.accent-blue {
+  border-color: #bfdbfe;
+  color: #1e40af;
+  background: #eff6ff;
+}
+
+.popular-tag.accent-blue:hover {
+  background: #dbeafe;
+  border-color: #3b82f6;
+  color: #1d4ed8;
+}
+
+.popular-tag.accent-pink {
+  border-color: #fbcfe8;
+  color: #9d174d;
+  background: #fdf2f8;
+}
+
+.popular-tag.accent-pink:hover {
+  background: #fce7f3;
+  border-color: #ec4899;
+  color: #be185d;
+}
+
+.popular-tag.accent-green {
+  border-color: #bbf7d0;
+  color: #166534;
+  background: #f0fdf4;
+}
+
+.popular-tag.accent-green:hover {
+  background: #dcfce7;
+  border-color: #22c55e;
+  color: #15803d;
+}
+
+.popular-tag.accent-purple {
+  border-color: #e9d5ff;
+  color: #6b21a8;
+  background: #faf5ff;
+}
+
+.popular-tag.accent-purple:hover {
+  background: #f3e8ff;
+  border-color: #a855f7;
+  color: #7e22ce;
+}
+
+@media (max-width: 768px) {
+  .popular-searches-title {
+    font-size: 1.35rem;
+  }
+  .popular-tag {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+}
+
+
