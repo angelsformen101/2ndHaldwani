@@ -6,8 +6,8 @@
   <title>Rudrapur Call Girls - Rudrapur Escort Service in SIDCUL</title>
   <meta name="description" content="Book verified Rudrapur call girls & elite Rudrapur escort service in SIDCUL. 100% genuine independent models, Radisson Blu outcall & cash on meeting.">
   <link rel="canonical" href="https://cityhaldwani.com/locations/rudrapur.html">
-  <link rel="icon" href="/favicon.webp" type="image/webp">
-  <link rel="preload" href="/city-logo.png" as="image">
+  <link rel="icon" href="../favicon.webp" type="image/webp">
+  <link rel="preload" href="../city-logo.png" as="image">
 
   <!-- Open Graph Meta Tags (Image 1 Fix) -->
   <meta property="og:title" content="Rudrapur Call Girls - Rudrapur Escort Service in SIDCUL">
@@ -957,66 +957,63 @@ a {
 
   /* --- Topbar & Navigation --- */
   .site-topbar {
-    padding: 8px 0 10px 0;
+    padding: 8px 0;
     top: 0;
   }
 
   .topbar-wrapper {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 8px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
   }
 
   .brand-group {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
+    flex-shrink: 0;
   }
 
   .brand-logo-img {
-    height: 38px;
+    height: 34px;
+    width: auto;
   }
 
   .brand-text h1,
   .brand-text .brand-title {
-    font-size: 18px;
+    font-size: 16px;
+    line-height: 1.15;
   }
 
   .brand-text p {
-    font-size: 10px;
-    letter-spacing: 0.4px;
+    font-size: 9.5px;
+    letter-spacing: 0.3px;
   }
 
   .topbar-actions {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    align-items: center;
     gap: 8px;
-    width: 100%;
+    width: auto;
   }
 
-  .badge-verified-top {
-    grid-column: span 2;
-    text-align: center;
-    justify-content: center;
-    font-size: 11px;
-    padding: 4px 8px;
-    margin-bottom: 2px;
-    width: 100%;
-  }
-
+  .badge-verified-top,
   .btn-header-call,
   .btn-header-wa {
+    display: none !important;
+  }
+
+  .btn-header-ad {
     display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 9px 8px;
-    font-size: 13px;
+    padding: 6px 11px;
+    font-size: 12px;
+    border-radius: 6px;
     font-weight: 700;
-    white-space: nowrap;
-    border-radius: 8px;
-    text-align: center;
-    width: 100%;
-    box-sizing: border-box;
+  }
+
+  .mobile-menu-toggle {
+    display: flex !important;
   }
 
   /* --- Breadcrumb --- */
@@ -1690,6 +1687,278 @@ a {
   }
 }
 
+/* ==========================================================================
+   Mobile Header Hamburger Toggle & Slide-Out Navigation Drawer
+   ========================================================================== */
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  width: 38px;
+  height: 38px;
+  background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%);
+  border: 1.5px solid #fecdd3;
+  border-radius: 8px;
+  padding: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 1001;
+}
+
+.mobile-menu-toggle:hover {
+  background: #fecdd3;
+  border-color: #f43f5e;
+}
+
+.hamburger-line {
+  display: block;
+  width: 20px;
+  height: 2.5px;
+  background: #be123c;
+  border-radius: 2px;
+  transition: all 0.25s ease;
+}
+
+/* Mobile Nav Drawer Overlay */
+.mobile-nav-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 99998;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.mobile-nav-overlay.active {
+  display: block;
+  opacity: 1;
+}
+
+/* Mobile Nav Drawer Panel */
+.mobile-nav-drawer {
+  position: fixed;
+  top: 0;
+  right: -340px;
+  width: 320px;
+  max-width: 86vw;
+  height: 100%;
+  background: #ffffff;
+  z-index: 99999;
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  transition: right 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mobile-nav-drawer.active {
+  right: 0;
+}
+
+/* Drawer Header */
+.drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px;
+  background: linear-gradient(135deg, #fff1f2 0%, #fff7ed 100%);
+  border-bottom: 1.5px solid #fecdd3;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.drawer-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: #1e111a;
+  letter-spacing: -0.3px;
+}
+
+.drawer-title span {
+  color: #e11d48;
+}
+
+.drawer-subtitle {
+  font-size: 11px;
+  color: #be123c;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.drawer-close-btn {
+  background: #ffffff;
+  border: 1px solid #fecdd3;
+  color: #be123c;
+  font-size: 24px;
+  line-height: 1;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.drawer-close-btn:hover {
+  background: #e11d48;
+  color: #ffffff;
+}
+
+/* Drawer Body */
+.drawer-body {
+  padding: 16px 16px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.drawer-cta-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.drawer-btn-ad {
+  display: block;
+  text-align: center;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 13.5px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.drawer-cta-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.drawer-btn-call {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 9px 6px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.drawer-btn-wa {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 9px 6px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.drawer-section-title {
+  font-size: 11.5px;
+  font-weight: 800;
+  color: #be123c;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 6px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #fecdd3;
+}
+
+.drawer-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.drawer-nav-list li {
+  margin-bottom: 3px;
+}
+
+.drawer-nav-list a {
+  display: block;
+  padding: 8px 10px;
+  border-radius: 6px;
+  color: #1e111a;
+  font-weight: 600;
+  font-size: 13px;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.drawer-nav-list a:hover {
+  background: #fff1f2;
+  color: #e11d48;
+}
+
+.drawer-nav-list.small a {
+  font-size: 12px;
+  color: #64748b;
+  padding: 5px 8px;
+}
+
+.drawer-dest-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.drawer-dest-grid a {
+  display: block;
+  padding: 6px 8px;
+  background: #fff5f7;
+  border: 1px solid #fecdd3;
+  border-radius: 6px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #4a3642;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.drawer-dest-grid a:hover {
+  background: #ffe4e6;
+  border-color: #f43f5e;
+  color: #be123c;
+}
+
+.drawer-adult-notice {
+  background: #fff1f2;
+  border: 1px solid #fecdd3;
+  border-left: 3px solid #dc2626;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  color: #7f1d1d;
+  line-height: 1.4;
+}
+
+
 
 
   </style>
@@ -1897,8 +2166,8 @@ a {
 
   <header class="site-topbar">
     <div class="container topbar-wrapper">
-      <a href="/index.html" class="brand-group">
-        <img src="/city-logo.png" alt="CityHaldwani.com Logo" class="brand-logo-img" width="140" height="42" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='/logo.png';}else if(this.dataset.retried==1){this.dataset.retried=2;this.src='../city-logo.png';}">
+      <a href="../index.html" class="brand-group">
+        <img src="../city-logo.png" alt="CityHaldwani.com Logo" class="brand-logo-img" width="140" height="42" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='../logo.png';}else if(this.dataset.retried==1){this.dataset.retried=2;this.src='city-logo.png';}">
         <div class="brand-text">
           <div class="brand-title">CityHaldwani<span>.com</span></div>
           <p>Verified Uttarakhand Classifieds</p>
@@ -1906,12 +2175,89 @@ a {
       </a>
       <div class="topbar-actions">
         <span class="badge-verified-top">&#10004; 100% Genuine Profiles</span>
-        <a href="/post-ad.html" class="btn-header-ad">📢 Post Ad</a>
+        <a href="../post-ad.html" class="btn-header-ad">📢 Post Ad</a>
         <a href="tel:+919876543210" class="btn-header-call" data-contact="call">Call Support</a>
         <a href="https://api.whatsapp.com/send?phone=919876543210" class="btn-header-wa" data-contact="whatsapp">WhatsApp</a>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Open Navigation Menu" aria-expanded="false" aria-controls="mobileNavDrawer">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
       </div>
     </div>
   </header>
+
+  <!-- Mobile Navigation Drawer Overlay & Panel -->
+  <div class="mobile-nav-overlay" id="mobileNavOverlay" aria-hidden="true"></div>
+  <aside class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Mobile Navigation" aria-hidden="true">
+    <div class="drawer-header">
+      <div class="drawer-brand">
+        <div class="drawer-title">CityHaldwani<span>.com</span></div>
+        <div class="drawer-subtitle">18+ Uttarakhand Directory</div>
+      </div>
+      <button class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close Navigation Menu">&times;</button>
+    </div>
+
+    <div class="drawer-body">
+      <!-- Quick Contact Actions -->
+      <div class="drawer-cta-group">
+        <a href="../post-ad.html" class="drawer-btn-ad">📢 Post Your Free Ad</a>
+        <div class="drawer-cta-row">
+          <a href="tel:+919876543210" class="drawer-btn-call" data-contact="call">📞 Call Support</a>
+          <a href="https://api.whatsapp.com/send?phone=919876543210" class="drawer-btn-wa" data-contact="whatsapp">💬 WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- Main Navigation -->
+      <nav class="drawer-nav-section">
+        <div class="drawer-section-title">Navigation</div>
+        <ul class="drawer-nav-list">
+          <li><a href="../index.html">🏠 Home Portal</a></li>
+          <li><a href="../post-ad.html">📢 Post Advertisement</a></li>
+          <li><a href="../safety-guide.html">🛡️ Safety &amp; Anti-Scam Guide</a></li>
+          <li><a href="../about-us.html">ℹ️ About CityHaldwani.com</a></li>
+          <li><a href="../contact-us.html">✉️ Contact Support Desk</a></li>
+        </ul>
+      </nav>
+
+      <!-- 15 Uttarakhand Destinations -->
+      <div class="drawer-nav-section">
+        <div class="drawer-section-title">📍 Explore 15 Destination Hubs</div>
+        <div class="drawer-dest-grid">
+          <a href="nainital.html">📍 Nainital</a>
+          <a href="bhimtal.html">📍 Bhimtal</a>
+          <a href="almora.html">📍 Almora</a>
+          <a href="ramnagar.html">📍 Ramnagar</a>
+          <a href="haldwani.html">📍 Haldwani</a>
+          <a href="kaladhungi.html">📍 Kaladhungi</a>
+          <a href="rudrapur.html">📍 Rudrapur</a>
+          <a href="kathgodam.html">📍 Kathgodam</a>
+          <a href="kashipur.html">📍 Kashipur</a>
+          <a href="bajpur.html">📍 Bajpur</a>
+          <a href="khatima.html">📍 Khatima</a>
+          <a href="sitarganj.html">📍 Sitarganj</a>
+          <a href="kichha.html">📍 Kichha</a>
+          <a href="jim-corbett.html">📍 Jim Corbett</a>
+          <a href="bhowali.html">📍 Bhowali</a>
+        </div>
+      </div>
+
+      <!-- Legal & Discretion -->
+      <nav class="drawer-nav-section">
+        <div class="drawer-section-title">Legal, Safety &amp; Discretion</div>
+        <ul class="drawer-nav-list small">
+          <li><a href="../terms.html">⚖️ Terms of Service</a></li>
+          <li><a href="../privacy.html">🔒 Privacy Policy</a></li>
+          <li><a href="../report-abuse.html">🚨 Report Abuse &amp; Misconduct</a></li>
+        </ul>
+      </nav>
+
+      <!-- 18+ Warning Notice -->
+      <div class="drawer-adult-notice">
+        🔞 <strong>Strict 18+ Adult Portal:</strong> Strictly consenting adults (18+). Zero Advance Payment Policy &bull; Cash On Direct Meeting Only.
+      </div>
+    </div>
+  </aside>
 
   <main class="container">
     <div class="top-nav-warning-bar">
@@ -1977,7 +2323,7 @@ a {
         <article class="profile-card" id="profile-hansika">
           <div class="card-media">
             <span class="vip-ribbon">VIP</span>
-            <img src="/profile_01.webp" alt="Hansika - SIDCUL Sector Call Girls in Rudrapur" loading="lazy" decoding="async" width="175" height="220" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='/public/profile_01.webp';}else if(this.dataset.retried==1){this.dataset.retried=2;this.src='../public/profile_01.webp';}">
+            <img src="../public/profile_01.webp" alt="Hansika - SIDCUL Sector Call Girls in Rudrapur" loading="lazy" decoding="async" width="175" height="220" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='../profile_01.webp';}">
             <span class="photo-count-pill">📷 3 Photos</span>
           </div>
           <div class="card-content">
@@ -2016,7 +2362,7 @@ a {
         <article class="profile-card" id="profile-inaya">
           <div class="card-media">
             <span class="vip-ribbon">VIP</span>
-            <img src="/profile_02.webp" alt="Inaya - Radisson Blu Hotel Escorts in Rudrapur" loading="lazy" decoding="async" width="175" height="220" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='/public/profile_02.webp';}else if(this.dataset.retried==1){this.dataset.retried=2;this.src='../public/profile_02.webp';}">
+            <img src="../public/profile_02.webp" alt="Inaya - Radisson Blu Hotel Escorts in Rudrapur" loading="lazy" decoding="async" width="175" height="220" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='../profile_02.webp';}">
             <span class="photo-count-pill">📷 4 Photos</span>
           </div>
           <div class="card-content">
@@ -2055,7 +2401,7 @@ a {
         <article class="profile-card" id="profile-jivika">
           <div class="card-media">
             <span class="vip-ribbon">VIP</span>
-            <img src="/profile_03.webp" alt="Jivika - Kashipur Road Rudrapur Call Girls in Rudrapur" loading="lazy" decoding="async" width="175" height="220" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='/public/profile_03.webp';}else if(this.dataset.retried==1){this.dataset.retried=2;this.src='../public/profile_03.webp';}">
+            <img src="../public/profile_03.webp" alt="Jivika - Kashipur Road Rudrapur Call Girls in Rudrapur" loading="lazy" decoding="async" width="175" height="220" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='../profile_03.webp';}">
             <span class="photo-count-pill">📷 5 Photos</span>
           </div>
           <div class="card-content">
@@ -2094,7 +2440,7 @@ a {
         <article class="profile-card" id="profile-kusum">
           <div class="card-media">
             <span class="vip-ribbon">VIP</span>
-            <img src="/profile_04.webp" alt="Kusum - Delhi Highway Escort Service in Rudrapur" loading="lazy" decoding="async" width="175" height="220" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='/public/profile_04.webp';}else if(this.dataset.retried==1){this.dataset.retried=2;this.src='../public/profile_04.webp';}">
+            <img src="../public/profile_04.webp" alt="Kusum - Delhi Highway Escort Service in Rudrapur" loading="lazy" decoding="async" width="175" height="220" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='../profile_04.webp';}">
             <span class="photo-count-pill">📷 3 Photos</span>
           </div>
           <div class="card-content">
@@ -2133,7 +2479,7 @@ a {
         <article class="profile-card" id="profile-lipi">
           <div class="card-media">
             <span class="vip-ribbon">VIP</span>
-            <img src="/profile_05.webp" alt="Lipi - Metropolis City Call Girls in Rudrapur" loading="lazy" decoding="async" width="175" height="220" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='/public/profile_05.webp';}else if(this.dataset.retried==1){this.dataset.retried=2;this.src='../public/profile_05.webp';}">
+            <img src="../public/profile_05.webp" alt="Lipi - Metropolis City Call Girls in Rudrapur" loading="lazy" decoding="async" width="175" height="220" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='../profile_05.webp';}">
             <span class="photo-count-pill">📷 4 Photos</span>
           </div>
           <div class="card-content">
@@ -2172,7 +2518,7 @@ a {
         <article class="profile-card" id="profile-manasi">
           <div class="card-media">
             <span class="vip-ribbon">VIP</span>
-            <img src="/profile_06.webp" alt="Manasi - Kalyani View Escorts in Rudrapur" loading="lazy" decoding="async" width="175" height="220" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='/public/profile_06.webp';}else if(this.dataset.retried==1){this.dataset.retried=2;this.src='../public/profile_06.webp';}">
+            <img src="../public/profile_06.webp" alt="Manasi - Kalyani View Escorts in Rudrapur" loading="lazy" decoding="async" width="175" height="220" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='../profile_06.webp';}">
             <span class="photo-count-pill">📷 5 Photos</span>
           </div>
           <div class="card-content">
@@ -2211,7 +2557,7 @@ a {
         <article class="profile-card" id="profile-nandini">
           <div class="card-media">
             <span class="vip-ribbon">VIP</span>
-            <img src="/profile_07.webp" alt="Nandini - Hotel Sobti Continental Call Girls in Rudrapur" loading="lazy" decoding="async" width="175" height="220" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='/public/profile_07.webp';}else if(this.dataset.retried==1){this.dataset.retried=2;this.src='../public/profile_07.webp';}">
+            <img src="../public/profile_07.webp" alt="Nandini - Hotel Sobti Continental Call Girls in Rudrapur" loading="lazy" decoding="async" width="175" height="220" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='../profile_07.webp';}">
             <span class="photo-count-pill">📷 3 Photos</span>
           </div>
           <div class="card-content">
@@ -2250,7 +2596,7 @@ a {
         <article class="profile-card" id="profile-pratibha">
           <div class="card-media">
             <span class="vip-ribbon">VIP</span>
-            <img src="/profile_08.webp" alt="Pratibha - Uday Residency Escort Service in Rudrapur" loading="lazy" decoding="async" width="175" height="220" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='/public/profile_08.webp';}else if(this.dataset.retried==1){this.dataset.retried=2;this.src='../public/profile_08.webp';}">
+            <img src="../public/profile_08.webp" alt="Pratibha - Uday Residency Escort Service in Rudrapur" loading="lazy" decoding="async" width="175" height="220" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='../profile_08.webp';}">
             <span class="photo-count-pill">📷 4 Photos</span>
           </div>
           <div class="card-content">
@@ -2289,7 +2635,7 @@ a {
         <article class="profile-card" id="profile-rashi">
           <div class="card-media">
             <span class="vip-ribbon">VIP</span>
-            <img src="/profile_09.webp" alt="Rashi - Awas Vikas Rudrapur Call Girls in Rudrapur" loading="lazy" decoding="async" width="175" height="220" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='/public/profile_09.webp';}else if(this.dataset.retried==1){this.dataset.retried=2;this.src='../public/profile_09.webp';}">
+            <img src="../public/profile_09.webp" alt="Rashi - Awas Vikas Rudrapur Call Girls in Rudrapur" loading="lazy" decoding="async" width="175" height="220" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='../profile_09.webp';}">
             <span class="photo-count-pill">📷 5 Photos</span>
           </div>
           <div class="card-content">
@@ -2328,7 +2674,7 @@ a {
         <article class="profile-card" id="profile-shruti">
           <div class="card-media">
             <span class="vip-ribbon">VIP</span>
-            <img src="/profile_10.webp" alt="Shruti - Gandhi Colony Escorts in Rudrapur" loading="lazy" decoding="async" width="175" height="220" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='/public/profile_10.webp';}else if(this.dataset.retried==1){this.dataset.retried=2;this.src='../public/profile_10.webp';}">
+            <img src="../public/profile_10.webp" alt="Shruti - Gandhi Colony Escorts in Rudrapur" loading="lazy" decoding="async" width="175" height="220" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='../profile_10.webp';}">
             <span class="photo-count-pill">📷 3 Photos</span>
           </div>
           <div class="card-content">
@@ -2367,7 +2713,7 @@ a {
         <article class="profile-card" id="profile-tulsi">
           <div class="card-media">
             <span class="vip-ribbon">VIP</span>
-            <img src="/profile_11.webp" alt="Tulsi - Rudrapur Corporate Call Girls in Rudrapur" loading="lazy" decoding="async" width="175" height="220" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='/public/profile_11.webp';}else if(this.dataset.retried==1){this.dataset.retried=2;this.src='../public/profile_11.webp';}">
+            <img src="../public/profile_11.webp" alt="Tulsi - Rudrapur Corporate Call Girls in Rudrapur" loading="lazy" decoding="async" width="175" height="220" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='../profile_11.webp';}">
             <span class="photo-count-pill">📷 4 Photos</span>
           </div>
           <div class="card-content">
@@ -2406,7 +2752,7 @@ a {
         <article class="profile-card" id="profile-urmi">
           <div class="card-media">
             <span class="vip-ribbon">VIP</span>
-            <img src="/profile_12.webp" alt="Urmi - Rudrapur VIP Escort Service in Rudrapur" loading="lazy" decoding="async" width="175" height="220" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='/public/profile_12.webp';}else if(this.dataset.retried==1){this.dataset.retried=2;this.src='../public/profile_12.webp';}">
+            <img src="../public/profile_12.webp" alt="Urmi - Rudrapur VIP Escort Service in Rudrapur" loading="lazy" decoding="async" width="175" height="220" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='../profile_12.webp';}">
             <span class="photo-count-pill">📷 5 Photos</span>
           </div>
           <div class="card-content">
@@ -2445,7 +2791,7 @@ a {
         <article class="profile-card" id="profile-vandita">
           <div class="card-media">
             <span class="vip-ribbon">VIP</span>
-            <img src="/profile_13.webp" alt="Vandita - Rudrapur Independent Call Girls in Rudrapur" loading="lazy" decoding="async" width="175" height="220" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='/public/profile_13.webp';}else if(this.dataset.retried==1){this.dataset.retried=2;this.src='../public/profile_13.webp';}">
+            <img src="../public/profile_13.webp" alt="Vandita - Rudrapur Independent Call Girls in Rudrapur" loading="lazy" decoding="async" width="175" height="220" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='../profile_13.webp';}">
             <span class="photo-count-pill">📷 3 Photos</span>
           </div>
           <div class="card-content">
@@ -2484,7 +2830,7 @@ a {
         <article class="profile-card" id="profile-zaara">
           <div class="card-media">
             <span class="vip-ribbon">VIP</span>
-            <img src="/profile_14.webp" alt="Zaara - Industrial Sector Call Girls in Rudrapur" loading="lazy" decoding="async" width="175" height="220" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='/public/profile_14.webp';}else if(this.dataset.retried==1){this.dataset.retried=2;this.src='../public/profile_14.webp';}">
+            <img src="../public/profile_14.webp" alt="Zaara - Industrial Sector Call Girls in Rudrapur" loading="lazy" decoding="async" width="175" height="220" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='../profile_14.webp';}">
             <span class="photo-count-pill">📷 4 Photos</span>
           </div>
           <div class="card-content">
@@ -2523,7 +2869,7 @@ a {
         <article class="profile-card" id="profile-amrita">
           <div class="card-media">
             <span class="vip-ribbon">VIP</span>
-            <img src="/profile_15.webp" alt="Amrita - Rudrapur College Escorts in Rudrapur" loading="lazy" decoding="async" width="175" height="220" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='/public/profile_15.webp';}else if(this.dataset.retried==1){this.dataset.retried=2;this.src='../public/profile_15.webp';}">
+            <img src="../public/profile_15.webp" alt="Amrita - Rudrapur College Escorts in Rudrapur" loading="lazy" decoding="async" width="175" height="220" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='../profile_15.webp';}">
             <span class="photo-count-pill">📷 5 Photos</span>
           </div>
           <div class="card-content">
@@ -2562,7 +2908,7 @@ a {
         <article class="profile-card" id="profile-bindu">
           <div class="card-media">
             <span class="vip-ribbon">VIP</span>
-            <img src="/profile_16.webp" alt="Bindu - Rudrapur 24 Hour Escort Service in Rudrapur" loading="lazy" decoding="async" width="175" height="220" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='/public/profile_16.webp';}else if(this.dataset.retried==1){this.dataset.retried=2;this.src='../public/profile_16.webp';}">
+            <img src="../public/profile_16.webp" alt="Bindu - Rudrapur 24 Hour Escort Service in Rudrapur" loading="lazy" decoding="async" width="175" height="220" onerror="if(!this.dataset.retried){this.dataset.retried=1;this.src='../profile_16.webp';}">
             <span class="photo-count-pill">📷 3 Photos</span>
           </div>
           <div class="card-content">
@@ -2844,12 +3190,12 @@ a {
       <div class="footer-col">
         <h4>Corporate &amp; Safety</h4>
         <ul class="footer-links">
-          <li><a href="/about-us.html">About Us</a></li>
-          <li><a href="/safety-guide.html">Safety Guidelines</a></li>
-          <li><a href="/report-abuse.html">Report Violations</a></li>
-          <li><a href="/terms.html">Terms of Service</a></li>
-          <li><a href="/privacy.html">Privacy Policy</a></li>
-          <li><a href="/contact-us.html">Contact Support Desk</a></li>
+          <li><a href="../about-us.html">About Us</a></li>
+          <li><a href="../safety-guide.html">Safety Guidelines</a></li>
+          <li><a href="../report-abuse.html">Report Violations</a></li>
+          <li><a href="../terms.html">Terms of Service</a></li>
+          <li><a href="../privacy.html">Privacy Policy</a></li>
+          <li><a href="../contact-us.html">Contact Support Desk</a></li>
         </ul>
       </div>
     </div>
@@ -2872,10 +3218,60 @@ a {
     </a>
   </div>
 
-  <script src="/js/contacts-config.js" defer></script>
-  <script src="/js/contact-manager.js" defer></script>
-  <script src="/js/security-shield.js" defer></script>
-  <script src="/js/age-gate.js" defer></script>
+  <script src="../js/contacts-config.js" defer></script>
+  <script src="../js/contact-manager.js" defer></script>
+  <script src="../js/security-shield.js" defer></script>
+  <script src="../js/age-gate.js" defer></script>
+  <!-- Mobile Navigation Drawer Toggle Script -->
+  <script>
+    (function() {
+      var toggleBtn = document.getElementById('mobileMenuToggle');
+      var drawer = document.getElementById('mobileNavDrawer');
+      var overlay = document.getElementById('mobileNavOverlay');
+      var closeBtn = document.getElementById('drawerCloseBtn');
+
+      if (!toggleBtn || !drawer || !overlay) return;
+
+      function openDrawer() {
+        drawer.classList.add('active');
+        overlay.classList.add('active');
+        toggleBtn.setAttribute('aria-expanded', 'true');
+        drawer.setAttribute('aria-hidden', 'false');
+        overlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeDrawer() {
+        drawer.classList.remove('active');
+        overlay.classList.remove('active');
+        toggleBtn.setAttribute('aria-expanded', 'false');
+        drawer.setAttribute('aria-hidden', 'true');
+        overlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      toggleBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (drawer.classList.contains('active')) {
+          closeDrawer();
+        } else {
+          openDrawer();
+        }
+      });
+
+      if (closeBtn) {
+        closeBtn.addEventListener('click', closeDrawer);
+      }
+
+      overlay.addEventListener('click', closeDrawer);
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && drawer.classList.contains('active')) {
+          closeDrawer();
+        }
+      });
+    })();
+  </script>
   <script>
     document.querySelectorAll('.faq-question').forEach(function(el) {
       el.addEventListener('click', function() {

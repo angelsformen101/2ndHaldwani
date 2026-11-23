@@ -27,6 +27,130 @@ DMCA_BADGE_HTML = '''<div class="dmca-badge-wrap">
           <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"></script>
         </div>'''
 
+def build_mobile_drawer_html(rel_prefix='../', dest_prefix=''):
+    return f'''  <!-- Mobile Navigation Drawer Overlay & Panel -->
+  <div class="mobile-nav-overlay" id="mobileNavOverlay" aria-hidden="true"></div>
+  <aside class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Mobile Navigation" aria-hidden="true">
+    <div class="drawer-header">
+      <div class="drawer-brand">
+        <div class="drawer-title">CityHaldwani<span>.com</span></div>
+        <div class="drawer-subtitle">18+ Uttarakhand Directory</div>
+      </div>
+      <button class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close Navigation Menu">&times;</button>
+    </div>
+
+    <div class="drawer-body">
+      <!-- Quick Contact Actions -->
+      <div class="drawer-cta-group">
+        <a href="{rel_prefix}post-ad.html" class="drawer-btn-ad">📢 Post Your Free Ad</a>
+        <div class="drawer-cta-row">
+          <a href="tel:+919876543210" class="drawer-btn-call" data-contact="call">📞 Call Support</a>
+          <a href="https://api.whatsapp.com/send?phone=919876543210" class="drawer-btn-wa" data-contact="whatsapp">💬 WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- Main Navigation -->
+      <nav class="drawer-nav-section">
+        <div class="drawer-section-title">Navigation</div>
+        <ul class="drawer-nav-list">
+          <li><a href="{rel_prefix}index.html">🏠 Home Portal</a></li>
+          <li><a href="{rel_prefix}post-ad.html">📢 Post Advertisement</a></li>
+          <li><a href="{rel_prefix}safety-guide.html">🛡️ Safety &amp; Anti-Scam Guide</a></li>
+          <li><a href="{rel_prefix}about-us.html">ℹ️ About CityHaldwani.com</a></li>
+          <li><a href="{rel_prefix}contact-us.html">✉️ Contact Support Desk</a></li>
+        </ul>
+      </nav>
+
+      <!-- 15 Uttarakhand Destinations -->
+      <div class="drawer-nav-section">
+        <div class="drawer-section-title">📍 Explore 15 Destination Hubs</div>
+        <div class="drawer-dest-grid">
+          <a href="{dest_prefix}nainital.html">📍 Nainital</a>
+          <a href="{dest_prefix}bhimtal.html">📍 Bhimtal</a>
+          <a href="{dest_prefix}almora.html">📍 Almora</a>
+          <a href="{dest_prefix}ramnagar.html">📍 Ramnagar</a>
+          <a href="{dest_prefix}haldwani.html">📍 Haldwani</a>
+          <a href="{dest_prefix}kaladhungi.html">📍 Kaladhungi</a>
+          <a href="{dest_prefix}rudrapur.html">📍 Rudrapur</a>
+          <a href="{dest_prefix}kathgodam.html">📍 Kathgodam</a>
+          <a href="{dest_prefix}kashipur.html">📍 Kashipur</a>
+          <a href="{dest_prefix}bajpur.html">📍 Bajpur</a>
+          <a href="{dest_prefix}khatima.html">📍 Khatima</a>
+          <a href="{dest_prefix}sitarganj.html">📍 Sitarganj</a>
+          <a href="{dest_prefix}kichha.html">📍 Kichha</a>
+          <a href="{dest_prefix}jim-corbett.html">📍 Jim Corbett</a>
+          <a href="{dest_prefix}bhowali.html">📍 Bhowali</a>
+        </div>
+      </div>
+
+      <!-- Legal & Discretion -->
+      <nav class="drawer-nav-section">
+        <div class="drawer-section-title">Legal, Safety &amp; Discretion</div>
+        <ul class="drawer-nav-list small">
+          <li><a href="{rel_prefix}terms.html">⚖️ Terms of Service</a></li>
+          <li><a href="{rel_prefix}privacy.html">🔒 Privacy Policy</a></li>
+          <li><a href="{rel_prefix}report-abuse.html">🚨 Report Abuse &amp; Misconduct</a></li>
+        </ul>
+      </nav>
+
+      <!-- 18+ Warning Notice -->
+      <div class="drawer-adult-notice">
+        🔞 <strong>Strict 18+ Adult Portal:</strong> Strictly consenting adults (18+). Zero Advance Payment Policy &bull; Cash On Direct Meeting Only.
+      </div>
+    </div>
+  </aside>'''
+
+MOBILE_DRAWER_SCRIPT = '''  <!-- Mobile Navigation Drawer Toggle Script -->
+  <script>
+    (function() {
+      var toggleBtn = document.getElementById('mobileMenuToggle');
+      var drawer = document.getElementById('mobileNavDrawer');
+      var overlay = document.getElementById('mobileNavOverlay');
+      var closeBtn = document.getElementById('drawerCloseBtn');
+
+      if (!toggleBtn || !drawer || !overlay) return;
+
+      function openDrawer() {
+        drawer.classList.add('active');
+        overlay.classList.add('active');
+        toggleBtn.setAttribute('aria-expanded', 'true');
+        drawer.setAttribute('aria-hidden', 'false');
+        overlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeDrawer() {
+        drawer.classList.remove('active');
+        overlay.classList.remove('active');
+        toggleBtn.setAttribute('aria-expanded', 'false');
+        drawer.setAttribute('aria-hidden', 'true');
+        overlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      toggleBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (drawer.classList.contains('active')) {
+          closeDrawer();
+        } else {
+          openDrawer();
+        }
+      });
+
+      if (closeBtn) {
+        closeBtn.addEventListener('click', closeDrawer);
+      }
+
+      overlay.addEventListener('click', closeDrawer);
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && drawer.classList.contains('active')) {
+          closeDrawer();
+        }
+      });
+    })();
+  </script>'''
+
 # Helper to calculate clean visible body word count (excluding head, script, style)
 def count_words(html_str):
     body_match = re.search(r'<body[\s\S]*?</body>', html_str, re.I)
@@ -164,7 +288,7 @@ def render_profile_card(name, city_name, age, index, img_alias, rel_prefix='../'
         <article class="profile-card" id="profile-{name.lower()}">
           <div class="card-media">
             <span class="vip-ribbon">VIP</span>
-            <img src="/{img_alias}" alt="{name} - {profile_title} in {city_name}" loading="lazy" decoding="async" width="175" height="220" onerror="if(!this.dataset.retried){{this.dataset.retried=1;this.src='/public/{img_alias}';}}else if(this.dataset.retried==1){{this.dataset.retried=2;this.src='{rel_prefix}public/{img_alias}';}}">
+            <img src="{rel_prefix}public/{img_alias}" alt="{name} - {profile_title} in {city_name}" loading="lazy" decoding="async" width="175" height="220" onerror="if(!this.dataset.retried){{this.dataset.retried=1;this.src='{rel_prefix}{img_alias}';}}">
             <span class="photo-count-pill">📷 {photo_count} Photos</span>
           </div>
           <div class="card-content">
@@ -395,6 +519,7 @@ def build_location_page(loc, start_name_idx):
 
     loc_wa_msg = f"Hello CityHaldwani, I want to book a verified companion in {city_name}. Please share available profiles."
     loc_wa_encoded = urllib.parse.quote(loc_wa_msg)
+    drawer_html = build_mobile_drawer_html(rel_prefix='../', dest_prefix='')
 
     html_content = f'''<!DOCTYPE html>
 <html lang="en">
@@ -404,8 +529,8 @@ def build_location_page(loc, start_name_idx):
   <title>{title}</title>
   <meta name="description" content="{meta_desc}">
   <link rel="canonical" href="https://cityhaldwani.com/locations/{slug}.html">
-  <link rel="icon" href="/favicon.webp" type="image/webp">
-  <link rel="preload" href="/city-logo.png" as="image">
+  <link rel="icon" href="../favicon.webp" type="image/webp">
+  <link rel="preload" href="../city-logo.png" as="image">
 
   <!-- Open Graph Meta Tags (Image 1 Fix) -->
   <meta property="og:title" content="{title}">
@@ -436,8 +561,8 @@ def build_location_page(loc, start_name_idx):
 
   <header class="site-topbar">
     <div class="container topbar-wrapper">
-      <a href="/index.html" class="brand-group">
-        <img src="/city-logo.png" alt="CityHaldwani.com Logo" class="brand-logo-img" width="140" height="42" onerror="if(!this.dataset.retried){{this.dataset.retried=1;this.src='/logo.png';}}else if(this.dataset.retried==1){{this.dataset.retried=2;this.src='../city-logo.png';}}">
+      <a href="../index.html" class="brand-group">
+        <img src="../city-logo.png" alt="CityHaldwani.com Logo" class="brand-logo-img" width="140" height="42" onerror="if(!this.dataset.retried){{this.dataset.retried=1;this.src='../logo.png';}}else if(this.dataset.retried==1){{this.dataset.retried=2;this.src='city-logo.png';}}">
         <div class="brand-text">
           <div class="brand-title">CityHaldwani<span>.com</span></div>
           <p>Verified Uttarakhand Classifieds</p>
@@ -445,12 +570,19 @@ def build_location_page(loc, start_name_idx):
       </a>
       <div class="topbar-actions">
         <span class="badge-verified-top">&#10004; 100% Genuine Profiles</span>
-        <a href="/post-ad.html" class="btn-header-ad">📢 Post Ad</a>
+        <a href="../post-ad.html" class="btn-header-ad">📢 Post Ad</a>
         <a href="tel:+919876543210" class="btn-header-call" data-contact="call">Call Support</a>
         <a href="https://api.whatsapp.com/send?phone=919876543210" class="btn-header-wa" data-contact="whatsapp">WhatsApp</a>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Open Navigation Menu" aria-expanded="false" aria-controls="mobileNavDrawer">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
       </div>
     </div>
   </header>
+
+{drawer_html}
 
   <main class="container">
     <div class="top-nav-warning-bar">
@@ -616,12 +748,12 @@ def build_location_page(loc, start_name_idx):
       <div class="footer-col">
         <h4>Corporate &amp; Safety</h4>
         <ul class="footer-links">
-          <li><a href="/about-us.html">About Us</a></li>
-          <li><a href="/safety-guide.html">Safety Guidelines</a></li>
-          <li><a href="/report-abuse.html">Report Violations</a></li>
-          <li><a href="/terms.html">Terms of Service</a></li>
-          <li><a href="/privacy.html">Privacy Policy</a></li>
-          <li><a href="/contact-us.html">Contact Support Desk</a></li>
+          <li><a href="../about-us.html">About Us</a></li>
+          <li><a href="../safety-guide.html">Safety Guidelines</a></li>
+          <li><a href="../report-abuse.html">Report Violations</a></li>
+          <li><a href="../terms.html">Terms of Service</a></li>
+          <li><a href="../privacy.html">Privacy Policy</a></li>
+          <li><a href="../contact-us.html">Contact Support Desk</a></li>
         </ul>
       </div>
     </div>
@@ -644,10 +776,11 @@ def build_location_page(loc, start_name_idx):
     </a>
   </div>
 
-  <script src="/js/contacts-config.js" defer></script>
-  <script src="/js/contact-manager.js" defer></script>
-  <script src="/js/security-shield.js" defer></script>
-  <script src="/js/age-gate.js" defer></script>
+  <script src="../js/contacts-config.js" defer></script>
+  <script src="../js/contact-manager.js" defer></script>
+  <script src="../js/security-shield.js" defer></script>
+  <script src="../js/age-gate.js" defer></script>
+{MOBILE_DRAWER_SCRIPT}
   <script>
     document.querySelectorAll('.faq-question').forEach(function(el) {{
       el.addEventListener('click', function() {{

@@ -4,7 +4,7 @@ import json
 import urllib.parse
 
 from build_pages import NAMES_POOL, LOCATIONS_CONFIG
-from page_template import build_location_page, render_profile_card, count_words, EMBEDDED_CSS, STATIC_ADULT_WARNING_HTML, DMCA_BADGE_HTML
+from page_template import build_location_page, render_profile_card, count_words, EMBEDDED_CSS, STATIC_ADULT_WARNING_HTML, DMCA_BADGE_HTML, build_mobile_drawer_html, MOBILE_DRAWER_SCRIPT
 from location_local_data import HOME_SEO, HOME_POPULAR_TAGS
 
 OUTPUT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -210,6 +210,7 @@ home_popular_tags_html = "\n".join(home_tags_list)
 
 home_wa_msg = "Hello CityHaldwani, I want to book a verified companion in Uttarakhand. Please share available profiles."
 home_wa_encoded = urllib.parse.quote(home_wa_msg)
+home_drawer_html = build_mobile_drawer_html(rel_prefix='', dest_prefix='locations/')
 
 index_html = f'''<!DOCTYPE html>
 <html lang="en">
@@ -235,8 +236,7 @@ index_html = f'''<!DOCTYPE html>
   <meta name="twitter:title" content="{HOME_SEO['title']}">
   <meta name="twitter:description" content="{HOME_SEO['meta_desc']}">
   <meta name="twitter:image" content="https://cityhaldwani.com/city-logo.png">
-  <link rel="icon" href="/favicon.webp" type="image/webp">
-  <link rel="preload" href="/city-logo.png" as="image">
+  <link rel="preload" href="city-logo.png" as="image">
 
   <!-- Directory Trailing Slash Normalization Script (Fixes Image 2 & Image 3 404s when navigating subfolder without trailing slash) -->
   <script>
@@ -262,8 +262,8 @@ index_html = f'''<!DOCTYPE html>
 
   <header class="site-topbar">
     <div class="container topbar-wrapper">
-      <a href="/index.html" class="brand-group">
-        <img src="/city-logo.png" alt="CityHaldwani.com Logo" class="brand-logo-img" width="140" height="42" onerror="if(!this.dataset.retried){{this.dataset.retried=1;this.src='/logo.png';}}else if(this.dataset.retried==1){{this.dataset.retried=2;this.src='city-logo.png';}}">
+      <a href="index.html" class="brand-group">
+        <img src="city-logo.png" alt="CityHaldwani.com Logo" class="brand-logo-img" width="140" height="42" onerror="if(!this.dataset.retried){{this.dataset.retried=1;this.src='logo.png';}}">
         <div class="brand-text">
           <div class="brand-title">CityHaldwani<span>.com</span></div>
           <p>Verified Uttarakhand Classifieds</p>
@@ -271,12 +271,19 @@ index_html = f'''<!DOCTYPE html>
       </a>
       <div class="topbar-actions">
         <span class="badge-verified-top">&#10004; 100% Verified Classifieds</span>
-        <a href="/post-ad.html" class="btn-header-ad">📢 Post Ad</a>
+        <a href="post-ad.html" class="btn-header-ad">📢 Post Ad</a>
         <a href="tel:+919876543210" class="btn-header-call" data-contact="call">Call Support</a>
         <a href="https://api.whatsapp.com/send?phone=919876543210" class="btn-header-wa" data-contact="whatsapp">WhatsApp</a>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Open Navigation Menu" aria-expanded="false" aria-controls="mobileNavDrawer">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
       </div>
     </div>
   </header>
+
+{home_drawer_html}
 
   <main class="container">
     <div class="top-nav-warning-bar">
@@ -421,12 +428,12 @@ index_html = f'''<!DOCTYPE html>
       <div class="footer-col">
         <h4>Corporate, Legal &amp; Safety</h4>
         <ul class="footer-links">
-          <li><a href="/about-us.html">About Us</a></li>
-          <li><a href="/safety-guide.html">Safety Guidelines</a></li>
-          <li><a href="/report-abuse.html">Report Abuse</a></li>
-          <li><a href="/terms.html">Terms of Service</a></li>
-          <li><a href="/privacy.html">Privacy Policy</a></li>
-          <li><a href="/contact-us.html">Contact Support Desk</a></li>
+          <li><a href="about-us.html">About Us</a></li>
+          <li><a href="safety-guide.html">Safety Guidelines</a></li>
+          <li><a href="report-abuse.html">Report Abuse</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="contact-us.html">Contact Support Desk</a></li>
         </ul>
       </div>
     </div>
@@ -449,10 +456,11 @@ index_html = f'''<!DOCTYPE html>
     </a>
   </div>
 
-  <script src="/js/contacts-config.js" defer></script>
-  <script src="/js/contact-manager.js" defer></script>
-  <script src="/js/security-shield.js" defer></script>
-  <script src="/js/age-gate.js" defer></script>
+  <script src="js/contacts-config.js" defer></script>
+  <script src="js/contact-manager.js" defer></script>
+  <script src="js/security-shield.js" defer></script>
+  <script src="js/age-gate.js" defer></script>
+{MOBILE_DRAWER_SCRIPT}
   <script>
     document.querySelectorAll('.faq-question').forEach(function(el) {{
       el.addEventListener('click', function() {{
@@ -631,6 +639,7 @@ POLICY_PAGES = [
 for p in POLICY_PAGES:
     pol_wa_msg = p.get('wa_msg', f"Hello CityHaldwani, I have an inquiry regarding CityHaldwani.com.")
     pol_wa_encoded = urllib.parse.quote(pol_wa_msg)
+    pol_drawer_html = build_mobile_drawer_html(rel_prefix='', dest_prefix='locations/')
     pol_html = f'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -655,8 +664,7 @@ for p in POLICY_PAGES:
   <meta name="twitter:title" content="{p['title']}">
   <meta name="twitter:description" content="{p['desc']}">
   <meta name="twitter:image" content="https://cityhaldwani.com/city-logo.png">
-  <link rel="icon" href="/favicon.webp" type="image/webp">
-  <link rel="preload" href="/city-logo.png" as="image">
+  <link rel="preload" href="city-logo.png" as="image">
 
   <!-- JSON-LD Breadcrumb & WebPage Schema -->
   <script type="application/ld+json">
@@ -704,8 +712,8 @@ for p in POLICY_PAGES:
 
   <header class="site-topbar">
     <div class="container topbar-wrapper">
-      <a href="/index.html" class="brand-group">
-        <img src="/city-logo.png" alt="CityHaldwani.com Logo" class="brand-logo-img" width="140" height="42" onerror="if(!this.dataset.retried){{this.dataset.retried=1;this.src='/logo.png';}}else if(this.dataset.retried==1){{this.dataset.retried=2;this.src='city-logo.png';}}">
+      <a href="index.html" class="brand-group">
+        <img src="city-logo.png" alt="CityHaldwani.com Logo" class="brand-logo-img" width="140" height="42" onerror="if(!this.dataset.retried){{this.dataset.retried=1;this.src='logo.png';}}">
         <div class="brand-text">
           <div class="brand-title">CityHaldwani<span>.com</span></div>
           <p>Verified Uttarakhand Classifieds</p>
@@ -713,17 +721,24 @@ for p in POLICY_PAGES:
       </a>
       <div class="topbar-actions">
         <span class="badge-verified-top">&#10004; Verified Directory</span>
-        <a href="/post-ad.html" class="btn-header-ad">📢 Post Ad</a>
+        <a href="post-ad.html" class="btn-header-ad">📢 Post Ad</a>
         <a href="tel:+919876543210" class="btn-header-call" data-contact="call">Call Support</a>
         <a href="https://api.whatsapp.com/send?phone=919876543210" class="btn-header-wa" data-contact="whatsapp">WhatsApp</a>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Open Navigation Menu" aria-expanded="false" aria-controls="mobileNavDrawer">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
       </div>
     </div>
   </header>
 
+{pol_drawer_html}
+
   <main class="container">
     <div class="top-nav-warning-bar">
       <nav class="breadcrumb-nav">
-        <a href="/index.html">Home</a> &gt; <span>{p['h1']}</span>
+        <a href="index.html">Home</a> &gt; <span>{p['h1']}</span>
       </nav>
 {STATIC_ADULT_WARNING_HTML}
     </div>
@@ -745,25 +760,25 @@ for p in POLICY_PAGES:
       <div class="footer-col">
         <h4>Top Destinations</h4>
         <ul class="footer-links">
-          <li><a href="/locations/haldwani.html">Haldwani Escorts</a></li>
-          <li><a href="/locations/nainital.html">Nainital Escorts</a></li>
-          <li><a href="/locations/bhimtal.html">Bhimtal Escorts</a></li>
-          <li><a href="/locations/ramnagar.html">Ramnagar Escorts</a></li>
-          <li><a href="/locations/jim-corbett.html">Jim Corbett Escorts</a></li>
-          <li><a href="/locations/rudrapur.html">Rudrapur Escorts</a></li>
-          <li><a href="/locations/almora.html">Almora Escorts</a></li>
-          <li><a href="/locations/bhowali.html">Bhowali Escorts</a></li>
+          <li><a href="locations/haldwani.html">Haldwani Escorts</a></li>
+          <li><a href="locations/nainital.html">Nainital Escorts</a></li>
+          <li><a href="locations/bhimtal.html">Bhimtal Escorts</a></li>
+          <li><a href="locations/ramnagar.html">Ramnagar Escorts</a></li>
+          <li><a href="locations/jim-corbett.html">Jim Corbett Escorts</a></li>
+          <li><a href="locations/rudrapur.html">Rudrapur Escorts</a></li>
+          <li><a href="locations/almora.html">Almora Escorts</a></li>
+          <li><a href="locations/bhowali.html">Bhowali Escorts</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Corporate &amp; Legal</h4>
         <ul class="footer-links">
-          <li><a href="/about-us.html">About Us</a></li>
-          <li><a href="/safety-guide.html">Safety Guidelines</a></li>
-          <li><a href="/report-abuse.html">Report Violations</a></li>
-          <li><a href="/terms.html">Terms of Service</a></li>
-          <li><a href="/privacy.html">Privacy Policy</a></li>
-          <li><a href="/contact-us.html">Contact Support Desk</a></li>
+          <li><a href="about-us.html">About Us</a></li>
+          <li><a href="safety-guide.html">Safety Guidelines</a></li>
+          <li><a href="report-abuse.html">Report Violations</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="contact-us.html">Contact Support Desk</a></li>
         </ul>
       </div>
     </div>
@@ -786,10 +801,11 @@ for p in POLICY_PAGES:
     </a>
   </div>
 
-  <script src="/js/contacts-config.js" defer></script>
-  <script src="/js/contact-manager.js" defer></script>
-  <script src="/js/security-shield.js" defer></script>
-  <script src="/js/age-gate.js" defer></script>
+  <script src="js/contacts-config.js" defer></script>
+  <script src="js/contact-manager.js" defer></script>
+  <script src="js/security-shield.js" defer></script>
+  <script src="js/age-gate.js" defer></script>
+{MOBILE_DRAWER_SCRIPT}
 </body>
 </html>'''
     with open(os.path.join(OUTPUT_DIR, p['file']), 'w', encoding='utf-8') as f:
@@ -899,6 +915,13 @@ for root_file in [
     s = os.path.join(OUTPUT_DIR, root_file)
     d = os.path.join(PUBLIC_DIR, root_file)
     if os.path.exists(s):
+        shutil.copy2(s, d)
+
+# Sync all .webp images from OUTPUT_DIR into public/
+for item in os.listdir(OUTPUT_DIR):
+    if item.endswith('.webp') and os.path.isfile(os.path.join(OUTPUT_DIR, item)):
+        s = os.path.join(OUTPUT_DIR, item)
+        d = os.path.join(PUBLIC_DIR, item)
         shutil.copy2(s, d)
 
 # 3. Create public/public/ mirror for backward-compatibility with any /public/ references
