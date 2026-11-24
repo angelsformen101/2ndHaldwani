@@ -85,8 +85,8 @@ LOCATIONS_CONFIG = [
     {
         'slug': 'haldwani',
         'name': 'Haldwani',
-        'title': 'Call Girls in Haldwani - Executive Hotel Escorts & Outcall',
-        'meta_desc': 'Reserve verified call girls in Haldwani for executive hotel outcall along Nainital Road and Bareilly transit hubs. Direct contact, cash on arrival.',
+        'title': 'Premium Call Girls in Haldwani Executive Hotel Escorts',
+        'meta_desc': 'Reserve premium call girls in Haldwani for executive hotel outcall along Nainital Road and Bareilly transit hubs. Direct contact, cash on arrival.',
         'tagline': 'Commercial Capital of Kumaon & Dynamic Regional Gateway',
         'landmarks': 'Nainital Road, Tikonia, Kaladhungi Road, Kusumkhera, Mukhani, Canal Road, Kathgodam Bypass',
         'hotels': 'Hotel Saurabh Candy by Peppermint, Fortune Walkway Mall, Hotel Maple Wood, Hotel Crossroad, The Central Hotel',
@@ -95,7 +95,7 @@ LOCATIONS_CONFIG = [
     {
         'slug': 'kaladhungi',
         'name': 'Kaladhungi',
-        'title': 'Call Girls Kaladhungi - Foothill Countryside Hotel Escorts',
+        'title': 'Vip Call Girls Kaladhungi Foothill Countryside Hotel Escorts',
         'meta_desc': 'Connect with independent call girls Kaladhungi for peaceful countryside outcall near Corbett Falls and Boar River. Genuine photos with cash on arrival.',
         'tagline': 'Historic Jim Corbett Heritage, Boar River & Peaceful Countryside',
         'landmarks': 'Jim Corbett Heritage Museum, Corbett Falls, Boar River Valley, Choti Haldwani, Forest Belt',
@@ -115,7 +115,7 @@ LOCATIONS_CONFIG = [
     {
         'slug': 'kathgodam',
         'name': 'Kathgodam',
-        'title': 'Kathgodam Escort Service - Railway Junction Hotel Escorts',
+        'title': 'Kathgodam Escort Service - Cash Payment Delivery Escorts',
         'meta_desc': 'Meet verified Kathgodam escort service models for relaxing transit visits and hill gateway hotel appointments. Direct companion contact, zero advance.',
         'tagline': 'Railway Terminus Gateway, Gaula River Valley & Hill Ascent Transit',
         'landmarks': 'Kathgodam Railway Station, Gaula Barrage, Shivalik Foothills, Ranibagh Bridge, Nainital Road Junction',
@@ -125,8 +125,8 @@ LOCATIONS_CONFIG = [
     {
         'slug': 'kashipur',
         'name': 'Kashipur',
-        'title': 'Kashipur Escort Service - Industrial Hub Hotel Escorts',
-        'meta_desc': 'Select verified Kashipur escort service for discreet hotel outcall along Bazpur Road and central suites. Independent models, zero advance, direct cash.',
+        'title': 'Cheap Kashipur Escort Service low cost Quick Hotel Escorts',
+        'meta_desc': 'Select verified Cheap Kashipur escort service for discreet hotel outcall along Bazpur Road and central suites. Independent models, zero advance, direct cash.',
         'tagline': 'Historic Industrial Gateway, Paper Mills & Academic Corridor',
         'landmarks': 'Bazpur Road, Ramnagar Road, IIM Kashipur Campus, Drona Sagar, Industrial Area Sector 1',
         'hotels': 'The Manor Kashipur, Anand Castle, Hotel Kumaon Plaza, Gautam Residency, Hotel Ashiyana',
@@ -135,7 +135,7 @@ LOCATIONS_CONFIG = [
     {
         'slug': 'bajpur',
         'name': 'Bajpur',
-        'title': 'Bajpur Call Girls - Terai Estate & Highway Hotel Escorts',
+        'title': 'Low Cost Bajpur Call Girls 100% Verified Highway Hotel Escorts',
         'meta_desc': 'Book verified Bajpur call girls for quiet farmhouse outcall and highway hotel appointments across the Terai belt. Safe direct meetings, cash on arrival.',
         'tagline': 'Fertile Agricultural Heartland, Historic Sugar Mills & Rural Farm Retreats',
         'landmarks': 'Bajpur Sugar Mill Area, Kashipur-Haldwani Road, Terai Orchards, Kosi Canal Crossing',
@@ -145,8 +145,8 @@ LOCATIONS_CONFIG = [
     {
         'slug': 'khatima',
         'name': 'Khatima',
-        'title': 'Escort Service in Khatima - Border Transit Hotel Escorts',
-        'meta_desc': 'Arrange trusted escort service in Khatima for quiet in-room hotel appointments along Tanakpur Road and Melghat. Verified models, cash upon meeting.',
+        'title': 'Vip Escort Service in Khatima ₹2,000 Low Cost Escorts Hotel',
+        'meta_desc': 'Arrange trusted vip escort service in Khatima for quiet in-room hotel appointments along Tanakpur Road and Melghat. Verified models,₹2,000 cash upon meeting.',
         'tagline': 'Indo-Nepal Border Gateway, Sharda River & Terai Transit Crossroads',
         'landmarks': 'Tanakpur Road, Sharda River Canal, Khatima Main Market, Lohiahead Power House, Nanakmatta Junction',
         'hotels': 'Hotel Royal Park Khatima, City Heart Inn, Sharda Heritage Hotel, The Green Valley Inn',
@@ -165,7 +165,7 @@ LOCATIONS_CONFIG = [
     {
         'slug': 'kichha',
         'name': 'Kichha',
-        'title': 'Escort Service Kichha - Bareilly Highway Hotel Escorts',
+        'title': 'Premium Escort Service Kichha - Gularbhoj Dam Hotel Escorts',
         'meta_desc': 'Find verified escort service Kichha for comfortable transit appointments and hotel visits along Bareilly Highway. Zero upfront deposit, cash on arrival.',
         'tagline': 'Agricultural Trade Hub, Bareilly Highway Artery & Logistics Gateway',
         'landmarks': 'Bareilly Highway, Rudrapur Bypass, Kichha Railway Station, Grain Market Complex, Terai Canal',

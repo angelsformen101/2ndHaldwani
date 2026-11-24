@@ -4,9 +4,9 @@ PART3_DATA = {
     'bajpur': {
         'slug': 'bajpur',
         'name': 'Bajpur',
-        'title': 'Bajpur Call Girls - Terai Estate & Highway Hotel Escorts',
+        'title': 'Low Cost Bajpur Call Girls 100% Verified Highway Hotel Escorts',
         'meta_desc': 'Book verified Bajpur call girls for quiet farmhouse outcall and highway hotel appointments across the Terai belt. Safe direct meetings, cash on arrival.',
-        'h1': 'Bajpur Call Girls: Agricultural Estate Farmhouses & Highway Hotel Outcall',
+        'h1': '100% Verified Bajpur Call Girls: Private Farmhouse & Highway Hotel Outcall Services',
         'tagline': 'Fertile Agricultural Heartland, Historic Sugar Mills & Rural Farm Retreats',
         'hero_intro': [
             "Famed throughout northern India for agricultural cooperatives and historic sugar manufacturing, Bajpur is characterized by sprawling sugarcane fields, private farmhouse estates, and tree-lined countryside roads. Visiting agro-investors and travelers reserving our dependable <strong>Bajpur escort service</strong> discover the pleasure of peaceful country retreats. Spending private evenings with charming <strong>Bajpur call girls</strong> provides delightful conversation and relaxation after long highway drives across the Terai plains.",
@@ -40,9 +40,9 @@ PART3_DATA = {
     'khatima': {
         'slug': 'khatima',
         'name': 'Khatima',
-        'title': 'Escort Service in Khatima - Border Transit Hotel Escorts',
-        'meta_desc': 'Arrange trusted escort service in Khatima for quiet in-room hotel appointments along Tanakpur Road and Melghat. Verified models, cash upon meeting.',
-        'h1': 'Escort Service in Khatima: Border Transit Hospitality & Town In-Room Outcall',
+        'title': 'Vip Escort Service in Khatima ₹2,000 Low Cost Escorts Hotel',
+        'meta_desc': 'Arrange trusted vip escort service in Khatima for quiet in-room hotel appointments along Tanakpur Road and Melghat. Verified models,₹2,000 cash upon meeting.',
+        'h1': 'Verified Vip Escort Service in Khatima: Border Transit Hospitality & Town In-Room Outcall',
         'tagline': 'Indo-Nepal Border Gateway, Sharda River & Terai Transit Crossroads',
         'hero_intro': [
             "Located at the southeastern edge of Uttarakhand near the international border with Nepal and the banks of the Sharda River, Khatima is an essential border trade crossroads. Transport executives, merchants, and transit travelers seeking charming <strong>call girls in Khatima</strong> enjoy comfortable in-room visits at town hotels along Tanakpur Road. Reserving dependable <strong>escort service in Khatima</strong> provides a restful, private escape surrounded by peaceful Terai woodlands and river irrigation canals.",
@@ -112,9 +112,9 @@ PART3_DATA = {
     'kichha': {
         'slug': 'kichha',
         'name': 'Kichha',
-        'title': 'Escort Service Kichha - Bareilly Highway Hotel Escorts',
+        'title': 'Premium Escort Service Kichha - Gularbhoj Dam Hotel Escorts',
         'meta_desc': 'Find verified escort service Kichha for comfortable transit appointments and hotel visits along Bareilly Highway. Zero upfront deposit, cash on arrival.',
-        'h1': 'Escort Service Kichha: Bareilly Highway Commercial Transit & In-Room Outcall',
+        'h1': 'Authentic Escort Service Kichha: Bareilly Highway Transit & In-Room Outcall',
         'tagline': 'Agricultural Trade Hub, Bareilly Highway Artery & Logistics Gateway',
         'hero_intro': [
             "Serving as an essential trade, agricultural marketing, and logistics hub along the Bareilly-Nainital Highway corridor, Kichha occupies a strategic position in the southern Terai. Transport contractors and commercial travelers seeking trusted <strong>escort service in Kichha</strong> enjoy comfortable in-room appointments at reputable highway transit hotels. Reserving our dependable <strong>Kichha escort service</strong> ensures refreshing company and relaxing downtime near Pantnagar Airport and the Gaula Canal bypass.",
