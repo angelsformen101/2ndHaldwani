@@ -46,11 +46,23 @@ for l in LOCATIONS_CONFIG:
     home_pills.append(f'<a href="locations/{l["slug"]}.html" class="loc-pill">📍 {l["name"]}</a>')
 home_pills_html = "\n".join(home_pills)
 
-HOME_PROFILE_KEYWORDS = [
-    'Haldwani Call Girls', 'Nainital Escort Service', 'Mall Road Call Girls', 'Bhimtal Escort Service',
-    'Ramnagar Call Girls', 'Jim Corbett Escorts', 'Rudrapur Escort Service', 'Kathgodam Call Girls',
-    'Kashipur Escort Service', 'Tikonia Call Girls', 'Tallital Escorts', 'Kasar Devi Call Girls',
-    'SIDCUL Escort Service', 'Kaladhungi Call Girls', 'Bhowali Escort Service', 'Khatima Call Girls'
+HOME_CARD_TAGS = [
+    'Haldwani call girls',
+    'Haldwani escort service',
+    'Call girls in Haldwani',
+    'Escorts in Haldwani',
+    'escort near me Haldwani',
+    'call girls near me Haldwani',
+    'Haldwani escort service open now',
+    'Haldwani call girl WhatsApp number',
+    'call girls website Haldwani',
+    'Russian escorts Haldwani',
+    'independent escorts Haldwani',
+    'hotel service call girls Haldwani',
+    '24 hour call girl service Haldwani',
+    'cash on arrival Haldwani escorts',
+    'verified call girls Uttarakhand',
+    'VIP escorts Haldwani'
 ]
 
 home_cards = []
@@ -60,8 +72,9 @@ for i in range(16):
     age = 21 + (i % 6)
     img_alias = f"profile_{( (name_index_tracker + i) % 48 ) + 1:02d}.webp"
     city_sample = LOCATIONS_CONFIG[i % len(LOCATIONS_CONFIG)]['name']
-    kw_sample = HOME_PROFILE_KEYWORDS[i % len(HOME_PROFILE_KEYWORDS)]
-    home_cards.append(render_profile_card(name, city_sample, age, i, img_alias, rel_prefix='', profile_title=kw_sample))
+    dedicated_kw = HOME_CARD_TAGS[i]
+    prof_title = dedicated_kw.title()
+    home_cards.append(render_profile_card(name, city_sample, age, i, img_alias, rel_prefix='', profile_title=prof_title, dedicated_tag=dedicated_kw))
 home_cards_str = "\n".join(home_cards)
 
 home_faqs = [
@@ -99,7 +112,7 @@ home_faqs = [
     ),
     (
         "What categories of companions are available?",
-        "Our classified directory features independent college girls (18+), VIP fashion models, corporate hostesses, mature homemakers, and luxury resort companions."
+        "Our classified directory features independent college call girls Haldwani (18+), VIP fashion models, corporate hostesses, mature homemakers, and luxury resort companions across Uttarakhand."
     ),
     (
         "Can I book companions for multi-day road trips?",
@@ -139,7 +152,7 @@ home_faqs = [
     ),
     (
         "Are overnight bookings available on weekends?",
-        "Yes, full-night bookings are highly popular for weekend travelers visiting Nainital and Corbett. Book by early evening to secure your preferred model."
+        "Yes, full night escort service Haldwani is highly popular for weekend travelers visiting Nainital and Corbett. Book by early evening to secure your preferred independent model."
     ),
     (
         "How can independent models advertise on CityHaldwani.com?",
@@ -184,14 +197,37 @@ home_biz_schema = json.dumps({
     }
 }, indent=2)
 
+DEST_POP_TAGS_MAP = {
+    'nainital': ('Nainital call girls', 'Nainital escort service'),
+    'kathgodam': ('Kathgodam call girls', 'Kathgodam escort service'),
+    'rudrapur': ('Rudrapur call girls', 'Rudrapur escort service'),
+    'ramnagar': ('Ramnagar call girls', 'Jim Corbett escort service'),
+    'bhimtal': ('Bhimtal call girls', 'Bhimtal escort service'),
+    'kashipur': ('Kashipur call girls', 'Kashipur escort service'),
+    'almora': ('Almora call girls', 'Almora escort service'),
+    'kaladhungi': ('Kaladhungi call girls',),
+    'bhowali': ('Bhowali call girls',),
+    'khatima': ('Khatima call girls',),
+    'sitarganj': ('Sitarganj call girls',),
+    'kichha': ('Kichha call girls',),
+    'bajpur': ('Bajpur call girls',),
+    'jim-corbett': ('Jim Corbett escort service',),
+    'haldwani': ('Haldwani call girls', 'Haldwani escort service')
+}
+
 dest_cards = []
 for loc in LOCATIONS_CONFIG:
+    slug = loc['slug']
+    tags_tuple = DEST_POP_TAGS_MAP.get(slug, ())
+    tags_text = f"Verified directory featuring <strong>{tags_tuple[0]}</strong>" if len(tags_tuple) == 1 else f"Premier hub for <strong>{tags_tuple[0]}</strong> and <strong>{tags_tuple[1]}</strong>" if len(tags_tuple) >= 2 else ""
+    
     dest_cards.append(f'''
       <div class="category-box" style="display: flex; flex-direction: column; justify-content: space-between;">
         <div>
           <h3>📍 <a href="locations/{loc['slug']}.html" style="color: inherit;">{loc['name']} Escorts</a></h3>
           <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 6px;">{loc['tagline']}</p>
-          <p style="font-size: 13.5px; color: var(--text-secondary);">{loc['meta_desc']}</p>
+          <p style="font-size: 13.5px; color: var(--text-secondary); margin-bottom: 6px;">{loc['meta_desc']}</p>
+          {f'<p style="font-size: 13px; color: var(--text-dark);">{tags_text} with direct hotel outcall.</p>' if tags_text else ''}
         </div>
         <div style="margin-top: 14px;">
           <a href="locations/{loc['slug']}.html" class="btn-card-details" style="display: inline-block; width: 100%; text-align: center; font-weight: 700; color: #be123c; background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%); border: 1px solid #fecdd3; padding: 10px 14px; border-radius: 8px;">View 16 Profiles in {loc['name']} &rarr;</a>
@@ -310,10 +346,10 @@ index_html = f'''<!DOCTYPE html>
         <span class="hero-badge">🛎️ Luxury Hotel &amp; Resort Outcall</span>
       </div>
       <p class="hero-lead-text">
-        Welcome to <strong>CityHaldwani.com</strong>, Uttarakhand's premier verified classified directory for <strong>Haldwani call girls</strong> and elite <strong>Haldwani escort service in Uttarakhand</strong>. Whether you are traveling for a rejuvenating weekend retreat in the tranquil lakes of Nainital and Bhimtal, embarking on a thrilling wildlife safari in Jim Corbett, or attending executive industrial summits across Haldwani, Rudrapur, and Kashipur, our platform connects you directly with verified independent companions.
+        Welcome to <strong>CityHaldwani.com</strong>, Uttarakhand's premier verified classified directory for <strong>Haldwani call girls</strong>, elite <strong>Haldwani escort service in Uttarakhand</strong>, and <strong>verified call girls Uttarakhand</strong>. Whether you are looking for <strong>Haldwani escort service open now</strong> or require <strong>cash on arrival Haldwani escorts</strong> across luxury hotels in Nainital, Bhimtal, or Jim Corbett, our official <strong>call girls website Haldwani</strong> connects you directly with verified <strong>independent escorts Haldwani</strong>.
       </p>
       <p>
-        We reject the murky practices of traditional agencies. On CityHaldwani.com, there are no deceptive middle-tier agents, inflated hidden commissions, or recycled stock photographs. Every independent model listed below has successfully verified her adult legal age (18+) and submitted authentic photo verifications. You speak directly to your companion over telephone or WhatsApp, agree on customized hours and expectations, and pay strictly in cash upon arrival at your verified luxury hotel room or private villa.
+        We reject the murky practices of traditional agencies. On CityHaldwani.com, there are no deceptive middle-tier agents, inflated hidden commissions, or recycled stock photographs. Every independent model listed below has successfully verified her adult legal age (18+) and submitted authentic photo verifications. You connect directly with your companion via our verified <strong>Haldwani call girl WhatsApp number</strong> or direct telephone, agree on customized hours and expectations, and pay strictly in cash upon arrival at your verified luxury hotel room or private villa.
       </p>
     </section>
 

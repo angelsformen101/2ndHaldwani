@@ -269,7 +269,7 @@ LOCAL_SEO_GUIDES = {
 }
 
 # Build a single profile card calibrated with single local keyword title + expanded ~60-word description
-def render_profile_card(name, city_name, age, index, img_alias, rel_prefix='../', profile_title=None):
+def render_profile_card(name, city_name, age, index, img_alias, rel_prefix='../', profile_title=None, dedicated_tag=None):
     rates_options = [
         ("₹1,500", "₹2,500", "₹7,000"),
         ("₹2,000", "₹3,000", "₹8,000"),
@@ -288,12 +288,14 @@ def render_profile_card(name, city_name, age, index, img_alias, rel_prefix='../'
     
     if not profile_title:
         profile_title = f"{city_name} Call Girls"
+        
+    tag_mention = (dedicated_tag if dedicated_tag else profile_title).lower()
     
     descriptions = [
-        f"Verified independent model {name} (age {age}) offers elite companionship in {city_name} and nearby luxury hotels. Fluent in English and Hindi, she specializes in sophisticated dinner dates, relaxed private suite meetings, and overnight companionship. Known for punctuality, pleasant communication, and strict confidentiality, {name} operates under our zero-advance guarantee with direct cash payment upon arrival at your room.",
-        f"Meet {name}, a sweet and educated companion (age {age}) serving clients across {city_name}. Whether you are staying at a hillside resort or central hotel, she provides warm, attentive in-room companionship tailored to your schedule. Enjoys deep conversations, pleasant dining, and stress-relieving relaxation. Direct cash on meeting with 100% genuine verified photographs.",
-        f"High-profile independent companion {name} (age {age}) provides VIP outcall service to certified 4-star and 5-star properties in {city_name}. Articulate, stylish, and discreet, she is an ideal partner for corporate dinners, social gatherings, or intimate suite encounters. Zero advance payment required; settle directly in cash upon her arrival at your room.",
-        f"Charming and affectionate, {name} (age {age}) is an independent verified model available for prompt hotel visits in {city_name}. She offers relaxed private meetings, polite conversation, and memorable holiday companionship across local destinations. Committed to strict client confidentiality, mutual respect, and transparent cash-on-meeting booking."
+        f"Verified independent model {name} (age {age}) offers elite {tag_mention} across {city_name} and nearby luxury hotels. Fluent in English and Hindi, she specializes in sophisticated dinner dates, relaxed private suite meetings, and overnight companionship. Known for punctuality, pleasant communication, and strict confidentiality, {name} operates under our zero-advance guarantee with direct cash payment upon arrival at your room.",
+        f"Meet {name}, a sweet and educated companion (age {age}) offering trusted {tag_mention} for discerning clients in {city_name}. Whether you are staying at a hillside resort or central hotel, she provides warm, attentive in-room companionship tailored to your schedule. Enjoys deep conversations, pleasant dining, and stress-relieving relaxation. Direct cash on meeting with 100% genuine verified photographs.",
+        f"High-profile independent companion {name} (age {age}) provides VIP outcall service for {tag_mention} at certified 4-star and 5-star properties in {city_name}. Articulate, stylish, and discreet, she is an ideal partner for corporate dinners, social gatherings, or intimate suite encounters. Zero advance payment required; settle directly in cash upon her arrival at your room.",
+        f"Charming and affectionate, {name} (age {age}) is an independent verified model delivering prompt hotel visits and personalized {tag_mention} in {city_name}. She offers relaxed private meetings, polite conversation, and memorable holiday companionship across local destinations. Committed to strict client confidentiality, mutual respect, and transparent cash-on-meeting booking."
     ]
     desc = descriptions[index % len(descriptions)]
     photo_count = 3 + (index % 3)
@@ -448,6 +450,11 @@ def build_location_page(loc, start_name_idx):
     
     # 16 profiles with ../ relative prefix and unique local search keywords
     loc_local = LOCATION_LOCAL_DATA.get(slug, {})
+    pop_tags = loc_local.get('popular_tags', [
+        f"{city_name} call girls", f"{city_name} escort service", f"Call girls in {city_name}", f"Escorts in {city_name}",
+        f"hotel service call girls {city_name}", f"independent escorts {city_name}", f"cash on arrival {city_name}",
+        f"24 hour call girl service {city_name}", f"VIP escorts {city_name}", f"call girls near me {city_name}"
+    ])
     prof_keywords = loc_local.get('profile_keywords', [])
     
     cards_html = []
@@ -457,8 +464,16 @@ def build_location_page(loc, start_name_idx):
         names_used.append(name)
         age = 20 + ((start_name_idx + i * 3) % 7)
         img_alias = f"profile_{( (start_name_idx + i) % 48 ) + 1:02d}.webp"
-        prof_kw = prof_keywords[i % len(prof_keywords)] if prof_keywords else f"{city_name} Call Girls"
-        cards_html.append(render_profile_card(name, city_name, age, i, img_alias, rel_prefix='../', profile_title=prof_kw))
+        if i < len(pop_tags):
+            card_tag = pop_tags[i]
+            prof_kw = card_tag.title()
+        elif i < len(prof_keywords):
+            card_tag = prof_keywords[i]
+            prof_kw = card_tag.title()
+        else:
+            card_tag = f"{city_name} call girls"
+            prof_kw = f"{city_name} Call Girls"
+        cards_html.append(render_profile_card(name, city_name, age, i, img_alias, rel_prefix='../', profile_title=prof_kw, dedicated_tag=card_tag))
     
     all_cards_str = "\n".join(cards_html)
     
@@ -518,11 +533,6 @@ def build_location_page(loc, start_name_idx):
     pills_html = "\n".join(pills)
 
     # Popular Searches Section for location
-    pop_tags = loc_local.get('popular_tags', [
-        f"{city_name} call girls", f"{city_name} escort service", f"Call girls in {city_name}", f"Escorts in {city_name}",
-        f"hotel service call girls {city_name}", f"independent escorts {city_name}", f"cash on arrival {city_name}",
-        f"24 hour call girl service {city_name}", f"VIP escorts {city_name}", f"call girls near me {city_name}"
-    ])
     tag_accents = ['accent-blue', 'accent-pink', 'accent-green', 'accent-purple', '']
     pop_tags_html_list = []
     for idx, tag in enumerate(pop_tags):
@@ -530,6 +540,21 @@ def build_location_page(loc, start_name_idx):
         cls = f"popular-tag {acc}".strip()
         pop_tags_html_list.append(f'<a href="#verified-listings" class="{cls}">{tag}</a>')
     popular_tags_html = "\n".join(pop_tags_html_list)
+
+    t0 = pop_tags[0] if len(pop_tags) > 0 else f"{city_name} call girls"
+    t1 = pop_tags[1] if len(pop_tags) > 1 else f"{city_name} escort service"
+    t2 = pop_tags[2] if len(pop_tags) > 2 else f"Call girls in {city_name}"
+    t3 = pop_tags[3] if len(pop_tags) > 3 else f"Escorts in {city_name}"
+
+    remaining_tags = [t for t in pop_tags[16:]]
+    if remaining_tags:
+        rem_str = ", ".join(f"<strong>{t}</strong>" for t in remaining_tags[:-1]) + (f", and <strong>{remaining_tags[-1]}</strong>" if len(remaining_tags) > 1 else f"<strong>{remaining_tags[0]}</strong>")
+        extra_local_p = f"""
+      <p>
+        To ensure complete regional accessibility, our verified independent escort network actively fulfills client bookings for {rem_str}. Whether reserving a luxury hotel outcall or scheduling an in-room appointment, clients enjoy transparent zero-advance pricing, genuine photos, and absolute discretion across all local sectors.
+      </p>"""
+    else:
+        extra_local_p = ""
 
     loc_wa_msg = f"Hello CityHaldwani, I want to book a verified companion in {city_name}. Please share available profiles."
     loc_wa_encoded = urllib.parse.quote(loc_wa_msg)
@@ -622,7 +647,7 @@ def build_location_page(loc, start_name_idx):
         <span class="hero-badge">🛎️ In-Room &amp; Resort Outcall</span>
       </div>
       <p>
-        Welcome to <strong>CityHaldwani.com</strong>, your verified destination for <strong>{city_name} call girls</strong> and premier <strong>{city_name} escort service in {seo_landmark}</strong>. Renowned for its {vibe}, {city_name} attracts holidaymakers, executives, and regional visitors seeking unhurried, discreet luxury. Whether staying at a luxury resort along {landmarks} or relaxing in an executive suite near {seo_hotel}, our vetted independent companions deliver genuine warmth, high-class elegance, and confidential charm.
+        Welcome to <strong>CityHaldwani.com</strong>, your verified destination for <strong>{t0}</strong> and premier <strong>{t1}</strong> in {seo_landmark}. Renowned for its {vibe}, {city_name} attracts holidaymakers, executives, and regional visitors seeking unhurried, discreet luxury. Whether searching for authentic <strong>{t2}</strong> or selecting trusted <strong>{t3}</strong>, our vetted independent companions deliver genuine warmth, high-class elegance, and confidential charm across {landmarks} and {seo_hotel}.
       </p>
       <p>
         At CityHaldwani.com, we prioritize transparency and safety above all else. Every companion listed below has completed strict photo authentication and age verification checks (18+). You connect directly with the independent advertiser over phone or WhatsApp, eliminating brokerage fees and predatory third-party intermediaries. Review authentic profile details, compare flexible packages, and enjoy confidential companionship backed by our ironclad zero upfront payment policy.
@@ -675,6 +700,7 @@ def build_location_page(loc, start_name_idx):
       <p>
         {local_guide['sectors_detail']}
       </p>
+{extra_local_p}
       <p>
         Whether you require a prompt appointment at your central hotel within 25 to 35 minutes or wish to schedule an evening date at a private farmhouse or mountain homestay, our independent advertisers guarantee timely arrival. We recommend contacting your chosen companion at least 45 minutes prior to your preferred meeting time so she can travel comfortably and arrive fresh, relaxed, and ready to provide an exceptional hospitality experience.
       </p>
