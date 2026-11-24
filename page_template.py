@@ -268,7 +268,43 @@ LOCAL_SEO_GUIDES = {
     }
 }
 
-# Build a single profile card calibrated with single local keyword title + expanded ~60-word description
+PROFILE_SENTENCE_PATTERNS = [
+    ("Book Verified {kw} for Luxury Hotel Outcall",
+     "Book verified {kw} for luxury hotel outcall with verified independent model {name} (age {age}) for quiet relaxation and dinner dates. Fluent in English and Hindi, she is admired for her punctuality, warm conversational charm, and attentive demeanor. Operates under our strict zero-advance policy with direct cash payment upon arrival at your room."),
+    
+    ("Experience Elite {kw} with Complete In-Room Privacy",
+     "Experience elite {kw} with complete in-room privacy by meeting {name} (age {age}), an articulate and educated companion in the city. Whether you are staying at a secluded hillside retreat or a central boutique resort, she delivers relaxed, unhurried companionship tailored to your schedule. Enjoys meaningful conversations and quiet dining with 100% genuine verified photos."),
+    
+    ("Connect with Independent {kw} for Evening Dinner Dates",
+     "Connect with independent {kw} for evening dinner dates by choosing high-profile companion {name} (age {age}) for private meetings. Elegant, stylish, and discreet, she is an ideal partner for corporate dinners, prestigious social banquets, or intimate suite encounters. Zero advance payment required; settle safely upon arrival at your room with complete peace of mind."),
+    
+    ("Reserve Top-Rated {kw} with Cash on Arrival Guarantee",
+     "Reserve top-rated {kw} with cash on arrival guarantee when accompanied by charming independent model {name} (age {age}) in local resorts. She offers relaxed private meetings, polite conversation, and memorable holiday companionship across local destination resorts. Committed to strict client confidentiality, mutual respect, and transparent in-person booking with zero advance deposits."),
+    
+    ("Enjoy Discreet {kw} Tailored for Touring Executives",
+     "Enjoy discreet {kw} tailored for touring executives and vacationers with verified model {name} (age {age}) during your stay. Known for her pleasant etiquette, sophisticated style, and punctual arrivals, she provides delightful companionship during your stay. Settle your booking securely with cash directly in your hotel room without upfront tokens or deposits."),
+    
+    ("Meet Charming {kw} for Unhurried Mountain Holiday Stays",
+     "Meet charming {kw} for unhurried mountain holiday stays and scenic drives by booking sophisticated companion {name} (age {age}) today. She excels at relaxed conversation, romantic dinners, and stress-relieving companionship. Backed by verified authentication photos and our strict zero advance payment guarantee for complete peace of mind during your visit."),
+    
+    ("Find Trusted {kw} Available for Prompt In-Room Visits",
+     "Find trusted {kw} available for prompt in-room visits across local luxury hotels with articulate model {name} (age {age}) anytime. She brings warmth, elegance, and cheerful conversation to any meeting, ensuring a memorable and confidential experience. Pay in direct cash upon arrival with zero hidden agency commissions or brokerage fees."),
+    
+    ("Schedule Private {kw} with 100% Photo Verified Profiles",
+     "Schedule private {kw} with 100% photo verified profiles through polite and attractive companion {name} (age {age}) for total relaxation. Whether you require a companion for a business dinner or a quiet evening in your suite, she ensures total discretion and mutual respect. Enjoy verified authenticity with safe cash payment upon direct meeting.")
+]
+
+# Helper to clean duplicate words when keyword starts with the adjective in the sentence template
+def clean_sentence_formatting(template_str, kw):
+    res = template_str
+    words = kw.strip().split()
+    if words:
+        first_word = words[0]
+        pattern = rf'\b({re.escape(first_word)})\s+\{{kw\}}'
+        res = re.sub(pattern, '{kw}', template_str, flags=re.IGNORECASE)
+    return res
+
+# Build a single profile card calibrated with full sentence title + keyword + expanded ~54-word description
 def render_profile_card(name, city_name, age, index, img_alias, rel_prefix='../', profile_title=None, dedicated_tag=None):
     rates_options = [
         ("₹1,500", "₹2,500", "₹7,000"),
@@ -286,31 +322,27 @@ def render_profile_card(name, city_name, age, index, img_alias, rel_prefix='../'
     ]
     category = categories[index % len(categories)]
     
-    if not profile_title:
-        profile_title = f"{city_name} Call Girls"
-        
-    tag_mention = (dedicated_tag if dedicated_tag else profile_title).lower()
+    kw = (dedicated_tag if dedicated_tag else (profile_title if profile_title else f"{city_name} Call Girls")).title()
+    title_pattern, desc_pattern = PROFILE_SENTENCE_PATTERNS[index % len(PROFILE_SENTENCE_PATTERNS)]
     
-    descriptions = [
-        f"Verified independent model {name} (age {age}) represents the finest in {profile_title}, offering personalized in-room hospitality and discrete dinner dates at premier luxury hotels. Fluent in English and Hindi, she is admired for her punctuality, warm conversational charm, and attentive demeanor. Operates under our strict zero-advance policy with direct cash payment upon arrival at your room.",
-        f"Meet {name} (age {age}), an articulate and educated companion providing top-tier {profile_title} for visiting executives and holidaymakers. Whether you are staying at a secluded hillside retreat or a central boutique resort, she delivers relaxed, unhurried companionship tailored to your schedule. Enjoys meaningful conversations and quiet dining with 100% genuine verified photos.",
-        f"High-profile independent companion {name} (age {age}) is a distinguished choice for {profile_title}, delivering prompt outcall visits to certified 4-star and 5-star properties. Elegant, stylish, and discreet, she makes an ideal partner for corporate banquets, social gatherings, or intimate suite encounters. Zero advance payment required; settle safely upon arrival at your room.",
-        f"Charming and affectionate, {name} (age {age}) is a verified independent model available for bespoke appointments and trusted {profile_title}. She offers relaxed private meetings, polite conversation, and memorable holiday companionship across local destination resorts. Committed to strict client confidentiality, mutual respect, and transparent cash-on-meeting booking with zero advance deposits."
-    ]
-    desc = descriptions[index % len(descriptions)]
+    fmt_title = clean_sentence_formatting(title_pattern, kw)
+    fmt_desc = clean_sentence_formatting(desc_pattern, kw)
+    
+    full_sentence_title = fmt_title.format(kw=kw)
+    desc = fmt_desc.format(name=name, age=age, kw=kw)
     photo_count = 3 + (index % 3)
     
     card_html = f'''
         <article class="profile-card" id="profile-{name.lower()}">
           <div class="card-media">
             <span class="vip-ribbon">VIP</span>
-            <img src="{rel_prefix}public/{img_alias}" alt="{name} - {profile_title} in {city_name}" loading="lazy" decoding="async" width="185" height="245" onerror="if(!this.dataset.retried){{this.dataset.retried=1;this.src='{rel_prefix}{img_alias}';}}">
+            <img src="{rel_prefix}public/{img_alias}" alt="{name} - {full_sentence_title} in {city_name}" loading="lazy" decoding="async" width="185" height="245" onerror="if(!this.dataset.retried){{this.dataset.retried=1;this.src='{rel_prefix}{img_alias}';}}">
             <span class="photo-count-pill">📷 {photo_count} Photos</span>
           </div>
           <div class="card-content">
             <div class="card-header-line">
               <span class="badge-vip-pill">VERIFIED VIP</span>
-              <h3 class="profile-name-title">{profile_title}</h3>
+              <h3 class="profile-name-title">{full_sentence_title}</h3>
             </div>
             <div class="card-model-subtitle">
               <span class="model-name">👑 {name}</span> &bull; <span class="model-age">{age} Yrs</span> &bull; <span class="model-category">{category}</span> &bull; <span class="model-badge">&#10004; Photo Verified</span>
