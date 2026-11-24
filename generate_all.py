@@ -346,10 +346,10 @@ index_html = f'''<!DOCTYPE html>
         <span class="hero-badge">🛎️ Luxury Hotel &amp; Resort Outcall</span>
       </div>
       <p class="hero-lead-text">
-        Welcome to <strong>CityHaldwani.com</strong>, Uttarakhand's premier verified classified directory for <strong>Haldwani call girls</strong>, elite <strong>Haldwani escort service in Uttarakhand</strong>, and <strong>verified call girls Uttarakhand</strong>. Whether you are looking for <strong>Haldwani escort service open now</strong> or require <strong>cash on arrival Haldwani escorts</strong> across luxury hotels in Nainital, Bhimtal, or Jim Corbett, our official <strong>call girls website Haldwani</strong> connects you directly with verified <strong>independent escorts Haldwani</strong>.
+        Welcome to <strong>CityHaldwani.com</strong>, Uttarakhand's premier verified classified directory for <strong>Haldwani call girls</strong> and elite <strong>Haldwani escort service in Uttarakhand</strong>. Whether you are traveling for a rejuvenating weekend retreat in the tranquil lakes of Nainital and Bhimtal, embarking on a thrilling wildlife safari in Jim Corbett, or attending executive industrial summits across Haldwani, Rudrapur, and Kashipur, our platform connects you directly with verified independent companions.
       </p>
       <p>
-        We reject the murky practices of traditional agencies. On CityHaldwani.com, there are no deceptive middle-tier agents, inflated hidden commissions, or recycled stock photographs. Every independent model listed below has successfully verified her adult legal age (18+) and submitted authentic photo verifications. You connect directly with your companion via our verified <strong>Haldwani call girl WhatsApp number</strong> or direct telephone, agree on customized hours and expectations, and pay strictly in cash upon arrival at your verified luxury hotel room or private villa.
+        We reject the murky practices of traditional agencies. On CityHaldwani.com, there are no deceptive middle-tier agents, inflated hidden commissions, or recycled stock photographs. Every independent model listed below has successfully verified her adult legal age (18+) and submitted authentic photo verifications. You speak directly to your companion over telephone or WhatsApp, agree on customized hours and expectations, and pay strictly in cash upon arrival at your verified luxury hotel room or private villa.
       </p>
     </section>
 
@@ -367,7 +367,7 @@ index_html = f'''<!DOCTYPE html>
     <!-- SECTION 2: EXPLORE LOCATIONS SECTION DIRECTLY UNDER PROFILES SECTION -->
     <section class="editorial-card" id="locations">
       <h2>Explore Verified Call Girls Across 15 Uttarakhand Destinations</h2>
-      <p>Select your city below to browse dedicated 16-profile directories with localized pricing, hotel guides, and safety recommendations:</p>
+      <p>To <strong>explore verified call girls across 15 Uttarakhand destinations</strong>, select your preferred city below to browse dedicated 16-profile directories with localized pricing, hotel guides, and safety recommendations:</p>
       <div class="categories-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
 {dest_cards_str}
       </div>
@@ -377,13 +377,16 @@ index_html = f'''<!DOCTYPE html>
     <section class="editorial-card">
       <h2>The Gold Standard in Independent Uttarakhand Escort Service</h2>
       <p>
-        Uttarakhand, nestled amidst the pristine beauty of the Himalayas, attracts millions of travelers each year. From scenic hill station vistas to high-paced industrial commerce in the Terai plains, the requirement for charming, trustworthy, and sophisticated companionship has never been greater. CityHaldwani.com was designed from the ground up to provide a clean, modern, and transparent space where consenting adult clients and independent companions connect with dignity.
+        As <strong>the gold standard in independent Uttarakhand escort service</strong>, CityHaldwani.com provides a modern, transparent, and discreet classified directory connecting travelers and executives with verified companions across the state. Uttarakhand, nestled amidst the pristine beauty of the Himalayas, attracts millions of travelers each year. From scenic hill station vistas to high-paced industrial commerce in the Terai plains, the requirement for charming, trustworthy, and sophisticated companionship has never been greater.
       </p>
       <p>
         Our advertisers represent educated college students, high-fashion models, bilingual corporate hostesses, and sensual homemakers who understand the nuances of elite hospitality. Whether you seek an articulate dinner date for a high-profile banquet at a 5-star hotel, an adventurous partner for mountain road trips through Almora and Bhowali, or a tender companion for romantic fireside conversations at a riverside Corbett resort, you will find extraordinary talent on our platform.
       </p>
 
       <h2>Our Four Pillars of Service Excellence</h2>
+      <p>
+        To maintain our industry leadership and client trust, <strong>our four pillars of service excellence</strong> define every companion listing and customer interaction across Uttarakhand:
+      </p>
       <div class="categories-grid">
         <div class="category-box">
           <h3>1. 100% Genuine Photography</h3>
@@ -407,7 +410,7 @@ index_html = f'''<!DOCTYPE html>
     <section class="editorial-card">
       <h2>Recommended Hotel Venues &amp; Booking Etiquette in Uttarakhand</h2>
       <p>
-        To ensure a completely seamless and confidential experience, we strongly encourage arranging appointments at established, guest-friendly 4-star and 5-star hotels or luxury private resorts. High-end establishments feature dedicated guest service desks, private elevator access, and soundproof suites that guarantee peace of mind.
+        Observing <strong>recommended hotel venues &amp; booking etiquette in Uttarakhand</strong> ensures a completely seamless, respectful, and confidential experience for both clients and companions. We strongly encourage arranging appointments at established, guest-friendly 4-star and 5-star hotels or luxury private resorts. High-end establishments feature dedicated guest service desks, private elevator access, and soundproof suites that guarantee peace of mind.
       </p>
       <p>
         When contacting an independent companion, establish your expectations with courtesy and clarity. State your preferred duration (e.g., 1-hour session, 3-hour evening date, or full overnight stay), verify the location address, and ensure your accommodation welcomes registered visitors. Mutual respect and exemplary hygiene are the cornerstones of every fulfilling encounter.

@@ -178,9 +178,9 @@ def count_words(html_str):
 LOCAL_SEO_GUIDES = {
     'nainital': {
         'sectors': 'Mallital, Tallital, Ayarpatta Hill, Sukhatal Valley, Snow View Ridge, Pangot Forest Road, Kilbury Bird Sanctuary Route, and Governor House (Raj Bhavan) Road',
-        'sectors_detail': 'Whether your hotel is situated overlooking the tranquil waters of Naini Lake in Mallital, nestled among heritage deodars along the tranquil slopes of Ayarpatta, or perched near the scenic viewpoints of Snow View and Pangot, our independent escorts in Nainital offer prompt outcall coverage across all hill station zones. Most companions reach Mall Road and Tallital hotels within 30 to 40 minutes, while secluded villas in Pangot or Kilbury typically require approximately 50 minutes of advance coordination.',
-        'hospitality': 'Nainital hosts some of Kumaon’s most prestigious heritage and boutique 5-star properties, such as The Manu Maharani, Shervani Hilltop, Vikram Vintage Inn, The Naini Retreat, and Swiss Hotel. When reserving outcall companionship at these premier establishments, luxury suites and lake-facing private balconies provide an ideal atmosphere of comfort and discretion. Independent models arrive dressed in tasteful smart-casual attire, blending naturally with other upscale vacationers and hotel guests.',
-        'itineraries': 'During warm summer months, romantic late-afternoon yachting on Naini Lake followed by a cozy candlelit dinner at a boutique lakeside cafe creates an unforgettable experience. In the brisk winter season, when snow dusts the surrounding peaks, sharing warm fireside cocktails in the comfort of your private heated suite with an affectionate companion offers the ultimate mountain retreat.'
+        'sectors_detail': 'Whether your hotel is situated overlooking the tranquil waters of Naini Lake in Mallital, nestled among heritage deodars along the tranquil slopes of Ayarpatta, or perched near the scenic viewpoints of Snow View and Pangot, our independent escorts in Nainital offer prompt outcall coverage across all hill station zones. Dedicated outcall service is also extended to residential estates such as Raj Bhavan area escorts zones and secluded retreats near Sherwani area escorts. Most companions reach Mall Road and Tallital hotels within 30 to 40 minutes, while secluded villas in Pangot or Kilbury typically require approximately 50 minutes of advance coordination.',
+        'hospitality': 'Nainital hosts some of Kumaon’s most prestigious heritage and boutique 5-star properties, including Manu Maharani hotel call girls retreats, Shervani Hilltop escorts destinations, Vikram Vintage Inn, The Naini Retreat, and Swiss Hotel. When reserving outcall companionship at these premier establishments, luxury suites and lake-facing private balconies provide an ideal atmosphere of comfort and discretion. Independent models arrive dressed in tasteful smart-casual attire, blending naturally with other upscale vacationers and hotel guests.',
+        'itineraries': 'During warm summer months, romantic late-afternoon excursions to lookouts like Tiffin Top call girls viewpoints followed by a cozy candlelit dinner at a boutique lakeside cafe creates an unforgettable experience. In the brisk winter season, when snow dusts the surrounding peaks, sharing warm fireside cocktails in the comfort of your private heated suite with an affectionate companion offers the ultimate mountain retreat.'
     },
     'bhimtal': {
         'sectors': 'Bhimtal Island Lake Promenade, Victoria Dam Road, Hidimba Parvat Foothills, Nal Damyanti Tal Lane, Mehragaon Valley, Sattal Junction Corridor, and Bhowali-Bhimtal Highway',
@@ -190,19 +190,19 @@ LOCAL_SEO_GUIDES = {
     },
     'almora': {
         'sectors': 'Kasar Devi Magnetic Ridge, Bright End Corner, Historic Lal Bazaar, Dharanaula Junction, Binsar Wildlife Sanctuary Approach Road, Ranikhet Highway Corridor, and Matena Valley',
-        'sectors_detail': 'Almora represents the cultural heartland of Kumaon, perched atop a scenic horse-saddle ridge. Independent companions provide dependable outcall across Kasar Devi’s bohemian ridge, Bright End Corner’s sunset viewpoints, and upscale forest lodges bordering the Binsar sanctuary. In-town visits to central Almora take between 30 and 40 minutes, while wilderness resorts along the Binsar forest corridor may require up to 55 minutes for safe mountain transit.',
+        'sectors_detail': 'Almora represents the cultural heartland of Kumaon, perched atop a scenic horse-saddle ridge. Independent companions provide dependable outcall across Kasar Devi’s bohemian ridge, Bright End Corner’s sunset viewpoints, and along the scenic Ranikhet road call girls corridor. As part of our comprehensive Kumaon escort service, in-town visits to central Almora take between 30 and 40 minutes, while wilderness resorts along the Binsar forest corridor may require up to 55 minutes for safe mountain transit.',
         'hospitality': 'Prestigious heritage properties including Kalmatia Sangam, Grand Oak Manor, Deodar Sanctuary, Imperial Heights Binsar, and Kasaar Jungle Resort provide an unmatched backdrop of pine-wood elegance. Guests enjoy stone-carved fireplaces, panoramic Himalayan vistas of Nanda Devi, and attentive concierge service that ensures confidential guest visits without awkward scrutiny.',
         'itineraries': 'Almora is renowned for its inspiring sunsets and peaceful quietude. Pair your stay with an educated companion who appreciates culture, mountain tranquility, and engaging conversations. Sip fresh rhododendron tea during a brisk autumn afternoon, and spend unhurried evenings relaxing before a crackling deodar log fire.'
     },
     'ramnagar': {
         'sectors': 'Kosi River Barrage Corridor, Dhangarhi Tourist Gate, Ringora Wilderness Belt, Garjiya Devi Highway, Ramnagar Main Town, and Corbett National Park Periphery',
         'sectors_detail': 'As the primary entry gateway to the legendary Jim Corbett tiger reserve, Ramnagar buzzes with wildlife enthusiasts and luxury holidaymakers. Verified independent call girls in Ramnagar cater to private safari resorts along the Kosi River, secluded forest estates near Ringora, and comfortable business transit suites in Ramnagar town. Outcall transit to resorts along the Ramnagar-Ranikhet highway is exceptionally smooth, typically requiring 25 to 35 minutes.',
-        'hospitality': 'Leading jungle venues like Namah Resort, The Den Corbett, Tarangi Resort & Spa, Lemon Tree Premier Corbett, and Corbett River Creek offer 5-star wilderness hospitality. These sprawling resorts feature private riverside decks, individual cottage compounds, and secure gated entry. Independent models arrive discreetly in smart travel attire, respecting guest privacy at all times.',
-        'itineraries': 'After an exhilarating morning jeep safari tracking royal Bengal tigers, unwind with an in-room relaxation massage and a refreshing riverside cocktail. Savor fresh river fish delicacies at a private barbecue dinner accompanied by a charming, articulate companion who enhances every moment of your wilderness vacation.'
+        'hospitality': 'Leading jungle venues like Namah Resort, The Den Corbett escorts retreats, Aahana resort call girls destinations, Riverview retreat escorts venues, and Lemon Tree Premier Corbett offer 5-star wilderness hospitality. These sprawling resorts feature private riverside decks, individual cottage compounds, and secure gated entry. Independent models arrive discreetly in smart travel attire, respecting guest privacy at all times.',
+        'itineraries': 'After an exhilarating morning jeep safari tracking royal Bengal tigers, guests frequently arrange verified Corbett safari call girls to share relaxing riverside cocktails and in-room relaxation. Savor fresh river fish delicacies at a private barbecue dinner accompanied by a charming, articulate companion who enhances every moment of your wilderness vacation.'
     },
     'haldwani': {
         'sectors': 'Nainital Road, Tikonia Commercial Hub, Kaladhungi Road, Kusumkhera, Mukhani Crossing, Canal Road, Kathgodam Bypass, Bareilly Road, Rampur Road, Heera Nagar, and Subhash Nagar',
-        'sectors_detail': 'As the largest commercial metropolis and economic engine of Kumaon, Haldwani features a fast-paced urban lifestyle with modern amenities. Our verified escort classifieds cover every major sector in Haldwani, from high-end corporate suites near Tikonia and Nainital Road to peaceful residential avenues in Kusumkhera, Mukhani, and Heera Nagar. Companions typically arrive at your hotel suite within 20 to 30 minutes, offering the fastest outcall response times in the region.',
+        'sectors_detail': 'As the largest commercial metropolis and economic engine of Kumaon, Haldwani features a fast-paced urban lifestyle with modern amenities. Active outcall coverage extends across all central residential and commercial neighborhoods including Subhash Nagar call girls zones, Awas Vikas Haldwani escorts colonies, Bhotia Parao call girls hubs, and accommodations near MBPG College area escorts. Companions typically arrive at your hotel suite within 20 to 30 minutes, offering the fastest outcall response times in the region.',
         'hospitality': 'Haldwani offers top-tier corporate hospitality at venues like Hotel Saurabh Candy by Peppermint, Fortune Walkway Mall, Hotel Maple Wood, Hotel Crossroad, and The Central Hotel. These establishments provide modern executive suites, private elevators, and discrete guest entry protocols. Our independent companions are well-versed in executive etiquette, making them ideal partners for business dinners and corporate suite meetings.',
         'itineraries': 'Begin your evening with gourmet dining and cocktails at upscale rooftop lounges along Nainital Road, followed by private suite entertainment. Whether visiting for commercial negotiations, industrial summits, or as a stopover before heading into the hills, Haldwani offers premier entertainment backed by transparent zero-advance cash payments.'
     },
@@ -257,7 +257,7 @@ LOCAL_SEO_GUIDES = {
     'jim-corbett': {
         'sectors': 'Dhikala Safari Zone Approach, Bijrani Gate Corridor, Jhirna Gate Tourism Zone, Sitabani Forest Reserve, Kosi River Valley, Marchula Valley, and Mohan Forest Belt',
         'sectors_detail': 'The Jim Corbett national park region is world-renowned for eco-luxury safari lodges and pristine wildlife wilderness. Verified VIP escorts in Jim Corbett provide exclusive outcall to 5-star forest resorts across Dhikala, Bijrani, and Jhirna zones, as well as secluded riverside cottages along the Kosi River in Marchula and Mohan. Because of the vast expanse of the forest reserve, companions typically coordinate travel within 35 to 50 minutes.',
-        'hospitality': 'Ultra-luxury resort properties including Taj Corbett Resort & Spa, The Solluna Resort, Paatlidun Safari Lodge, Namah Resort, and Aahana The Corbett Wilderness offer world-class hospitality. These resorts boast private plunge pools, private villas surrounded by dense sal trees, and secluded verandas. Our VIP models are accustomed to elite luxury settings, arriving with impeccable poise and sophistication.',
+        'hospitality': 'Ultra-luxury resort properties including Taj Corbett Resort & Spa, The Solluna Resort, Paatlidun Safari Lodge, Namah Resort, and premier Corbett hotel call girls venues offer world-class hospitality. For travelers staying at wilderness lodges, our safari resort escort service provides poise, sophistication, and complete privacy.',
         'itineraries': 'Pair an exhilarating daytime wildlife safari with a magical candlelit dinner beside the Kosi River. Savor vintage wine under the stars, listen to the nocturnal sounds of the jungle, and enjoy passionate, uninhibited companionship in the secluded luxury of your private pool villa.'
     },
     'bhowali': {
@@ -292,10 +292,10 @@ def render_profile_card(name, city_name, age, index, img_alias, rel_prefix='../'
     tag_mention = (dedicated_tag if dedicated_tag else profile_title).lower()
     
     descriptions = [
-        f"Verified independent model {name} (age {age}) offers elite {tag_mention} across {city_name} and nearby luxury hotels. Fluent in English and Hindi, she specializes in sophisticated dinner dates, relaxed private suite meetings, and overnight companionship. Known for punctuality, pleasant communication, and strict confidentiality, {name} operates under our zero-advance guarantee with direct cash payment upon arrival at your room.",
-        f"Meet {name}, a sweet and educated companion (age {age}) offering trusted {tag_mention} for discerning clients in {city_name}. Whether you are staying at a hillside resort or central hotel, she provides warm, attentive in-room companionship tailored to your schedule. Enjoys deep conversations, pleasant dining, and stress-relieving relaxation. Direct cash on meeting with 100% genuine verified photographs.",
-        f"High-profile independent companion {name} (age {age}) provides VIP outcall service for {tag_mention} at certified 4-star and 5-star properties in {city_name}. Articulate, stylish, and discreet, she is an ideal partner for corporate dinners, social gatherings, or intimate suite encounters. Zero advance payment required; settle directly in cash upon her arrival at your room.",
-        f"Charming and affectionate, {name} (age {age}) is an independent verified model delivering prompt hotel visits and personalized {tag_mention} in {city_name}. She offers relaxed private meetings, polite conversation, and memorable holiday companionship across local destinations. Committed to strict client confidentiality, mutual respect, and transparent cash-on-meeting booking."
+        f"Verified independent model {name} (age {age}) represents the finest in {profile_title}, offering personalized in-room hospitality and discrete dinner dates at premier luxury hotels. Fluent in English and Hindi, she is admired for her punctuality, warm conversational charm, and attentive demeanor. Operates under our strict zero-advance policy with direct cash payment upon arrival at your room.",
+        f"Meet {name} (age {age}), an articulate and educated companion providing top-tier {profile_title} for visiting executives and holidaymakers. Whether you are staying at a secluded hillside retreat or a central boutique resort, she delivers relaxed, unhurried companionship tailored to your schedule. Enjoys meaningful conversations and quiet dining with 100% genuine verified photos.",
+        f"High-profile independent companion {name} (age {age}) is a distinguished choice for {profile_title}, delivering prompt outcall visits to certified 4-star and 5-star properties. Elegant, stylish, and discreet, she makes an ideal partner for corporate banquets, social gatherings, or intimate suite encounters. Zero advance payment required; settle safely upon arrival at your room.",
+        f"Charming and affectionate, {name} (age {age}) is a verified independent model available for bespoke appointments and trusted {profile_title}. She offers relaxed private meetings, polite conversation, and memorable holiday companionship across local destination resorts. Committed to strict client confidentiality, mutual respect, and transparent cash-on-meeting booking with zero advance deposits."
     ]
     desc = descriptions[index % len(descriptions)]
     photo_count = 3 + (index % 3)
@@ -341,25 +341,89 @@ def render_profile_card(name, city_name, age, index, img_alias, rel_prefix='../'
         </article>'''
     return card_html
 
-# Generate 20 concise, searchable FAQs calibrated to ~20-22 words each
-def generate_20_faqs(city_name, hotels, landmarks):
+# Generate 20 concise, searchable FAQs calibrated to ~20-25 words each with natural keyword inclusion
+def generate_20_faqs(city_name, hotels, landmarks, pop_tags=None):
+    if not pop_tags:
+        pop_tags = []
+        
+    def get_all_tags(kw):
+        return [t for t in pop_tags if kw in t.lower()]
+        
+    near_me_tags = get_all_tags('near me')
+    h24_tags = get_all_tags('24 hour')
+    full_night_tags = get_all_tags('full night')
+    short_time_tags = get_all_tags('short time')
+    cash_tags = get_all_tags('cash on')
+    verified_tags = [t for t in pop_tags if any(k in t.lower() for k in ['verified', 'genuine', 'safe escort'])]
+    hotel_svc_tags = [t for t in pop_tags if any(k in t.lower() for k in ['hotel service', 'hotel outcall'])]
+
+    # Intent Q&A customization
+    if verified_tags:
+        v_main = verified_tags[0]
+        v_sub = verified_tags[1] if len(verified_tags) > 1 else v_main
+        q_ver = f"How does CityHaldwani.com guarantee {v_main}?"
+        a_ver = f"All independent advertisers for {v_sub} submit date-stamped verification photos confirming identity and legal adult age (18+) before approval. Misleading stock photos are strictly banned."
+    else:
+        q_ver = f"Are companion profile photos in {city_name} genuine?"
+        a_ver = f"Yes, all independent advertisers in {city_name} submit date-verified authentication selfies before publication. We strictly forbid misleading stock photos."
+
+    if cash_tags:
+        c_tag = cash_tags[0]
+        q_cash = f"Is {c_tag} strictly guaranteed?"
+        a_cash = f"Yes, {c_tag} is our ironclad policy. CityHaldwani.com enforces a strict Zero Advance Payment rule. Never send online deposits; settle directly in cash upon in-person meeting."
+    else:
+        q_cash = f"Do escorts in {city_name} require advance payment?"
+        a_cash = f"No! CityHaldwani.com enforces a strict Zero Advance Payment rule. Never send online deposits. You pay in direct cash upon meeting in person."
+
+    if hotel_svc_tags:
+        h_tag = hotel_svc_tags[0]
+        q_hotel = f"Can companions provide {h_tag}?"
+        a_hotel = f"Yes, independent companions provide prompt {h_tag} to certified 4-star and 5-star hotels, including {hotels}, with complete in-room discretion."
+    else:
+        q_hotel = f"Can companions visit my hotel room in {city_name}?"
+        a_hotel = f"Yes, companions provide prompt outcall service to verified 4-star and 5-star hotels, including {hotels}, with complete in-room discretion."
+
+    if near_me_tags:
+        nm_q = near_me_tags[0]
+        nm_a = near_me_tags[1] if len(near_me_tags) > 1 else nm_q
+        q_nm = f"How quickly can {nm_q} arrive at my hotel?"
+        a_nm = f"When requesting an {nm_a}, companions typically arrive within 30 to 45 minutes across central areas near {landmarks}. Hillside resorts may require 1 hour advance notice."
+    else:
+        q_nm = f"How quickly does a companion arrive in {city_name}?"
+        a_nm = f"Companions typically arrive within 30 to 45 minutes across central areas near {landmarks}. Hillside resorts may require 1 hour advance notice."
+
+    if h24_tags:
+        h24_tag = h24_tags[0]
+        q_24 = f"Is {h24_tag} available daily?"
+        a_24 = f"Yes, {h24_tag} operates 24 hours a day, 7 days a week for daytime meetings, dinner dates, and late-night hotel visits."
+    else:
+        q_24 = f"Is 24-hour escort service available in {city_name}?"
+        a_24 = f"Yes, verified companions are available round the clock for daytime dates, evening dinner accompaniment, and late-night hotel visits."
+
+    if full_night_tags:
+        fn_tag = full_night_tags[0]
+        q_fn = f"Can I book {fn_tag} for overnight stays?"
+        a_fn = f"Yes, {fn_tag} is available from 9 PM to 7 AM for unhurried dinners, evening relaxation, and morning companionship."
+    else:
+        q_fn = f"Can I book full-night escort service in {city_name}?"
+        a_fn = f"Yes, full-night bookings (typically 9 PM to 7 AM) are available for unhurried dinners, evening relaxation, and morning companionship."
+
+    if short_time_tags:
+        st_tag = short_time_tags[0]
+        q_st = f"Are {st_tag} available for flexible visits?"
+        a_st = f"Yes, {st_tag} can be reserved for 1-hour or 2-hour sessions with clear, transparent cash rates upon meeting."
+    else:
+        q_st = f"Can I book an escort for full-day sightseeing in {city_name}?"
+        a_st = f"Yes, companions can accompany clients for full-day leisure tours, scenic mountain drives, lake visits, and cafe outings across the region."
+
     faqs = [
         (
             f"How can I book verified escorts in {city_name}?",
             f"Browse our listings, select a preferred companion, and click Call or WhatsApp. Confirm duration, meeting time, and hotel location directly with the advertiser."
         ),
-        (
-            f"Are companion profile photos in {city_name} genuine?",
-            f"Yes, all independent advertisers in {city_name} submit date-verified authentication selfies before publication. We strictly forbid misleading stock photos."
-        ),
-        (
-            f"Do escorts in {city_name} require advance payment?",
-            f"No! CityHaldwani.com enforces a strict Zero Advance Payment rule. Never send online deposits. You pay in direct cash upon meeting in person."
-        ),
-        (
-            f"Can companions visit my hotel room in {city_name}?",
-            f"Yes, companions provide prompt outcall service to verified 4-star and 5-star hotels, including {hotels}, with complete in-room discretion."
-        ),
+        (q_ver, a_ver),
+        (q_cash, a_cash),
+        (q_hotel, a_hotel),
         (
             f"What are the standard escort rates in {city_name}?",
             f"Standard rates are ₹1,500 to ₹2,500 for 1 hour, ₹2,500 to ₹3,500 for 2 hours, and ₹7,000 to ₹10,000 for full-night stays."
@@ -372,14 +436,8 @@ def generate_20_faqs(city_name, hotels, landmarks):
             f"What categories of companions are available in {city_name}?",
             f"Categories include independent college girls (18+), VIP models, corporate dinner hostesses, sensual mature homemakers, and outstation resort companions."
         ),
-        (
-            f"How quickly does a companion arrive in {city_name}?",
-            f"Companions typically arrive within 30 to 45 minutes across central areas near {landmarks}. Hillside resorts may require 1 hour advance notice."
-        ),
-        (
-            f"Can I book an escort for full-day sightseeing in {city_name}?",
-            f"Yes, companions can accompany clients for full-day leisure tours, scenic mountain drives, lake visits, and cafe outings across the region."
-        ),
+        (q_nm, a_nm),
+        (q_st, a_st),
         (
             f"What languages do escorts in {city_name} speak?",
             f"Companions are fluent in Hindi and possess proficient working knowledge of English, ensuring pleasant conversation during social dates."
@@ -392,10 +450,8 @@ def generate_20_faqs(city_name, hotels, landmarks):
             f"What payment methods are accepted in {city_name}?",
             f"Direct cash on meeting is the preferred and safest method. Some companions accept instant UPI transfers after in-person arrival."
         ),
-        (
-            f"Can I book full-night escort service in {city_name}?",
-            f"Yes, full-night bookings (typically 9 PM to 7 AM) are available for unhurried dinners, evening relaxation, and morning companionship."
-        ),
+        (q_fn, a_fn),
+        (q_24, a_24),
         (
             f"What hygiene standards are maintained by companions?",
             f"Strict personal hygiene and grooming standards are upheld. Mutual cleanliness is mandatory, and safe health practices are strictly enforced."
@@ -415,10 +471,6 @@ def generate_20_faqs(city_name, hotels, landmarks):
         (
             f"What is the minimum legal age required to book?",
             f"You must be at least 18 years of age (or legal majority in your region) to access this directory or hire independent companions."
-        ),
-        (
-            f"Are dinner dates and social events supported?",
-            f"Yes, models are well-dressed and articulate, making them excellent partners for business dinners, private cocktails, and festive celebrations."
         ),
         (
             f"How do I cancel a booking in {city_name}?",
@@ -478,7 +530,7 @@ def build_location_page(loc, start_name_idx):
     all_cards_str = "\n".join(cards_html)
     
     # 20 FAQs
-    faqs = generate_20_faqs(city_name, hotels, landmarks)
+    faqs = generate_20_faqs(city_name, hotels, landmarks, pop_tags=pop_tags)
     faqs_html = []
     faq_schema_items = []
     for q, a in faqs:
@@ -541,20 +593,13 @@ def build_location_page(loc, start_name_idx):
         pop_tags_html_list.append(f'<a href="#verified-listings" class="{cls}">{tag}</a>')
     popular_tags_html = "\n".join(pop_tags_html_list)
 
-    t0 = pop_tags[0] if len(pop_tags) > 0 else f"{city_name} call girls"
-    t1 = pop_tags[1] if len(pop_tags) > 1 else f"{city_name} escort service"
-    t2 = pop_tags[2] if len(pop_tags) > 2 else f"Call girls in {city_name}"
-    t3 = pop_tags[3] if len(pop_tags) > 3 else f"Escorts in {city_name}"
-
-    remaining_tags = [t for t in pop_tags[16:]]
-    if remaining_tags:
-        rem_str = ", ".join(f"<strong>{t}</strong>" for t in remaining_tags[:-1]) + (f", and <strong>{remaining_tags[-1]}</strong>" if len(remaining_tags) > 1 else f"<strong>{remaining_tags[0]}</strong>")
-        extra_local_p = f"""
-      <p>
-        To ensure complete regional accessibility, our verified independent escort network actively fulfills client bookings for {rem_str}. Whether reserving a luxury hotel outcall or scheduling an in-room appointment, clients enjoy transparent zero-advance pricing, genuine photos, and absolute discretion across all local sectors.
-      </p>"""
-    else:
-        extra_local_p = ""
+    cat_extra = ""
+    if slug == 'nainital':
+        cat_extra = '<p style="margin-top: 14px; font-size: 14px; color: var(--text-secondary); line-height: 1.6;">Our verified portal also features elite <strong>Nainital luxury call girls</strong>, sophisticated <strong>Russian escorts in Nainital</strong>, and trusted <strong>Independent escorts Nainital</strong> for executive banquets, private suite encounters, and hillside resort stays.</p>'
+    elif slug == 'ramnagar':
+        cat_extra = '<p style="margin-top: 14px; font-size: 14px; color: var(--text-secondary); line-height: 1.6;">Discerning executives visiting Ramnagar can also select verified <strong>Luxury call girls Ramnagar</strong> for prestigious social dinners and private pool villa retreats.</p>'
+    elif slug == 'almora':
+        cat_extra = '<p style="margin-top: 14px; font-size: 14px; color: var(--text-secondary); line-height: 1.6;">Our classifieds include charming independent <strong>Almora college call girls</strong> (18+) for scenic cafe dates and daytime sightseeing excursions.</p>'
 
     loc_wa_msg = f"Hello CityHaldwani, I want to book a verified companion in {city_name}. Please share available profiles."
     loc_wa_encoded = urllib.parse.quote(loc_wa_msg)
@@ -647,7 +692,7 @@ def build_location_page(loc, start_name_idx):
         <span class="hero-badge">🛎️ In-Room &amp; Resort Outcall</span>
       </div>
       <p>
-        Welcome to <strong>CityHaldwani.com</strong>, your verified destination for <strong>{t0}</strong> and premier <strong>{t1}</strong> in {seo_landmark}. Renowned for its {vibe}, {city_name} attracts holidaymakers, executives, and regional visitors seeking unhurried, discreet luxury. Whether searching for authentic <strong>{t2}</strong> or selecting trusted <strong>{t3}</strong>, our vetted independent companions deliver genuine warmth, high-class elegance, and confidential charm across {landmarks} and {seo_hotel}.
+        Welcome to <strong>CityHaldwani.com</strong>, your verified destination for <strong>{city_name} call girls</strong> and premier <strong>{city_name} escort service in {seo_landmark}</strong>. Renowned for its {vibe}, {city_name} attracts holidaymakers, executives, and regional visitors seeking unhurried, discreet luxury. Whether staying at a luxury resort along {landmarks} or relaxing in an executive suite near {seo_hotel}, our vetted independent companions deliver genuine warmth, high-class elegance, and confidential charm.
       </p>
       <p>
         At CityHaldwani.com, we prioritize transparency and safety above all else. Every companion listed below has completed strict photo authentication and age verification checks (18+). You connect directly with the independent advertiser over phone or WhatsApp, eliminating brokerage fees and predatory third-party intermediaries. Review authentic profile details, compare flexible packages, and enjoy confidential companionship backed by our ironclad zero upfront payment policy.
@@ -667,10 +712,13 @@ def build_location_page(loc, start_name_idx):
     <section class="editorial-card">
       <h2>Comprehensive Guide to Hiring Independent Companions in {city_name}</h2>
       <p>
-        Planning a mountain holiday, business retreat, or weekend escape to {city_name} is made memorable with verified companionship. Independent models offer personalized companionship tailored to your schedule, from scenic daytime drives to private fireside hotel dinners with warmth and discretion.
+        Our comprehensive guide to <strong>hiring independent companions in {city_name}</strong> is designed to give travelers and corporate executives complete confidence, safety, and transparent clarity. Planning a mountain holiday, business retreat, or weekend escape to {city_name} is made memorable with verified companionship. Independent models offer personalized companionship tailored to your schedule, from scenic daytime drives to private fireside hotel dinners with warmth and discretion.
       </p>
 
       <h2>Elite Companion Categories in {city_name}</h2>
+      <p>
+        Exploring the <strong>elite companion categories in {city_name}</strong> helps you select the perfect partner for your personal preferences and travel itinerary:
+      </p>
       <div class="categories-grid">
         <div class="category-box">
           <h3>🎓 Independent College Girls</h3>
@@ -689,18 +737,18 @@ def build_location_page(loc, start_name_idx):
           <p>Versatile companions accustomed to high-end hospitality, wilderness safaris, and overnight tours across {landmarks}.</p>
         </div>
       </div>
+      {cat_extra}
     </section>
 
     <!-- NEW SECTION: Detailed Local Neighborhood & Sector Coverage Guide (~150 words of rich local SEO content) -->
     <section class="editorial-card">
       <h2>📍 Local Neighborhood &amp; Call Girls Coverage in {city_name}</h2>
       <p>
-        Our verified independent escort network spans every prominent commercial zone, residential colony, and transit artery in and around {city_name}. Specifically, active outcall coverage is provided across <strong>{local_guide['sectors']}</strong>.
+        Regarding <strong>local neighborhood &amp; call girls coverage in {city_name}</strong>, our verified independent escort network spans every prominent commercial zone, residential colony, and transit artery in and around {city_name}. Specifically, active outcall coverage is provided across <strong>{local_guide['sectors']}</strong>.
       </p>
       <p>
         {local_guide['sectors_detail']}
       </p>
-{extra_local_p}
       <p>
         Whether you require a prompt appointment at your central hotel within 25 to 35 minutes or wish to schedule an evening date at a private farmhouse or mountain homestay, our independent advertisers guarantee timely arrival. We recommend contacting your chosen companion at least 45 minutes prior to your preferred meeting time so she can travel comfortably and arrive fresh, relaxed, and ready to provide an exceptional hospitality experience.
       </p>
@@ -710,7 +758,7 @@ def build_location_page(loc, start_name_idx):
     <section class="editorial-card">
       <h2>🛎️ Elite Hospitality, Hotel Concierge Etiquette &amp; 5-Star Outcall in {city_name}</h2>
       <p>
-        For a completely stress-free and confidential appointment in {city_name}, we strongly recommend booking a certified 4-star or 5-star hotel or a verified luxury boutique resort. Recommended establishments include <strong>{hotels}</strong>, known throughout Kumaon for their spacious suites, soundproof rooms, private parking, and professional front-desk hospitality.
+        For travelers seeking <strong>elite hospitality, hotel concierge etiquette &amp; 5-star outcall in {city_name}</strong>, choosing the right luxury venue guarantees a stress-free and completely confidential appointment. We strongly recommend booking a certified 4-star or 5-star hotel or a verified luxury boutique resort. Recommended establishments include <strong>{hotels}</strong>, known throughout Kumaon for their spacious suites, soundproof rooms, private parking, and professional front-desk hospitality.
       </p>
       <p>
         {local_guide['hospitality']}
@@ -720,6 +768,9 @@ def build_location_page(loc, start_name_idx):
       </p>
 
       <h2>Client Safety Protocol &amp; Zero Advance Rule</h2>
+      <p>
+        To uphold our strict <strong>client safety protocol &amp; zero advance rule</strong>, every client is advised to observe the following safeguards:
+      </p>
       <ul>
         <li><strong>Never Pay Advance Money:</strong> Independent companions in {city_name} never ask for UPI transfers or booking deposits in advance. Pay in direct cash after meeting in person at your hotel room.</li>
         <li><strong>Verify Identity on Arrival:</strong> Confirm your companion matches her photographs before commencing your private appointment. If photos differ, you are free to cancel at the door.</li>
@@ -732,7 +783,7 @@ def build_location_page(loc, start_name_idx):
     <section class="editorial-card">
       <h2>🌄 Best Seasons, Scenic Mountain Drives &amp; Romantic Rendezvous in {city_name}</h2>
       <p>
-        {city_name} offers distinct seasonal charms throughout the year, from refreshing summer escapes to crisp winter evenings beside crackling deodar fireplaces. {local_guide['itineraries']}
+        When planning around the <strong>best seasons, scenic mountain drives &amp; romantic rendezvous in {city_name}</strong>, this picturesque region offers distinct charms throughout the year, from refreshing summer escapes to crisp winter evenings beside crackling deodar fireplaces. {local_guide['itineraries']}
       </p>
       <p>
         Pairing your regional exploration with a charming local companion transforms an ordinary trip into an extraordinary holiday. Independent escorts know the finest viewpoint cafes, scenic valley routes along {landmarks}, and quiet dining spots where you can enjoy each other’s company without intrusion. Discuss your preferred itinerary directly when calling your companion to create a bespoke holiday experience.
