@@ -30,7 +30,7 @@ DMCA_BADGE_HTML = '''<div class="dmca-badge-wrap">
 def build_mobile_drawer_html(rel_prefix='../', dest_prefix=''):
     return f'''  <!-- Mobile Navigation Drawer Overlay & Panel -->
   <div class="mobile-nav-overlay" id="mobileNavOverlay" aria-hidden="true"></div>
-  <aside class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Mobile Navigation" aria-hidden="true">
+  <aside class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Mobile Navigation" aria-hidden="true" inert>
     <div class="drawer-header">
       <div class="drawer-brand">
         <div class="drawer-title">CityHaldwani<span>.com</span></div>
@@ -111,20 +111,31 @@ MOBILE_DRAWER_SCRIPT = '''  <!-- Mobile Navigation Drawer Toggle Script -->
       if (!toggleBtn || !drawer || !overlay) return;
 
       function openDrawer() {
+        drawer.removeAttribute('inert');
         drawer.classList.add('active');
         overlay.classList.add('active');
         toggleBtn.setAttribute('aria-expanded', 'true');
         drawer.setAttribute('aria-hidden', 'false');
         overlay.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
+        if (closeBtn) {
+          closeBtn.focus();
+        }
       }
 
       function closeDrawer() {
+        if (drawer.contains(document.activeElement)) {
+          document.activeElement.blur();
+        }
+        if (toggleBtn) {
+          toggleBtn.focus();
+        }
         drawer.classList.remove('active');
         overlay.classList.remove('active');
         toggleBtn.setAttribute('aria-expanded', 'false');
         drawer.setAttribute('aria-hidden', 'true');
         overlay.setAttribute('aria-hidden', 'true');
+        drawer.setAttribute('inert', '');
         document.body.style.overflow = '';
       }
 
@@ -138,7 +149,10 @@ MOBILE_DRAWER_SCRIPT = '''  <!-- Mobile Navigation Drawer Toggle Script -->
       });
 
       if (closeBtn) {
-        closeBtn.addEventListener('click', closeDrawer);
+        closeBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          closeDrawer();
+        });
       }
 
       overlay.addEventListener('click', closeDrawer);

@@ -208,6 +208,8 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
   transition: all 0.2s ease;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   text-decoration: none;
@@ -1003,37 +1005,47 @@ a {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    gap: 10px;
+    gap: 8px;
   }
 
   .brand-group {
     display: flex;
     align-items: center;
-    gap: 8px;
-    flex-shrink: 0;
+    gap: 7px;
+    min-width: 0;
+    flex-shrink: 1;
   }
 
   .brand-logo-img {
-    height: 34px;
+    height: 32px;
     width: auto;
+    flex-shrink: 0;
+  }
+
+  .brand-text {
+    min-width: 0;
   }
 
   .brand-text h1,
   .brand-text .brand-title {
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.15;
+    white-space: nowrap;
   }
 
   .brand-text p {
-    font-size: 9.5px;
-    letter-spacing: 0.3px;
+    font-size: 9px;
+    letter-spacing: 0.2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .topbar-actions {
     display: flex;
     align-items: center;
-    gap: 8px;
-    width: auto;
+    gap: 6px;
+    flex-shrink: 0;
   }
 
   .badge-verified-top,
@@ -1044,14 +1056,28 @@ a {
 
   .btn-header-ad {
     display: inline-flex;
-    padding: 6px 11px;
-    font-size: 12px;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 0 10px;
+    height: 34px;
+    font-size: 11.5px;
     border-radius: 6px;
     font-weight: 700;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    line-height: 34px;
+    box-sizing: border-box;
   }
 
   .mobile-menu-toggle {
     display: flex !important;
+    width: 34px;
+    height: 34px;
+    padding: 5px;
+    border-radius: 6px;
+    flex-shrink: 0 !important;
+    box-sizing: border-box;
   }
 
   /* --- Breadcrumb --- */
@@ -1793,13 +1819,17 @@ a {
   box-shadow: -4px 0 24px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
-  transition: right 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: right 0.28s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.28s;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .mobile-nav-drawer.active {
   right: 0;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 /* Drawer Header */
@@ -2028,7 +2058,7 @@ a {
 
   <!-- Mobile Navigation Drawer Overlay & Panel -->
   <div class="mobile-nav-overlay" id="mobileNavOverlay" aria-hidden="true"></div>
-  <aside class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Mobile Navigation" aria-hidden="true">
+  <aside class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Mobile Navigation" aria-hidden="true" inert>
     <div class="drawer-header">
       <div class="drawer-brand">
         <div class="drawer-title">CityHaldwani<span>.com</span></div>
@@ -2210,20 +2240,31 @@ a {
       if (!toggleBtn || !drawer || !overlay) return;
 
       function openDrawer() {
+        drawer.removeAttribute('inert');
         drawer.classList.add('active');
         overlay.classList.add('active');
         toggleBtn.setAttribute('aria-expanded', 'true');
         drawer.setAttribute('aria-hidden', 'false');
         overlay.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
+        if (closeBtn) {
+          closeBtn.focus();
+        }
       }
 
       function closeDrawer() {
+        if (drawer.contains(document.activeElement)) {
+          document.activeElement.blur();
+        }
+        if (toggleBtn) {
+          toggleBtn.focus();
+        }
         drawer.classList.remove('active');
         overlay.classList.remove('active');
         toggleBtn.setAttribute('aria-expanded', 'false');
         drawer.setAttribute('aria-hidden', 'true');
         overlay.setAttribute('aria-hidden', 'true');
+        drawer.setAttribute('inert', '');
         document.body.style.overflow = '';
       }
 
@@ -2237,7 +2278,10 @@ a {
       });
 
       if (closeBtn) {
-        closeBtn.addEventListener('click', closeDrawer);
+        closeBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          closeDrawer();
+        });
       }
 
       overlay.addEventListener('click', closeDrawer);
