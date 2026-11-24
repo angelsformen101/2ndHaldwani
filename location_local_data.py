@@ -528,9 +528,9 @@ LOCATION_SEO = {
 
 
 HOME_SEO = {
-    'title': 'Haldwani Call Girls - Haldwani Escort Service in Uttarakhand',
-    'meta_desc': 'Explore verified Haldwani call girls & elite Uttarakhand escort service across Nainital, Corbett & 15 hubs. 100% genuine independent models, cash on meeting.',
-    'h1': 'Haldwani Call Girls - Verified Haldwani Escort Service & In-Room Companions in Uttarakhand'
+    'title': 'Haldwani Call Girls & Escort Service Across Uttarakhand',
+    'meta_desc': 'Browse verified Haldwani call girls & independent escort service across 15 Uttarakhand destinations. Genuine photos, zero upfront fees & cash on arrival.',
+    'h1': 'Verified Haldwani Call Girls & Premier Uttarakhand Escort Service Hub'
 }
 
 HOME_POPULAR_TAGS = [

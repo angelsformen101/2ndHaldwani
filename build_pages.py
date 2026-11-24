@@ -45,8 +45,8 @@ LOCATIONS_CONFIG = [
     {
         'slug': 'nainital',
         'name': 'Nainital',
-        'title': 'Nainital Escorts - Verified Call Girls & Luxury Hotel Companions',
-        'meta_desc': 'Discover verified independent Nainital escorts and Mall Road hotel companions. 100% genuine photos, zero advance payment, and 24/7 private booking.',
+        'title': 'Call Girls Nainital - Verified Resort Escorts in Naini Lake',
+        'meta_desc': 'Connect with independent call girls in Nainital for luxury resort outcall along Mall Road & Ayarpatta. Real photos, zero advance fee & cash on arrival.',
         'tagline': 'Queen of Lakes & High-Altitude Leisure Retreats',
         'landmarks': 'Mall Road, Naini Lake, Snow View Point, Tallital, Sukhatal, Pangot',
         'hotels': 'The Manu Maharani, Shervani Hilltop, Vikram Vintage Inn, The Naini Retreat, Swiss Hotel',
@@ -55,9 +55,9 @@ LOCATIONS_CONFIG = [
     {
         'slug': 'bhimtal',
         'name': 'Bhimtal',
-        'title': 'Bhimtal Escorts - Elite Lake Resort Call Girls & Private Companions',
-        'meta_desc': 'Book elite independent Bhimtal escorts and private lake resort call girls. 100% authentic models, discreet in-room companionship, and transparent cash payment.',
-        'tagline': 'Tranquil Island Lake & Secluded Nature Escapes',
+        'title': 'Bhimtal Escort Service - Lakefront Escorts & Private Outcall',
+        'meta_desc': 'Discover verified Bhimtal escort service for peaceful lakefront visits and luxury villa outcall near Victoria Dam. 100% genuine independent companions.',
+        'tagline': 'Serene Waterfront Living & Unhurried Countryside Privacy',
         'landmarks': 'Bhimtal Island Lake, Victoria Dam, Hidimba Parvat, Nal Damyanti Tal, Sattal Junction',
         'hotels': 'The Fern Hillside Resort, Country Inn Bhimtal, Aamod Resorts, Fishermens Lodge, V Resort',
         'vibe': 'peaceful waterside serenity, secluded pine forest cottages, private bonfire evenings, and relaxing weekend vacations'
@@ -65,9 +65,9 @@ LOCATIONS_CONFIG = [
     {
         'slug': 'almora',
         'name': 'Almora',
-        'title': 'Almora Escorts - Charming Independent Companions & Hillside Call Girls',
-        'meta_desc': 'Explore verified Almora escorts and independent hill station call girls. Genuine high-class college companions, heritage resort visits, and zero advance fee.',
-        'tagline': 'Cultural Heartland of Kumaon with Majestic Himalayan Vistas',
+        'title': 'Almora Call Girls - Verified Mountain Escorts in Kasar Devi',
+        'meta_desc': 'Meet verified Almora call girls for quiet mountain holiday outcall along Kasar Devi ridge and Binsar forest retreats. Real photos, discreet cash booking.',
+        'tagline': 'Himalayan Saddleback Ridge & Bohemian Mountain Quietude',
         'landmarks': 'Bright End Corner, Kasar Devi, Lal Bazaar, Deer Park, Binsar Wildlife Sanctuary',
         'hotels': 'Kalmatia Sangam, Grand Oak Manor, Deodar Sanctuary, Imperial Heights Binsar, Kasaar Jungle Resort',
         'vibe': 'soothing ridge-line sunsets, deep pine fragrance, artistic conversations, and unhurried intellectual companionship'
@@ -75,9 +75,9 @@ LOCATIONS_CONFIG = [
     {
         'slug': 'ramnagar',
         'name': 'Ramnagar',
-        'title': 'Ramnagar Escorts - Jungle Safari Lodge Call Girls & VIP Companions',
-        'meta_desc': 'Verified Ramnagar escorts and luxury jungle lodge call girls near Corbett Gateway. 100% discreet models, outcall service to luxury safari resorts, and cash on arrival.',
-        'tagline': 'Corbett Gateway & Wilderness Luxury Destination',
+        'title': 'Escort Service Ramnagar - Jungle Resort Companions & Escorts',
+        'meta_desc': 'Explore premier escort service Ramnagar for private luxury lodges and riverfront pool villa outcall near Jim Corbett. Verified profiles, cash on meeting.',
+        'tagline': 'Corbett Gateway, Sal Woodlands & Riverside Resort Sanctuaries',
         'landmarks': 'Kosi River Barrage, Dhangarhi Gate, Garjiya Devi Temple, Ringora, Ramnagar Main Town',
         'hotels': 'Namah Resort, The Den Corbett, Tarangi Resort & Spa, Lemon Tree Premier Corbett, Corbett River Creek',
         'vibe': 'exhilarating jungle lodge getaways, riverside evening drinks, luxury safari retreats, and warm passionate encounters'
@@ -85,9 +85,9 @@ LOCATIONS_CONFIG = [
     {
         'slug': 'haldwani',
         'name': 'Haldwani',
-        'title': 'Haldwani Escorts - Verified City Call Girls & VIP In-Hotel Companions',
-        'meta_desc': 'Top-rated Haldwani escorts and verified college call girls available 24/7. 100% real photos, zero advance money, and safe five-star hotel outcall service.',
-        'tagline': 'Commercial Metropolis & Foothill Transit Capital of Kumaon',
+        'title': 'Call Girls in Haldwani - Executive Hotel Escorts & Outcall',
+        'meta_desc': 'Reserve verified call girls in Haldwani for executive hotel outcall along Nainital Road and Bareilly transit hubs. Direct contact, cash on arrival.',
+        'tagline': 'Commercial Capital of Kumaon & Dynamic Regional Gateway',
         'landmarks': 'Nainital Road, Tikonia, Kaladhungi Road, Kusumkhera, Mukhani, Canal Road, Kathgodam Bypass',
         'hotels': 'Hotel Saurabh Candy by Peppermint, Fortune Walkway Mall, Hotel Maple Wood, Hotel Crossroad, The Central Hotel',
         'vibe': 'vibrant urban nightlife, upscale business dining, modern hotel hospitality, and convenient central connectivity'
@@ -95,9 +95,9 @@ LOCATIONS_CONFIG = [
     {
         'slug': 'kaladhungi',
         'name': 'Kaladhungi',
-        'title': 'Kaladhungi Escorts - Rustic Nature Retreat Call Girls & Companions',
-        'meta_desc': 'Connect with genuine Kaladhungi escorts and private forest resort call girls. Discretion assured, zero upfront charges, and authentic verified profiles.',
-        'tagline': 'Jim Corbett Heritage Country & Lush Forest Foothills',
+        'title': 'Call Girls Kaladhungi - Foothill Countryside Hotel Escorts',
+        'meta_desc': 'Connect with independent call girls Kaladhungi for peaceful countryside outcall near Corbett Falls and Boar River. Genuine photos with cash on arrival.',
+        'tagline': 'Historic Jim Corbett Heritage, Boar River & Peaceful Countryside',
         'landmarks': 'Jim Corbett Heritage Museum, Corbett Falls, Boar River Valley, Choti Haldwani, Forest Belt',
         'hotels': 'Camp Corbett, Corbett Panorama, Forest Haven Eco Resort, Hidden Valley Camp, The Banyan Retreat',
         'vibe': 'quiet countryside privacy, fresh mountain streams, rustic bonfire retreats, and deeply personal relaxed moments'
@@ -105,9 +105,9 @@ LOCATIONS_CONFIG = [
     {
         'slug': 'rudrapur',
         'name': 'Rudrapur',
-        'title': 'Rudrapur Escorts - Corporate Executive Companions & VIP Call Girls',
-        'meta_desc': 'High-profile Rudrapur escorts and executive hotel call girls for business travelers. Verified SIDCUL companions, discreet 4-star hotel visits, cash on meeting.',
-        'tagline': 'Industrial Engine of Terai & High-Speed Corporate Hub',
+        'title': 'Escort Service in Rudrapur - SIDCUL Hotel Outcall Escorts',
+        'meta_desc': 'Book professional escort service in Rudrapur for corporate travelers at Radisson Blu and Metropolis suites. Zero advance deposit, cash on hotel visit.',
+        'tagline': 'Industrial Epicenter of the Terai & Premier Corporate Hub',
         'landmarks': 'SIDCUL Industrial Sector, Metropolis Mall, Kashipur Bypass, Awas Vikas, Gaba Chowk, Nainital Highway',
         'hotels': 'Radisson Blu Hotel Rudrapur, Hotel Ark, Rosewood Apartment Hotel, Uday Residency, Ginger Rudrapur',
         'vibe': 'sophisticated business dinner dates, post-conference executive relaxation, modern luxury suites, and discrete professionalism'
@@ -115,9 +115,9 @@ LOCATIONS_CONFIG = [
     {
         'slug': 'kathgodam',
         'name': 'Kathgodam',
-        'title': 'Kathgodam Escorts - Railway Junction & Hill Gateway Call Girls',
-        'meta_desc': 'Reliable Kathgodam escorts and transit hotel call girls near railway terminus. 100% verified independent girls, instant outcall service, zero advance fee.',
-        'tagline': 'Historic Railhead & Gateway into the Misty Hills',
+        'title': 'Kathgodam Escort Service - Railway Junction Hotel Escorts',
+        'meta_desc': 'Meet verified Kathgodam escort service models for relaxing transit visits and hill gateway hotel appointments. Direct companion contact, zero advance.',
+        'tagline': 'Railway Terminus Gateway, Gaula River Valley & Hill Ascent Transit',
         'landmarks': 'Kathgodam Railway Station, Gaula Barrage, Shivalik Foothills, Ranibagh Bridge, Nainital Road Junction',
         'hotels': 'Hotel Fiesta, Relax Inn Kathgodam, Pineview Hotel, Gaula River View Resort, The Grand Kailash',
         'vibe': 'convenient transit rendezvous, scenic river terrace evenings, refreshing welcome companionship, and smooth hill departures'
@@ -125,9 +125,9 @@ LOCATIONS_CONFIG = [
     {
         'slug': 'kashipur',
         'name': 'Kashipur',
-        'title': 'Kashipur Escorts - High Profile College Models & Elite Call Girls',
-        'meta_desc': 'Book authentic Kashipur escorts and independent VIP call girls. Serving industrial parks and luxury hotels with full confidentiality and zero advance payments.',
-        'tagline': 'Ancient Heritage & Thriving Industrial Commercial Centre',
+        'title': 'Kashipur Escort Service - Industrial Hub Hotel Escorts',
+        'meta_desc': 'Select verified Kashipur escort service for discreet hotel outcall along Bazpur Road and central suites. Independent models, zero advance, direct cash.',
+        'tagline': 'Historic Industrial Gateway, Paper Mills & Academic Corridor',
         'landmarks': 'Bazpur Road, Ramnagar Road, IIM Kashipur Campus, Drona Sagar, Industrial Area Sector 1',
         'hotels': 'The Manor Kashipur, Anand Castle, Hotel Kumaon Plaza, Gautam Residency, Hotel Ashiyana',
         'vibe': 'private boutique hotel leisure, lively youthful energy, educated conversationalists, and total discretion'
@@ -135,9 +135,9 @@ LOCATIONS_CONFIG = [
     {
         'slug': 'bajpur',
         'name': 'Bajpur',
-        'title': 'Bajpur Escorts - Independent Sugar Belt Call Girls & Farmhouse Companions',
-        'meta_desc': 'Verified Bajpur escorts and discreet farmhouse call girls. 100% authentic local models, outcall service across luxury private farms, and zero advance deposit.',
-        'tagline': 'Lush Agricultural Plains & Scenic Terai Countryside',
+        'title': 'Bajpur Call Girls - Terai Estate & Highway Hotel Escorts',
+        'meta_desc': 'Book verified Bajpur call girls for quiet farmhouse outcall and highway hotel appointments across the Terai belt. Safe direct meetings, cash on arrival.',
+        'tagline': 'Fertile Agricultural Heartland, Historic Sugar Mills & Rural Farm Retreats',
         'landmarks': 'Bajpur Sugar Mill Area, Kashipur-Haldwani Road, Terai Orchards, Kosi Canal Crossing',
         'hotels': 'Green Park Hotel, Terai Royal Residency, The Orchard Retreat, Hotel Shivalik View Bajpur',
         'vibe': 'private farmhouse rendezvous, spacious country estates, peaceful rural sunsets, and genuine warm hospitality'
@@ -145,9 +145,9 @@ LOCATIONS_CONFIG = [
     {
         'slug': 'khatima',
         'name': 'Khatima',
-        'title': 'Khatima Escorts - Border Town Verified Call Girls & Hotel Escort Service',
-        'meta_desc': 'Premium Khatima escorts and genuine college call girls available for hotel and outstation companionship. 100% real photos, transparent pricing, cash on arrival.',
-        'tagline': 'Indo-Nepal Border Corridor & Verdant Terai Woodlands',
+        'title': 'Escort Service in Khatima - Border Transit Hotel Escorts',
+        'meta_desc': 'Arrange trusted escort service in Khatima for quiet in-room hotel appointments along Tanakpur Road and Melghat. Verified models, cash upon meeting.',
+        'tagline': 'Indo-Nepal Border Gateway, Sharda River & Terai Transit Crossroads',
         'landmarks': 'Tanakpur Road, Sharda River Canal, Khatima Main Market, Lohiahead Power House, Nanakmatta Junction',
         'hotels': 'Hotel Royal Park Khatima, City Heart Inn, Sharda Heritage Hotel, The Green Valley Inn',
         'vibe': 'frontier town charm, serene riverbank strolls, genuine affectionate companionship, and private suite encounters'
@@ -155,9 +155,9 @@ LOCATIONS_CONFIG = [
     {
         'slug': 'sitarganj',
         'name': 'Sitarganj',
-        'title': 'Sitarganj Escorts - SIDCUL Industrial Zone Call Girls & Private Models',
-        'meta_desc': 'Verified Sitarganj escorts and corporate call girls serving ELDECO SIDCUL industrial complex. Safe hotel outcall, 100% discreet models, zero upfront payment.',
-        'tagline': 'Manufacturing Growth Corridor & Waterside Reservoir Environs',
+        'title': 'Call Girls Sitarganj - SIDCUL Industrial Hotel Escorts',
+        'meta_desc': 'Reserve independent call girls Sitarganj for executive outcall near Eldeco SIDCUL park and town hotels. Photo-verified companions with cash on arrival.',
+        'tagline': 'Modern Industrial Growth, Eldeco SIDCUL & Terai Commercial Crossroads',
         'landmarks': 'ELDECO SIDCUL Industrial Park, Baigul Dam, Nanakmatta Sahib Bypass, Khatima Highway',
         'hotels': 'Hotel Sitarganj Grand, The Industrial Inn, Green View Palace, Lakeview Comfort Stay Sitarganj',
         'vibe': 'quiet industrial executive unwinding, peaceful dam viewpoints, unhurried evening companionship, and total privacy'
@@ -165,9 +165,9 @@ LOCATIONS_CONFIG = [
     {
         'slug': 'kichha',
         'name': 'Kichha',
-        'title': 'Kichha Escorts - High Class Local Call Girls & Highway Suite Companions',
-        'meta_desc': 'Authentic Kichha escorts and independent female call girls. Reliable outcall service to certified hotels and private suites with zero advance financial deposit.',
-        'tagline': 'Crossroads of Terai Trade & Rice Granary of the Foothills',
+        'title': 'Escort Service Kichha - Bareilly Highway Hotel Escorts',
+        'meta_desc': 'Find verified escort service Kichha for comfortable transit appointments and hotel visits along Bareilly Highway. Zero upfront deposit, cash on arrival.',
+        'tagline': 'Agricultural Trade Hub, Bareilly Highway Artery & Logistics Gateway',
         'landmarks': 'Bareilly Highway, Rudrapur Bypass, Kichha Railway Station, Grain Market Complex, Terai Canal',
         'hotels': 'Hotel Celebration Kichha, The Highway Heritage, City Pride Inn, Amar Palace Kichha',
         'vibe': 'relaxed highway transit stopovers, friendly open-hearted companionship, stress-relieving massages, and cozy comfort'
@@ -175,9 +175,9 @@ LOCATIONS_CONFIG = [
     {
         'slug': 'jim-corbett',
         'name': 'Jim Corbett',
-        'title': 'Jim Corbett Escorts - Luxury 5-Star Safari Resort Call Girls & VIP Escorts',
-        'meta_desc': 'Experience ultra-luxury Jim Corbett escorts and forest retreat call girls. Five-star safari lodge companions, private pool villa visits, zero advance deposit.',
-        'tagline': 'India’s Legendary Tiger Reserve & World-Class Eco-Luxury Lodges',
+        'title': 'Jim Corbett Call Girls - Luxury Safari Resort Escorts',
+        'meta_desc': 'Arrange in-room visits with verified Jim Corbett call girls at premier eco-lodges near Bijrani and Dhikala gates. 100% authentic photos, cash payment.',
+        'tagline': 'India’s Legendary Tiger Sanctuary & Luxury Wilderness Lodges',
         'landmarks': 'Bijrani Gate, Dhikala Zone, Jhirna Gate, Sitabani Forest, Kosi River Valley, Marchula',
         'hotels': 'Taj Corbett Resort & Spa, The Solluna Resort, Paatlidun Safari Lodge, Namah Resort, Aahana The Corbett Wilderness',
         'vibe': 'exclusive private pool villas, wilderness jungle sounds, candlelit riverside dinners, and unforgettable passionate intimacy'
@@ -185,9 +185,9 @@ LOCATIONS_CONFIG = [
     {
         'slug': 'bhowali',
         'name': 'Bhowali',
-        'title': 'Bhowali Escorts - Mist-Covered Pine Forest Call Girls & Hill Villa Companions',
-        'meta_desc': 'Book charming Bhowali escorts and independent pine cottage call girls. 100% verified photos, Kainchi Dham junction access, and zero advance payment.',
-        'tagline': 'The Fruit Bowl of Kumaon & Refreshing Pine Valley Ridge',
+        'title': 'Call Girls in Bhowali - Pine Ridge & Orchard Villa Escorts',
+        'meta_desc': 'Meet discreet call girls in Bhowali for peaceful mountain villa outcall along Kainchi Dham road and pine ridges. Real photographs, safe cash on meeting.',
+        'tagline': 'Himalayan Fruit Orchard Ridge, Sanatorium Pine Heights & Highway Junction',
         'landmarks': 'Bhowali Sanatorium Ridge, Kainchi Dham Junction, Ramgarh Road, Golu Devta Temple Road, Pine Crest',
         'hotels': 'The White Peaks Bhowali, Aqua De Vida Resort, Pine Crest Hotel, Soulitude in the Himalayas, Cedar Cottage',
         'vibe': 'cool pine-scented breezes, misty hillside mornings, cozy warm fireside cuddles, and unhurried romantic escapes'

@@ -5,6 +5,7 @@ import urllib.parse
 
 from build_pages import NAMES_POOL, LOCATIONS_CONFIG
 from location_local_data import LOCATION_LOCAL_DATA
+from location_bespoke_content import BESPOKE_LOCATION_DATA
 
 # Load CSS content to embed directly in all generated pages
 CSS_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'css', 'style.css')
@@ -511,26 +512,24 @@ def generate_20_faqs(city_name, hotels, landmarks, pop_tags=None):
     ]
     return faqs
 
-# Build location HTML page with target word count: ~2,800 - 3,200 words
+# Build location HTML page with target word count: ~3,800 - 4,200 words
 def build_location_page(loc, start_name_idx):
     slug = loc['slug']
     city_name = loc['name']
-    title = loc['title']
-    meta_desc = loc['meta_desc']
-    tagline = loc['tagline']
     landmarks = loc['landmarks']
     hotels = loc['hotels']
-    vibe = loc['vibe']
-    h1_title = loc.get('h1', f"{city_name} Call Girls - Verified {city_name} Escort Service in {loc.get('seo_landmark', landmarks.split(',')[0])}")
-    seo_landmark = loc.get('seo_landmark', landmarks.split(',')[0].strip())
-    seo_hotel = loc.get('seo_hotel', hotels.split(',')[0].strip())
     
-    local_guide = LOCAL_SEO_GUIDES.get(slug, {
-        'sectors': landmarks,
-        'sectors_detail': f"Companions in {city_name} cover all major transit points and hotel clusters promptly.",
-        'hospitality': f"Certified hotels in {city_name} including {hotels} provide safe outcall settings.",
-        'itineraries': f"Enjoy scenic mountain drives and private dining in {city_name} with verified models."
-    })
+    bespoke = BESPOKE_LOCATION_DATA.get(slug, {})
+    title = bespoke.get('title', loc['title'])
+    meta_desc = bespoke.get('meta_desc', loc['meta_desc'])
+    tagline = bespoke.get('tagline', loc['tagline'])
+    h1_title = bespoke.get('h1', loc.get('h1', f"{city_name} Call Girls - Verified {city_name} Escort Service"))
+    hero_intro = bespoke.get('hero_intro', [
+        f"Welcome to CityHaldwani.com, your verified destination for {city_name} call girls.",
+        f"Every companion listed below has verified adult legal age and authentic photos."
+    ])
+    listings_title = bespoke.get('listings_title', f"🔥 16 Active Verified Call Girls & Escort Service in {city_name}")
+    custom_sections = bespoke.get('sections', [])
     
     # 16 profiles with ../ relative prefix and unique local search keywords
     loc_local = LOCATION_LOCAL_DATA.get(slug, {})
@@ -560,6 +559,16 @@ def build_location_page(loc, start_name_idx):
         cards_html.append(render_profile_card(name, city_name, age, i, img_alias, rel_prefix='../', profile_title=prof_kw, dedicated_tag=card_tag))
     
     all_cards_str = "\n".join(cards_html)
+    
+    # Render bespoke editorial sections
+    sections_html = []
+    for sec in custom_sections:
+        sections_html.append(f'''
+    <section class="editorial-card">
+      <h2>{sec['title']}</h2>
+      {sec['html']}
+    </section>''')
+    all_sections_str = "\n".join(sections_html)
     
     # 20 FAQs
     faqs = generate_20_faqs(city_name, hotels, landmarks, pop_tags=pop_tags)
@@ -724,16 +733,16 @@ def build_location_page(loc, start_name_idx):
         <span class="hero-badge">🛎️ In-Room &amp; Resort Outcall</span>
       </div>
       <p>
-        Welcome to <strong>CityHaldwani.com</strong>, your verified destination for <strong>{city_name} call girls</strong> and premier <strong>{city_name} escort service in {seo_landmark}</strong>. Renowned for its {vibe}, {city_name} attracts holidaymakers, executives, and regional visitors seeking unhurried, discreet luxury. Whether staying at a luxury resort along {landmarks} or relaxing in an executive suite near {seo_hotel}, our vetted independent companions deliver genuine warmth, high-class elegance, and confidential charm.
+        {hero_intro[0]}
       </p>
       <p>
-        At CityHaldwani.com, we prioritize transparency and safety above all else. Every companion listed below has completed strict photo authentication and age verification checks (18+). You connect directly with the independent advertiser over phone or WhatsApp, eliminating brokerage fees and predatory third-party intermediaries. Review authentic profile details, compare flexible packages, and enjoy confidential companionship backed by our ironclad zero upfront payment policy.
+        {hero_intro[1]}
       </p>
     </section>
 
     <section class="listings-section" id="verified-listings">
       <div class="listings-heading-bar">
-        <h2>🔥 16 Active Verified Call Girls &amp; Escort Service in {city_name}</h2>
+        <h2>{listings_title}</h2>
         <span class="listings-count-badge">16 Profiles Active Now</span>
       </div>
       <div class="listings-grid">
@@ -741,86 +750,7 @@ def build_location_page(loc, start_name_idx):
       </div>
     </section>
 
-    <section class="editorial-card">
-      <h2>Comprehensive Guide to Hiring Independent Companions in {city_name}</h2>
-      <p>
-        Our comprehensive guide to <strong>hiring independent companions in {city_name}</strong> is designed to give travelers and corporate executives complete confidence, safety, and transparent clarity. Planning a mountain holiday, business retreat, or weekend escape to {city_name} is made memorable with verified companionship. Independent models offer personalized companionship tailored to your schedule, from scenic daytime drives to private fireside hotel dinners with warmth and discretion.
-      </p>
-
-      <h2>Elite Companion Categories in {city_name}</h2>
-      <p>
-        Exploring the <strong>elite companion categories in {city_name}</strong> helps you select the perfect partner for your personal preferences and travel itinerary:
-      </p>
-      <div class="categories-grid">
-        <div class="category-box">
-          <h3>🎓 Independent College Girls</h3>
-          <p>Fresh, educated students (18+) in {city_name}. Energetic, talkative, and perfect for casual outings, sightseeing, and lively cafe dates.</p>
-        </div>
-        <div class="category-box">
-          <h3>👑 VIP Fashion Models</h3>
-          <p>Glamorous, tall models suitable for high-profile business dinners, luxury suite stays, and prestigious social events across Uttarakhand.</p>
-        </div>
-        <div class="category-box">
-          <h3>💖 Sensual Mature Companions</h3>
-          <p>Attentive homemakers and independent women excelling at passionate, relaxing companionship with zero drama and complete understanding.</p>
-        </div>
-        <div class="category-box">
-          <h3>🌿 Luxury Resort Escorts</h3>
-          <p>Versatile companions accustomed to high-end hospitality, wilderness safaris, and overnight tours across {landmarks}.</p>
-        </div>
-      </div>
-      {cat_extra}
-    </section>
-
-    <!-- NEW SECTION: Detailed Local Neighborhood & Sector Coverage Guide (~150 words of rich local SEO content) -->
-    <section class="editorial-card">
-      <h2>📍 Local Neighborhood &amp; Call Girls Coverage in {city_name}</h2>
-      <p>
-        Regarding <strong>local neighborhood &amp; call girls coverage in {city_name}</strong>, our verified independent escort network spans every prominent commercial zone, residential colony, and transit artery in and around {city_name}. Specifically, active outcall coverage is provided across <strong>{local_guide['sectors']}</strong>.
-      </p>
-      <p>
-        {local_guide['sectors_detail']}
-      </p>
-      <p>
-        Whether you require a prompt appointment at your central hotel within 25 to 35 minutes or wish to schedule an evening date at a private farmhouse or mountain homestay, our independent advertisers guarantee timely arrival. We recommend contacting your chosen companion at least 45 minutes prior to your preferred meeting time so she can travel comfortably and arrive fresh, relaxed, and ready to provide an exceptional hospitality experience.
-      </p>
-    </section>
-
-    <!-- NEW SECTION: 5-Star Hotel Hospitality & Concierge Etiquette (~150 words of local hotel guide) -->
-    <section class="editorial-card">
-      <h2>🛎️ Elite Hospitality, Hotel Concierge Etiquette &amp; 5-Star Outcall in {city_name}</h2>
-      <p>
-        For travelers seeking <strong>elite hospitality, hotel concierge etiquette &amp; 5-star outcall in {city_name}</strong>, choosing the right luxury venue guarantees a stress-free and completely confidential appointment. We strongly recommend booking a certified 4-star or 5-star hotel or a verified luxury boutique resort. Recommended establishments include <strong>{hotels}</strong>, known throughout Kumaon for their spacious suites, soundproof rooms, private parking, and professional front-desk hospitality.
-      </p>
-      <p>
-        {local_guide['hospitality']}
-      </p>
-      <p>
-        When welcoming an independent companion to your hotel room, simple courtesy ensures a delightful time for both parties. Call the front desk to notify them of an incoming visitor or meet your companion in the hotel lobby lounge for a brief introductory greeting. Independent companions take pride in their hygiene, grooming, and discrete etiquette, arriving in fashionable attire suitable for any 5-star property.
-      </p>
-
-      <h2>Client Safety Protocol &amp; Zero Advance Rule</h2>
-      <p>
-        To uphold our strict <strong>client safety protocol &amp; zero advance rule</strong>, every client is advised to observe the following safeguards:
-      </p>
-      <ul>
-        <li><strong>Never Pay Advance Money:</strong> Independent companions in {city_name} never ask for UPI transfers or booking deposits in advance. Pay in direct cash after meeting in person at your hotel room.</li>
-        <li><strong>Verify Identity on Arrival:</strong> Confirm your companion matches her photographs before commencing your private appointment. If photos differ, you are free to cancel at the door.</li>
-        <li><strong>Maintain Mutual Respect:</strong> Treat companions with courtesy, maintain good personal hygiene, and honor agreed personal boundaries and scheduled hours.</li>
-        <li><strong>Preserve Discretion:</strong> Refrain from taking unauthorized photos or recording private moments. Total mutual privacy is guaranteed on CityHaldwani.com.</li>
-      </ul>
-    </section>
-
-    <!-- NEW SECTION: Seasonal Travel, Sightseeing Drives & Romantic Rendezvous (~120 words of local travel tips) -->
-    <section class="editorial-card">
-      <h2>🌄 Best Seasons, Scenic Mountain Drives &amp; Romantic Rendezvous in {city_name}</h2>
-      <p>
-        When planning around the <strong>best seasons, scenic mountain drives &amp; romantic rendezvous in {city_name}</strong>, this picturesque region offers distinct charms throughout the year, from refreshing summer escapes to crisp winter evenings beside crackling deodar fireplaces. {local_guide['itineraries']}
-      </p>
-      <p>
-        Pairing your regional exploration with a charming local companion transforms an ordinary trip into an extraordinary holiday. Independent escorts know the finest viewpoint cafes, scenic valley routes along {landmarks}, and quiet dining spots where you can enjoy each other’s company without intrusion. Discuss your preferred itinerary directly when calling your companion to create a bespoke holiday experience.
-      </p>
-    </section>
+{all_sections_str}
 
     <!-- POPULAR SEARCHES TAG CLOUD SECTION (Requested for all location pages) -->
     <section class="popular-searches-section" id="popular-searches">
