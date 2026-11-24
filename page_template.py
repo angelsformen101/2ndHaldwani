@@ -302,7 +302,7 @@ def render_profile_card(name, city_name, age, index, img_alias, rel_prefix='../'
         <article class="profile-card" id="profile-{name.lower()}">
           <div class="card-media">
             <span class="vip-ribbon">VIP</span>
-            <img src="{rel_prefix}public/{img_alias}" alt="{name} - {profile_title} in {city_name}" loading="lazy" decoding="async" width="175" height="220" onerror="if(!this.dataset.retried){{this.dataset.retried=1;this.src='{rel_prefix}{img_alias}';}}">
+            <img src="{rel_prefix}public/{img_alias}" alt="{name} - {profile_title} in {city_name}" loading="lazy" decoding="async" width="185" height="245" onerror="if(!this.dataset.retried){{this.dataset.retried=1;this.src='{rel_prefix}{img_alias}';}}">
             <span class="photo-count-pill">📷 {photo_count} Photos</span>
           </div>
           <div class="card-content">
